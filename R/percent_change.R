@@ -15,9 +15,9 @@ percent_change.default <- function(baseline, followup) {
   percent_change
 }
 
-percent_change.data.frame <- function(df, baseline, followup) {
-  df$percent_change <- ((df[[followup]] - df[[baseline]]) / df[[baseline]]) * 100
-  df
+percent_change.data.frame <- function(data, baseline, followup) {
+  data$percent_change <- ((data[[followup]] - data[[baseline]]) / data[[baseline]]) * 100
+  data
 }
 
 percent_change(df$a, df$b)
