@@ -1,12 +1,11 @@
-library(tidyverse)
-
-# Create a test data frame
-df <- tibble(
-  a = sample(1:10, 10, replace = TRUE),
-  b = a * 1.3
-)
-
-percent_change <- function(x, ...) {
+percent_change <- function(baseline, followup) {
+  #' Compute percent change between two vectors.
+  #'
+  #' @param baseline A numeric vector with baseline values.
+  #' @param followup A numeric vector with follow-up values.
+  #' 
+  #' @return A numeric vector with the percent change.
+  #' @export 
   UseMethod("percent_change")
 }
 
@@ -16,9 +15,19 @@ percent_change.default <- function(baseline, followup) {
 }
 
 percent_change.data.frame <- function(data, baseline, followup) {
-  data$percent_change <- ((data[[followup]] - data[[baseline]]) / data[[baseline]]) * 100
+  #' @describeIn percent_change S3 method for data.frame
+  #'
+  #' @param data A data frame
+  #' @param baseline Name of the column with the baseline values
+  #' @param followup Name of the column with the follow-up values
+  #'
+  #' @return The data.frame with a new column with percent change values
+  #' @export
+  baseline <- rlang::enquo(baseline)
+  followup <- rlang::enquo(followup)
+  data <- dplyr::mutate(
+    data,
+    percent_change = ((!! followup - !! baseline) / !! baseline) * 100
+  )
   data
 }
-
-percent_change(df$a, df$b)
-percent_change(df, "a", "b")
