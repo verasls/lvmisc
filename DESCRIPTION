@@ -8,6 +8,9 @@ Authors@R:
            email = "lucasdsveras@gmail.com",
            comment = c(ORCID = "0000-0003-0562-5803"))
 Description: What the package does (one paragraph).
+Imports:
+    dplyr,
+    rlang
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
