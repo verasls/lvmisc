@@ -1,28 +1,22 @@
-percent_change <- function(baseline, followup) {
-  #' Compute percent change between two vectors.
+percent_change <- function(data, baseline, followup) {
+  #' Computes the percent change
   #'
-  #' @param baseline A numeric vector with baseline values.
-  #' @param followup A numeric vector with follow-up values.
-  #' 
-  #' @return A numeric vector with the percent change.
-  #' @export 
-  UseMethod("percent_change")
-}
-
-percent_change.default <- function(baseline, followup) {
-  percent_change <- ((followup - baseline) / baseline) * 100
-  percent_change
-}
-
-percent_change.data.frame <- function(data, baseline, followup) {
-  #' @describeIn percent_change S3 method for data.frame
+  #' \code{percent_change} returns the row-wise percent change between two
+  #'   columns in a data frame.
   #'
-  #' @param data A data frame
-  #' @param baseline Name of the column with the baseline values
-  #' @param followup Name of the column with the follow-up values
+  #' @param data The data frame or tibble with the data to be computed.
   #'
-  #' @return The data.frame with a new column with percent change values
+  #' @param baseline,followup The bare (unquoted) name of the columns to be
+  #'   used to compute the percent change.
+  #'
   #' @export
+  #'
+  #' @examples
+  #' # Generate data
+  #' df <- data.frame(a = sample(20:40, 10))
+  #' df$b <- df$a * runif(10, min = 0.5, max = 1.5) 
+  #' 
+  #' percent_change(df, a, b)
   baseline <- rlang::enquo(baseline)
   followup <- rlang::enquo(followup)
   data <- dplyr::mutate(
