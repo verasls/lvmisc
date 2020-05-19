@@ -2,30 +2,24 @@
 % Please edit documentation in R/percent_change.R
 \name{percent_change}
 \alias{percent_change}
-\alias{percent_change.data.frame}
-\title{Compute percent change between two vectors.}
+\title{Computes the percent change}
 \usage{
-percent_change(baseline, followup)
-
-\method{percent_change}{data.frame}(data, baseline, followup)
+percent_change(data, baseline, followup)
 }
 \arguments{
-\item{baseline}{Name of the column with the baseline values}
+\item{data}{The data frame or tibble with the data to be computed.}
 
-\item{followup}{Name of the column with the follow-up values}
-
-\item{data}{A data frame}
-}
-\value{
-A numeric vector with the percent change.
-
-The data.frame with a new column with percent change values
+\item{baseline, followup}{The bare (unquoted) name of the columns to be
+used to compute the percent change.}
 }
 \description{
-Compute percent change between two vectors.
+\code{percent_change} returns the row-wise percent change between two
+columns in a data frame.
 }
-\section{Methods (by class)}{
-\itemize{
-\item \code{data.frame}: S3 method for data.frame
-}}
+\examples{
+# Generate data
+df <- data.frame(a = sample(20:40, 10))
+df$b <- df$a * runif(10, min = 0.5, max = 1.5) 
 
+percent_change(df, a, b)
+}
