@@ -19,6 +19,22 @@ percent_change <- function(data, baseline, followup) {
   #' percent_change(df, a, b)
   baseline <- rlang::enquo(baseline)
   followup <- rlang::enquo(followup)
+  
+  if (!is.numeric(rlang::eval_tidy(baseline, data))) {
+    not <- typeof(rlang::eval_tidy(baseline, data))
+    msg <- glue::glue("`baseline` must be numeric; not {not}.")
+    stop(msg, call. = FALSE)
+  }
+  if (!is.numeric(rlang::eval_tidy(followup, data))) {
+    not <- typeof(rlang::eval_tidy(followup, data))
+    msg <- glue::glue("`followup` must be numeric; not {not}.")
+    stop(msg, call. = FALSE)
+  }
+
+  print(
+    length(rlang::eval_tidy(baseline, data)) == length(rlang::eval_tidy(followup, data))
+  )
+
   data <- dplyr::mutate(
     data,
     percent_change = ((!! followup - !! baseline) / !! baseline) * 100
