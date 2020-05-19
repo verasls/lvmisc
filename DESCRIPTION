@@ -10,6 +10,7 @@ Authors@R:
 Description: What the package does (one paragraph).
 Imports:
     dplyr,
+    glue,
     rlang
 License: MIT + file LICENSE
 Encoding: UTF-8
