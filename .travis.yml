@@ -2,3 +2,10 @@
 
 language: R
 cache: packages
+
+# For codecov
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'covr::codecov()'
