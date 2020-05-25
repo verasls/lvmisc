@@ -7,6 +7,7 @@
 
 [![Build
 Status](https://travis-ci.org/verasls/lvmisc.svg?branch=master)](https://travis-ci.org/verasls/lvmisc)
+[![codecov](https://codecov.io/gh/verasls/lvmisc/branch/master/graph/badge.svg)](https://codecov.io/gh/verasls/lvmisc)
 <!-- badges: end -->
 
 `lvmisc` is a package with miscellaneous R functions.
