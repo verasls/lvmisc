@@ -4,25 +4,21 @@
 \alias{percent_change}
 \title{Computes the percent change}
 \usage{
-percent_change(data, baseline, followup, round = NULL)
+percent_change(data, baseline, followup)
 }
 \arguments{
 \item{data}{The data frame or tibble with the data to be computed.}
 
 \item{baseline, followup}{The bare (unquoted) name of the columns to be
 used to compute the percent change.}
-
-\item{round}{The number of decimal places to round. If NULL (default),
-rounding will not be applied.}
 }
 \description{
 \code{percent_change} returns the row-wise percent change between two
 columns in a data frame.
 }
 \examples{
-# Generate data
 df <- data.frame(a = sample(20:40, 10))
 df$b <- df$a * runif(10, min = 0.5, max = 1.5) 
 
-percent_change(df, a, b, round = 2)
+percent_change(df, a, b)
 }
