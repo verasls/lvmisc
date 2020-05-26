@@ -11,11 +11,13 @@ Description: What the package does (one paragraph).
 Imports:
     dplyr,
     glue,
-    rlang
+    rlang,
+    magrittr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Suggests: 
-    testthat
+    testthat,
+    forcats
