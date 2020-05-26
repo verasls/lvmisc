@@ -17,6 +17,9 @@
 #'
 #' @seealso \code{\link[=bmi_cat]{bmi_cat()}}
 #'
+#' @importFrom rlang ":="
+#' @importFrom magrittr "%>%" 
+#'
 #' @examples
 #' df <- dplyr::starwars %>% 
 #'   # Converting height to meters
