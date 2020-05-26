@@ -9,7 +9,7 @@ percent_change(data, baseline, followup)
 \arguments{
 \item{data}{The data frame or tibble with the data to be computed.}
 
-\item{baseline, followup}{The bare (unquoted) name of the columns to be
+\item{baseline, followup}{The bare (unquoted) names of the columns to be
 used to compute the percent change.}
 }
 \description{

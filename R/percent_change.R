@@ -5,7 +5,7 @@
 #'
 #' @param data The data frame or tibble with the data to be computed.
 #'
-#' @param baseline,followup The bare (unquoted) name of the columns to be
+#' @param baseline,followup The bare (unquoted) names of the columns to be
 #'   used to compute the percent change.
 #'
 #' @export
