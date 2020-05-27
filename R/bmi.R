@@ -44,6 +44,20 @@ bmi <- function(data, mass, height, category = FALSE) {
       not = rlang::eval_tidy(height, data)
     )
   }
+  if (!is.logical(rlang::eval_tidy(category, data))) {
+    abort_argument_type(
+      "category",
+      must = "be logical",
+      not = rlang::eval_tidy(category, data)
+    )
+  }
+  if (length(rlang::eval_tidy(category, data)) > 1) {
+    abort_argument_length(
+      "category",
+      must = "have length 1",
+      not = rlang::eval_tidy(category, data)
+    )
+  }
 
   # Deal with heigh in centimeters case
   cm_thrsh <- 3
