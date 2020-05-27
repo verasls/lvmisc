@@ -12,6 +12,18 @@ test_that("bmi works", {
   expect_equal(out, c(18, 22, 27, 32, 37, 42))
 })
 
+test_that("`category` argument works", {
+  df <- data.frame(
+    h = seq(1.55, 1.8, 0.05),
+    m = c(43.245, 56.32, 73.5075, 92.48, 113.3125, 136.08)
+  )
+
+  out <- bmi(df, m, h, category = TRUE)
+  out <- out[["bmi_cat"]]
+
+  expect_s3_class(out, "factor")
+})
+
 test_that("bmi deals with height in centimeters", {
   df <- data.frame(
     h = seq(155, 180, 5),
