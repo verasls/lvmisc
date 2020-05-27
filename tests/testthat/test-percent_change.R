@@ -16,7 +16,12 @@ test_that("percent_change works", {
   out <- percent_change(df, bl, fu)
   out <- out[["percent_change"]]
 
-  expect_equal(out, c(0, 0.5, 5, 50, 100, - 0.5, - 5, - 50, - 100, NA))
+  expect_s3_class(out, c("lvmisc_percent", "vctrs_vctr"), exact = TRUE)
+
+  expected <- vec_c(0, 0.005, 0.05, 0.5, 1, - 0.005, - 0.05, - 0.5, - 1, NA)
+  expected <- as_percent(expected)
+  
+  expect_equal(out, expected)
 })
 
 test_that("error handling works", {

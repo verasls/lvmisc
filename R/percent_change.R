@@ -8,7 +8,11 @@
 #' @param baseline,followup The bare (unquoted) names of the columns to be
 #'   used to compute the percent change.
 #'
+#' @return An object of class `lvmisc_percent`
+#' 
 #' @export
+#'
+#' @seealso \code{\link[=percent]{percent()}}
 #'
 #' @examples
 #' df <- data.frame(a = sample(20:40, 10))
@@ -18,7 +22,7 @@
 percent_change <- function(data, baseline, followup) {
   baseline <- rlang::enquo(baseline)
   followup <- rlang::enquo(followup)
-  
+
   if (!is.numeric(rlang::eval_tidy(baseline, data))) {
     abort_argument_type(
       "baseline",
@@ -36,7 +40,9 @@ percent_change <- function(data, baseline, followup) {
 
   data <- dplyr::mutate(
     data,
-    percent_change = ((!! followup - !! baseline) / !! baseline) * 100
+    percent_change = ((!! followup - !! baseline) / !! baseline),
+    percent_change = percent(percent_change)
   )
+
   data
 }

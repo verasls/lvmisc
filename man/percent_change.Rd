@@ -12,6 +12,9 @@ percent_change(data, baseline, followup)
 \item{baseline, followup}{The bare (unquoted) names of the columns to be
 used to compute the percent change.}
 }
+\value{
+An object of class \code{lvmisc_percent}
+}
 \description{
 \code{percent_change} returns the row-wise percent change between two
 columns in a data frame.
@@ -21,4 +24,7 @@ df <- data.frame(a = sample(20:40, 10))
 df$b <- df$a * runif(10, min = 0.5, max = 1.5) 
 
 percent_change(df, a, b)
+}
+\seealso{
+\code{\link[=percent]{percent()}}
 }
