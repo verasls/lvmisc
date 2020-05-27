@@ -68,6 +68,16 @@ test_that("error handling works", {
     class = "error_argument_type"
   )
   expect_error(
+    bmi(df, nmr, nmr, category = "no"),
+    "`category` must be logical; not character.",
+    class = "error_argument_type"
+  )
+  expect_error(
+    bmi(df, nmr, nmr, category = c(TRUE, FALSE)),
+    "`category` must have length 1; not 2.",
+    class = "error_argument_length"
+  )
+  expect_error(
     bmi(df, nmr, lgc),
     "`height` must be numeric; not logical.",
     class = "error_argument_type"
