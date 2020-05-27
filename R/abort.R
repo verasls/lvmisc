@@ -28,3 +28,34 @@ abort_argument_type <- function(arg, must, not) {
     not = not
   )
 }
+
+#' Abort based on the argument length
+#'
+#' @param arg A character string with the argument name.
+#'
+#' @param must A character string specifying which length the arg must have.
+#' 
+#' @param not The argument name (unquoted). The function evaluates the length of
+#'   the argument and displays it in the error message.
+#' 
+#' @keywords internal
+#'
+#' @examples
+#' \dontrun{
+#' x <- 1:10
+#' if (lenght(x) > 1) {
+#'   abort_argument_length("x", must = "have length 1", not = x)
+#' }
+#' }
+abort_argument_length <- function(arg, must, not) {
+  not <- length(not)
+  msg <- glue::glue("`{arg}` must {must}; not {not}.")
+
+  rlang::abort(
+    "error_argument_length",
+    message = msg,
+    arg = arg,
+    must = must,
+    not = not
+  )
+}
