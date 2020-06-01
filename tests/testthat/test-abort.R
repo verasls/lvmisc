@@ -25,3 +25,14 @@ test_that("abort_argument_length works", {
   expect_equal(err$must, "have length 1")
   expect_equal(err$not, 10)
 })
+
+test_that("abort_argument_diff_length works", {
+  x <- 1:5
+  y <- 1:10
+  err <- rlang::catch_cnd(abort_argument_diff_length("x", "y"))
+
+  expect_s3_class(err, "error_argument_diff_length")
+  expect_equal(err$message, "`x` and `y` must have the same length.")
+  expect_equal(err$arg, list("x", "y"))
+  expect_equal(err$must, "have the same length")
+})
