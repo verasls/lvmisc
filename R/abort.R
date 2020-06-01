@@ -60,6 +60,20 @@ abort_argument_length <- function(arg, must, not) {
   )
 }
 
+#' Abort based on arguments having different lengths
+#'
+#' @param arg1,arg2 A character vector with the argument name.
+#'
+#' @keywords internal
+#'
+#' @examples
+#' \dontrun{
+#' x <- 1:5
+#' y <- 1:10
+#' if (lenght(x) != length(y)) {
+#'   abort_argument_diff_length("x", "y")
+#' }
+#' }
 abort_argument_diff_length <- function(arg1, arg2) {
   msg <- glue::glue("`{arg1}` and `{arg2}` must have the same length.")
 
