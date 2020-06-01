@@ -14,7 +14,8 @@ Imports:
     rlang (>= 0.4.6),
     magrittr,
     vctrs (>= 0.3.0),
-    methods
+    methods,
+    stats
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
