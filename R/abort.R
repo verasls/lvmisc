@@ -59,3 +59,14 @@ abort_argument_length <- function(arg, must, not) {
     not = not
   )
 }
+
+abort_argument_diff_length <- function(arg1, arg2) {
+  msg <- glue::glue("`{arg1}` and `{arg2}` must have the same length.")
+
+  rlang::abort(
+    "error_argument_diff_length",
+    message = msg,
+    arg = list(arg1, arg2),
+    must = "have the same length"
+  )
+}
