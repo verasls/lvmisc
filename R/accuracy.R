@@ -43,7 +43,7 @@ error_pct <- function(actual, predicted) {
       arg2 = "predicted"
     )
   }
-  error(actual, predicted) / actual
+  as_percent(error(actual, predicted) / actual)
 }
 
 error_abs <- function(actual, predicted) {
@@ -91,7 +91,7 @@ error_abs_pct <- function(actual, predicted) {
       arg2 = "predicted"
     )
   }
-  error_abs(actual, predicted) / abs(actual)
+  as_percent(error_abs(actual, predicted) / abs(actual))
 }
 
 error_sqr <- function(actual, predicted) {
@@ -177,7 +177,7 @@ mean_error_pct <- function(actual, predicted, na.rm = TRUE) {
       arg2 = "predicted"
     )
   }
-  mean(error_per(actual, predicted), na.rm = na.rm)
+  mean(error_pct(actual, predicted), na.rm = na.rm)
 }
 
 mean_error_abs <- function(actual, predicted, na.rm = TRUE) {
@@ -239,7 +239,7 @@ mean_error_abs_pct <- function(actual, predicted, na.rm = TRUE) {
       arg2 = "predicted"
     )
   }
-  mean(error_abs_per(actual, predicted), na.rm = na.rm)
+  mean(error_abs_pct(actual, predicted), na.rm = na.rm)
 }
 
 mean_error_sqr <- function(actual, predicted, na.rm = TRUE) {
