@@ -22,33 +22,33 @@ mean_error <- function(actual, predicted) {
   mean(error(actual, predicted))
 }
 
-mean_error_pct <- function(actual, predicted) {
-  mean(error_per(actual, predicted))
+mean_error_pct <- function(actual, predicted, na.rm = TRUE) {
+  mean(error_per(actual, predicted), na.rm = na.rm)
 }
 
-mean_error_abs <- function(actual, predicted) {
-  mean(error_abs(actual, predicted))
+mean_error_abs <- function(actual, predicted, na.rm = TRUE) {
+  mean(error_abs(actual, predicted), na.rm = na.rm)
 }
 
-mean_error_abs_pct <- function(actual, predicted) {
-  mean(error_abs_per(actual, predicted))
+mean_error_abs_pct <- function(actual, predicted, na.rm = TRUE) {
+  mean(error_abs_per(actual, predicted), na.rm = na.rm)
 }
 
-mean_error_sqr <- function(actual, predicted) {
-  mean(error_sqr(actual, predicted))
+mean_error_sqr <- function(actual, predicted, na.rm = TRUE) {
+  mean(error_sqr(actual, predicted), na.rm = na.rm)
 }
 
-mean_error_sqr_root <- function(actual, predicted) {
-  sqrt(mean_error_sqr(actual, predicted))
+mean_error_sqr_root <- function(actual, predicted, na.rm = TRUE) {
+  sqrt(mean_error_sqr(actual, predicted, na.rm = na.rm))
 }
 
-bias <- function(actual, predicted) {
-  mean_error(actual, predicted)
+bias <- function(actual, predicted, na.rm = TRUE) {
+  mean_error(actual, predicted, na.rm = na.rm)
 }
 
-loa <- function(actual, predicted) {
-  bias <- bias(actual, predicted)
-  SD <- sd(error(actual, predicted))
+loa <- function(actual, predicted, na.rm = TRUE) {
+  bias <- bias(actual, predicted, na.rm = na.rm)
+  SD <- sd(error(actual, predicted), na.rm = na.rm)
   lower <- bias - 1.96 * SD
   upper  <- bias + 1.96 * SD
   loa <- list(lower = lower, upper = upper)
