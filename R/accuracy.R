@@ -1,3 +1,32 @@
+#' Params for the accuracy indices functions
+#' 
+#' @name accuracy_params
+#'
+#' @param actual A numeric vector with the actual values
+#' 
+#' @param predicted A numeric vector with the predicted values. Each element in
+#'   this vector must be a prediction for the corresponding element in 
+#'   \code{actual}.
+NULL
+
+#' Error
+#'
+#' Computes the element-wise error between the input vectors.
+#'
+#' @inheritParams accuracy_params
+#'
+#' @export
+#'
+#' @seealso \code{\link[=error_pct]{error_pct()}}, 
+#'   \code{\link[=error_abs]{error_abs()}},
+#'   \code{\link[=error_abs_pct]{error_abs_pct()}},
+#'   \code{\link[=error_sqr]{error_sqr()}}.
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' error(actual, predicted)
 error <- function(actual, predicted) {
   if(!is.numeric(actual)) {
     abort_argument_type(
@@ -22,6 +51,26 @@ error <- function(actual, predicted) {
   actual - predicted
 }
 
+#' Percent error
+#'
+#' Computes the element-wise percent error between the input vectors.
+#'
+#' @inheritParams accuracy_params
+#'
+#' @return A vector of the class `lvmisc_percent`.
+#'
+#' @export
+#'
+#' @seealso \code{\link[=error]{error()}}, 
+#'   \code{\link[=error_abs]{error_abs()}},
+#'   \code{\link[=error_abs_pct]{error_abs_pct()}},
+#'   \code{\link[=error_sqr]{error_sqr()}}.
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' error_pct(actual, predicted)
 error_pct <- function(actual, predicted) {
   if(!is.numeric(actual)) {
     abort_argument_type(
@@ -46,6 +95,24 @@ error_pct <- function(actual, predicted) {
   as_percent(error(actual, predicted) / actual)
 }
 
+#' Absolute error
+#'
+#' Computes the element-wise absolute errors between the input vectors.
+#'
+#' @inheritParams accuracy_params
+#'
+#' @export
+#'
+#' @seealso \code{\link[=error]{error()}}, 
+#'   \code{\link[=error_pct]{error_pct()}},
+#'   \code{\link[=error_abs_pct]{error_abs_pct()}},
+#'   \code{\link[=error_sqr]{error_sqr()}}.
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' error_abs(actual, predicted)
 error_abs <- function(actual, predicted) {
   if(!is.numeric(actual)) {
     abort_argument_type(
@@ -70,6 +137,26 @@ error_abs <- function(actual, predicted) {
   abs(error(actual, predicted))
 }
 
+#' Absolute percent error
+#' 
+#' Computes the element-wise absolute percent errors between the input vectors.
+#'
+#' @inheritParams accuracy_params
+#'
+#' @return A vector of the class `lvmisc_percent`.
+#'
+#' @export
+#'
+#' @seealso \code{\link[=error]{error()}}, 
+#'   \code{\link[=error_pct]{error_pct()}},
+#'   \code{\link[=error_abs]{error_abs()}},
+#'   \code{\link[=error_sqr]{error_sqr()}}.
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' error_abs_pct(actual, predicted)
 error_abs_pct <- function(actual, predicted) {
   if(!is.numeric(actual)) {
     abort_argument_type(
@@ -94,6 +181,25 @@ error_abs_pct <- function(actual, predicted) {
   as_percent(error_abs(actual, predicted) / abs(actual))
 }
 
+#' Squared error
+#'
+#' Computes the element-wise squared errors between the input vectors.
+#'
+#' @inheritParams accuracy_params
+#'
+#' @export
+#'
+#' @seealso
+#' @seealso \code{\link[=error]{error()}}, 
+#'   \code{\link[=error_pct]{error_pct()}},
+#'   \code{\link[=error_abs]{error_abs()}},
+#'   \code{\link[=error_abs_pct]{error_abs_pct()}}.
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' error_sqr(actual, predicted)
 error_sqr <- function(actual, predicted) {
   if(!is.numeric(actual)) {
     abort_argument_type(
@@ -116,257 +222,4 @@ error_sqr <- function(actual, predicted) {
     )
   }
   error(actual, predicted) ^ 2
-}
-
-mean_error <- function(actual, predicted, na.rm = TRUE) {
-  if(!is.numeric(actual)) {
-    abort_argument_type(
-      arg = "actual",
-      must = "be numeric",
-      not = actual
-    )
-  }
-  if (!is.numeric(predicted)) {
-    abort_argument_type(
-      arg = "predicted",
-      must = "be numeric",
-      not = predicted
-    )
-  }
-  if (!is.logical(na.rm)) {
-    abort_argument_type(
-      arg = "na.rm",
-      must = "be logical",
-      not = na.rm
-    )
-  }
-  if (!(length(actual) == length(predicted))) {
-    abort_argument_diff_length(
-      arg1 = "actual",
-      arg2 = "predicted"
-    )
-  }
-  mean(error(actual, predicted), na.rm = na.rm)
-}
-
-mean_error_pct <- function(actual, predicted, na.rm = TRUE) {
-  if(!is.numeric(actual)) {
-    abort_argument_type(
-      arg = "actual",
-      must = "be numeric",
-      not = actual
-    )
-  }
-  if (!is.numeric(predicted)) {
-    abort_argument_type(
-      arg = "predicted",
-      must = "be numeric",
-      not = predicted
-    )
-  }
-  if (!is.logical(na.rm)) {
-    abort_argument_type(
-      arg = "na.rm",
-      must = "be logical",
-      not = na.rm
-    )
-  }
-  if (!(length(actual) == length(predicted))) {
-    abort_argument_diff_length(
-      arg1 = "actual",
-      arg2 = "predicted"
-    )
-  }
-  mean(error_pct(actual, predicted), na.rm = na.rm)
-}
-
-mean_error_abs <- function(actual, predicted, na.rm = TRUE) {
-  if(!is.numeric(actual)) {
-    abort_argument_type(
-      arg = "actual",
-      must = "be numeric",
-      not = actual
-    )
-  }
-  if (!is.numeric(predicted)) {
-    abort_argument_type(
-      arg = "predicted",
-      must = "be numeric",
-      not = predicted
-    )
-  }
-  if (!is.logical(na.rm)) {
-    abort_argument_type(
-      arg = "na.rm",
-      must = "be logical",
-      not = na.rm
-    )
-  }
-  if (!(length(actual) == length(predicted))) {
-    abort_argument_diff_length(
-      arg1 = "actual",
-      arg2 = "predicted"
-    )
-  }
-  mean(error_abs(actual, predicted), na.rm = na.rm)
-}
-
-mean_error_abs_pct <- function(actual, predicted, na.rm = TRUE) {
-  if(!is.numeric(actual)) {
-    abort_argument_type(
-      arg = "actual",
-      must = "be numeric",
-      not = actual
-    )
-  }
-  if (!is.numeric(predicted)) {
-    abort_argument_type(
-      arg = "predicted",
-      must = "be numeric",
-      not = predicted
-    )
-  }
-  if (!is.logical(na.rm)) {
-    abort_argument_type(
-      arg = "na.rm",
-      must = "be logical",
-      not = na.rm
-    )
-  }
-  if (!(length(actual) == length(predicted))) {
-    abort_argument_diff_length(
-      arg1 = "actual",
-      arg2 = "predicted"
-    )
-  }
-  mean(error_abs_pct(actual, predicted), na.rm = na.rm)
-}
-
-mean_error_sqr <- function(actual, predicted, na.rm = TRUE) {
-  if(!is.numeric(actual)) {
-    abort_argument_type(
-      arg = "actual",
-      must = "be numeric",
-      not = actual
-    )
-  }
-  if (!is.numeric(predicted)) {
-    abort_argument_type(
-      arg = "predicted",
-      must = "be numeric",
-      not = predicted
-    )
-  }
-  if (!is.logical(na.rm)) {
-    abort_argument_type(
-      arg = "na.rm",
-      must = "be logical",
-      not = na.rm
-    )
-  }
-  if (!(length(actual) == length(predicted))) {
-    abort_argument_diff_length(
-      arg1 = "actual",
-      arg2 = "predicted"
-    )
-  }
-  mean(error_sqr(actual, predicted), na.rm = na.rm)
-}
-
-mean_error_sqr_root <- function(actual, predicted, na.rm = TRUE) {
-  if(!is.numeric(actual)) {
-    abort_argument_type(
-      arg = "actual",
-      must = "be numeric",
-      not = actual
-    )
-  }
-  if (!is.numeric(predicted)) {
-    abort_argument_type(
-      arg = "predicted",
-      must = "be numeric",
-      not = predicted
-    )
-  }
-  if (!is.logical(na.rm)) {
-    abort_argument_type(
-      arg = "na.rm",
-      must = "be logical",
-      not = na.rm
-    )
-  }
-  if (!(length(actual) == length(predicted))) {
-    abort_argument_diff_length(
-      arg1 = "actual",
-      arg2 = "predicted"
-    )
-  }
-  sqrt(mean_error_sqr(actual, predicted, na.rm = na.rm))
-}
-
-bias <- function(actual, predicted, na.rm = TRUE) {
-  if(!is.numeric(actual)) {
-    abort_argument_type(
-      arg = "actual",
-      must = "be numeric",
-      not = actual
-    )
-  }
-  if (!is.numeric(predicted)) {
-    abort_argument_type(
-      arg = "predicted",
-      must = "be numeric",
-      not = predicted
-    )
-  }
-  if (!is.logical(na.rm)) {
-    abort_argument_type(
-      arg = "na.rm",
-      must = "be logical",
-      not = na.rm
-    )
-  }
-  if (!(length(actual) == length(predicted))) {
-    abort_argument_diff_length(
-      arg1 = "actual",
-      arg2 = "predicted"
-    )
-  }
-  mean_error(actual, predicted, na.rm = na.rm)
-}
-
-loa <- function(actual, predicted, na.rm = TRUE) {
-  if(!is.numeric(actual)) {
-    abort_argument_type(
-      arg = "actual",
-      must = "be numeric",
-      not = actual
-    )
-  }
-  if (!is.numeric(predicted)) {
-    abort_argument_type(
-      arg = "predicted",
-      must = "be numeric",
-      not = predicted
-    )
-  }
-  if (!is.logical(na.rm)) {
-    abort_argument_type(
-      arg = "na.rm",
-      must = "be logical",
-      not = na.rm
-    )
-  }
-  if (!(length(actual) == length(predicted))) {
-    abort_argument_diff_length(
-      arg1 = "actual",
-      arg2 = "predicted"
-    )
-  }
-  bias <- bias(actual, predicted, na.rm = na.rm)
-  SD <- sd(error(actual, predicted), na.rm = na.rm)
-  lower <- bias - 1.96 * SD
-  upper  <- bias + 1.96 * SD
-  loa <- list(lower = lower, upper = upper)
-  loa
 }
