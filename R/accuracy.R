@@ -42,7 +42,7 @@ error <- function(actual, predicted) {
       not = predicted
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -86,7 +86,7 @@ error_pct <- function(actual, predicted) {
       not = predicted
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -128,7 +128,7 @@ error_abs <- function(actual, predicted) {
       not = predicted
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -172,7 +172,7 @@ error_abs_pct <- function(actual, predicted) {
       not = predicted
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -215,7 +215,7 @@ error_sqr <- function(actual, predicted) {
       not = predicted
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"

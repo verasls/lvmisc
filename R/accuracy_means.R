@@ -47,7 +47,7 @@ mean_error <- function(actual, predicted, na.rm = TRUE) {
       not = na.rm
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -93,7 +93,7 @@ mean_error_pct <- function(actual, predicted, na.rm = TRUE) {
       not = na.rm
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -137,7 +137,7 @@ mean_error_abs <- function(actual, predicted, na.rm = TRUE) {
       not = na.rm
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -183,7 +183,7 @@ mean_error_abs_pct <- function(actual, predicted, na.rm = TRUE) {
       not = na.rm
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -227,7 +227,7 @@ mean_error_sqr <- function(actual, predicted, na.rm = TRUE) {
       not = na.rm
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -271,7 +271,7 @@ mean_error_sqr_root <- function(actual, predicted, na.rm = TRUE) {
       not = na.rm
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -312,7 +312,7 @@ bias <- function(actual, predicted, na.rm = TRUE) {
       not = na.rm
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
@@ -355,7 +355,7 @@ loa <- function(actual, predicted, na.rm = TRUE) {
       not = na.rm
     )
   }
-  if (!(length(actual) == length(predicted))) {
+  if (length(actual) != length(predicted)) {
     abort_argument_diff_length(
       arg1 = "actual",
       arg2 = "predicted"
