@@ -12,7 +12,6 @@ Imports:
     dplyr,
     glue,
     rlang (>= 0.4.6),
-    magrittr,
     vctrs (>= 0.3.0),
     methods,
     stats
