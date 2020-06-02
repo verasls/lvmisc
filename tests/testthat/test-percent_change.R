@@ -3,18 +3,15 @@ context("percent_change")
 test_that("percent_change works", {
   set.seed(20200525)
 
-  df <- data.frame(
-   change = c(
-      1, 1.005, 1.05, 1.5, 2,
-      0.995, 0.95, 0.5, 0, 1
-    ),
-   bl = sample(1:10)
+  change <- c(
+    1, 1.005, 1.05, 1.5, 2,
+    0.995, 0.95, 0.5, 0, 1
   )
-  df$bl[10] <- NA
-  df$fu <- df$bl * df$change
+  baseline <- sample(1:10)
+  baseline[10] <- NA
+  followup <- baseline * change
 
-  out <- percent_change(df, bl, fu)
-  out <- out[["percent_change"]]
+  out <- percent_change(baseline, followup)
 
   expect_s3_class(out, c("lvmisc_percent", "vctrs_vctr"), exact = TRUE)
 
@@ -25,30 +22,34 @@ test_that("percent_change works", {
 })
 
 test_that("error handling works", {
-  df <- data.frame(
-    chr = letters[1:10],
-    lgc = rep(c(TRUE, FALSE), 5),
-    nmr = 1:10
-  )
+  chr <- letters[1:10]
+  lgc <- rep(c(TRUE, FALSE), 5)
+  nmr <- 1:10
+  nmr2 <- 1
 
   expect_error(
-    percent_change(df, chr, nmr),
+    percent_change(chr, nmr),
     "`baseline` must be numeric; not character.",
     class = "error_argument_type"
   )
   expect_error(
-    percent_change(df, lgc, nmr),
+    percent_change(lgc, nmr),
     "`baseline` must be numeric; not logical.",
     class = "error_argument_type"
   )
   expect_error(
-    percent_change(df, nmr, chr),
+    percent_change(nmr, chr),
     "`followup` must be numeric; not character.",
     class = "error_argument_type"
   )
   expect_error(
-    percent_change(df, nmr, lgc),
+    percent_change(nmr, lgc),
     "`followup` must be numeric; not logical.",
     class = "error_argument_type"
+  )
+  expect_error(
+    percent_change(nmr, nmr2),
+    "`baseline` and `followup` must have the same length.",
+    class = "error_argument_diff_length"
   )
 })

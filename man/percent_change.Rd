@@ -4,27 +4,25 @@
 \alias{percent_change}
 \title{Computes the percent change}
 \usage{
-percent_change(data, baseline, followup)
+percent_change(baseline, followup)
 }
 \arguments{
-\item{data}{The data frame or tibble with the data to be computed.}
-
-\item{baseline, followup}{The bare (unquoted) names of the columns to be
-used to compute the percent change.}
+\item{baseline, followup}{A numeric vector with data to compute the percent
+change.}
 }
 \value{
 An object of class \code{lvmisc_percent}
 }
 \description{
-\code{percent_change} returns the row-wise percent change between two
-columns in a data frame.
+\code{percent_change} returns the element-wise percent change between two
+numeric vectors.
 }
 \examples{
-df <- data.frame(a = sample(20:40, 10))
-df$b <- df$a * runif(10, min = 0.5, max = 1.5) 
+baseline <- sample(20:40, 10)
+followup <- baseline * runif(10, min = 0.5, max = 1.5)
 
-percent_change(df, a, b)
+percent_change(baseline, followup)
 }
 \seealso{
-\code{\link[=percent]{percent()}}
+\code{\link[=percent]{percent()}}, \code{{\link[=error_pct]{error_pct()}}}
 }

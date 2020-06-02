@@ -1,48 +1,31 @@
 #' Computes the percent change
 #'
-#' \code{percent_change} returns the row-wise percent change between two
-#'   columns in a data frame.
+#' \code{percent_change} returns the element-wise percent change between two
+#'   numeric vectors.
 #'
-#' @param data The data frame or tibble with the data to be computed.
-#'
-#' @param baseline,followup The bare (unquoted) names of the columns to be
-#'   used to compute the percent change.
+#' @param baseline,followup A numeric vector with data to compute the percent
+#'   change.
 #'
 #' @return An object of class `lvmisc_percent`
 #' 
 #' @export
 #'
-#' @seealso \code{\link[=percent]{percent()}}
+#' @seealso \code{\link[=percent]{percent()}}, \code{{\link[=error_pct]{error_pct()}}}
 #'
 #' @examples
-#' df <- data.frame(a = sample(20:40, 10))
-#' df$b <- df$a * runif(10, min = 0.5, max = 1.5) 
+#' baseline <- sample(20:40, 10)
+#' followup <- baseline * runif(10, min = 0.5, max = 1.5)
 #' 
-#' percent_change(df, a, b)
-percent_change <- function(data, baseline, followup) {
-  baseline <- rlang::enquo(baseline)
-  followup <- rlang::enquo(followup)
-
-  if (!is.numeric(rlang::eval_tidy(baseline, data))) {
-    abort_argument_type(
-      "baseline",
-      must = "be numeric",
-      not = rlang::eval_tidy(baseline, data)
-    )
+#' percent_change(baseline, followup)
+percent_change <- function(baseline, followup) {
+  if (!is.numeric(baseline)) {
+    abort_argument_type("baseline", must = "be numeric", not = baseline)
   }
-  if (!is.numeric(rlang::eval_tidy(followup, data))) {
-    abort_argument_type(
-      "followup",
-      must = "be numeric",
-      not = rlang::eval_tidy(followup, data)
-    )
+  if (!is.numeric(followup)) {
+    abort_argument_type("followup", must = "be numeric", not = followup)
   }
-
-  data <- dplyr::mutate(
-    data,
-    percent_change = ((!! followup - !! baseline) / !! baseline),
-    percent_change = percent(percent_change)
-  )
-
-  data
+  if (length(baseline) != length(followup)) {
+    abort_argument_diff_length("baseline", "followup")
+  }
+  percent((followup - baseline) / baseline)
 }
