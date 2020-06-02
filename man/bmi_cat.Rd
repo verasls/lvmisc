@@ -4,15 +4,14 @@
 \alias{bmi_cat}
 \title{Classify body mass index (BMI) category}
 \usage{
-bmi_cat(data, bmi)
+bmi_cat(bmi)
 }
 \arguments{
-\item{data}{The data frame or tibble with the data to be computed.}
-
-\item{bmi}{The bare (unquoted) name of the column with BMI data.}
+\item{bmi}{A numeric vector with BMI data. \code{BMI} unit must be meters per
+square meter.}
 }
 \description{
-\code{bmi_cat} returns the row-wise BMI category as factor with 6 levels:
+\code{bmi_cat} returns the element-wise BMI category as factor with 6 levels:
 \itemize{
 \item Underweight (18.5 < BMI)
 \item Normal weight (18.5 \eqn{\le} BMI < 25)
@@ -23,12 +22,11 @@ bmi_cat(data, bmi)
 }
 }
 \examples{
-df <- dplyr::starwars \%>\% 
-  # Converting height to meters
-  dplyr::mutate(height = height / 100) \%>\% 
-  bmi(mass, height)
+mass <- sample(50:100, 20)
+height <- rnorm(20, mean = 1.7, sd = 0.2)
+bmi <- bmi(mass, height)
 
-bmi_cat(df, bmi)
+bmi_cat(bmi)
 }
 \seealso{
 \code{\link[=bmi]{bmi()}}
