@@ -1,51 +1,28 @@
 context("bmi")
 
 test_that("bmi works", {
-  df <- data.frame(
-    h = seq(1.55, 1.8, 0.05),
-    m = c(43.245, 56.32, 73.5075, 92.48, 113.3125, 136.08)
-  )
+  h <- seq(1.55, 1.8, 0.05)
+  m <- c(43.245, 56.32, 73.5075, 92.48, 113.3125, 136.08)
 
-  out <- bmi(df, m, h)
-  out <- out[["bmi"]]
+  out <- bmi(m, h)
 
   expect_equal(out, c(18, 22, 27, 32, 37, 42))
 })
 
-test_that("`category` argument works", {
-  df <- data.frame(
-    h = seq(1.55, 1.8, 0.05),
-    m = c(43.245, 56.32, 73.5075, 92.48, 113.3125, 136.08)
-  )
-
-  out <- bmi(df, m, h, category = TRUE)
-  out <- out[["bmi_cat"]]
-
-  expect_s3_class(out, "factor")
-})
-
 test_that("bmi deals with height in centimeters", {
-  df <- data.frame(
-    h = seq(155, 180, 5),
-    m = c(43.245, 56.32, 73.5075, 92.48, 113.3125, 136.08)
-  )
+  h <- seq(155, 180, 5)
+  m <- c(43.245, 56.32, 73.5075, 92.48, 113.3125, 136.08)
 
-  expect_warning(out <- bmi(df, m, h))
-  
-  out <- out[["bmi"]]
-
+  expect_warning(out <- bmi(m, h))
   expect_equal(out, c(18, 22, 27, 32, 37, 42))
 })
 
 test_that("bmi_cat works", {
-  df <- data.frame(
-    h = seq(1.55, 1.8, 0.05),
-    m = c(43.245, 56.32, 73.5075, 92.48, 113.3125, 136.08)
-  )
-  df <- bmi(df, m, h)
-  df <- bmi_cat(df, bmi)
+  h <- seq(1.55, 1.8, 0.05)
+  m <- c(43.245, 56.32, 73.5075, 92.48, 113.3125, 136.08)
+  bmi <- bmi(m, h)
 
-  out <- df[["bmi_cat"]]
+  out <- bmi_cat(bmi)
 
   expect_is(out, "factor")
   expect_equal(
@@ -58,49 +35,43 @@ test_that("bmi_cat works", {
 })
 
 test_that("error handling works", {
-  df <- data.frame(
-    chr = letters[1:10],
-    lgc = rep(c(TRUE, FALSE), 5),
-    nmr = 1:10
-  )
+  chr <- letters[1:10]
+  lgc <- rep(c(TRUE, FALSE), 5)
+  nmr <- 1:10
+  nmr2 <- 1
 
   expect_error(
-    bmi(df, chr, nmr),
+    bmi(chr, nmr),
     "`mass` must be numeric; not character.",
     class = "error_argument_type"
   )
   expect_error(
-    bmi(df, lgc, nmr),
+    bmi(lgc, nmr),
     "`mass` must be numeric; not logical.",
     class = "error_argument_type"
   )
   expect_error(
-    bmi(df, nmr, chr),
+    bmi(nmr, chr),
     "`height` must be numeric; not character.",
     class = "error_argument_type"
   )
   expect_error(
-    bmi(df, nmr, nmr, category = "no"),
-    "`category` must be logical; not character.",
-    class = "error_argument_type"
-  )
-  expect_error(
-    bmi(df, nmr, nmr, category = c(TRUE, FALSE)),
-    "`category` must have length 1; not 2.",
-    class = "error_argument_length"
-  )
-  expect_error(
-    bmi(df, nmr, lgc),
+    bmi(nmr, lgc),
     "`height` must be numeric; not logical.",
     class = "error_argument_type"
   )
   expect_error(
-    bmi_cat(df, chr),
+    bmi(nmr, nmr2),
+    "`mass` and `height` must have the same length.",
+    class = "error_argument_diff_length"
+  )
+  expect_error(
+    bmi_cat(chr),
     "`bmi` must be numeric; not character.",
     class = "error_argument_type"
   )
   expect_error(
-    bmi_cat(df, lgc),
+    bmi_cat(lgc),
     "`bmi` must be numeric; not logical",
     class = "error_argument_type"
   )
