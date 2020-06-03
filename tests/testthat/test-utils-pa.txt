@@ -1,0 +1,95 @@
+> df <- dplyr::starwars
+> pa(df)
+# A tibble: 87 x 14
+   name  height   mass hair_color skin_color eye_color birth_year sex   gender
+   <chr>  <int>  <dbl> <chr>      <chr>      <chr>          <dbl> <chr> <chr> 
+ 1 Luke~    172   77   blond      fair       blue            19   male  mascu~
+ 2 C-3PO    167   75   <NA>       gold       yellow         112   none  mascu~
+ 3 R2-D2     96   32   <NA>       white, bl~ red             33   none  mascu~
+ 4 Dart~    202  136   none       white      yellow          41.9 male  mascu~
+ 5 Leia~    150   49   brown      light      brown           19   fema~ femin~
+ 6 Owen~    178  120   brown, gr~ light      blue            52   male  mascu~
+ 7 Beru~    165   75   brown      light      blue            47   fema~ femin~
+ 8 R5-D4     97   32   <NA>       white, red red             NA   none  mascu~
+ 9 Bigg~    183   84   black      light      brown           24   male  mascu~
+10 Obi-~    182   77   auburn, w~ fair       blue-gray       57   male  mascu~
+11 Anak~    188   84   blond      fair       blue            41.9 male  mascu~
+12 Wilh~    180   NA   auburn, g~ fair       blue            64   male  mascu~
+13 Chew~    228  112   brown      unknown    blue           200   male  mascu~
+14 Han ~    180   80   brown      fair       brown           29   male  mascu~
+15 Gree~    173   74   <NA>       green      black           44   male  mascu~
+16 Jabb~    175 1358   <NA>       green-tan~ orange         600   herm~ mascu~
+17 Wedg~    170   77   brown      fair       hazel           21   male  mascu~
+18 Jek ~    180  110   brown      fair       blue            NA   male  mascu~
+19 Yoda      66   17   white      green      brown          896   male  mascu~
+20 Palp~    170   75   grey       pale       yellow          82   male  mascu~
+21 Boba~    183   78.2 black      fair       brown           31.5 male  mascu~
+22 IG-88    200  140   none       metal      red             15   none  mascu~
+23 Bossk    190  113   none       green      red             53   male  mascu~
+24 Land~    177   79   black      dark       brown           31   male  mascu~
+25 Lobot    175   79   none       light      blue            37   male  mascu~
+26 Ackb~    180   83   none       brown mot~ orange          41   male  mascu~
+27 Mon ~    150   NA   auburn     fair       blue            48   fema~ femin~
+28 Arve~     NA   NA   brown      fair       brown           NA   male  mascu~
+29 Wick~     88   20   brown      brown      brown            8   male  mascu~
+30 Nien~    160   68   none       grey       black           NA   male  mascu~
+31 Qui-~    193   89   brown      fair       blue            92   male  mascu~
+32 Nute~    191   90   none       mottled g~ red             NA   male  mascu~
+33 Fini~    170   NA   blond      fair       blue            91   male  mascu~
+34 Jar ~    196   66   none       orange     orange          52   male  mascu~
+35 Roos~    224   82   none       grey       orange          NA   male  mascu~
+36 Rugo~    206   NA   none       green      orange          NA   male  mascu~
+37 Ric ~    183   NA   brown      fair       blue            NA   <NA>  <NA>  
+38 Watto    137   NA   black      blue, grey yellow          NA   male  mascu~
+39 Sebu~    112   40   none       grey, red  orange          NA   male  mascu~
+40 Quar~    183   NA   black      dark       brown           62   <NA>  <NA>  
+41 Shmi~    163   NA   black      fair       brown           72   fema~ femin~
+42 Dart~    175   80   none       red        yellow          54   male  mascu~
+43 Bib ~    180   NA   none       pale       pink            NA   male  mascu~
+44 Ayla~    178   55   none       blue       hazel           48   fema~ femin~
+45 Dud ~     94   45   none       blue, grey yellow          NA   male  mascu~
+46 Gasg~    122   NA   none       white, bl~ black           NA   male  mascu~
+47 Ben ~    163   65   none       grey, gre~ orange          NA   male  mascu~
+48 Mace~    188   84   none       dark       brown           72   male  mascu~
+49 Ki-A~    198   82   white      pale       yellow          92   male  mascu~
+50 Kit ~    196   87   none       green      black           NA   male  mascu~
+51 Eeth~    171   NA   black      brown      brown           NA   male  mascu~
+52 Adi ~    184   50   none       dark       blue            NA   fema~ femin~
+53 Saes~    188   NA   none       pale       orange          NA   male  mascu~
+54 Yara~    264   NA   none       white      yellow          NA   male  mascu~
+55 Plo ~    188   80   none       orange     black           22   male  mascu~
+56 Mas ~    196   NA   none       blue       blue            NA   male  mascu~
+57 Greg~    185   85   black      dark       brown           NA   male  mascu~
+58 Cordé    157   NA   brown      light      brown           NA   fema~ femin~
+59 Clie~    183   NA   brown      fair       blue            82   male  mascu~
+60 Pogg~    183   80   none       green      yellow          NA   male  mascu~
+61 Lumi~    170   56.2 black      yellow     blue            58   fema~ femin~
+62 Barr~    166   50   black      yellow     blue            40   fema~ femin~
+63 Dormé    165   NA   brown      light      brown           NA   fema~ femin~
+64 Dooku    193   80   white      fair       brown          102   male  mascu~
+65 Bail~    191   NA   black      tan        brown           67   male  mascu~
+66 Jang~    183   79   black      tan        brown           66   male  mascu~
+67 Zam ~    168   55   blonde     fair, gre~ yellow          NA   fema~ femin~
+68 Dext~    198  102   none       brown      yellow          NA   male  mascu~
+69 Lama~    229   88   none       grey       black           NA   male  mascu~
+70 Taun~    213   NA   none       grey       black           NA   fema~ femin~
+71 Joca~    167   NA   white      fair       blue            NA   fema~ femin~
+72 Ratt~     79   15   none       grey, blue unknown         NA   male  mascu~
+73 R4-P~     96   NA   none       silver, r~ red, blue       NA   none  femin~
+74 Wat ~    193   48   none       green, gr~ unknown         NA   male  mascu~
+75 San ~    191   NA   none       grey       gold            NA   male  mascu~
+76 Shaa~    178   57   none       red, blue~ black           NA   fema~ femin~
+77 Grie~    216  159   none       brown, wh~ green, y~       NA   male  mascu~
+78 Tarf~    234  136   brown      brown      blue            NA   male  mascu~
+79 Raym~    188   79   brown      light      brown           NA   male  mascu~
+80 Sly ~    178   48   none       pale       white           NA   <NA>  <NA>  
+81 Tion~    206   80   none       grey       black           NA   male  mascu~
+82 Finn      NA   NA   black      dark       dark            NA   male  mascu~
+83 Rey       NA   NA   brown      light      hazel           NA   fema~ femin~
+84 Poe ~     NA   NA   brown      light      brown           NA   male  mascu~
+85 BB8       NA   NA   none       none       black           NA   none  mascu~
+86 Capt~     NA   NA   unknown    unknown    unknown         NA   <NA>  <NA>  
+87 Padm~    165   45   brown      light      brown           46   fema~ femin~
+# ... with 5 more variables: homeworld <chr>, species <chr>, films <list>,
+#   vehicles <list>, starships <list>
+
