@@ -31,7 +31,7 @@ clean_observations <- function(data, id, var, max_na) {
     na = sum(is.na({{ var }})), 
     .groups = "drop"
   )
-  na_count <- dplyr::filter(na_count, .data$na > max_na + 1)
+  na_count <- dplyr::filter(na_count, .data$na > max_na)
 
   exclude <- rlang::eval_tidy(rlang::enquo(id), na_count)
 
