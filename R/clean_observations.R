@@ -26,6 +26,20 @@
 #' 
 #' clean_observations(data, id, score, 1)
 clean_observations <- function(data, id, var, max_na) {
+  id_col_name <- rlang::as_string(rlang::ensym(id))
+  var_col_name <- rlang::as_string(rlang::ensym(var))
+  data_name <- rlang::as_string(rlang::ensym(data))
+
+  if (id_col_name %!in% names(data)) {
+    abort_column_not_found(data = data_name, col_name = id_col_name)
+  }
+  if (var_col_name %!in% names(data)) {
+    abort_column_not_found(data = data_name, col_name = var_col_name)
+  }
+  if (max_na %% 1 != 0) {
+    abort_argument_type(arg = "max_na", must = "be interger", not = max_na)
+  }
+
   na_count <- dplyr::summarise(
     dplyr::group_by(data, {{ id }}), 
     na = sum(is.na({{ var }})), 
@@ -34,6 +48,6 @@ clean_observations <- function(data, id, var, max_na) {
   na_count <- dplyr::filter(na_count, .data$na > max_na)
 
   exclude <- rlang::eval_tidy(rlang::enquo(id), na_count)
-
+  
   dplyr::mutate(data, {{ var }} := replace({{ var }}, id %in% exclude, NA))
 }

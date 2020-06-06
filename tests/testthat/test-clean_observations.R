@@ -15,3 +15,23 @@ test_that("clean_observations works", {
     c(NA, 1, 1, 4, NA, NA, NA , NA, 3, 5, 5, NA, 3, 1, NA, 1, NA, NA, NA, NA)
   )
 })
+
+test_that("error handling works", {
+  data <- data.frame(x = 1:10, y = 1:10)
+
+  expect_error(
+    clean_observations(data, id, x, 1),
+    "Column `id` not found in `data`.",
+    class = "error_column_not_found"
+  )
+  expect_error(
+    clean_observations(data, x, var, 1),
+    "Column `var` not found in `data`.",
+    class = "error_column_not_found"
+  )
+  expect_error(
+    clean_observations(data, x, y, 1.5),
+    "`max_na` must be interger; not double.",
+    class = "error_argument_type"
+  )
+})
