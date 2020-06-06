@@ -84,3 +84,24 @@ abort_argument_diff_length <- function(arg1, arg2) {
     must = "have the same length"
   )
 }
+
+#' Abort based on column not being found in a data frame
+#'
+#' @param data A data frame.
+#'
+#' @param col_name A character vector with the column name.
+#'
+#' @keywords internal
+#'
+#' @examples
+#' \dontrun{
+#' data <- data.frame(x = 1:10)
+#' if ("y" %!in% names(data)) {
+#'   abort_column_not_found(data, "y")
+#' }
+#' }
+abort_column_not_found <- function(data, col_name) {
+  msg <- glue::glue("Column `{col_name}` not found in `{data}`.")
+
+  rlang::abort("error_column_not_found", message = msg)
+}
