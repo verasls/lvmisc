@@ -18,7 +18,8 @@ subject}
 subject}
 }
 \description{
-Clean observations
+Replace valid observations by \code{NA}s when a given subject has more then
+\code{max_na} missing values.
 }
 \examples{
 set.seed(10)

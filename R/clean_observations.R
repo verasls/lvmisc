@@ -1,5 +1,8 @@
 #' Clean observations
 #'
+#' Replace valid observations by \code{NA}s when a given subject has more then
+#'   \code{max_na} missing values.
+#'
 #' @param data A data frame, or data frame extension (e.g. a tibble).
 #'
 #' @param id The bare (unquoted) name of the column that identifies each
