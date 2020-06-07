@@ -22,7 +22,7 @@ center_variable <- function(variable, by = NULL) {
   if (!is.numeric(variable)) {
     abort_argument_type("variable", must = "be numeric", not = variable)
   }
-  if (!is.factor(by)) {
+  if (!is.factor(by) & !is.null(by)) {
     abort_argument_type("by", must = "be factor", not = by)
   }
 
