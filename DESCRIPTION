@@ -8,6 +8,9 @@ Authors@R:
            email = "lucasdsveras@gmail.com",
            comment = c(ORCID = "0000-0003-0562-5803"))
 Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+URL: http://lveras.com/lvmisc
+BugReports: https://github.com/verasls/lvmisc/issues
 Imports:
     dplyr (>= 1.0.0),
     glue,
@@ -15,12 +18,11 @@ Imports:
     vctrs (>= 0.3.0),
     methods,
     stats
-License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
 Suggests: 
     testthat,
     forcats,
     devtools
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
