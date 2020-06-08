@@ -5,10 +5,6 @@ url: https://lveras.com/lvmisc/
 template:
   params:
     bootswatch: flatly
-  opengraph:
-  twitter:
-    creator: "@lucasdsveras"
-    card: summary_large_image
 
 navbar:
   title: ~
