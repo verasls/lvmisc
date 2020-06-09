@@ -21,3 +21,47 @@ development:
 authors:
   Lucas Veras:
     href: https://lveras.com
+
+reference:
+- title: Signalling errors
+  contents:
+    - starts_with("abort")
+
+- title: Accuracy indices
+- subtitle: Element-wise
+  contents: 
+    - starts_with("error")
+- subtitle: Average
+  contents:
+    - starts_with("mean_error")
+    - bias
+    - loa
+
+- title: Data computation / manipulation
+  contents:
+    - bmi
+    - bmi_cat
+    - percent_change
+    - clean_observations
+    - divide_by_quantile
+
+- title: Stats
+  contents:
+    - center_variable
+
+- title: Operators
+  contents:
+    - '%!in%'
+
+- title: Percent vector class
+  contents:
+    - percent
+    - is_percent
+    - as_percent
+
+- title: Interactive
+  desc: Functions shortcuts designed to easy interactive use
+  contents:
+    - lu
+    - pa
+    - tb
