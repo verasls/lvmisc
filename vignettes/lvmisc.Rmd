@@ -1,0 +1,15 @@
+---
+title: "lvmisc"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{lvmisc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(lvmisc)
+```
+
+Soon
