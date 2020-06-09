@@ -132,7 +132,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-signalling-errors" class="hasAnchor"><a href="#section-signalling-errors" class="anchor"></a>Signalling errors</h2>
+          <h2 id="section-data-computation-manipulation" class="hasAnchor"><a href="#section-data-computation-manipulation" class="anchor"></a>Data computation / manipulation</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -144,15 +144,58 @@
       <tr>
         
         <td>
-          <p><code><a href="abort_argument.html">abort_argument_type()</a></code> <code><a href="abort_argument.html">abort_argument_length()</a></code> <code><a href="abort_argument.html">abort_argument_diff_length()</a></code> </p>
+          <p><code><a href="percent_change.html">percent_change()</a></code> </p>
         </td>
-        <td><p>Abort based on issues with function argument</p></td>
+        <td><p>Computes the percent change</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="abort_column_not_found.html">abort_column_not_found()</a></code> </p>
+          <p><code><a href="clean_observations.html">clean_observations()</a></code> </p>
         </td>
-        <td><p>Abort based on column not being found in a data frame</p></td>
+        <td><p>Clean observations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="divide_by_quantile.html">divide_by_quantile()</a></code> </p>
+        </td>
+        <td><p>Divide variable based on quantiles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="repeat_baseline_values.html">repeat_baseline_values()</a></code> </p>
+        </td>
+        <td><p>Repeat baseline levels</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="bmi.html">bmi()</a></code> </p>
+        </td>
+        <td><p>Compute body mass index (BMI)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="bmi_cat.html">bmi_cat()</a></code> </p>
+        </td>
+        <td><p>Classify body mass index (BMI) category</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-stats" class="hasAnchor"><a href="#section-stats" class="anchor"></a>Stats</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="center_variable.html">center_variable()</a></code> </p>
+        </td>
+        <td><p>Center variable</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -270,74 +313,6 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-data-computation-manipulation" class="hasAnchor"><a href="#section-data-computation-manipulation" class="anchor"></a>Data computation / manipulation</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="bmi.html">bmi()</a></code> </p>
-        </td>
-        <td><p>Compute body mass index (BMI)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bmi_cat.html">bmi_cat()</a></code> </p>
-        </td>
-        <td><p>Classify body mass index (BMI) category</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="percent_change.html">percent_change()</a></code> </p>
-        </td>
-        <td><p>Computes the percent change</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="clean_observations.html">clean_observations()</a></code> </p>
-        </td>
-        <td><p>Clean observations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="divide_by_quantile.html">divide_by_quantile()</a></code> </p>
-        </td>
-        <td><p>Divide variable based on quantiles</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="repeat_baseline_values.html">repeat_baseline_values()</a></code> </p>
-        </td>
-        <td><p>Repeat baseline levels</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-stats" class="hasAnchor"><a href="#section-stats" class="anchor"></a>Stats</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="center_variable.html">center_variable()</a></code> </p>
-        </td>
-        <td><p>Center variable</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-operators" class="hasAnchor"><a href="#section-operators" class="anchor"></a>Operators</h2>
           <p class="section-desc"></p>
         </th>
@@ -353,6 +328,31 @@
           <p><code><a href="notin.html">`%!in%`</a></code> </p>
         </td>
         <td><p>Value matching</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-signalling-errors" class="hasAnchor"><a href="#section-signalling-errors" class="anchor"></a>Signalling errors</h2>
+          <p class="section-desc"><p>Helper functions to signal errors with better messages and metadata.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="abort_argument.html">abort_argument_type()</a></code> <code><a href="abort_argument.html">abort_argument_length()</a></code> <code><a href="abort_argument.html">abort_argument_diff_length()</a></code> </p>
+        </td>
+        <td><p>Abort based on issues with function argument</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="abort_column_not_found.html">abort_column_not_found()</a></code> </p>
+        </td>
+        <td><p>Abort based on column not being found in a data frame</p></td>
       </tr>
     </tbody><tbody>
       <tr>

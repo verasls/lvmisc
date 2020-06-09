@@ -14,9 +14,18 @@ authors:
     href: https://lveras.com
 
 reference:
-- title: Signalling errors
+- title: Data computation / manipulation
   contents:
-    - starts_with("abort")
+    - percent_change
+    - clean_observations
+    - divide_by_quantile
+    - repeat_baseline_values
+    - bmi
+    - bmi_cat
+
+- title: Stats
+  contents:
+    - center_variable
 
 - title: Accuracy indices
 - subtitle: Element-wise
@@ -28,22 +37,15 @@ reference:
     - bias
     - loa
 
-- title: Data computation / manipulation
-  contents:
-    - bmi
-    - bmi_cat
-    - percent_change
-    - clean_observations
-    - divide_by_quantile
-    - repeat_baseline_values
-
-- title: Stats
-  contents:
-    - center_variable
-
 - title: Operators
   contents:
     - '%!in%'
+
+- title: Signalling errors
+  desc: >
+    Helper functions to signal errors with better messages and metadata.
+  contents:
+    - starts_with("abort")
 
 - title: Percent vector class
   contents:
@@ -52,7 +54,8 @@ reference:
     - as_percent
 
 - title: Interactive
-  desc: Functions shortcuts designed to easy interactive use
+  desc: >
+    Functions shortcuts designed to easy interactive use
   contents:
     - lu
     - pa
