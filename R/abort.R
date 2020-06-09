@@ -1,12 +1,24 @@
-#' Abort based on the argument type
+#' Abort based on issues with function argument
+#'
+#' Returns a custom error condition created with 
+#'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
+#'   error message and metadata.
+#'
+#' @name abort_argument
 #'
 #' @param arg A character string with the argument name.
 #'
-#' @param must A character string specifying which type the arg must have.
+#' @param must A character string specifying a condition the argument must
+#'   fulfill.
 #' 
-#' @param not The argument name (unquoted). The function evaluates the type of
-#'   the argument and displays it in the error message.
+#' @param not Either a character string specifying a condition the argument
+#'   must not fulfill or the bare (unquoted) argument name. In the last case,
+#'   the function evaluates the argument type (\code{abort_argument_type()}) or
+#'   length (\code{abort_argument_length()}) and displays the result in the 
+#'   error message.
 #' 
+#' @seealso \code{\link[=abort_column_not_found]{abort_column_not_found()}}
+#'
 #' @examples
 #' \dontrun{
 #' x <- letters
@@ -27,14 +39,7 @@ abort_argument_type <- function(arg, must, not) {
   )
 }
 
-#' Abort based on the argument length
-#'
-#' @param arg A character string with the argument name.
-#'
-#' @param must A character string specifying which length the arg must have.
-#' 
-#' @param not The argument name (unquoted). The function evaluates the length of
-#'   the argument and displays it in the error message.
+#' @rdname abort_argument
 #'
 #' @examples
 #' \dontrun{
@@ -56,9 +61,9 @@ abort_argument_length <- function(arg, must, not) {
   )
 }
 
-#' Abort based on arguments having different lengths
+#' @rdname abort_argument
 #'
-#' @param arg1,arg2 A character vector with the argument name.
+#' @param arg1,arg2 A character string with the argument name.
 #'
 #' @examples
 #' \dontrun{
@@ -81,11 +86,17 @@ abort_argument_diff_length <- function(arg1, arg2) {
 
 #' Abort based on column not being found in a data frame
 #'
+#' Returns a custom error condition created with 
+#'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
+#'   error message and metadata.
+#'
 #' @param data A data frame.
 #'
 #' @param col_name A character vector with the column name.
 #'
-#' @keywords internal
+#' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
+#'   \code{\link[=abort_argument_length]{abort_argument_length()}},
+#'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}}
 #'
 #' @examples
 #' \dontrun{

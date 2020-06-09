@@ -12,7 +12,9 @@ abort_column_not_found(data, col_name)
 \item{col_name}{A character vector with the column name.}
 }
 \description{
-Abort based on column not being found in a data frame
+Returns a custom error condition created with
+\code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
+error message and metadata.
 }
 \examples{
 \dontrun{
@@ -22,4 +24,8 @@ if ("y" \%!in\% names(data)) {
 }
 }
 }
-\keyword{internal}
+\seealso{
+\code{\link[=abort_argument_type]{abort_argument_type()}},
+\code{\link[=abort_argument_length]{abort_argument_length()}},
+\code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}}
+}
