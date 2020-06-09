@@ -7,8 +7,6 @@
 #' @param not The argument name (unquoted). The function evaluates the type of
 #'   the argument and displays it in the error message.
 #' 
-#' @keywords internal
-#'
 #' @examples
 #' \dontrun{
 #' x <- letters
@@ -37,8 +35,6 @@ abort_argument_type <- function(arg, must, not) {
 #' 
 #' @param not The argument name (unquoted). The function evaluates the length of
 #'   the argument and displays it in the error message.
-#' 
-#' @keywords internal
 #'
 #' @examples
 #' \dontrun{
@@ -63,8 +59,6 @@ abort_argument_length <- function(arg, must, not) {
 #' Abort based on arguments having different lengths
 #'
 #' @param arg1,arg2 A character vector with the argument name.
-#'
-#' @keywords internal
 #'
 #' @examples
 #' \dontrun{
