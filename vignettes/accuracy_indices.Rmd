@@ -1,0 +1,67 @@
+---
+title: "Accuracy indices"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{accuracy_indices}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+lvmisc contains a group of useful functions to compute basic indices of accuracy. These functions can be divided in those which compute element-wise values and those which compute average values:
+
+* **Element-wise:**
+    * `error()`
+    * `error_abs()`
+    * `error_pct()`
+    * `error_abs_pct()`
+    * `error_sqr()`
+    
+* **Average:**
+    * `mean_error()`
+    * `mean_error_abs()`
+    * `mean_error_abs_pct()`
+    * `mean_error_pct()`
+    * `mean_error_sqr()`
+    * `mean_error_sqr_root()`
+    * `bias()`
+    * `loa()`
+    
+You may notice that the majority of these functions have common prefixes (`error_` and `mean_error_`), intended to facilitate the use, as most text editors have an auto-complete feature. Also all of the accuracy indices functions take `actual` and `predicted` as arguments, and the functions that return average values have `na.rm = TRUE` in addition.
+
+Let's now see how each function computes its results
+
+## Element-wise
+
+#### Error: `error()`
+
+It simply subtracts the `predicted` from the `actual` values.
+
+**Formula:** $$a_i - p_i$$
+
+#### Absolute error: `error_abs()`
+
+It returns the absolute values of the `error()` function.
+
+**Formula:** $$|a_i - p_i|$$
+
+#### Percent error: `error_pct()`
+
+Divides the error by the `actual` values.
+
+**Formula:** $$\frac{a_i - p_i}{a_i}$$
+
+#### Absolute percent error: `error_abs_pct()`
+
+Returns the absolute values of the `error_pct()` function.
+
+**Formula:** $$\frac{|a_i - p_i|}{|a_i|}$$
+
+#### Squared error: `error_sqr()`
+
+It squares the values of the `error()` function.
+
+**Formula:** $$(a_i - p_i)^2$$
