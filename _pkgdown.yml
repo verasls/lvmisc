@@ -35,6 +35,7 @@ reference:
     - percent_change
     - clean_observations
     - divide_by_quantile
+    - repeat_baseline_values
 
 - title: Stats
   contents:
