@@ -86,13 +86,22 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="../articles/lvmisc.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/verasls/lvmisc">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/verasls/lvmisc/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -123,7 +132,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-signalling-errors" class="hasAnchor"><a href="#section-signalling-errors" class="anchor"></a>Signalling errors</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -135,52 +144,38 @@
       <tr>
         
         <td>
-          <p><code><a href="accuracy_means_params.html">accuracy_means_params</a></code> </p>
+          <p><code><a href="abort_argument.html">abort_argument_type()</a></code> <code><a href="abort_argument.html">abort_argument_length()</a></code> <code><a href="abort_argument.html">abort_argument_diff_length()</a></code> </p>
         </td>
-        <td><p>Params for the accuracy indices summary functions</p></td>
+        <td><p>Abort based on issues with function argument</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="accuracy_params.html">accuracy_params</a></code> </p>
+          <p><code><a href="abort_column_not_found.html">abort_column_not_found()</a></code> </p>
         </td>
-        <td><p>Params for the accuracy indices functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bias.html">bias()</a></code> </p>
-        </td>
-        <td><p>Bias</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bmi.html">bmi()</a></code> </p>
-        </td>
-        <td><p>Compute body mass index (BMI)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bmi_cat.html">bmi_cat()</a></code> </p>
-        </td>
-        <td><p>Classify body mass index (BMI) category</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="center_variable.html">center_variable()</a></code> </p>
-        </td>
-        <td><p>Center variable</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="clean_observations.html">clean_observations()</a></code> </p>
-        </td>
-        <td><p>Clean observations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="divide_by_quantile.html">divide_by_quantile()</a></code> </p>
-        </td>
-        <td><p>Divide variable based on quantiles</p></td>
-      </tr><tr>
+        <td><p>Abort based on column not being found in a data frame</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-accuracy-indices" class="hasAnchor"><a href="#section-accuracy-indices" class="anchor"></a>Accuracy indices</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-element-wise" class="hasAnchor"><a href="#section-element-wise" class="anchor"></a>Element-wise</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="error.html">error()</a></code> </p>
@@ -210,19 +205,20 @@
           <p><code><a href="error_sqr.html">error_sqr()</a></code> </p>
         </td>
         <td><p>Squared error</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="loa.html">loa()</a></code> </p>
-        </td>
-        <td><p>Limits of agreement</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lu.html">lu()</a></code> <code><a href="lu.html">lna()</a></code> </p>
-        </td>
-        <td><p>Number elements in a vector.</p></td>
-      </tr><tr>
+      </tr>
+    </tbody><tbody>
+      
+      <tr>
+        <th colspan="2">
+          <h3 id="section-average" class="hasAnchor"><a href="#section-average" class="anchor"></a>Average</h3>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="mean_error.html">mean_error()</a></code> </p>
@@ -261,27 +257,140 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="notin.html">`%!in%`</a></code> </p>
+          <p><code><a href="bias.html">bias()</a></code> </p>
         </td>
-        <td><p>Value matching</p></td>
+        <td><p>Bias</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="pa.html">pa()</a></code> </p>
+          <p><code><a href="loa.html">loa()</a></code> </p>
         </td>
-        <td><p>Print all rows of a data frame or tibble</p></td>
+        <td><p>Limits of agreement</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data-computation-manipulation" class="hasAnchor"><a href="#section-data-computation-manipulation" class="anchor"></a>Data computation / manipulation</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="bmi.html">bmi()</a></code> </p>
+        </td>
+        <td><p>Compute body mass index (BMI)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="percent.html">percent()</a></code> <code><a href="percent.html">is_percent()</a></code> <code><a href="percent.html">as_percent()</a></code> </p>
+          <p><code><a href="bmi_cat.html">bmi_cat()</a></code> </p>
         </td>
-        <td><p><code>percent</code> vector</p></td>
+        <td><p>Classify body mass index (BMI) category</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="percent_change.html">percent_change()</a></code> </p>
         </td>
         <td><p>Computes the percent change</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="clean_observations.html">clean_observations()</a></code> </p>
+        </td>
+        <td><p>Clean observations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="divide_by_quantile.html">divide_by_quantile()</a></code> </p>
+        </td>
+        <td><p>Divide variable based on quantiles</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-stats" class="hasAnchor"><a href="#section-stats" class="anchor"></a>Stats</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="center_variable.html">center_variable()</a></code> </p>
+        </td>
+        <td><p>Center variable</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-operators" class="hasAnchor"><a href="#section-operators" class="anchor"></a>Operators</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="notin.html">`%!in%`</a></code> </p>
+        </td>
+        <td><p>Value matching</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-percent-vector-class" class="hasAnchor"><a href="#section-percent-vector-class" class="anchor"></a>Percent vector class</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="percent.html">percent()</a></code> <code><a href="percent.html">is_percent()</a></code> <code><a href="percent.html">as_percent()</a></code> </p>
+        </td>
+        <td><p><code>percent</code> vector</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-interactive" class="hasAnchor"><a href="#section-interactive" class="anchor"></a>Interactive</h2>
+          <p class="section-desc"><p>Functions shortcuts designed to easy interactive use</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="lu.html">lu()</a></code> <code><a href="lu.html">lna()</a></code> </p>
+        </td>
+        <td><p>Number elements in a vector.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pa.html">pa()</a></code> </p>
+        </td>
+        <td><p>Print all rows of a data frame or tibble</p></td>
       </tr><tr>
         
         <td>
