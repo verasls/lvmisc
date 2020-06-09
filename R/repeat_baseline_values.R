@@ -17,6 +17,15 @@
 #' @param baseline_level The value of \code{time} corresponding the baseline.
 #'
 #' @export
+#'
+#' @examples
+#' df <- data.frame(
+#'  id = rep(1:5, each = 4),
+#'  time = rep(1:4, 5),
+#'  score = rnorm(20, mean = 10, sd = 2)
+#' )
+#'
+#' df$baseline_score <- repeat_baseline_values(df, score, id, time, 1)
 repeat_baseline_values <- function(data, var, id, time, baseline_level) {
   var_col_name <- rlang::as_string(rlang::ensym(var))
   id_col_name <- rlang::as_string(rlang::ensym(id))

@@ -24,3 +24,12 @@ Returns a vector with the length equal to the number of rows in the
 \code{data} with the baseline value of the \code{var} repeated for every
 \code{time} value of each \code{id}.
 }
+\examples{
+df <- data.frame(
+ id = rep(1:5, each = 4),
+ time = rep(1:4, 5),
+ score = rnorm(20, mean = 10, sd = 2)
+)
+
+df$baseline_score <- repeat_baseline_values(df, score, id, time, 1)
+}
