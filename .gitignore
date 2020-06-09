@@ -75,3 +75,4 @@ vignettes/*.pdf
 
 # End of https://www.gitignore.io/api/macos,r
 n
+inst/doc
