@@ -10,6 +10,8 @@
 #'
 #' @param na.rm A logical value indicating whether \code{NA} values should be
 #'   stripped before the computation proceeds.
+#'
+#' @keywords internal
 NULL
 
 #' Mean error

@@ -13,3 +13,4 @@ this vector must be a prediction for the corresponding element in
 \description{
 Params for the accuracy indices functions
 }
+\keyword{internal}

@@ -7,6 +7,8 @@
 #' @param predicted A numeric vector with the predicted values. Each element in
 #'   this vector must be a prediction for the corresponding element in 
 #'   \code{actual}.
+#'
+#' @keywords internal
 NULL
 
 #' Error

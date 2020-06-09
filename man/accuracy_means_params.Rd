@@ -16,3 +16,4 @@ stripped before the computation proceeds.}
 \description{
 Params for the accuracy indices summary functions
 }
+\keyword{internal}
