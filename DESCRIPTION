@@ -1,5 +1,5 @@
 Package: lvmisc
-Title: A collection of miscellaneous R functions.
+Title: A collection of miscellaneous R functions
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Lucas",
