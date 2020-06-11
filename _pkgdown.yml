@@ -4,6 +4,9 @@ url: https://lveras.com/lvmisc/
 
 template:
   params:
+    docsearch:
+      api_key: 987f1eddb6463e03949dd965804287f1
+      index_name: lvmisc
     bootswatch: flatly
 
 development:
