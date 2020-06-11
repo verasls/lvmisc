@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>lvmisc • lvmisc</title>
+<title>Accuracy indices • lvmisc</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="lvmisc">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Accuracy indices">
 <meta property="og:description" content="lvmisc">
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -97,22 +97,90 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>lvmisc</h1>
+      <h1 data-toc-skip>Accuracy indices</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/verasls/lvmisc/blob/master/vignettes/lvmisc.Rmd"><code>vignettes/lvmisc.Rmd</code></a></small>
-      <div class="hidden name"><code>lvmisc.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/verasls/lvmisc/blob/master/vignettes/accuracy_indices.Rmd"><code>vignettes/accuracy_indices.Rmd</code></a></small>
+      <div class="hidden name"><code>accuracy_indices.Rmd</code></div>
 
     </div>
 
     
     
-<p>Soon</p>
+<p>lvmisc contains a group of useful functions to compute basic indices of accuracy. These functions can be divided in those which compute element-wise values and those which compute average values:</p>
+<ul>
+<li>
+<strong>Element-wise:</strong>
+<ul>
+<li><code><a href="../reference/error.html">error()</a></code></li>
+<li><code><a href="../reference/error_abs.html">error_abs()</a></code></li>
+<li><code><a href="../reference/error_pct.html">error_pct()</a></code></li>
+<li><code><a href="../reference/error_abs_pct.html">error_abs_pct()</a></code></li>
+<li><code><a href="../reference/error_sqr.html">error_sqr()</a></code></li>
+</ul>
+</li>
+<li>
+<strong>Average:</strong>
+<ul>
+<li><code><a href="../reference/mean_error.html">mean_error()</a></code></li>
+<li><code><a href="../reference/mean_error_abs.html">mean_error_abs()</a></code></li>
+<li><code><a href="../reference/mean_error_abs_pct.html">mean_error_abs_pct()</a></code></li>
+<li><code><a href="../reference/mean_error_pct.html">mean_error_pct()</a></code></li>
+<li><code><a href="../reference/mean_error_sqr.html">mean_error_sqr()</a></code></li>
+<li><code><a href="../reference/mean_error_sqr_root.html">mean_error_sqr_root()</a></code></li>
+<li><code><a href="../reference/bias.html">bias()</a></code></li>
+<li><code><a href="../reference/loa.html">loa()</a></code></li>
+</ul>
+</li>
+</ul>
+<p>You may notice that the majority of these functions have common prefixes (<code>error_</code> and <code>mean_error_</code>), intended to facilitate the use, as most text editors have an auto-complete feature. Also all of the accuracy indices functions take <code>actual</code> and <code>predicted</code> as arguments, and the functions that return average values have <code>na.rm = TRUE</code> in addition.</p>
+<p>Let’s now see how each function computes its results</p>
+<div id="element-wise" class="section level2">
+<h2 class="hasAnchor">
+<a href="#element-wise" class="anchor"></a>Element-wise</h2>
+<div id="error-error" class="section level4">
+<h4 class="hasAnchor">
+<a href="#error-error" class="anchor"></a>Error: <code>error()</code>
+</h4>
+<p>It simply subtracts the <code>predicted</code> from the <code>actual</code> values.</p>
+<p><strong>Formula:</strong> <span class="math display">\[a_i - p_i\]</span></p>
+</div>
+<div id="absolute-error-error_abs" class="section level4">
+<h4 class="hasAnchor">
+<a href="#absolute-error-error_abs" class="anchor"></a>Absolute error: <code>error_abs()</code>
+</h4>
+<p>It returns the absolute values of the <code><a href="../reference/error.html">error()</a></code> function.</p>
+<p><strong>Formula:</strong> <span class="math display">\[|a_i - p_i|\]</span></p>
+</div>
+<div id="percent-error-error_pct" class="section level4">
+<h4 class="hasAnchor">
+<a href="#percent-error-error_pct" class="anchor"></a>Percent error: <code>error_pct()</code>
+</h4>
+<p>Divides the error by the <code>actual</code> values.</p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{a_i - p_i}{a_i}\]</span></p>
+</div>
+<div id="absolute-percent-error-error_abs_pct" class="section level4">
+<h4 class="hasAnchor">
+<a href="#absolute-percent-error-error_abs_pct" class="anchor"></a>Absolute percent error: <code>error_abs_pct()</code>
+</h4>
+<p>Returns the absolute values of the <code><a href="../reference/error_pct.html">error_pct()</a></code> function.</p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{|a_i - p_i|}{|a_i|}\]</span></p>
+</div>
+<div id="squared-error-error_sqr" class="section level4">
+<h4 class="hasAnchor">
+<a href="#squared-error-error_sqr" class="anchor"></a>Squared error: <code>error_sqr()</code>
+</h4>
+<p>It squares the values of the <code><a href="../reference/error.html">error()</a></code> function.</p>
+<p><strong>Formula:</strong> <span class="math display">\[(a_i - p_i)^2\]</span></p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

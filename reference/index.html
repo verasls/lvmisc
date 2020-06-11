@@ -44,6 +44,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 
 <meta property="og:title" content="Function reference" />
@@ -97,6 +103,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/accuracy_indices.html">Accuracy indices</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -106,6 +124,12 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -132,7 +156,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-signalling-errors" class="hasAnchor"><a href="#section-signalling-errors" class="anchor"></a>Signalling errors</h2>
+          <h2 id="section-data-computation-manipulation" class="hasAnchor"><a href="#section-data-computation-manipulation" class="anchor"></a>Data computation / manipulation</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -144,15 +168,58 @@
       <tr>
         
         <td>
-          <p><code><a href="abort_argument.html">abort_argument_type()</a></code> <code><a href="abort_argument.html">abort_argument_length()</a></code> <code><a href="abort_argument.html">abort_argument_diff_length()</a></code> </p>
+          <p><code><a href="percent_change.html">percent_change()</a></code> </p>
         </td>
-        <td><p>Abort based on issues with function argument</p></td>
+        <td><p>Computes the percent change</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="abort_column_not_found.html">abort_column_not_found()</a></code> </p>
+          <p><code><a href="clean_observations.html">clean_observations()</a></code> </p>
         </td>
-        <td><p>Abort based on column not being found in a data frame</p></td>
+        <td><p>Clean observations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="divide_by_quantile.html">divide_by_quantile()</a></code> </p>
+        </td>
+        <td><p>Divide variable based on quantiles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="repeat_baseline_values.html">repeat_baseline_values()</a></code> </p>
+        </td>
+        <td><p>Repeat baseline levels</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="bmi.html">bmi()</a></code> </p>
+        </td>
+        <td><p>Compute body mass index (BMI)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="bmi_cat.html">bmi_cat()</a></code> </p>
+        </td>
+        <td><p>Classify body mass index (BMI) category</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-stats" class="hasAnchor"><a href="#section-stats" class="anchor"></a>Stats</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="center_variable.html">center_variable()</a></code> </p>
+        </td>
+        <td><p>Center variable</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -270,68 +337,6 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-data-computation-manipulation" class="hasAnchor"><a href="#section-data-computation-manipulation" class="anchor"></a>Data computation / manipulation</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="bmi.html">bmi()</a></code> </p>
-        </td>
-        <td><p>Compute body mass index (BMI)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="bmi_cat.html">bmi_cat()</a></code> </p>
-        </td>
-        <td><p>Classify body mass index (BMI) category</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="percent_change.html">percent_change()</a></code> </p>
-        </td>
-        <td><p>Computes the percent change</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="clean_observations.html">clean_observations()</a></code> </p>
-        </td>
-        <td><p>Clean observations</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="divide_by_quantile.html">divide_by_quantile()</a></code> </p>
-        </td>
-        <td><p>Divide variable based on quantiles</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-stats" class="hasAnchor"><a href="#section-stats" class="anchor"></a>Stats</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="center_variable.html">center_variable()</a></code> </p>
-        </td>
-        <td><p>Center variable</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-operators" class="hasAnchor"><a href="#section-operators" class="anchor"></a>Operators</h2>
           <p class="section-desc"></p>
         </th>
@@ -347,6 +352,31 @@
           <p><code><a href="notin.html">`%!in%`</a></code> </p>
         </td>
         <td><p>Value matching</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-signalling-errors" class="hasAnchor"><a href="#section-signalling-errors" class="anchor"></a>Signalling errors</h2>
+          <p class="section-desc"><p>Helper functions to signal errors with better messages and metadata.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="abort_argument.html">abort_argument_type()</a></code> <code><a href="abort_argument.html">abort_argument_length()</a></code> <code><a href="abort_argument.html">abort_argument_diff_length()</a></code> </p>
+        </td>
+        <td><p>Abort based on issues with function argument</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="abort_column_not_found.html">abort_column_not_found()</a></code> </p>
+        </td>
+        <td><p>Abort based on column not being found in a data frame</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -423,6 +453,23 @@
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '987f1eddb6463e03949dd965804287f1',
+    indexName: 'lvmisc',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
 
   </body>
