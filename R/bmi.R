@@ -52,7 +52,7 @@ bmi <- function(mass, height) {
 #'   \item Overweight (25 \eqn{\le} BMI < 30)
 #'   \item Obesity class I (30 \eqn{\le} BMI < 35)
 #'   \item Obesity class II (35 \eqn{\le} BMI < 40)
-#'   \item Obesity class III (40 \eqn{\le} BMI)
+#'   \item Obesity class III (BMI \eqn{\ge} 40)
 #' }
 #'
 #' @param bmi A numeric vector with BMI data. `BMI` unit must be meters per
