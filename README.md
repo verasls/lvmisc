@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Build
-Status](https://img.shields.io/travis/verasls/lvmisc?style=flat-square)](https://travis-ci.org/verasls/lvmisc)
+Status](https://img.shields.io/travis/verasls/lvmisc?style=flat-square)](https://travis-ci.com/github/verasls/lvmisc)
 [![codecov](https://img.shields.io/codecov/c/github/verasls/lvmisc?logo=codecov&style=flat-square)](https://codecov.io/gh/verasls/lvmisc)
 <!-- badges: end -->
 
