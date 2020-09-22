@@ -94,12 +94,6 @@ numeric vectors." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/lvmisc.html">Get started</a>
 </li>
 <li>
@@ -154,7 +148,7 @@ numeric vectors." />
 numeric vectors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>percent_change</span>(<span class='no'>baseline</span>, <span class='no'>followup</span>)</pre>
+    <pre class="usage"><span class='fu'>percent_change</span>(<span class='kw'>baseline</span>, <span class='kw'>followup</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,10 +168,11 @@ change.</p></td>
     <div class='dont-index'><p><code><a href='percent.html'>percent()</a></code>, <code>{<a href='error_pct.html'>error_pct()</a>}</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>baseline</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>20</span>:<span class='fl'>40</span>, <span class='fl'>10</span>)
-<span class='no'>followup</span> <span class='kw'>&lt;-</span> <span class='no'>baseline</span> * <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>1.5</span>)
+    <pre class="examples"><div class='input'><span class='kw'>baseline</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>20</span><span class='op'>:</span><span class='fl'>40</span>, <span class='fl'>10</span>)
+<span class='kw'>followup</span> <span class='op'>&lt;-</span> <span class='kw'>baseline</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>, min = <span class='fl'>0.5</span>, max = <span class='fl'>1.5</span>)
 
-<span class='fu'>percent_change</span>(<span class='no'>baseline</span>, <span class='no'>followup</span>)</div><div class='output co'>#&gt; &lt;lvmisc_percent[10]&gt;
+<span class='fu'>percent_change</span>(<span class='kw'>baseline</span>, <span class='kw'>followup</span>)
+</div><div class='output co'>#&gt; &lt;lvmisc_percent[10]&gt;
 #&gt;  [1] 24.5%  20.8%  48.7%  -4.84% -38.2% -26.1% -2.95% -14.8% -16.1% -37.3%</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -194,7 +189,7 @@ change.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

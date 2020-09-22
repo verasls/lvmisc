@@ -94,12 +94,6 @@ a wrapper to rlang::trace_back()." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/lvmisc.html">Get started</a>
 </li>
 <li>
@@ -154,7 +148,7 @@ a wrapper to rlang::trace_back()." />
 a wrapper to <code><a href='https://rlang.r-lib.org/reference/trace_back.html'>rlang::trace_back()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tb</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>tb</span>(<span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,9 +164,10 @@ a wrapper to <code><a href='https://rlang.r-lib.org/reference/trace_back.html'>r
     <div class='dont-index'><p><code><a href='https://rlang.r-lib.org/reference/trace_back.html'>rlang::trace_back()</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>f</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() <span class='fu'>g</span>()
-<span class='no'>g</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() <span class='fu'>h</span>()
-<span class='no'>h</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>() <span class='fu'>tb</span>()</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>f</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() <span class='fu'>g</span>()
+<span class='kw'>g</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() <span class='fu'>h</span>()
+<span class='kw'>h</span> <span class='op'>&lt;-</span> <span class='fu'>function</span>() <span class='fu'>tb</span>()
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -188,7 +183,7 @@ a wrapper to <code><a href='https://rlang.r-lib.org/reference/trace_back.html'>r
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

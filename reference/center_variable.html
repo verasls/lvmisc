@@ -95,12 +95,6 @@ group means when by is a factor variable." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/lvmisc.html">Get started</a>
 </li>
 <li>
@@ -156,7 +150,7 @@ be performed by the grand mean when <code>by = NULL</code> (the default), or by
 group means when <code>by</code> is a factor variable.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>center_variable</span>(<span class='no'>variable</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>center_variable</span>(<span class='kw'>variable</span>, by = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,13 +167,14 @@ group means when <code>by</code> is a factor variable.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
-  <span class='kw'>id</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>20</span>,
-  <span class='kw'>group</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>), <span class='fl'>20</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)),
-  <span class='kw'>body_mass</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>20</span>, <span class='kw'>mean</span> <span class='kw'>=</span> <span class='fl'>65</span>, <span class='kw'>sd</span> <span class='kw'>=</span> <span class='fl'>12</span>)
+    <pre class="examples"><div class='input'><span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+  id = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>,
+  group = <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>), <span class='fl'>20</span>, replace = <span class='fl'>TRUE</span>)),
+  body_mass = <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>20</span>, mean = <span class='fl'>65</span>, sd = <span class='fl'>12</span>)
 )
 
-<span class='no'>df</span>$<span class='no'>body_mass_centered</span> <span class='kw'>&lt;-</span> <span class='fu'>center_variable</span>(<span class='no'>df</span>$<span class='no'>body_mass</span>, <span class='no'>df</span>$<span class='no'>group</span>)</div></pre>
+<span class='kw'>df</span><span class='op'>$</span><span class='kw'>body_mass_centered</span> <span class='op'>&lt;-</span> <span class='fu'>center_variable</span>(<span class='kw'>df</span><span class='op'>$</span><span class='kw'>body_mass</span>, <span class='kw'>df</span><span class='op'>$</span><span class='kw'>group</span>)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -195,7 +190,7 @@ group means when <code>by</code> is a factor variable.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

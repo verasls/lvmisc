@@ -95,12 +95,6 @@ time value of each id." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/lvmisc.html">Get started</a>
 </li>
 <li>
@@ -156,7 +150,7 @@ time value of each id." />
 <code>time</code> value of each <code>id</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>repeat_baseline_values</span>(<span class='no'>data</span>, <span class='no'>var</span>, <span class='no'>id</span>, <span class='no'>time</span>, <span class='no'>baseline_level</span>)</pre>
+    <pre class="usage"><span class='fu'>repeat_baseline_values</span>(<span class='kw'>data</span>, <span class='kw'>var</span>, <span class='kw'>id</span>, <span class='kw'>time</span>, <span class='kw'>baseline_level</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -187,13 +181,14 @@ subject.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
- <span class='kw'>id</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='kw'>each</span> <span class='kw'>=</span> <span class='fl'>4</span>),
- <span class='kw'>time</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='fl'>5</span>),
- <span class='kw'>score</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>20</span>, <span class='kw'>mean</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>sd</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+    <pre class="examples"><div class='input'><span class='kw'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+ id = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, each = <span class='fl'>4</span>),
+ time = <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>5</span>),
+ score = <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>20</span>, mean = <span class='fl'>10</span>, sd = <span class='fl'>2</span>)
 )
 
-<span class='no'>df</span>$<span class='no'>baseline_score</span> <span class='kw'>&lt;-</span> <span class='fu'>repeat_baseline_values</span>(<span class='no'>df</span>, <span class='no'>score</span>, <span class='no'>id</span>, <span class='no'>time</span>, <span class='fl'>1</span>)</div></pre>
+<span class='kw'>df</span><span class='op'>$</span><span class='kw'>baseline_score</span> <span class='op'>&lt;-</span> <span class='fu'>repeat_baseline_values</span>(<span class='kw'>df</span>, <span class='kw'>score</span>, <span class='kw'>id</span>, <span class='kw'>time</span>, <span class='fl'>1</span>)
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -209,7 +204,7 @@ subject.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
