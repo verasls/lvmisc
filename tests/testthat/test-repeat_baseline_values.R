@@ -23,7 +23,7 @@ test_that("repeat_NA argument works", {
 })
 
 test_that("error handling works", {
-  df <- data.frame(x = 1, y = 2)
+  df <- data.frame(x = 1, y = 2, z = 3)
 
   expect_error(
     repeat_baseline_values(df, score, x, y, 1),
@@ -39,5 +39,10 @@ test_that("error handling works", {
     repeat_baseline_values(df, x, y, time, 1),
     "Column `time` not found in `df`.",
     class = "error_column_not_found"
+  )
+  expect_error(
+    repeat_baseline_values(df, x, y, z, 1, repeat_NA = "yes"),
+    "`repeat_NA` must be logical; not character.",
+    class = "error_argument_type"
   )
 })

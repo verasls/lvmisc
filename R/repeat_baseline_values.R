@@ -50,6 +50,9 @@ repeat_baseline_values <- function(data,
   if (time_col_name %!in% names(data)) {
     abort_column_not_found(data = data_name, col_name = time_col_name)
   }
+  if (!is.logical(repeat_NA)) {
+    abort_argument_type("repeat_NA", must = "be logical", not = repeat_NA)
+  }
 
   lookup <- dplyr::filter(data, {{ time }} == baseline_level)
   lookup <- dplyr::select(lookup, {{ id }}, baseline = {{ var }})
