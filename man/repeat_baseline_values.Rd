@@ -4,7 +4,7 @@
 \alias{repeat_baseline_values}
 \title{Repeat baseline levels}
 \usage{
-repeat_baseline_values(data, var, id, time, baseline_level)
+repeat_baseline_values(data, var, id, time, baseline_level, repeat_NA = TRUE)
 }
 \arguments{
 \item{data}{A data frame.}
@@ -18,6 +18,10 @@ subject.}
 \item{time}{The bare (unquoted) name of the column with the time values.}
 
 \item{baseline_level}{The value of \code{time} corresponding the baseline.}
+
+\item{repeat_NA}{A logical vector indicating whether or not \code{NA} values
+in the \code{var} will correspond to \code{NA} values in return vector.
+Defaults to \code{TRUE}.}
 }
 \description{
 Returns a vector with the length equal to the number of rows in the
