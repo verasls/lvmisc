@@ -146,7 +146,7 @@
     <p>Computes the element-wise percent error between the input vectors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>error_pct</span>(<span class='kw'>actual</span>, <span class='kw'>predicted</span>)</pre>
+    <pre class="usage"><span class='fu'>error_pct</span><span class='op'>(</span><span class='va'>actual</span>, <span class='va'>predicted</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,10 +174,10 @@ this vector must be a prediction for the corresponding element in
 <code><a href='error_sqr.html'>error_sqr()</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>actual</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>)
-<span class='kw'>predicted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>)
+    <pre class="examples"><div class='input'><span class='va'>actual</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
+<span class='va'>predicted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
 
-<span class='fu'>error_pct</span>(<span class='kw'>actual</span>, <span class='kw'>predicted</span>)
+<span class='fu'>error_pct</span><span class='op'>(</span><span class='va'>actual</span>, <span class='va'>predicted</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;lvmisc_percent[10]&gt;
 #&gt;  [1] 73.7%  -66.1% 11.4%  -64.6% 86.2%  60.4%  -76.7% -6.98% 71.1%  75.9% </div></pre>
   </div>
