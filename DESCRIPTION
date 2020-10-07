@@ -17,7 +17,8 @@ Imports:
     rlang (>= 0.4.6),
     vctrs (>= 0.3.0),
     methods,
-    stats
+    stats,
+    purrr
 Suggests: 
     testthat,
     forcats,
