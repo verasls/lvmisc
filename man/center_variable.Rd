@@ -4,12 +4,15 @@
 \alias{center_variable}
 \title{Center variable}
 \usage{
-center_variable(variable, by = NULL)
+center_variable(variable, by = NULL, scale = FALSE)
 }
 \arguments{
 \item{variable}{A numeric vector.}
 
 \item{by}{A vector with the \code{factor} class.}
+
+\item{scale}{A logical vector. If \code{scale = TRUE}, the centered values
+of \code{variable} are divided by their standard deviation.}
 }
 \description{
 Center a variable by subtracting the mean from each element. Centering can
