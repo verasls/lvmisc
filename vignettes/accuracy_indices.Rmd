@@ -2,7 +2,7 @@
 title: "Accuracy indices"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{accuracy_indices}
+  %\VignetteIndexEntry{Accuracy indices}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
