@@ -17,6 +17,14 @@ test_that("center_variable by group means works", {
   expect_equal(out, rep(c(- 2, - 1, 0, 1, 2), 2))
 })
 
+test_that("scaling works", {
+  var <- 1:5
+  out <- center_variable(var, scale = TRUE)
+  out <- sd(out)
+
+  expect_equal(out, 1)
+})
+
 test_that("error handling works", {
   chr <- letters
   nmr <- 1:10
