@@ -39,4 +39,9 @@ test_that("error handling works", {
     "`by` must be factor; not character.",
     class = "error_argument_type"
   )
+  expect_error(
+    center_variable(nmr, scale = chr),
+    "`scale` must be logical; not character.",
+    class = "error_argument_type"
+  )
 })

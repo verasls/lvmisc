@@ -28,7 +28,10 @@ center_variable <- function(variable, by = NULL, scale = FALSE) {
   if (!is.factor(by) & !is.null(by)) {
     abort_argument_type("by", must = "be factor", not = by)
   }
-
+  if (!is.logical(scale)) {
+    abort_argument_type("scale", must = "be logical", not = scale)
+  } 
+  
   if (is.null(by)) {
     as.numeric(scale(variable, scale = scale))
   } else {
