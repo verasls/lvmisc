@@ -118,8 +118,8 @@
 <ul>
 <li><code><a href="../reference/mean_error.html">mean_error()</a></code></li>
 <li><code><a href="../reference/mean_error_abs.html">mean_error_abs()</a></code></li>
-<li><code><a href="../reference/mean_error_abs_pct.html">mean_error_abs_pct()</a></code></li>
 <li><code><a href="../reference/mean_error_pct.html">mean_error_pct()</a></code></li>
+<li><code><a href="../reference/mean_error_abs_pct.html">mean_error_abs_pct()</a></code></li>
 <li><code><a href="../reference/mean_error_sqr.html">mean_error_sqr()</a></code></li>
 <li><code><a href="../reference/mean_error_sqr_root.html">mean_error_sqr_root()</a></code></li>
 <li><code><a href="../reference/bias.html">bias()</a></code></li>
@@ -151,14 +151,14 @@
 <a href="#percent-error-error_pct" class="anchor"></a>Percent error: <code>error_pct()</code>
 </h4>
 <p>Divides the error by the <code>actual</code> values.</p>
-<p><strong>Formula:</strong> <span class="math display">\[\frac{a_i - p_i}{a_i}\]</span></p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{a_i - p_i}{a_i}\cdot100\]</span></p>
 </div>
 <div id="absolute-percent-error-error_abs_pct" class="section level4">
 <h4 class="hasAnchor">
 <a href="#absolute-percent-error-error_abs_pct" class="anchor"></a>Absolute percent error: <code>error_abs_pct()</code>
 </h4>
 <p>Returns the absolute values of the <code><a href="../reference/error_pct.html">error_pct()</a></code> function.</p>
-<p><strong>Formula:</strong> <span class="math display">\[\frac{|a_i - p_i|}{|a_i|}\]</span></p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{|a_i - p_i|}{|a_i|}\cdot100\]</span></p>
 </div>
 <div id="squared-error-error_sqr" class="section level4">
 <h4 class="hasAnchor">
@@ -166,6 +166,65 @@
 </h4>
 <p>It squares the values of the <code><a href="../reference/error.html">error()</a></code> function.</p>
 <p><strong>Formula:</strong> <span class="math display">\[(a_i - p_i)^2\]</span></p>
+</div>
+</div>
+<div id="average" class="section level2">
+<h2 class="hasAnchor">
+<a href="#average" class="anchor"></a>Average</h2>
+<div id="mean-error-mean_error" class="section level4">
+<h4 class="hasAnchor">
+<a href="#mean-error-mean_error" class="anchor"></a>Mean error: <code>mean_error()</code>
+</h4>
+<p>It is the average of the error.</p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{1}{N}\sum_{i = 1}^{N}(a_i - p_i)\]</span></p>
+</div>
+<div id="mean-absolute-error-mean_error_abs" class="section level4">
+<h4 class="hasAnchor">
+<a href="#mean-absolute-error-mean_error_abs" class="anchor"></a>Mean absolute error: <code>mean_error_abs()</code>
+</h4>
+<p>Computes the average of the absolute error.</p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{1}{N}\sum_{i = 1}^{N}|a_i - p_i|\]</span></p>
+</div>
+<div id="mean-percent-error-mean_error_pct" class="section level4">
+<h4 class="hasAnchor">
+<a href="#mean-percent-error-mean_error_pct" class="anchor"></a>Mean percent error: <code>mean_error_pct()</code>
+</h4>
+<p>The average of the percent error.</p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{1}{N}\sum_{i = 1}^{N}\frac{a_i - p_i}{a_i}\cdot100\]</span></p>
+</div>
+<div id="mean-absolute-percent-error-mean_error_abs_pct" class="section level4">
+<h4 class="hasAnchor">
+<a href="#mean-absolute-percent-error-mean_error_abs_pct" class="anchor"></a>Mean absolute percent error: <code>mean_error_abs_pct()</code>
+</h4>
+<p>It is the average of the absolute percent error.</p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{1}{N}\sum_{i = 1}^{N}\frac{|a_i - p_i|}{|a_i|}\cdot100\]</span></p>
+</div>
+<div id="mean-squared-error-mean_error_sqr" class="section level4">
+<h4 class="hasAnchor">
+<a href="#mean-squared-error-mean_error_sqr" class="anchor"></a>Mean squared error: <code>mean_error_sqr()</code>
+</h4>
+<p>Averages the mean squared error.</p>
+<p><strong>Formula:</strong> <span class="math display">\[\frac{1}{N}\sum_{i = 1}^{N}(a_i - p_i)^2\]</span></p>
+</div>
+<div id="root-mean-squared-error-mean_error_sqr_root" class="section level4">
+<h4 class="hasAnchor">
+<a href="#root-mean-squared-error-mean_error_sqr_root" class="anchor"></a>Root mean squared error: <code>mean_error_sqr_root()</code>
+</h4>
+<p>It takes the square root of the mean squared error.</p>
+<p><strong>Formula:</strong> <span class="math display">\[\sqrt{\frac{1}{N}\sum_{i = 1}^{N}(a_i - p_i)^2}\]</span></p>
+</div>
+<div id="bias-bias" class="section level4">
+<h4 class="hasAnchor">
+<a href="#bias-bias" class="anchor"></a>Bias: <code>bias()</code>
+</h4>
+<p>Alias to <code><a href="../reference/mean_error.html">mean_error()</a></code>.</p>
+</div>
+<div id="limits-of-agreement-loa" class="section level4">
+<h4 class="hasAnchor">
+<a href="#limits-of-agreement-loa" class="anchor"></a>Limits of agreement: <code>loa()</code>
+</h4>
+<p><strong>Formula:</strong> <span class="math display">\[bias \pm 1.96\sigma\]</span></p>
+<p>Where <span class="math inline">\(\sigma\)</span> is the standard deviation.</p>
 </div>
 </div>
   </div>
