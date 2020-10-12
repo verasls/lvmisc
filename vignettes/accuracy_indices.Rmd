@@ -23,8 +23,8 @@ lvmisc contains a group of useful functions to compute basic indices of accuracy
 * **Average:**
     * `mean_error()`
     * `mean_error_abs()`
-    * `mean_error_abs_pct()`
     * `mean_error_pct()`
+    * `mean_error_abs_pct()`
     * `mean_error_sqr()`
     * `mean_error_sqr_root()`
     * `bias()`
@@ -52,16 +52,64 @@ It returns the absolute values of the `error()` function.
 
 Divides the error by the `actual` values.
 
-**Formula:** $$\frac{a_i - p_i}{a_i}$$
+**Formula:** $$\frac{a_i - p_i}{a_i}\cdot100$$
 
 #### Absolute percent error: `error_abs_pct()`
 
 Returns the absolute values of the `error_pct()` function.
 
-**Formula:** $$\frac{|a_i - p_i|}{|a_i|}$$
+**Formula:** $$\frac{|a_i - p_i|}{|a_i|}\cdot100$$
 
 #### Squared error: `error_sqr()`
 
 It squares the values of the `error()` function.
 
 **Formula:** $$(a_i - p_i)^2$$
+
+## Average
+
+#### Mean error: `mean_error()`
+
+It is the average of the error.
+
+**Formula:** $$\frac{1}{N}\sum_{i = 1}^{N}(a_i - p_i)$$
+
+#### Mean absolute error: `mean_error_abs()`
+
+Computes the average of the absolute error.
+
+**Formula:** $$\frac{1}{N}\sum_{i = 1}^{N}|a_i - p_i|$$
+
+#### Mean percent error: `mean_error_pct()`
+
+The average of the percent error.
+
+**Formula:** $$\frac{1}{N}\sum_{i = 1}^{N}\frac{a_i - p_i}{a_i}\cdot100$$
+
+#### Mean absolute percent error: `mean_error_abs_pct()`
+
+It is the average of the absolute percent error.
+
+**Formula:** $$\frac{1}{N}\sum_{i = 1}^{N}\frac{|a_i - p_i|}{|a_i|}\cdot100$$
+
+#### Mean squared error: `mean_error_sqr()`
+
+Averages the mean squared error.
+
+**Formula:** $$\frac{1}{N}\sum_{i = 1}^{N}(a_i - p_i)^2$$
+
+#### Root mean squared error: `mean_error_sqr_root()`
+
+It takes the square root of the mean squared error.
+
+**Formula:** $$\sqrt{\frac{1}{N}\sum_{i = 1}^{N}(a_i - p_i)^2}$$
+
+#### Bias: `bias()`
+
+Alias to `mean_error()`.
+
+#### Limits of agreement: `loa()`
+
+**Formula:** $$bias \pm 1.96\sigma$$
+
+Where $\sigma$ is the standard deviation.
