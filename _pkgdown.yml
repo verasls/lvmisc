@@ -29,6 +29,7 @@ reference:
 - title: Stats
   contents:
     - center_variable
+    - is_outlier
 
 - title: Accuracy indices
 - subtitle: Element-wise
