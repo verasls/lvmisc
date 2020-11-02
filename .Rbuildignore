@@ -7,3 +7,4 @@
 ^\.github$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^workflow\.R$

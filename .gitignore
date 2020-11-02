@@ -69,6 +69,9 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
+# Workflow file
+workflow.R
+
 ### R.Bookdown Stack ###
 # R package: bookdown caching files
 /*_files/
