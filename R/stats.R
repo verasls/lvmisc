@@ -18,6 +18,11 @@
 #' x <- c(1:8, NA, 15)
 #' is_outlier(x, na.rm = TRUE)
 is_outlier <- function(x, na.rm = FALSE) {
-  x < stats::quantile(x, 0.25, na.rm = na.rm) - 1.5 * stats::IQR(x, na.rm = na.rm) | 
-  x > stats::quantile(x, 0.75, na.rm = na.rm) + 1.5 * stats::IQR(x, na.rm = na.rm)
+  if (!is.numeric(x)) {
+    abort_argument_type("x", must = "be numeric", not = x)
+  }
+  x < stats::quantile(x, 0.25, na.rm = na.rm) - 
+    1.5 * stats::IQR(x, na.rm = na.rm) | 
+  x > stats::quantile(x, 0.75, na.rm = na.rm) + 
+    1.5 * stats::IQR(x, na.rm = na.rm)
 }
