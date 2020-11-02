@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Center variable — center_variable • lvmisc</title>
+<title>Check whether value is outlier — is_outlier • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,10 +52,10 @@
 
 
 
-<meta property="og:title" content="Center variable — center_variable" />
-<meta property="og:description" content="Center a variable by subtracting the mean from each element. Centering can
-be performed by the grand mean when by = NULL (the default), or by
-group means when by is a factor variable." />
+<meta property="og:title" content="Check whether value is outlier — is_outlier" />
+<meta property="og:description" content="is_outlier returns a logical vector indicating whether a value is an
+outlier based on the rule of 1.5 times the interquartile range above the
+third quartile or below the first quartile." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -139,47 +139,42 @@ group means when by is a factor variable." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Center variable</h1>
+    <h1>Check whether value is outlier</h1>
     <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/stats.R'><code>R/stats.R</code></a></small>
-    <div class="hidden name"><code>center_variable.Rd</code></div>
+    <div class="hidden name"><code>is_outlier.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Center a variable by subtracting the mean from each element. Centering can
-be performed by the grand mean when <code>by = NULL</code> (the default), or by
-group means when <code>by</code> is a factor variable.</p>
+    <p><code>is_outlier</code> returns a logical vector indicating whether a value is an
+outlier based on the rule of 1.5 times the interquartile range above the
+third quartile or below the first quartile.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>center_variable</span><span class='op'>(</span><span class='va'>variable</span>, by <span class='op'>=</span> <span class='cn'>NULL</span>, scale <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>is_outlier</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>variable</th>
-      <td><p>A numeric vector.</p></td>
+      <th>x</th>
+      <td><p>A numerical vector</p></td>
     </tr>
     <tr>
-      <th>by</th>
-      <td><p>A vector with the <code>factor</code> class.</p></td>
-    </tr>
-    <tr>
-      <th>scale</th>
-      <td><p>A logical vector. If <code>scale = TRUE</code>, the centered values
-of <code>variable</code> are divided by their standard deviation.</p></td>
+      <th>na.rm</th>
+      <td><p>A logical value indicating whether <code>NA</code> values should be
+stripped before the computation proceeds.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='https://rdrr.io/r/stats/IQR.html'>stats::IQR()</a></code>,
+<code><a href='https://rdrr.io/r/stats/quantile.html'>stats::quantile()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-  id <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>,
-  group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"A"</span>, <span class='st'>"B"</span><span class='op'>)</span>, <span class='fl'>20</span>, replace <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>,
-  body_mass <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>65</span>, sd <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='va'>df</span><span class='op'>$</span><span class='va'>body_mass_centered</span> <span class='op'>&lt;-</span> <span class='fu'>center_variable</span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>body_mass</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span>, <span class='cn'>NA</span>, <span class='fl'>15</span><span class='op'>)</span>
+<span class='fu'>is_outlier</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE    NA  TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
