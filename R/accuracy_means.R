@@ -9,7 +9,7 @@
 #'   \code{actual}.
 #'
 #' @param na.rm A logical value indicating whether \code{NA} values should be
-#'   stripped before the computation proceeds.
+#'   stripped before the computation proceeds. Defaults to \code{FALSE}
 #'
 #' @keywords internal
 NULL
@@ -27,7 +27,7 @@ NULL
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
-mean_error <- function(actual, predicted, na.rm = TRUE) {
+mean_error <- function(actual, predicted, na.rm = FALSE) {
   if(!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
@@ -73,7 +73,7 @@ mean_error <- function(actual, predicted, na.rm = TRUE) {
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
-mean_error_pct <- function(actual, predicted, na.rm = TRUE) {
+mean_error_pct <- function(actual, predicted, na.rm = FALSE) {
   if(!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
@@ -117,7 +117,7 @@ mean_error_pct <- function(actual, predicted, na.rm = TRUE) {
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
-mean_error_abs <- function(actual, predicted, na.rm = TRUE) {
+mean_error_abs <- function(actual, predicted, na.rm = FALSE) {
   if(!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
@@ -163,7 +163,7 @@ mean_error_abs <- function(actual, predicted, na.rm = TRUE) {
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
-mean_error_abs_pct <- function(actual, predicted, na.rm = TRUE) {
+mean_error_abs_pct <- function(actual, predicted, na.rm = FALSE) {
   if(!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
@@ -207,7 +207,7 @@ mean_error_abs_pct <- function(actual, predicted, na.rm = TRUE) {
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
-mean_error_sqr <- function(actual, predicted, na.rm = TRUE) {
+mean_error_sqr <- function(actual, predicted, na.rm = FALSE) {
   if(!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
@@ -251,7 +251,7 @@ mean_error_sqr <- function(actual, predicted, na.rm = TRUE) {
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}}
-mean_error_sqr_root <- function(actual, predicted, na.rm = TRUE) {
+mean_error_sqr_root <- function(actual, predicted, na.rm = FALSE) {
   if(!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
@@ -292,7 +292,7 @@ mean_error_sqr_root <- function(actual, predicted, na.rm = TRUE) {
 #'
 #' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=loa]{loa()}}
-bias <- function(actual, predicted, na.rm = TRUE) {
+bias <- function(actual, predicted, na.rm = FALSE) {
   if(!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
@@ -335,7 +335,7 @@ bias <- function(actual, predicted, na.rm = TRUE) {
 #'
 #' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=bias]{bias()}}
-loa <- function(actual, predicted, na.rm = TRUE) {
+loa <- function(actual, predicted, na.rm = FALSE) {
   if(!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
