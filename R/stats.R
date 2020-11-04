@@ -48,7 +48,7 @@ center_variable <- function(variable, by = NULL, scale = FALSE) {
 #' @param x A numerical vector
 #' 
 #' @param na.rm A logical value indicating whether \code{NA} values should be
-#'   stripped before the computation proceeds.
+#'   stripped before the computation proceeds. Defaults to \code{FALSE}.
 #'
 #' @export
 #'
