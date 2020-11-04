@@ -10,7 +10,7 @@ is_outlier(x, na.rm = FALSE)
 \item{x}{A numerical vector}
 
 \item{na.rm}{A logical value indicating whether \code{NA} values should be
-stripped before the computation proceeds.}
+stripped before the computation proceeds. Defaults to \code{FALSE}.}
 }
 \description{
 \code{is_outlier} returns a logical vector indicating whether a value is an

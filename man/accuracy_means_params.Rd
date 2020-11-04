@@ -11,7 +11,7 @@ this vector must be a prediction for the corresponding element in
 \code{actual}.}
 
 \item{na.rm}{A logical value indicating whether \code{NA} values should be
-stripped before the computation proceeds.}
+stripped before the computation proceeds. Defaults to \code{FALSE}}
 }
 \description{
 Params for the accuracy indices summary functions

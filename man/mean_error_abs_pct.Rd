@@ -4,7 +4,7 @@
 \alias{mean_error_abs_pct}
 \title{Mean absolute percent error}
 \usage{
-mean_error_abs_pct(actual, predicted, na.rm = TRUE)
+mean_error_abs_pct(actual, predicted, na.rm = FALSE)
 }
 \arguments{
 \item{actual}{A numeric vector with the actual values}
@@ -14,7 +14,7 @@ this vector must be a prediction for the corresponding element in
 \code{actual}.}
 
 \item{na.rm}{A logical value indicating whether \code{NA} values should be
-stripped before the computation proceeds.}
+stripped before the computation proceeds. Defaults to \code{FALSE}}
 }
 \value{
 A vector of the class \code{lvmisc_percent}.
