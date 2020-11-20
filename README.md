@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
-[![Build
-Status](https://img.shields.io/travis/verasls/lvmisc?style=flat-square)](https://travis-ci.com/github/verasls/lvmisc)
-[![codecov](https://img.shields.io/codecov/c/github/verasls/lvmisc?logo=codecov&style=flat-square)](https://codecov.io/gh/verasls/lvmisc)
+[![R build
+status](https://github.com/verasls/lvmisc/workflows/R-CMD-check/badge.svg)](https://github.com/verasls/lvmisc/actions)
+[![codecov](https://img.shields.io/codecov/c/github/verasls/lvmisc?logo=codecov&style=flat)](https://codecov.io/gh/verasls/lvmisc)
 <!-- badges: end -->
 
 `lvmisc` is a package with miscellaneous R functions.
