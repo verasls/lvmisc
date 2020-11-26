@@ -2,6 +2,7 @@ create_proj <- function(path,
                         sub_dirs = "default",
                         use_git = TRUE,
                         use_gitignore = "default",
+                        use_readme = TRUE,
                         use_renv = TRUE) {
   if (!grepl("/$", path)) {
     path <- paste0(path, "/")
@@ -43,6 +44,11 @@ create_proj <- function(path,
     }
   }
 
+  if (isTRUE(use_readme)) {
+    file.create("README.md")
+    usethis::ui_done("Adding an empty 'README.md' file")
+  }
+
   if (isTRUE(use_renv)) {
     usethis::ui_done("Initialising a `renv`")
     renv::init()
@@ -52,7 +58,7 @@ create_proj <- function(path,
 create_sub_dir <- function(sub_dir) {
   sub_dir <- clean_sub_dir(sub_dir)
   dir.create(sub_dir)
-  usethis::ui_done("Creating sub-directory {sub_dir}")
+  usethis::ui_done("Creating sub-directory '{sub_dir}'")
 }
 
 clean_sub_dir <- function(sub_dir) {
