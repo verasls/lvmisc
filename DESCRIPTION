@@ -19,7 +19,8 @@ Imports:
     methods,
     stats,
     purrr,
-    usethis
+    usethis,
+    git2r
 Suggests: 
     testthat,
     forcats,
