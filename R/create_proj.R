@@ -11,10 +11,12 @@ create_proj <- function(path, sub_dirs = "default") {
     "Creating project top-level directory {usethis::ui_path(path)}"
   )
 
-  if (sub_dirs == "default") {
-    sub_dirs <- c("code/", "data/", "docs/", "figs/", "tabs/")
+  if (sub_dirs != "none") {
+    if (sub_dirs == "default") {
+     sub_dirs <- c("code/", "data/", "docs/", "figs/", "tabs/")
+   }
+    purrr::walk(sub_dirs, ~ create_sub_dir(path, .x))
   }
-  purrr::walk(sub_dirs, ~ create_sub_dir(path, .x))
 }
 
 create_sub_dir <- function(main_dir, sub_dir) {
