@@ -127,7 +127,7 @@ get_sys_ignore <- function() {
       .nfs*"
     )
   } else if (os == "Windows") {
-    glue:::glue(
+    glue::glue(
       "### Windows ###
       # Windows thumbnail cache files
       Thumbs.db
