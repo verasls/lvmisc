@@ -58,7 +58,7 @@ repeat_baseline_values <- function(data,
   lookup <- dplyr::select(lookup, {{ id }}, baseline = {{ var }})
   
   df <- dplyr::left_join(data, lookup, by = rlang::as_string(rlang::ensym(id)))
-  if (repeat_NA == TRUE) {
+  if (isTRUE(repeat_NA)) {
     purrr::map2_dbl(
       df[[var_col_name]],
       df[["baseline"]],
