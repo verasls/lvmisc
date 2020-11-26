@@ -17,12 +17,13 @@ create_proj <- function(path,
   usethis::ui_done(
     "Creating project top-level directory {usethis::ui_path(path)}"
   )
+  withr::local_dir(path)
 
   if (!is.null(sub_dirs)) {
     if (sub_dirs == "default") {
      sub_dirs <- c("code/", "data/", "docs/", "figs/", "tabs/")
    }
-    purrr::walk(sub_dirs, ~ create_sub_dir(path, .x))
+    purrr::walk(sub_dirs, create_sub_dir)
   }
 
   if (isTRUE(use_git)) {
@@ -44,14 +45,13 @@ create_proj <- function(path,
 
   if (isTRUE(use_renv)) {
     usethis::ui_done("Initialising a `renv`")
-    withr::local_dir(path)
     renv::init()
   }
 }
 
-create_sub_dir <- function(main_dir, sub_dir) {
+create_sub_dir <- function(sub_dir) {
   sub_dir <- clean_sub_dir(sub_dir)
-  dir.create(paste0(main_dir, "/", sub_dir))
+  dir.create(sub_dir)
   usethis::ui_done("Creating sub-directory {sub_dir}")
 }
 
