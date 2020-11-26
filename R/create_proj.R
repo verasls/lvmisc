@@ -1,7 +1,8 @@
 create_proj <- function(path,
                         sub_dirs = "default",
                         use_git = TRUE,
-                        use_gitignore = "default") {
+                        use_gitignore = "default",
+                        use_renv = TRUE) {
   if (!grepl("/$", path)) {
     path <- paste0(path, "/")
   }
@@ -39,6 +40,12 @@ create_proj <- function(path,
         "Default '.gitignore' for R and {get_os()} operating system"
       )
     }
+  }
+
+  if (isTRUE(use_renv)) {
+    usethis::ui_done("Initialising a `renv`")
+    withr::local_dir(path)
+    renv::init()
   }
 }
 
