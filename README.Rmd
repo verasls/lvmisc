@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R build status](https://github.com/verasls/lvmisc/workflows/R-CMD-check/badge.svg)](https://github.com/verasls/lvmisc/actions)
-[![codecov](https://img.shields.io/codecov/c/github/verasls/lvmisc?logo=codecov&style=flat)](https://codecov.io/gh/verasls/lvmisc)
+[![Codecov test coverage](https://codecov.io/gh/verasls/lvmisc/branch/master/graph/badge.svg)](https://codecov.io/gh/verasls/lvmisc?branch=master)
 <!-- badges: end -->
 
 `lvmisc` is a package with miscellaneous R functions.

@@ -1,4 +1,3 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # lvmisc <a href='https://lveras.com/lvmisc'><img src='man/figures/logo.png' align="right" height="139" /></a>
@@ -7,7 +6,8 @@
 
 [![R build
 status](https://github.com/verasls/lvmisc/workflows/R-CMD-check/badge.svg)](https://github.com/verasls/lvmisc/actions)
-[![codecov](https://img.shields.io/codecov/c/github/verasls/lvmisc?logo=codecov&style=flat)](https://codecov.io/gh/verasls/lvmisc)
+[![Codecov test
+coverage](https://codecov.io/gh/verasls/lvmisc/branch/master/graph/badge.svg)](https://codecov.io/gh/verasls/lvmisc?branch=master)
 <!-- badges: end -->
 
 `lvmisc` is a package with miscellaneous R functions.
@@ -17,17 +17,13 @@ status](https://github.com/verasls/lvmisc/workflows/R-CMD-check/badge.svg)](http
 You can install the released version of lvmisc from
 [CRAN](https://CRAN.R-project.org) with:
 
-``` r
-# Currently not available
-install.packages("lvmisc")
-```
+    # Currently not available
+    install.packages("lvmisc")
 
 And the development version from [GitHub](https://github.com/) with:
 
-``` r
-# install.packages("devtools")
-devtools::install_github("verasls/lvmisc")
-```
+    # install.packages("devtools")
+    devtools::install_github("verasls/lvmisc")
 
 ## Example
 
