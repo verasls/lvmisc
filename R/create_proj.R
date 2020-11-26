@@ -1,4 +1,4 @@
-create_proj <- function(path, sub_dirs = "default") {
+create_proj <- function(path, sub_dirs = "default", use_git = TRUE) {
   if (dir.exists(path)) {
     usethis::ui_stop("{usethis::ui_path(path)} already exists")
   } else if (file.exists(path)) {
@@ -16,6 +16,10 @@ create_proj <- function(path, sub_dirs = "default") {
      sub_dirs <- c("code/", "data/", "docs/", "figs/", "tabs/")
    }
     purrr::walk(sub_dirs, ~ create_sub_dir(path, .x))
+  }
+
+  if (isTRUE(use_git)) {
+    invisible(git2r::init(path))
   }
 }
 
