@@ -1,4 +1,10 @@
-create_proj <- function(path, sub_dirs = "default", use_git = TRUE) {
+create_proj <- function(path,
+                        sub_dirs = "default",
+                        use_git = TRUE,
+                        use_gitignore = "default") {
+  if (!grepl("/$", path)) {
+    path <- paste0(path, "/")
+  }
   if (dir.exists(path)) {
     usethis::ui_stop("{usethis::ui_path(path)} already exists")
   } else if (file.exists(path)) {
@@ -11,7 +17,7 @@ create_proj <- function(path, sub_dirs = "default", use_git = TRUE) {
     "Creating project top-level directory {usethis::ui_path(path)}"
   )
 
-  if (sub_dirs != "none") {
+  if (!is.null(sub_dirs)) {
     if (sub_dirs == "default") {
      sub_dirs <- c("code/", "data/", "docs/", "figs/", "tabs/")
    }
@@ -20,6 +26,12 @@ create_proj <- function(path, sub_dirs = "default", use_git = TRUE) {
 
   if (isTRUE(use_git)) {
     invisible(git2r::init(path))
+  } else {
+    use_gitignore <- NULL
+  }
+
+  if (!is.null(use_gitignore)) {
+    write_gitignore(path, use_gitignore)
   }
 }
 
@@ -39,4 +51,150 @@ clean_sub_dir <- function(sub_dir) {
   } else if (grepl("^/", sub_dir) & grepl("/$", sub_dir)) {
     sub_dir <- substr(sub_dir, 2, nchar(sub_dir))
   }
+}
+
+write_gitignore <- function(path, option) {
+  gitignore_file <- paste0(path, ".gitignore")
+
+  if (option == "default") {
+    sys_ignore <- get_sys_ignore()
+    r_ignore <- get_r_ignore()
+    gitignore <- paste(sys_ignore, r_ignore, sep = "\r\r")
+  }
+
+  fileConn <- file(gitignore_file)
+  writeLines(gitignore, fileConn)
+  close(fileConn)
+}
+
+get_sys_ignore <- function() {
+  os <- Sys.info()["sysname"]
+  if (os == "Darwin") {
+    glue::glue(
+      "### macOS ###
+      # General
+     .DS_Store
+     .AppleDouble
+     .LSOverride
+
+     # Icon must end with two \r
+     Icon
+
+
+     # Thumbnails
+     ._*
+
+     # Files that might appear in the root of a volume
+     .DocumentRevisions-V100
+     .fseventsd
+     .Spotlight-V100
+     .TemporaryItems
+     .Trashes
+     .VolumeIcon.icns
+     .com.apple.timemachine.donotpresent
+
+     # Directories potentially created on remote AFP share
+     .AppleDB
+     .AppleDesktop
+     Network Trash Folder
+     Temporary Items
+     .apdisk"
+    )
+  } else if (os == "Linux") {
+    glue::glue(
+      "### Linux ###
+      *~
+
+      # temporary files which can be created if a process still has a\\
+        handle open of a deleted file
+      .fuse_hidden*
+
+      # KDE directory preferences
+      .directory
+
+      # Linux trash folder which might appear on any partition or disk
+      .Trash-*
+
+      # .nfs files are created when an open file is removed but is still\\
+        being accessed
+      .nfs*"
+    )
+  } else if (os == "Windows") {
+    glue:::glue(
+      "### Windows ###
+      # Windows thumbnail cache files
+      Thumbs.db
+      Thumbs.db:encryptable
+      ehthumbs.db
+      ehthumbs_vista.db
+
+      # Dump file
+      *.stackdump
+
+      # Folder config file
+      [Dd]esktop.ini
+
+      # Recycle Bin used on file shares
+      $RECYCLE.BIN/
+
+      # Windows Installer files
+      *.cab
+      *.msi
+      *.msix
+      *.msm
+      *.msp
+
+      # Windows shortcuts
+      *.lnk"
+    )
+  }
+}
+
+get_r_ignore <- function() {
+  glue::glue(
+    "### R ###
+    # History files
+    .Rhistory
+    .Rapp.history
+
+    # Session Data files
+    .RData
+
+    # User-specific files
+    .Ruserdata
+
+    # Example code in package build process
+    *-Ex.R
+
+    # Output files from R CMD build
+    /*.tar.gz
+
+    # Output files from R CMD check
+    /*.Rcheck/
+
+    # RStudio files
+    .Rproj.user/
+
+    # produced vignettes
+    vignettes/*.html
+    vignettes/*.pdf
+
+    # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+    .httr-oauth
+
+    # knitr and R markdown default cache directories
+    *_cache/
+    /cache/
+
+    # Temporary files created by R markdown
+    *.utf8.md
+    *.knit.md
+
+    # R Environment Variables
+    .Renviron
+
+    ### R.Bookdown Stack ###
+    # R package: bookdown caching files
+    /*_files/"
+  )
 }
