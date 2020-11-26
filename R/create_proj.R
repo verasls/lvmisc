@@ -18,6 +18,19 @@ create_proj <- function(path, sub_dirs = "default") {
 }
 
 create_sub_dir <- function(main_dir, sub_dir) {
+  sub_dir <- clean_sub_dir(sub_dir)
   dir.create(paste0(main_dir, "/", sub_dir))
   usethis::ui_done("Creating sub-directory {sub_dir}")
+}
+
+clean_sub_dir <- function(sub_dir) {
+  if (!grepl("/", sub_dir)) {
+    sub_dir <- paste0(sub_dir, "/")
+  } else if (grepl("^/", sub_dir) & !grepl("/$", sub_dir)) {
+    sub_dir <- paste0(substr(sub_dir, 2, nchar(sub_dir)), "/")
+  } else if (!grepl("^/", sub_dir) & grepl("/$", sub_dir)) {
+    sub_dir <- sub_dir
+  } else if (grepl("^/", sub_dir) & grepl("/$", sub_dir)) {
+    sub_dir <- substr(sub_dir, 2, nchar(sub_dir))
+  }
 }
