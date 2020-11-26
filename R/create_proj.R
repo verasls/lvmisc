@@ -26,12 +26,19 @@ create_proj <- function(path,
 
   if (isTRUE(use_git)) {
     invisible(git2r::init(path))
+    usethis::ui_done("Initialising a git repository")
   } else {
     use_gitignore <- NULL
   }
 
   if (!is.null(use_gitignore)) {
     write_gitignore(path, use_gitignore)
+    usethis::ui_done("Adding a '.gitignore' file")
+    if (use_gitignore == "default") {
+      usethis::ui_info(
+        "Default '.gitignore' for R and {get_os()} operating system"
+      )
+    }
   }
 }
 
@@ -68,8 +75,8 @@ write_gitignore <- function(path, option) {
 }
 
 get_sys_ignore <- function() {
-  os <- Sys.info()["sysname"]
-  if (os == "Darwin") {
+  os <- get_os()
+  if (os == "macOS") {
     glue::glue(
       "### macOS ###
       # General
@@ -197,4 +204,12 @@ get_r_ignore <- function() {
     # R package: bookdown caching files
     /*_files/"
   )
+}
+
+get_os <- function() {
+  os <- Sys.info()["sysname"]
+  if (os == "Darwin") {
+    os <- "macOS"
+  }
+  os
 }
