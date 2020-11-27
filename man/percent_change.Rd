@@ -11,7 +11,7 @@ percent_change(baseline, followup)
 change.}
 }
 \value{
-An object of class \code{lvmisc_percent}
+An object of class \code{lvmisc_percent}.
 }
 \description{
 \code{percent_change} returns the element-wise percent change between two

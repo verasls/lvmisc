@@ -10,12 +10,12 @@ clean_observations(data, id, var, max_na)
 \item{data}{A data frame, or data frame extension (e.g. a tibble).}
 
 \item{id}{The bare (unquoted) name of the column that identifies each
-subject}
+subject.}
 
 \item{var}{The bare (unquoted) name of the column to be cleaned.}
 
 \item{max_na}{An interger indicating the maximum number of \code{NA}s per
-subject}
+subject.}
 }
 \description{
 Replace valid observations by \code{NA}s when a given subject has more then
