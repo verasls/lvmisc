@@ -84,6 +84,8 @@ write_gitignore <- function(path, option) {
       sys_ignore, r_ignore, file_extensions_ignore,
       sep = "\r\r"
     )
+  } else {
+    gitignore <- paste(option, sep = "\r\r")
   }
 
   fileConn <- file(gitignore_file)
