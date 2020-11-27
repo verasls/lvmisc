@@ -79,7 +79,11 @@ write_gitignore <- function(path, option) {
   if (option == "default") {
     sys_ignore <- get_sys_ignore()
     r_ignore <- get_r_ignore()
-    gitignore <- paste(sys_ignore, r_ignore, sep = "\r\r")
+    file_extensions_ignore <- get_file_extensions_ignore()
+    gitignore <- paste(
+      sys_ignore, r_ignore, file_extensions_ignore,
+      sep = "\r\r"
+    )
   }
 
   fileConn <- file(gitignore_file)
@@ -216,6 +220,20 @@ get_r_ignore <- function() {
     ### R.Bookdown Stack ###
     # R package: bookdown caching files
     /*_files/"
+  )
+}
+
+get_file_extensions_ignore <- function() {
+  glue::glue(
+    "# Common file extensions
+    *.pdf
+    *.jpeg
+    *.tiff
+    *.png
+    *.doc
+    *.docx
+    *.ppt
+    *.pptx"
   )
 }
 
