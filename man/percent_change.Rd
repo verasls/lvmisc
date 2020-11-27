@@ -24,5 +24,6 @@ followup <- baseline * runif(10, min = 0.5, max = 1.5)
 percent_change(baseline, followup)
 }
 \seealso{
-\code{\link[=percent]{percent()}}, \code{{\link[=error_pct]{error_pct()}}}
+\code{\link[=percent]{percent()}},
+\code{{\link[=error_pct]{error_pct()}}}
 }
