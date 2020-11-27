@@ -1,6 +1,6 @@
 #' Value matching
 #'
-#' \code{%!in%} returns a logical vector indicating which values are not in 
+#' \code{%!in%} returns a logical vector indicating which values are not in
 #'   `table`.
 #'
 #' @name notin

@@ -1,6 +1,6 @@
 #' Abort based on issues with function argument
 #'
-#' Returns a custom error condition created with 
+#' Returns a custom error condition created with
 #'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 #'   error message and metadata.
 #'
@@ -10,13 +10,13 @@
 #'
 #' @param must A character string specifying a condition the argument must
 #'   fulfill.
-#' 
+#'
 #' @param not Either a character string specifying a condition the argument
 #'   must not fulfill or the bare (unquoted) argument name. In the last case,
 #'   the function evaluates the argument type (\code{abort_argument_type()}) or
-#'   length (\code{abort_argument_length()}) and displays the result in the 
+#'   length (\code{abort_argument_length()}) and displays the result in the
 #'   error message.
-#' 
+#'
 #' @seealso \code{\link[=abort_column_not_found]{abort_column_not_found()}}
 #'
 #' @examples
@@ -86,7 +86,7 @@ abort_argument_diff_length <- function(arg1, arg2) {
 
 #' Abort based on column not being found in a data frame
 #'
-#' Returns a custom error condition created with 
+#' Returns a custom error condition created with
 #'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 #'   error message and metadata.
 #'

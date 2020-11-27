@@ -30,8 +30,8 @@ center_variable <- function(variable, by = NULL, scale = FALSE) {
   }
   if (!is.logical(scale)) {
     abort_argument_type("scale", must = "be logical", not = scale)
-  } 
-  
+  }
+
   if (is.null(by)) {
     as.numeric(scale(variable, scale = scale))
   } else {
@@ -40,13 +40,13 @@ center_variable <- function(variable, by = NULL, scale = FALSE) {
 }
 
 #' Check whether value is outlier
-#' 
+#'
 #' \code{is_outlier} returns a logical vector indicating whether a value is an
 #' outlier based on the rule of 1.5 times the interquartile range above the
 #' third quartile or below the first quartile.
-#' 
+#'
 #' @param x A numerical vector
-#' 
+#'
 #' @param na.rm A logical value indicating whether \code{NA} values should be
 #'   stripped before the computation proceeds. Defaults to \code{FALSE}.
 #'
@@ -62,8 +62,8 @@ is_outlier <- function(x, na.rm = FALSE) {
   if (!is.numeric(x)) {
     abort_argument_type("x", must = "be numeric", not = x)
   }
-  x < stats::quantile(x, 0.25, na.rm = na.rm) - 
-    1.5 * stats::IQR(x, na.rm = na.rm) | 
-  x > stats::quantile(x, 0.75, na.rm = na.rm) + 
+  x < stats::quantile(x, 0.25, na.rm = na.rm) -
+    1.5 * stats::IQR(x, na.rm = na.rm) |
+  x > stats::quantile(x, 0.75, na.rm = na.rm) +
     1.5 * stats::IQR(x, na.rm = na.rm)
 }

@@ -57,7 +57,7 @@ bmi <- function(mass, height) {
 #'
 #' @param bmi A numeric vector with BMI data. `BMI` unit must be meters per
 #'   square meter.
-#' 
+#'
 #' @export
 #'
 #' @seealso \code{\link[=bmi]{bmi()}}

@@ -3,7 +3,7 @@
 #' Creates a factor based on equally spaced quantiles of a variable.
 #'
 #' @param data A numeric vector.
-#' 
+#'
 #' @param n An interger specifying the number of levels in the factor to be
 #'   created.
 #'

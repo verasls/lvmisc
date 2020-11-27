@@ -30,11 +30,11 @@
 #' )
 #'
 #' df$baseline_score <- repeat_baseline_values(df, score, id, time, 1)
-repeat_baseline_values <- function(data, 
-                                   var, 
-                                   id, 
-                                   time, 
-                                   baseline_level, 
+repeat_baseline_values <- function(data,
+                                   var,
+                                   id,
+                                   time,
+                                   baseline_level,
                                    repeat_NA = TRUE) {
   var_col_name <- rlang::as_string(rlang::ensym(var))
   id_col_name <- rlang::as_string(rlang::ensym(id))
@@ -56,7 +56,7 @@ repeat_baseline_values <- function(data,
 
   lookup <- dplyr::filter(data, {{ time }} == baseline_level)
   lookup <- dplyr::select(lookup, {{ id }}, baseline = {{ var }})
-  
+
   df <- dplyr::left_join(data, lookup, by = rlang::as_string(rlang::ensym(id)))
   if (isTRUE(repeat_NA)) {
     purrr::map2_dbl(

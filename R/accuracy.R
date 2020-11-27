@@ -1,11 +1,11 @@
 #' Params for the accuracy indices functions
-#' 
+#'
 #' @name accuracy_params
 #'
 #' @param actual A numeric vector with the actual values
-#' 
+#'
 #' @param predicted A numeric vector with the predicted values. Each element in
-#'   this vector must be a prediction for the corresponding element in 
+#'   this vector must be a prediction for the corresponding element in
 #'   \code{actual}.
 #'
 #' @keywords internal
@@ -19,7 +19,7 @@ NULL
 #'
 #' @export
 #'
-#' @seealso \code{\link[=error_pct]{error_pct()}}, 
+#' @seealso \code{\link[=error_pct]{error_pct()}},
 #'   \code{\link[=error_abs]{error_abs()}},
 #'   \code{\link[=error_abs_pct]{error_abs_pct()}},
 #'   \code{\link[=error_sqr]{error_sqr()}}.
@@ -30,7 +30,7 @@ NULL
 #'
 #' error(actual, predicted)
 error <- function(actual, predicted) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -63,7 +63,7 @@ error <- function(actual, predicted) {
 #'
 #' @export
 #'
-#' @seealso \code{\link[=error]{error()}}, 
+#' @seealso \code{\link[=error]{error()}},
 #'   \code{\link[=error_abs]{error_abs()}},
 #'   \code{\link[=error_abs_pct]{error_abs_pct()}},
 #'   \code{\link[=error_sqr]{error_sqr()}}.
@@ -74,7 +74,7 @@ error <- function(actual, predicted) {
 #'
 #' error_pct(actual, predicted)
 error_pct <- function(actual, predicted) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -105,7 +105,7 @@ error_pct <- function(actual, predicted) {
 #'
 #' @export
 #'
-#' @seealso \code{\link[=error]{error()}}, 
+#' @seealso \code{\link[=error]{error()}},
 #'   \code{\link[=error_pct]{error_pct()}},
 #'   \code{\link[=error_abs_pct]{error_abs_pct()}},
 #'   \code{\link[=error_sqr]{error_sqr()}}.
@@ -116,7 +116,7 @@ error_pct <- function(actual, predicted) {
 #'
 #' error_abs(actual, predicted)
 error_abs <- function(actual, predicted) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -140,7 +140,7 @@ error_abs <- function(actual, predicted) {
 }
 
 #' Absolute percent error
-#' 
+#'
 #' Computes the element-wise absolute percent errors between the input vectors.
 #'
 #' @inheritParams accuracy_params
@@ -149,7 +149,7 @@ error_abs <- function(actual, predicted) {
 #'
 #' @export
 #'
-#' @seealso \code{\link[=error]{error()}}, 
+#' @seealso \code{\link[=error]{error()}},
 #'   \code{\link[=error_pct]{error_pct()}},
 #'   \code{\link[=error_abs]{error_abs()}},
 #'   \code{\link[=error_sqr]{error_sqr()}}.
@@ -160,7 +160,7 @@ error_abs <- function(actual, predicted) {
 #'
 #' error_abs_pct(actual, predicted)
 error_abs_pct <- function(actual, predicted) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -192,7 +192,7 @@ error_abs_pct <- function(actual, predicted) {
 #' @export
 #'
 #' @seealso
-#' @seealso \code{\link[=error]{error()}}, 
+#' @seealso \code{\link[=error]{error()}},
 #'   \code{\link[=error_pct]{error_pct()}},
 #'   \code{\link[=error_abs]{error_abs()}},
 #'   \code{\link[=error_abs_pct]{error_abs_pct()}}.
@@ -203,7 +203,7 @@ error_abs_pct <- function(actual, predicted) {
 #'
 #' error_sqr(actual, predicted)
 error_sqr <- function(actual, predicted) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",

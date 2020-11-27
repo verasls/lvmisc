@@ -7,15 +7,16 @@
 #'   change.
 #'
 #' @return An object of class `lvmisc_percent`
-#' 
+#'
 #' @export
 #'
-#' @seealso \code{\link[=percent]{percent()}}, \code{{\link[=error_pct]{error_pct()}}}
+#' @seealso \code{\link[=percent]{percent()}},
+#' \code{{\link[=error_pct]{error_pct()}}}
 #'
 #' @examples
 #' baseline <- sample(20:40, 10)
 #' followup <- baseline * runif(10, min = 0.5, max = 1.5)
-#' 
+#'
 #' percent_change(baseline, followup)
 percent_change <- function(baseline, followup) {
   if (!is.numeric(baseline)) {

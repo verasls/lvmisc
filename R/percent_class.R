@@ -12,7 +12,7 @@ new_percent <- function(x = double()) {
 
 #' `percent` vector
 #'
-#' Creates a double vector that represents percentages. When printed, it is 
+#' Creates a double vector that represents percentages. When printed, it is
 #'   multiplied by 100 and suffixed with `%`.
 #'
 #' @param x

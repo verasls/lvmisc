@@ -1,11 +1,11 @@
 #' Params for the accuracy indices summary functions
-#' 
+#'
 #' @name accuracy_means_params
 #'
 #' @param actual A numeric vector with the actual values
-#' 
+#'
 #' @param predicted A numeric vector with the predicted values. Each element in
-#'   this vector must be a prediction for the corresponding element in 
+#'   this vector must be a prediction for the corresponding element in
 #'   \code{actual}.
 #'
 #' @param na.rm A logical value indicating whether \code{NA} values should be
@@ -22,13 +22,13 @@ NULL
 #'
 #' @export
 #'
-#' @seealso \code{\link[=mean_error_pct]{mean_error_pct()}}, 
+#' @seealso \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_abs]{mean_error_abs()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
 mean_error <- function(actual, predicted, na.rm = FALSE) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -68,13 +68,13 @@ mean_error <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @export
 #'
-#' @seealso \code{\link[=mean_error]{mean_error()}}, 
+#' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=mean_error_abs]{mean_error_abs()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
 mean_error_pct <- function(actual, predicted, na.rm = FALSE) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -112,13 +112,13 @@ mean_error_pct <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @export
 #'
-#' @seealso \code{\link[=mean_error]{mean_error()}}, 
+#' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
 mean_error_abs <- function(actual, predicted, na.rm = FALSE) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -158,13 +158,13 @@ mean_error_abs <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @export
 #'
-#' @seealso \code{\link[=mean_error]{mean_error()}}, 
+#' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=mean_error_abs]{mean_error_abs()}},
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
 mean_error_abs_pct <- function(actual, predicted, na.rm = FALSE) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -202,13 +202,13 @@ mean_error_abs_pct <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @export
 #'
-#' @seealso \code{\link[=mean_error]{mean_error()}}, 
+#' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=mean_error_abs]{mean_error_abs()}},
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
 mean_error_sqr <- function(actual, predicted, na.rm = FALSE) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -246,13 +246,13 @@ mean_error_sqr <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @export
 #'
-#' @seealso \code{\link[=mean_error]{mean_error()}}, 
+#' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=mean_error_abs]{mean_error_abs()}},
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}}
 mean_error_sqr_root <- function(actual, predicted, na.rm = FALSE) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -293,7 +293,7 @@ mean_error_sqr_root <- function(actual, predicted, na.rm = FALSE) {
 #' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=loa]{loa()}}
 bias <- function(actual, predicted, na.rm = FALSE) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
@@ -336,7 +336,7 @@ bias <- function(actual, predicted, na.rm = FALSE) {
 #' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=bias]{bias()}}
 loa <- function(actual, predicted, na.rm = FALSE) {
-  if(!is.numeric(actual)) {
+  if (!is.numeric(actual)) {
     abort_argument_type(
       arg = "actual",
       must = "be numeric",
