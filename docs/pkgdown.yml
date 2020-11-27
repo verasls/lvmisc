@@ -1,10 +1,10 @@
-pandoc: 2.7.3
+pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   accuracy_indices: accuracy_indices.html
   lvmisc: lvmisc.html
-last_built: 2020-11-02T16:51Z
+last_built: 2020-11-27T19:41Z
 urls:
   reference: https://lveras.com/lvmisc//reference
   article: https://lveras.com/lvmisc//articles

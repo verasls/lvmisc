@@ -152,14 +152,14 @@
     <p>Computes the root mean square error between the input vectors.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mean_error_sqr_root</span><span class='op'>(</span><span class='va'>actual</span>, <span class='va'>predicted</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>mean_error_sqr_root</span><span class='op'>(</span><span class='va'>actual</span>, <span class='va'>predicted</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>actual</th>
-      <td><p>A numeric vector with the actual values</p></td>
+      <td><p>A numeric vector with the actual values.</p></td>
     </tr>
     <tr>
       <th>predicted</th>
@@ -170,7 +170,7 @@ this vector must be a prediction for the corresponding element in
     <tr>
       <th>na.rm</th>
       <td><p>A logical value indicating whether <code>NA</code> values should be
-stripped before the computation proceeds.</p></td>
+stripped before the computation proceeds. Defaults to <code>FALSE</code>.</p></td>
     </tr>
     </table>
 
