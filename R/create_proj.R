@@ -30,6 +30,10 @@ create_proj <- function(path,
                         use_gitignore = "default",
                         use_readme = TRUE,
                         use_renv = TRUE) {
+  check_args_create_proj(
+    path, sub_dirs, use_git, use_gitignore, use_readme, use_renv
+  )
+
   if (!grepl("/$", path)) {
     path <- paste0(path, "/")
   }
@@ -271,4 +275,35 @@ get_os <- function() {
     os <- "macOS"
   }
   os
+}
+
+
+check_args_create_proj <- function(path,
+                                   sub_dirs = "default",
+                                   use_git = TRUE,
+                                   use_gitignore = "default",
+                                   use_readme = TRUE,
+                                   use_renv = TRUE) {
+  if (!is.character(path)) {
+    abort_argument_type(arg = "path", must = "be character", not = path)
+  }
+  if (!is.character(sub_dirs)) {
+    abort_argument_type(arg = "sub_dirs", must = "be character", not = sub_dirs)
+  }
+  if (!is.logical(use_git)) {
+    abort_argument_type(arg = "use_git", must = "be logical", not = use_git)
+  }
+  if (!is.character(use_gitignore)) {
+    abort_argument_type(
+      arg = "use_gitignore", must = "be character", not = use_gitignore
+    )
+  }
+  if (!is.logical(use_readme)) {
+    abort_argument_type(
+      arg = "use_readme", must = "be logical", not = use_readme
+    )
+  }
+  if (!is.logical(use_renv)) {
+    abort_argument_type(arg = "use_renv", must = "be logical", not = use_renv)
+  }
 }
