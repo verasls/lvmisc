@@ -3,7 +3,6 @@
 #' @name accuracy_params
 #'
 #' @param actual A numeric vector with the actual values
-#'
 #' @param predicted A numeric vector with the predicted values. Each element in
 #'   this vector must be a prediction for the corresponding element in
 #'   \code{actual}.

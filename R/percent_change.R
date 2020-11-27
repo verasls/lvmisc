@@ -5,8 +5,7 @@
 #'
 #' @param baseline,followup A numeric vector with data to compute the percent
 #'   change.
-#'
-#' @return An object of class `lvmisc_percent`
+#' @return An object of class `lvmisc_percent`.
 #'
 #' @export
 #'

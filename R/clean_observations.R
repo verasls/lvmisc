@@ -4,14 +4,11 @@
 #'   \code{max_na} missing values.
 #'
 #' @param data A data frame, or data frame extension (e.g. a tibble).
-#'
 #' @param id The bare (unquoted) name of the column that identifies each
-#'   subject
-#'
+#'   subject.
 #' @param var The bare (unquoted) name of the column to be cleaned.
-#'
 #' @param max_na An interger indicating the maximum number of \code{NA}s per
-#'   subject
+#'   subject.
 #'
 #' @export
 #'

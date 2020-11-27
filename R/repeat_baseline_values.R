@@ -5,17 +5,12 @@
 #'   \code{time} value of each \code{id}.
 #'
 #' @param data A data frame.
-#'
 #' @param var The bare (unquoted) name of the column with the values to be
 #'   repeated.
-#'
 #' @param id The bare (unquoted) name of the column that identifies each
 #'   subject.
-#'
 #' @param time The bare (unquoted) name of the column with the time values.
-#'
 #' @param baseline_level The value of \code{time} corresponding the baseline.
-#'
 #' @param repeat_NA A logical vector indicating whether or not \code{NA} values
 #'   in the \code{var} will correspond to \code{NA} values in return vector.
 #'   Defaults to \code{TRUE}.

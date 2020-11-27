@@ -7,10 +7,8 @@
 #' @name abort_argument
 #'
 #' @param arg A character string with the argument name.
-#'
 #' @param must A character string specifying a condition the argument must
 #'   fulfill.
-#'
 #' @param not Either a character string specifying a condition the argument
 #'   must not fulfill or the bare (unquoted) argument name. In the last case,
 #'   the function evaluates the argument type (\code{abort_argument_type()}) or

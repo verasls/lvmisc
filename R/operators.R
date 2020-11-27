@@ -7,7 +7,6 @@
 #' @rdname notin
 #'
 #' @param x Vector with the values to be matched.
-#'
 #' @param table Vector with the values to be matched against.
 #'
 #' @export

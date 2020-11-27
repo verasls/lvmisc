@@ -2,14 +2,12 @@
 #'
 #' @name accuracy_means_params
 #'
-#' @param actual A numeric vector with the actual values
-#'
+#' @param actual A numeric vector with the actual values.
 #' @param predicted A numeric vector with the predicted values. Each element in
 #'   this vector must be a prediction for the corresponding element in
 #'   \code{actual}.
-#'
 #' @param na.rm A logical value indicating whether \code{NA} values should be
-#'   stripped before the computation proceeds. Defaults to \code{FALSE}
+#'   stripped before the computation proceeds. Defaults to \code{FALSE}.
 #'
 #' @keywords internal
 NULL
