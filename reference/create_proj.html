@@ -54,7 +54,7 @@
 
 <meta property="og:title" content="Create a project — create_proj" />
 <meta property="og:description" content="Creates a project structure, including sub-directories, and initialisation
-of a renv and git repository." />
+of a git repository." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -145,7 +145,7 @@ of a renv and git repository." />
 
     <div class="ref-description">
     <p>Creates a project structure, including sub-directories, and initialisation
-of a <code>renv</code> and git repository.</p>
+of a git repository.</p>
     </div>
 
     <pre class="usage"><span class='fu'>create_proj</span><span class='op'>(</span>
@@ -153,8 +153,7 @@ of a <code>renv</code> and git repository.</p>
   sub_dirs <span class='op'>=</span> <span class='st'>"default"</span>,
   use_git <span class='op'>=</span> <span class='cn'>TRUE</span>,
   use_gitignore <span class='op'>=</span> <span class='st'>"default"</span>,
-  use_readme <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  use_renv <span class='op'>=</span> <span class='cn'>TRUE</span>
+  use_readme <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -167,9 +166,9 @@ of a <code>renv</code> and git repository.</p>
     <tr>
       <th>sub_dirs</th>
       <td><p>A character vector. If <code>sub_dirs = "default"</code>, it
-creates 'code/', 'data/', 'docs/', 'figs/' and 'tabs/' sub-directories.
-Otherwise, it creates the sub-directories specified in the character
-vector.</p></td>
+creates 'code/', 'data/', 'docs/', 'figures/' and 'tables/'
+sub-directories. Otherwise, it creates the sub-directories specified
+in the character vector.</p></td>
     </tr>
     <tr>
       <th>use_git</th>
@@ -191,14 +190,11 @@ vector.</p></td>
       <td><p>A logical value. If <code>TRUE</code> (default), adds an empty
 'README.md' file.</p></td>
     </tr>
-    <tr>
-      <th>use_renv</th>
-      <td><p>A logical value indicating whether or not to initialise a
-<code>renv</code>. Read more at renv package
-<a href='https://rstudio.github.io/renv/articles/renv.html'>website</a>.</p></td>
-    </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Path to the newly created project, invisibly.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
