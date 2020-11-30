@@ -28,6 +28,6 @@ test_that("error handling works", {
 
 test_that("project top-level directory is created", {
   proj_dir <- create_proj(tempfile())
-  fs::is_dir(proj_dir)
+  expect_true(fs::is_dir(proj_dir))
   fs::dir_delete(proj_dir)
 })
