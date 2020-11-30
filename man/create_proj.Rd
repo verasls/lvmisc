@@ -17,9 +17,9 @@ create_proj(
 \item{path}{A path to a directory that does not exist.}
 
 \item{sub_dirs}{A character vector. If \code{sub_dirs = "default"}, it
-creates 'code/', 'data/', 'docs/', 'figs/' and 'tabs/' sub-directories.
-Otherwise, it creates the sub-directories specified in the character
-vector.}
+creates 'code/', 'data/', 'docs/', 'figures/' and 'tables/'
+sub-directories. Otherwise, it creates the sub-directories specified
+in the character vector.}
 
 \item{use_git}{A logical value indicating whether or not to initialise a git
 repository. Defaults to \code{TRUE}.}
