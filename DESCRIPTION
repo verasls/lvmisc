@@ -21,7 +21,6 @@ Imports:
     purrr,
     usethis,
     git2r,
-    renv,
     withr
 Suggests: 
     testthat,
@@ -29,7 +28,8 @@ Suggests:
     devtools,
     knitr,
     rmarkdown,
-    covr
+    covr,
+    fs
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
