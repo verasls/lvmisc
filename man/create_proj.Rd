@@ -9,8 +9,7 @@ create_proj(
   sub_dirs = "default",
   use_git = TRUE,
   use_gitignore = "default",
-  use_readme = TRUE,
-  use_renv = TRUE
+  use_readme = TRUE
 )
 }
 \arguments{
@@ -34,12 +33,8 @@ vector.}
 
 \item{use_readme}{A logical value. If \code{TRUE} (default), adds an empty
 'README.md' file.}
-
-\item{use_renv}{A logical value indicating whether or not to initialise a
-\code{renv}. Read more at {renv} package
-\href{https://rstudio.github.io/renv/articles/renv.html}{website}.}
 }
 \description{
 Creates a project structure, including sub-directories, and initialisation
-of a \code{renv} and git repository.
+of a git repository.
 }

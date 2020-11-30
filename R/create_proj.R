@@ -1,7 +1,7 @@
 #' Create a project
 #'
 #' Creates a project structure, including sub-directories, and initialisation
-#' of a \code{renv} and git repository.
+#' of a git repository.
 #'
 #' @param path A path to a directory that does not exist.
 #' @param sub_dirs A character vector. If \code{sub_dirs = "default"}, it
@@ -19,19 +19,15 @@
 #'    vector.
 #' @param use_readme A logical value. If \code{TRUE} (default), adds an empty
 #'    'README.md' file.
-#' @param use_renv A logical value indicating whether or not to initialise a
-#'    \code{renv}. Read more at {renv} package
-#'    \href{https://rstudio.github.io/renv/articles/renv.html}{website}.
 #'
 #' @export
 create_proj <- function(path,
                         sub_dirs = "default",
                         use_git = TRUE,
                         use_gitignore = "default",
-                        use_readme = TRUE,
-                        use_renv = TRUE) {
+                        use_readme = TRUE) {
   check_args_create_proj(
-    path, sub_dirs, use_git, use_gitignore, use_readme, use_renv
+    path, sub_dirs, use_git, use_gitignore, use_readme
   )
 
   if (!grepl("/$", path)) {
@@ -77,11 +73,6 @@ create_proj <- function(path,
   if (isTRUE(use_readme)) {
     file.create("README.md")
     usethis::ui_done("Adding an empty 'README.md' file")
-  }
-
-  if (isTRUE(use_renv)) {
-    usethis::ui_done("Initialising a `renv`")
-    renv::init()
   }
 }
 
@@ -282,8 +273,7 @@ check_args_create_proj <- function(path,
                                    sub_dirs = "default",
                                    use_git = TRUE,
                                    use_gitignore = "default",
-                                   use_readme = TRUE,
-                                   use_renv = TRUE) {
+                                   use_readme = TRUE) {
   if (!is.character(path)) {
     abort_argument_type(arg = "path", must = "be character", not = path)
   }
@@ -302,8 +292,5 @@ check_args_create_proj <- function(path,
     abort_argument_type(
       arg = "use_readme", must = "be logical", not = use_readme
     )
-  }
-  if (!is.logical(use_renv)) {
-    abort_argument_type(arg = "use_renv", must = "be logical", not = use_renv)
   }
 }
