@@ -20,6 +20,8 @@
 #' @param use_readme A logical value. If \code{TRUE} (default), adds an empty
 #'    'README.md' file.
 #'
+#' @return Path to the newly created project, invisibly.
+#'
 #' @export
 create_proj <- function(path,
                         sub_dirs = "default",
@@ -74,6 +76,8 @@ create_proj <- function(path,
     file.create("README.md")
     usethis::ui_done("Adding an empty 'README.md' file")
   }
+
+  invisible(path)
 }
 
 create_sub_dir <- function(sub_dir) {

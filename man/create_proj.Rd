@@ -34,6 +34,9 @@ vector.}
 \item{use_readme}{A logical value. If \code{TRUE} (default), adds an empty
 'README.md' file.}
 }
+\value{
+Path to the newly created project, invisibly.
+}
 \description{
 Creates a project structure, including sub-directories, and initialisation
 of a git repository.
