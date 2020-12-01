@@ -48,3 +48,10 @@ test_that(
     fs::file_delete(proj_dir)
   }
 )
+
+test_that("create_proj() initialises a git repo", {
+  proj_dir <- tempfile()
+  create_proj(proj_dir)
+  expect_true(".git" %in% list.files(proj_dir, all.files = TRUE))
+  fs::file_delete(proj_dir)
+})
