@@ -1,30 +1,9 @@
-test_that("error handling works", {
-  a <- 1:10
-  b <- 1
-  c <- 1:10
-  d <- letters[1:10]
-
-  expect_error(
-    mean_error(d, a),
-    "`actual` must be numeric; not character.",
-    class = "error_argument_type"
-  )
-  expect_error(
-    mean_error(a, d),
-    "`predicted` must be numeric; not character.",
-    class = "error_argument_type"
-  )
-  expect_error(
-    mean_error(a, b),
-    "`actual` and `predicted` must have the same length.",
-    class = "error_argument_diff_length"
-  )
-  expect_error(
-    mean_error(a, c, na.rm = "true"),
-    "`na.rm` must be logical; not character.",
-    class = "error_argument_type"
-  )
-})
+fun_list <- list(
+  mean_error, mean_error_pct, mean_error_abs,
+  mean_error_abs_pct, mean_error_sqr,
+  mean_error_sqr_root, bias, loa
+)
+purrr::walk(fun_list, test_accuracy_means_error_handling)
 
 test_that("mean_error() works", {
   a <- rep(10, 7)
