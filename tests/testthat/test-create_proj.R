@@ -38,3 +38,13 @@ test_that("create_proj() throws an error if `path` already exists", {
   expect_error(create_proj(proj_dir))
   fs::dir_delete(proj_dir)
 })
+
+test_that(
+  "create_proj() throws an error if `path` already exists but is
+  not a directory", {
+    proj_dir <- tempfile()
+    file.create(proj_dir)
+    expect_error(create_proj(proj_dir))
+    fs::file_delete(proj_dir)
+  }
+)
