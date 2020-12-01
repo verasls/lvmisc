@@ -97,6 +97,7 @@ clean_sub_dir <- function(sub_dir) {
   } else if (grepl("^/", sub_dir) & grepl("/$", sub_dir)) {
     sub_dir <- substr(sub_dir, 2, nchar(sub_dir))
   }
+  sub_dir
 }
 
 write_gitignore <- function(path, option) {
