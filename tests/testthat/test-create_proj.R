@@ -49,10 +49,28 @@ test_that(
   }
 )
 
-test_that("create_proj() initialises a git repo with a .gitignore", {
+test_that("create_proj() initialises a git repo", {
   proj_dir <- tempfile()
   create_proj(proj_dir)
   expect_true(".git" %in% list.files(proj_dir, all.files = TRUE))
+  fs::file_delete(proj_dir)
+
+  create_proj(proj_dir, use_git = FALSE)
+  expect_false(".git" %in% list.files(proj_dir, all.files = TRUE))
+  fs::file_delete(proj_dir)
+})
+
+test_that(".gitignore is correctly handled", {
+  proj_dir <- tempfile()
+  create_proj(proj_dir)
   expect_true(".gitignore" %in% list.files(proj_dir, all.files = TRUE))
+  fs::file_delete(proj_dir)
+
+  create_proj(proj_dir, use_gitignore = NULL)
+  expect_false(".gitignore" %in% list.files(proj_dir, all.files = TRUE))
+  fs::file_delete(proj_dir)
+
+  create_proj(proj_dir, use_git = FALSE)
+  expect_false(".gitignore" %in% list.files(proj_dir, all.files = TRUE))
   fs::file_delete(proj_dir)
 })
