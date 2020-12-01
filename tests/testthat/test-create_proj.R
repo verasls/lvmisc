@@ -88,5 +88,8 @@ test_that("create_proj() writes a README.md file", {
 
 test_that("clean_sub_dir() works", {
   l <- list("/subdir", "subdir/", "subdir", "/subdir/")
-  expect_equal(purrr::map(l, clean_sub_dir), "subdir/")
+  purrr::map(
+    l,
+    ~ expect_equal(clean_sub_dir(.x), "subdir/")
+  )
 })
