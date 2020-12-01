@@ -1,13 +1,11 @@
-context("utils")
-
-test_that("tb works", {
+test_that("tb() works", {
   1 + 1
   out <- tb()
 
   expect_s3_class(out, "rlang_trace")
 })
 
-test_that("pa works", {
+test_that("pa() works", {
   verify_output(test_path("test-utils-pa.txt"), {
     df <- dplyr::starwars
     pa(df)

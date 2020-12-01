@@ -1,6 +1,4 @@
-context("abort")
-
-test_that("abort_argument_type works", {
+test_that("abort_argument_type() works", {
   x <- letters
   err <- rlang::catch_cnd(
     abort_argument_type("x", must = "be numeric", not = x)
@@ -13,7 +11,7 @@ test_that("abort_argument_type works", {
   expect_equal(err$not, "character")
 })
 
-test_that("abort_argument_length works", {
+test_that("abort_argument_length() works", {
   x <- 1:10
   err <- rlang::catch_cnd(
     abort_argument_length("x", must = "have length 1", not = x)
@@ -26,7 +24,7 @@ test_that("abort_argument_length works", {
   expect_equal(err$not, 10)
 })
 
-test_that("abort_argument_diff_length works", {
+test_that("abort_argument_diff_length() works", {
   x <- 1:5
   y <- 1:10
   err <- rlang::catch_cnd(abort_argument_diff_length("x", "y"))
