@@ -21,7 +21,9 @@ Imports:
     purrr,
     usethis,
     git2r,
-    withr
+    withr,
+    rsample,
+    tibble
 Suggests: 
     testthat,
     forcats,
