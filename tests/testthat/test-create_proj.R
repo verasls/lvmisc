@@ -85,3 +85,8 @@ test_that("create_proj() writes a README.md file", {
   expect_false("README.md" %in% list.files(proj_dir, all.files = TRUE))
   fs::file_delete(proj_dir)
 })
+
+test_that("clean_sub_dir() works", {
+  l <- list("/subdir", "subdir/", "subdir", "/subdir/")
+  expect_equal(purrr::map(l, clean_sub_dir), "subdir/")
+})
