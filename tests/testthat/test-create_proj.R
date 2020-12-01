@@ -74,3 +74,14 @@ test_that(".gitignore is correctly handled", {
   expect_false(".gitignore" %in% list.files(proj_dir, all.files = TRUE))
   fs::file_delete(proj_dir)
 })
+
+test_that("create_proj() writes a README.md file", {
+  proj_dir <- tempfile()
+  create_proj(proj_dir)
+  expect_true("README.md" %in% list.files(proj_dir, all.files = TRUE))
+  fs::file_delete(proj_dir)
+
+  create_proj(proj_dir, use_readme = FALSE)
+  expect_false("README.md" %in% list.files(proj_dir, all.files = TRUE))
+  fs::file_delete(proj_dir)
+})
