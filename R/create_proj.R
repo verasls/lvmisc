@@ -37,7 +37,7 @@ create_proj <- function(path,
   }
   if (dir.exists(path)) {
     usethis::ui_stop("{usethis::ui_path(path)} already exists")
-  } else if (file.exists(path)) {
+  } else if (file.exists(substr(path, 1, nchar(path) - 1))) {
     usethis::ui_stop(
       "{usethis::ui_path(path)} already exists but is not a directory"
     )
