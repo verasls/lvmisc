@@ -49,9 +49,10 @@ test_that(
   }
 )
 
-test_that("create_proj() initialises a git repo", {
+test_that("create_proj() initialises a git repo with a .gitignore", {
   proj_dir <- tempfile()
   create_proj(proj_dir)
   expect_true(".git" %in% list.files(proj_dir, all.files = TRUE))
+  expect_true(".gitignore" %in% list.files(proj_dir, all.files = TRUE))
   fs::file_delete(proj_dir)
 })
