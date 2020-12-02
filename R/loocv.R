@@ -5,6 +5,11 @@ loocv <- function(model, data, id, keep = "used") {
 
 #' @export
 loocv.lm <- function(model, data, id, keep = "used") {
+  if (length(class(model)) > 1) {
+    classes <- class(model)[class(model) != "lm"]
+    abort_class_not_implemented("loocv", classes)
+  }
+
   id <- rlang::enquo(id)
   formula <- stats::formula(model)
   outcome <- as.character(rlang::f_lhs(formula))
