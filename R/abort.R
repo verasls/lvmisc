@@ -15,7 +15,10 @@
 #'   length (\code{abort_argument_length()}) and displays the result in the
 #'   error message.
 #'
-#' @seealso \code{\link[=abort_column_not_found]{abort_column_not_found()}}
+#' @export
+#'
+#' @seealso \code{\link[=abort_column_not_found]{abort_column_not_found()}},
+#'   \code{\link[=abort_class_not_implemented]{abort_class_not_implemented()}}
 #'
 #' @examples
 #' \dontrun{
@@ -39,10 +42,12 @@ abort_argument_type <- function(arg, must, not) {
 
 #' @rdname abort_argument
 #'
+#' @export
+#'
 #' @examples
 #' \dontrun{
 #' x <- 1:10
-#' if (lenght(x) > 1) {
+#' if (length(x) > 1) {
 #'   abort_argument_length("x", must = "have length 1", not = x)
 #' }
 #' }
@@ -63,11 +68,13 @@ abort_argument_length <- function(arg, must, not) {
 #'
 #' @param arg1,arg2 A character string with the argument name.
 #'
+#' @export
+#'
 #' @examples
 #' \dontrun{
 #' x <- 1:5
 #' y <- 1:10
-#' if (lenght(x) != length(y)) {
+#' if (length(x) != length(y)) {
 #'   abort_argument_diff_length("x", "y")
 #' }
 #' }
@@ -89,12 +96,14 @@ abort_argument_diff_length <- function(arg1, arg2) {
 #'   error message and metadata.
 #'
 #' @param data A data frame.
-#'
 #' @param col_name A character vector with the column name.
+#'
+#' @export
 #'
 #' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
-#'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}}
+#'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
+#'   \code{\link[=abort_class_not_implemented]{abort_class_not_implemented()}}
 #'
 #' @examples
 #' \dontrun{
@@ -107,4 +116,38 @@ abort_column_not_found <- function(data, col_name) {
   msg <- glue::glue("Column `{col_name}` not found in `{data}`.")
 
   rlang::abort("error_column_not_found", message = msg)
+}
+
+#' Abort method if class is not implemented
+#'
+#' Returns a custom error condition created with
+#'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
+#'   error message and metadata.
+#'
+#' @param fun A character vector with the function name.
+#' @param class A character vector with the class name.
+#'
+#' @export
+#'
+#' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
+#'   \code{\link[=abort_argument_length]{abort_argument_length()}},
+#'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
+#'   \code{\link[=abort_column_not_found]{abort_column_not_found()}}
+abort_class_not_implemented <- function(fun, class) {
+  if (length(class) > 1) {
+    class <- glue::glue_collapse(
+     glue::glue("{class}"), sep = ", ", last = " and "
+    )
+    noun <- "classes"
+  } else {
+    noun <- "class"
+  }
+  msg <- glue::glue(
+    "The method `{fun}`, is not yet implemented for an object \\
+    of {noun} {class}.
+    If you would like it to be implemented, please file an issue at \\
+    https://github.com/verasls/lvmisc/issues."
+  )
+
+  rlang::abort("error_class_not_implemented", message = msg)
 }

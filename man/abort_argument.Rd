@@ -41,18 +41,19 @@ if (!is.numeric(x)) {
 }
 \dontrun{
 x <- 1:10
-if (lenght(x) > 1) {
+if (length(x) > 1) {
   abort_argument_length("x", must = "have length 1", not = x)
 }
 }
 \dontrun{
 x <- 1:5
 y <- 1:10
-if (lenght(x) != length(y)) {
+if (length(x) != length(y)) {
   abort_argument_diff_length("x", "y")
 }
 }
 }
 \seealso{
-\code{\link[=abort_column_not_found]{abort_column_not_found()}}
+\code{\link[=abort_column_not_found]{abort_column_not_found()}},
+\code{\link[=abort_class_not_implemented]{abort_class_not_implemented()}}
 }
