@@ -7,6 +7,9 @@
     <loc>https://lveras.com/lvmisc//reference/abort_argument.html</loc>
   </url>
   <url>
+    <loc>https://lveras.com/lvmisc//reference/abort_class_not_implemented.html</loc>
+  </url>
+  <url>
     <loc>https://lveras.com/lvmisc//reference/abort_column_not_found.html</loc>
   </url>
   <url>
@@ -56,6 +59,9 @@
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/loa.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc//reference/loocv.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/lu.html</loc>
