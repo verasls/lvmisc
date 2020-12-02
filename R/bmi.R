@@ -6,6 +6,7 @@
 #'   unit must be kilograms and `height` unit must be meters. If the `height`
 #'   unit is centimeters, it is converted to meters before BMI computation and
 #'   a warning is shown.
+#'
 #' @export
 #'
 #' @seealso \code{\link[=bmi_cat]{bmi_cat()}}
