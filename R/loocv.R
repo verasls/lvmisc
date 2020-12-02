@@ -1,8 +1,16 @@
+#' Leave-one-out cross-validation
+#'
+#' @param model A model object.
+#' @param data A data frame.
+#' @param id The bare (unquoted) name of the column which identifies subjects.
+#' @param keep A character string indicating which variables to keep.
+#'
 #' @export
 loocv <- function(model, data, id, keep = "used") {
   UseMethod("loocv")
 }
 
+#' @rdname loocv
 #' @export
 loocv.lm <- function(model, data, id, keep = "used") {
   if (length(class(model)) > 1) {
