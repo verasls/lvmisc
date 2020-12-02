@@ -5,6 +5,7 @@ loocv <- function(model, data, id, keep = "used") {
 
 #' @export
 loocv.lm <- function(model, data, id, keep = "used") {
+  id <- rlang::enquo(id)
   formula <- stats::formula(model)
   outcome <- as.character(rlang::f_lhs(formula))
 
@@ -21,6 +22,7 @@ loocv.lm <- function(model, data, id, keep = "used") {
   actual <- purrr::as_vector(purrr::map(testing_data, outcome))
 
   if (keep == "used") {
+    id <- rlang::as_string(rlang::ensym(id))
     tibble::tibble(data[id], actual, predicted)
   } else if (keep == "none") {
     tibble::tibble(actual, predicted)
