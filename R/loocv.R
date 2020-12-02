@@ -12,6 +12,12 @@ loocv <- function(model, data, id, keep = "used") {
 
 #' @rdname loocv
 #' @export
+loocv.default <- function(model, data, id, keep = "used") {
+  abort_class_not_implemented("loocv", class(model))
+}
+
+#' @rdname loocv
+#' @export
 loocv.lm <- function(model, data, id, keep = "used") {
   if (length(class(model)) > 1) {
     classes <- class(model)[class(model) != "lm"]

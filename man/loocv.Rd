@@ -2,10 +2,13 @@
 % Please edit documentation in R/loocv.R
 \name{loocv}
 \alias{loocv}
+\alias{loocv.default}
 \alias{loocv.lm}
 \title{Leave-one-out cross-validation}
 \usage{
 loocv(model, data, id, keep = "used")
+
+\method{loocv}{default}(model, data, id, keep = "used")
 
 \method{loocv}{lm}(model, data, id, keep = "used")
 }
