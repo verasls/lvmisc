@@ -23,6 +23,14 @@ loocv.lm <- function(model, data, id, keep = "used") {
     classes <- class(model)[class(model) != "lm"]
     abort_class_not_implemented("loocv", classes)
   }
+  if (!is.data.frame(data)) {
+    abort_argument_type(arg = "data", must = "be data.frame", not = data)
+  }
+  id_col_name <- rlang::as_string(rlang::ensym(id))
+  data_name <- rlang::as_string(rlang::ensym(data))
+  if (id_col_name %!in% names(data)) {
+    abort_column_not_found(data = data_name, col_name = id_col_name)
+  }
 
   id <- rlang::enquo(id)
   formula <- stats::formula(model)
