@@ -60,11 +60,11 @@ loocv.lmerMod <- function(model, data, id, keep = "all") {
 check_args_loocv <- function(model,
                              data,
                              id,
-                             keep = "all",
+                             keep,
                              id_col_name,
                              data_name) {
   if (length(class(model)) > 1) {
-    classes <- class(model)[class(model) != "lm"]
+    classes <- class(model)[class(model) %!in% c("lm", "lmerMod")]
     abort_class_not_implemented("loocv", classes)
   }
   if (!is.data.frame(data)) {
@@ -72,6 +72,10 @@ check_args_loocv <- function(model,
   }
   if (id_col_name %!in% names(data)) {
     abort_column_not_found(data = data_name, col_name = id_col_name)
+  }
+  valid_values <- c("all", "used", "none")
+  if (keep %!in% valid_values) {
+    abort_argument_value(arg = "keep", valid_values)
   }
 }
 
