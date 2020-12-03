@@ -276,10 +276,10 @@ get_os <- function() {
 
 
 check_args_create_proj <- function(path,
-                                   sub_dirs = "default",
-                                   use_git = TRUE,
-                                   use_gitignore = "default",
-                                   use_readme = TRUE) {
+                                   sub_dirs,
+                                   use_git,
+                                   use_gitignore,
+                                   use_readme) {
   if (!is.character(path)) {
     abort_argument_type(arg = "path", must = "be character", not = path)
   }
