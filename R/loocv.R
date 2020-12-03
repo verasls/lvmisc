@@ -19,6 +19,8 @@ loocv.default <- function(model, data, id, keep = "used") {
 #' @rdname loocv
 #' @export
 loocv.lm <- function(model, data, id, keep = "used") {
+  id_col_name <- rlang::as_string(rlang::ensym(id))
+  data_name <- rlang::as_string(rlang::ensym(data))
   if (length(class(model)) > 1) {
     classes <- class(model)[class(model) != "lm"]
     abort_class_not_implemented("loocv", classes)
@@ -26,8 +28,6 @@ loocv.lm <- function(model, data, id, keep = "used") {
   if (!is.data.frame(data)) {
     abort_argument_type(arg = "data", must = "be data.frame", not = data)
   }
-  id_col_name <- rlang::as_string(rlang::ensym(id))
-  data_name <- rlang::as_string(rlang::ensym(data))
   if (id_col_name %!in% names(data)) {
     abort_column_not_found(data = data_name, col_name = id_col_name)
   }
@@ -50,13 +50,21 @@ loocv.lm <- function(model, data, id, keep = "used") {
 
   if (keep == "used") {
     id <- rlang::as_string(rlang::ensym(id))
-    tibble::tibble(data[id], actual, predicted)
+    new_loocv(tibble::tibble(data[id], actual, predicted))
   } else if (keep == "none") {
-    tibble::tibble(actual, predicted)
+    new_loocv(tibble::tibble(actual, predicted))
   } else if (keep == "all") {
-    tibble::as_tibble(cbind(data, actual, predicted))
+    new_loocv(tibble::as_tibble(cbind(data, actual, predicted)))
   }
 }
 
 get_training_data <- function(x) rsample::analysis(x)
 get_testing_data <- function(x) rsample::assessment(x)
+
+new_loocv <- function(x) {
+  stopifnot(is.data.frame(x))
+  stopifnot("actual" %in% names(x))
+  stopifnot("predicted" %in% names(x))
+  n_rows <- nrow(x)
+  tibble::new_tibble(x, nrow = n_rows, class = "loocv")
+}
