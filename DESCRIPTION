@@ -23,7 +23,8 @@ Imports:
     git2r,
     withr,
     rsample,
-    tibble
+    tibble,
+    modelr
 Suggests: 
     testthat,
     forcats,
