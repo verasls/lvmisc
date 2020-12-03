@@ -31,7 +31,8 @@ Suggests:
     knitr,
     rmarkdown,
     covr,
-    fs
+    fs,
+    lme4
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
