@@ -30,8 +30,7 @@ loocv.lm <- function(model, data, id, keep = "all") {
   splits <- split_data(data, id)
   trained_models <- purrr::map(splits$training_data, ~ lm(formula, data = .x))
   cv_values <- compute_cv_values(splits$testing_data, trained_models, outcome)
-
-  get_loocv_object(data, id, cv_values$actual, cv_values$predicted, keep)
+  get_loocv_object(cv_values, id, keep)
 }
 
 #' @rdname loocv
@@ -55,8 +54,7 @@ loocv.lmerMod <- function(model, data, id, keep = "all") {
     )
   )
   cv_values <- compute_cv_values(splits$testing_data, trained_models, outcome)
-
-  get_loocv_object(data, id, cv_values$actual, cv_values$predicted, keep)
+  get_loocv_object(cv_values, id, keep)
 }
 
 check_args_loocv <- function(model,
@@ -88,23 +86,28 @@ get_training_data <- function(x) rsample::analysis(x)
 get_testing_data <- function(x) rsample::assessment(x)
 
 compute_cv_values <- function(testing_data, trained_models, outcome) {
-  predicted <- purrr::map2(
-    trained_models, testing_data,
-    ~ stats::predict(.x, newdata = .y, allow.new.levels = TRUE)
+  predicted <- purrr::map2_dfr(
+    testing_data, trained_models,
+    ~ modelr::add_predictions(.x, .y, var = ".predicted")
   )
-  predicted <- unname(purrr::as_vector(predicted))
-  actual <- purrr::as_vector(purrr::map(testing_data, outcome))
-  list(actual = actual, predicted = predicted)
+  tibble::add_column(
+    predicted,
+    ".actual" = predicted[[outcome]],
+    .before = ".predicted"
+  )
 }
 
-get_loocv_object <- function(data, id, actual, predicted, keep) {
+get_loocv_object <- function(cv_values, id, keep) {
   if (keep == "used") {
-    id <- rlang::as_string(rlang::ensym(id))
-    new_loocv(tibble::tibble(data[id], actual, predicted))
+    vars <- c(
+      rlang::as_string(rlang::ensym(id)),
+      ".actual", ".predicted"
+    )
+    new_loocv(cv_values[vars])
   } else if (keep == "none") {
-    new_loocv(tibble::tibble(actual, predicted))
+    new_loocv(cv_values[c(".actual", ".predicted")])
   } else if (keep == "all") {
-    new_loocv(tibble::as_tibble(cbind(data, actual, predicted)))
+    new_loocv(cv_values)
   }
 }
 
@@ -114,8 +117,8 @@ get_loocv_object <- function(data, id, actual, predicted, keep) {
 #' @keywords internal
 new_loocv <- function(x) {
   stopifnot(is.data.frame(x))
-  stopifnot("actual" %in% names(x))
-  stopifnot("predicted" %in% names(x))
+  stopifnot(".actual" %in% names(x))
+  stopifnot(".predicted" %in% names(x))
   n_rows <- nrow(x)
   tibble::new_tibble(x, nrow = n_rows, class = "loocv")
 }
