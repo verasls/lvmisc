@@ -7,13 +7,13 @@
 \alias{loocv.lmerMod}
 \title{Perform a leave-one-out cross-validation}
 \usage{
-loocv(model, data, id, keep = "used")
+loocv(model, data, id, keep = "all")
 
-\method{loocv}{default}(model, data, id, keep = "used")
+\method{loocv}{default}(model, data, id, keep = "all")
 
-\method{loocv}{lm}(model, data, id, keep = "used")
+\method{loocv}{lm}(model, data, id, keep = "all")
 
-\method{loocv}{lmerMod}(model, data, id, keep = "used")
+\method{loocv}{lmerMod}(model, data, id, keep = "all")
 }
 \arguments{
 \item{model}{A model object.}
