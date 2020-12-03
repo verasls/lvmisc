@@ -61,6 +61,7 @@ loocv.lm <- function(model, data, id, keep = "used") {
 #' @rdname loocv
 #' @export
 loocv.lmerMod <- function(model, data, id, keep = "used") {
+  requireNamespace("lme4", quietly = TRUE)
   id_col_name <- rlang::as_string(rlang::ensym(id))
   data_name <- rlang::as_string(rlang::ensym(data))
   if (length(class(model)) > 1) {
