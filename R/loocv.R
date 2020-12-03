@@ -59,9 +59,6 @@ loocv.lmerMod <- function(model, data, id, keep = "all") {
   get_loocv_object(data, id, cv_values$actual, cv_values$predicted, keep)
 }
 
-get_training_data <- function(x) rsample::analysis(x)
-get_testing_data <- function(x) rsample::assessment(x)
-
 check_args_loocv <- function(model,
                              data,
                              id,
@@ -86,6 +83,9 @@ split_data <- function(data, id) {
   testing_data <- purrr::map(loocv_split$splits, get_testing_data)
   list(training_data = training_data, testing_data = testing_data)
 }
+
+get_training_data <- function(x) rsample::analysis(x)
+get_testing_data <- function(x) rsample::assessment(x)
 
 compute_cv_values <- function(testing_data, trained_models, outcome) {
   predicted <- purrr::map2(
