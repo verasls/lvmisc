@@ -1,4 +1,4 @@
-#' Leave-one-out cross-validation
+#' Perform a leave-one-out cross-validation
 #'
 #' @param model A model object.
 #' @param data A data frame.
@@ -61,6 +61,9 @@ loocv.lm <- function(model, data, id, keep = "used") {
 get_training_data <- function(x) rsample::analysis(x)
 get_testing_data <- function(x) rsample::assessment(x)
 
+#' Constructor for loocv object
+#'
+#' @param x A data.frame.
 new_loocv <- function(x) {
   stopifnot(is.data.frame(x))
   stopifnot("actual" %in% names(x))
