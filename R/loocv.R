@@ -27,26 +27,11 @@ loocv.lm <- function(model, data, id, keep = "used") {
   formula <- stats::formula(model)
   outcome <- as.character(rlang::f_lhs(formula))
 
-  loocv_split <- rsample::group_vfold_cv(data, group = id)
-  training_data <- purrr::map(loocv_split$splits, get_training_data)
-  testing_data <- purrr::map(loocv_split$splits, get_testing_data)
+  splits <- split_data(data, id)
+  trained_models <- purrr::map(splits$training_data, ~ lm(formula, data = .x))
+  cv_values <- compute_cv_values(splits$testing_data, trained_models, outcome)
 
-  trained_models <- purrr::map(training_data, ~ lm(formula, data = .x))
-  predicted <- purrr::map2(
-    trained_models, testing_data,
-    ~ stats::predict(.x, newdata = .y, allow.new.levels = TRUE)
-  )
-  predicted <- unname(purrr::as_vector(predicted))
-  actual <- purrr::as_vector(purrr::map(testing_data, outcome))
-
-  if (keep == "used") {
-    id <- rlang::as_string(rlang::ensym(id))
-    new_loocv(tibble::tibble(data[id], actual, predicted))
-  } else if (keep == "none") {
-    new_loocv(tibble::tibble(actual, predicted))
-  } else if (keep == "all") {
-    new_loocv(tibble::as_tibble(cbind(data, actual, predicted)))
-  }
+  get_loocv_object(data, id, cv_values$actual, cv_values$predicted, keep)
 }
 
 #' @rdname loocv
@@ -61,32 +46,17 @@ loocv.lmerMod <- function(model, data, id, keep = "used") {
   formula <- stats::formula(model)
   outcome <- as.character(rlang::f_lhs(formula))
 
-  loocv_split <- rsample::group_vfold_cv(data, group = id)
-  training_data <- purrr::map(loocv_split$splits, get_training_data)
-  testing_data <- purrr::map(loocv_split$splits, get_testing_data)
-
+  splits <- split_data(data, id)
   trained_models <- purrr::map(
-    training_data,
+    splits$training_data,
     ~ lme4::lmer(
       formula, data = .x,
       REML = grepl("REML", summary(model)$methTitle)
     )
   )
-  predicted <- purrr::map2(
-    trained_models, testing_data,
-    ~ stats::predict(.x, newdata = .y, allow.new.levels = TRUE)
-  )
-  predicted <- unname(purrr::as_vector(predicted))
-  actual <- purrr::as_vector(purrr::map(testing_data, outcome))
+  cv_values <- compute_cv_values(splits$testing_data, trained_models, outcome)
 
-  if (keep == "used") {
-    id <- rlang::as_string(rlang::ensym(id))
-    new_loocv(tibble::tibble(data[id], actual, predicted))
-  } else if (keep == "none") {
-    new_loocv(tibble::tibble(actual, predicted))
-  } else if (keep == "all") {
-    new_loocv(tibble::as_tibble(cbind(data, actual, predicted)))
-  }
+  get_loocv_object(data, id, cv_values$actual, cv_values$predicted, keep)
 }
 
 get_training_data <- function(x) rsample::analysis(x)
@@ -107,6 +77,34 @@ check_args_loocv <- function(model,
   }
   if (id_col_name %!in% names(data)) {
     abort_column_not_found(data = data_name, col_name = id_col_name)
+  }
+}
+
+split_data <- function(data, id) {
+  loocv_split <- rsample::group_vfold_cv(data, group = id)
+  training_data <- purrr::map(loocv_split$splits, get_training_data)
+  testing_data <- purrr::map(loocv_split$splits, get_testing_data)
+  list(training_data = training_data, testing_data = testing_data)
+}
+
+compute_cv_values <- function(testing_data, trained_models, outcome) {
+  predicted <- purrr::map2(
+    trained_models, testing_data,
+    ~ stats::predict(.x, newdata = .y, allow.new.levels = TRUE)
+  )
+  predicted <- unname(purrr::as_vector(predicted))
+  actual <- purrr::as_vector(purrr::map(testing_data, outcome))
+  list(actual = actual, predicted = predicted)
+}
+
+get_loocv_object <- function(data, id, actual, predicted, keep) {
+  if (keep == "used") {
+    id <- rlang::as_string(rlang::ensym(id))
+    new_loocv(tibble::tibble(data[id], actual, predicted))
+  } else if (keep == "none") {
+    new_loocv(tibble::tibble(actual, predicted))
+  } else if (keep == "all") {
+    new_loocv(tibble::as_tibble(cbind(data, actual, predicted)))
   }
 }
 
