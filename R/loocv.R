@@ -113,6 +113,7 @@ get_testing_data <- function(x) rsample::assessment(x)
 #' Constructor for loocv object
 #'
 #' @param x A data.frame.
+#' @keywords internal
 new_loocv <- function(x) {
   stopifnot(is.data.frame(x))
   stopifnot("actual" %in% names(x))

@@ -12,3 +12,4 @@ new_loocv(x)
 \description{
 Constructor for loocv object
 }
+\keyword{internal}
