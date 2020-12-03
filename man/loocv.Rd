@@ -4,13 +4,16 @@
 \alias{loocv}
 \alias{loocv.default}
 \alias{loocv.lm}
-\title{Leave-one-out cross-validation}
+\alias{loocv.lmerMod}
+\title{Perform a leave-one-out cross-validation}
 \usage{
 loocv(model, data, id, keep = "used")
 
 \method{loocv}{default}(model, data, id, keep = "used")
 
 \method{loocv}{lm}(model, data, id, keep = "used")
+
+\method{loocv}{lmerMod}(model, data, id, keep = "used")
 }
 \arguments{
 \item{model}{A model object.}
@@ -22,5 +25,5 @@ loocv(model, data, id, keep = "used")
 \item{keep}{A character string indicating which variables to keep.}
 }
 \description{
-Leave-one-out cross-validation
+Perform a leave-one-out cross-validation
 }
