@@ -89,6 +89,34 @@ abort_argument_diff_length <- function(arg1, arg2) {
   )
 }
 
+#' @rdname abort_argument
+#'
+#' @param arg A character string with the argument name.
+#' @param valid_values A character vectpr with the vaid values.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' keep <- "no"
+#' valid_values <- c("all", "used", "none")
+#' if (keep %!in% valid_values) {
+#'   abort_argument_value("keep", valid_values)
+#' }
+#' }
+abort_argument_value <- function(arg, valid_values) {
+  valid_values <- glue::glue_collapse(
+    glue::double_quote(valid_values), sep = ", ", last = " or "
+  )
+  msg <- glue::glue("`{arg}` must be one of {valid_values}")
+
+  rlang::abort(
+    "error_argument_value",
+    message = msg,
+    arg = arg
+  )
+}
+
 #' Abort based on column not being found in a data frame
 #'
 #' Returns a custom error condition created with

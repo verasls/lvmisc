@@ -5,6 +5,7 @@
 \alias{abort_argument_type}
 \alias{abort_argument_length}
 \alias{abort_argument_diff_length}
+\alias{abort_argument_value}
 \title{Abort based on issues with function argument}
 \usage{
 abort_argument_type(arg, must, not)
@@ -12,6 +13,8 @@ abort_argument_type(arg, must, not)
 abort_argument_length(arg, must, not)
 
 abort_argument_diff_length(arg1, arg2)
+
+abort_argument_value(arg, valid_values)
 }
 \arguments{
 \item{arg}{A character string with the argument name.}
@@ -26,6 +29,8 @@ length (\code{abort_argument_length()}) and displays the result in the
 error message.}
 
 \item{arg1, arg2}{A character string with the argument name.}
+
+\item{valid_values}{A character vectpr with the vaid values.}
 }
 \description{
 Returns a custom error condition created with
@@ -50,6 +55,13 @@ x <- 1:5
 y <- 1:10
 if (length(x) != length(y)) {
   abort_argument_diff_length("x", "y")
+}
+}
+\dontrun{
+keep <- "no"
+valid_values <- c("all", "used", "none")
+if (keep \%!in\% valid_values) {
+  abort_argument_value("keep", valid_values)
 }
 }
 }
