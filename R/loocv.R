@@ -21,16 +21,7 @@ loocv.default <- function(model, data, id, keep = "used") {
 loocv.lm <- function(model, data, id, keep = "used") {
   id_col_name <- rlang::as_string(rlang::ensym(id))
   data_name <- rlang::as_string(rlang::ensym(data))
-  if (length(class(model)) > 1) {
-    classes <- class(model)[class(model) != "lm"]
-    abort_class_not_implemented("loocv", classes)
-  }
-  if (!is.data.frame(data)) {
-    abort_argument_type(arg = "data", must = "be data.frame", not = data)
-  }
-  if (id_col_name %!in% names(data)) {
-    abort_column_not_found(data = data_name, col_name = id_col_name)
-  }
+  check_args_loocv(model, data, id, keep, id_col_name, data_name)
 
   id <- rlang::enquo(id)
   formula <- stats::formula(model)
@@ -64,16 +55,7 @@ loocv.lmerMod <- function(model, data, id, keep = "used") {
   requireNamespace("lme4", quietly = TRUE)
   id_col_name <- rlang::as_string(rlang::ensym(id))
   data_name <- rlang::as_string(rlang::ensym(data))
-  if (length(class(model)) > 1) {
-    classes <- class(model)[class(model) != "lm"]
-    abort_class_not_implemented("loocv", classes)
-  }
-  if (!is.data.frame(data)) {
-    abort_argument_type(arg = "data", must = "be data.frame", not = data)
-  }
-  if (id_col_name %!in% names(data)) {
-    abort_column_not_found(data = data_name, col_name = id_col_name)
-  }
+  check_args_loocv(model, data, id, keep, id_col_name, data_name)
 
   id <- rlang::enquo(id)
   formula <- stats::formula(model)
@@ -109,6 +91,24 @@ loocv.lmerMod <- function(model, data, id, keep = "used") {
 
 get_training_data <- function(x) rsample::analysis(x)
 get_testing_data <- function(x) rsample::assessment(x)
+
+check_args_loocv <- function(model,
+                             data,
+                             id,
+                             keep = "used",
+                             id_col_name,
+                             data_name) {
+  if (length(class(model)) > 1) {
+    classes <- class(model)[class(model) != "lm"]
+    abort_class_not_implemented("loocv", classes)
+  }
+  if (!is.data.frame(data)) {
+    abort_argument_type(arg = "data", must = "be data.frame", not = data)
+  }
+  if (id_col_name %!in% names(data)) {
+    abort_column_not_found(data = data_name, col_name = id_col_name)
+  }
+}
 
 #' Constructor for loocv object
 #'
