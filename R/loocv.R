@@ -6,19 +6,19 @@
 #' @param keep A character string indicating which variables to keep.
 #'
 #' @export
-loocv <- function(model, data, id, keep = "used") {
+loocv <- function(model, data, id, keep = "all") {
   UseMethod("loocv")
 }
 
 #' @rdname loocv
 #' @export
-loocv.default <- function(model, data, id, keep = "used") {
+loocv.default <- function(model, data, id, keep = "all") {
   abort_class_not_implemented("loocv", class(model))
 }
 
 #' @rdname loocv
 #' @export
-loocv.lm <- function(model, data, id, keep = "used") {
+loocv.lm <- function(model, data, id, keep = "all") {
   id_col_name <- rlang::as_string(rlang::ensym(id))
   data_name <- rlang::as_string(rlang::ensym(data))
   check_args_loocv(model, data, id, keep, id_col_name, data_name)
@@ -36,7 +36,7 @@ loocv.lm <- function(model, data, id, keep = "used") {
 
 #' @rdname loocv
 #' @export
-loocv.lmerMod <- function(model, data, id, keep = "used") {
+loocv.lmerMod <- function(model, data, id, keep = "all") {
   requireNamespace("lme4", quietly = TRUE)
   id_col_name <- rlang::as_string(rlang::ensym(id))
   data_name <- rlang::as_string(rlang::ensym(data))
@@ -65,7 +65,7 @@ get_testing_data <- function(x) rsample::assessment(x)
 check_args_loocv <- function(model,
                              data,
                              id,
-                             keep = "used",
+                             keep = "all",
                              id_col_name,
                              data_name) {
   if (length(class(model)) > 1) {
