@@ -29,7 +29,9 @@ loocv.lm <- function(model, data, id, keep = "all") {
 
   splits <- split_data(data, id)
   trained_models <- purrr::map(splits$training_data, ~ lm(formula, data = .x))
-  cv_values <- compute_cv_values(splits$testing_data, trained_models, outcome)
+  cv_values <- compute_cv_values(
+    data, id_col_name, splits$testing_data, trained_models, outcome
+  )
   get_loocv_object(cv_values, id, keep)
 }
 
@@ -53,7 +55,9 @@ loocv.lmerMod <- function(model, data, id, keep = "all") {
       REML = grepl("REML", summary(model)$methTitle)
     )
   )
-  cv_values <- compute_cv_values(splits$testing_data, trained_models, outcome)
+  cv_values <- compute_cv_values(
+    data, id_col_name, splits$testing_data, trained_models, outcome
+  )
   get_loocv_object(cv_values, id, keep)
 }
 
@@ -89,7 +93,7 @@ split_data <- function(data, id) {
 get_training_data <- function(x) rsample::analysis(x)
 get_testing_data <- function(x) rsample::assessment(x)
 
-compute_cv_values <- function(testing_data, trained_models, outcome) {
+compute_cv_values <- function(data, id, testing_data, trained_models, outcome) {
   predicted <- purrr::map2(
     trained_models, testing_data,
     ~ stats::predict(.x, newdata = .y, allow.new.levels = TRUE)
@@ -98,11 +102,17 @@ compute_cv_values <- function(testing_data, trained_models, outcome) {
     purrr::as_vector(purrr::map_dfr(predicted, tibble::as_tibble))
   )
   testing_data <- purrr::map_dfr(testing_data, rbind)
-  tibble::add_column(
+  cv_values <- tibble::add_column(
     testing_data,
     ".actual" = testing_data[[outcome]],
     ".predicted" = predicted
   )
+  arrange_values(cv_values, data, id)
+}
+
+arrange_values <- function(cv_values, data, id) {
+  data <- data[id]
+  dplyr::full_join(data, cv_values)
 }
 
 get_loocv_object <- function(cv_values, id, keep) {
