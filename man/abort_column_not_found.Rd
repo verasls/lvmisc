@@ -28,5 +28,5 @@ if ("y" \%!in\% names(data)) {
 \code{\link[=abort_argument_type]{abort_argument_type()}},
 \code{\link[=abort_argument_length]{abort_argument_length()}},
 \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
-\code{\link[=abort_class_not_implemented]{abort_class_not_implemented()}}
+\code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
 }

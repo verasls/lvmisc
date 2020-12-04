@@ -67,5 +67,5 @@ if (keep \%!in\% valid_values) {
 }
 \seealso{
 \code{\link[=abort_column_not_found]{abort_column_not_found()}},
-\code{\link[=abort_class_not_implemented]{abort_class_not_implemented()}}
+\code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
 }
