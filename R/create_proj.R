@@ -1,7 +1,7 @@
 #' Create a project
 #'
 #' Creates a project structure, including sub-directories, and initialisation
-#' of a git repository.
+#'   of a git repository.
 #'
 #' @param path A path to a directory that does not exist.
 #' @param sub_dirs A character vector. If \code{sub_dirs = "default"}, it
