@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform a leave-one-out cross-validation — loocv • lvmisc</title>
+<title>Leave-one-out cross-validation — loocv • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,8 +52,12 @@
 
 
 
-<meta property="og:title" content="Perform a leave-one-out cross-validation — loocv" />
-<meta property="og:description" content="Perform a leave-one-out cross-validation" />
+<meta property="og:title" content="Leave-one-out cross-validation — loocv" />
+<meta property="og:description" content="Cross-validates the model using the leave-one-out approach. In this method
+each subject's data is separated into a testing data set, and all other
+subject's are kept in the training data set, with as many resamples as
+the number of subjects in the original data set. It computes the model's
+predicted value in the testing data set for each subject." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -143,13 +147,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform a leave-one-out cross-validation</h1>
+    <h1>Leave-one-out cross-validation</h1>
     <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/loocv.R'><code>R/loocv.R</code></a></small>
     <div class="hidden name"><code>loocv.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Perform a leave-one-out cross-validation</p>
+    <p>Cross-validates the model using the leave-one-out approach. In this method
+each subject's data is separated into a testing data set, and all other
+subject's are kept in the training data set, with as many resamples as
+the number of subjects in the original data set. It computes the model's
+predicted value in the testing data set for each subject.</p>
     </div>
 
     <pre class="usage"><span class='fu'>loocv</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>data</span>, <span class='va'>id</span>, keep <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
@@ -168,7 +176,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>A model object.</p></td>
+      <td><p>An object containing a model.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -180,11 +188,61 @@
     </tr>
     <tr>
       <th>keep</th>
-      <td><p>A character string indicating which variables to keep.</p></td>
+      <td><p>A character string which controls which columns are present in
+the output. Can be one of three options:</p><ul>
+<li><p><code>"all"</code>: The default. Retain all variables in the original data frame
+plus the <code>".actual"</code> and <code>".predicted"</code> columns.</p></li>
+<li><p><code>"used"</code>: Keeps only the <code>"id"</code> column of the original data frame, plus
+the <code>".actual"</code> and <code>".predicted"</code> columns.</p></li>
+<li><p><code>"none"</code>: Returns just the <code>".actual"</code> and `".predicted" columns.</p></li>
+</ul></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Returns an object of class <code>loocv</code>. A tibble containing the
+<code>".actual"</code> and <code>".predicted"</code> columns.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, each <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>,
+  x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>100</span>, sd <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,
+  y <span class='op'>=</span> <span class='va'>x</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>20</span>, min <span class='op'>=</span> <span class='fl'>1</span>, max <span class='op'>=</span> <span class='fl'>1.2</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='va'>olr</span> <span class='op'>&lt;-</span> <span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>, <span class='va'>data</span><span class='op'>)</span>
+<span class='va'>lmm</span> <span class='op'>&lt;-</span> <span class='fu'>lme4</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, <span class='va'>data</span><span class='op'>)</span>
+
+<span class='fu'>loocv</span><span class='op'>(</span><span class='va'>olr</span>, <span class='va'>data</span>, <span class='va'>id</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = "id"</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 40 x 5</span><span>
+#&gt;       id     x     y .actual .predicted
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     1  97.8 115.    115.       107. 
+#&gt; </span><span style='color: #555555;'> 2</span><span>     1  85.1  96.7    96.7       93.4
+#&gt; </span><span style='color: #555555;'> 3</span><span>     1  97.8 115.    115.       107. 
+#&gt; </span><span style='color: #555555;'> 4</span><span>     1  85.1  96.7    96.7       93.4
+#&gt; </span><span style='color: #555555;'> 5</span><span>     2 112.  128.    128.       121. 
+#&gt; </span><span style='color: #555555;'> 6</span><span>     2  85.2  88.3    88.3       96.6
+#&gt; </span><span style='color: #555555;'> 7</span><span>     2 112.  128.    128.       121. 
+#&gt; </span><span style='color: #555555;'> 8</span><span>     2  85.2  88.3    88.3       96.6
+#&gt; </span><span style='color: #555555;'> 9</span><span>     3  95.7  97.2    97.2      107. 
+#&gt; </span><span style='color: #555555;'>10</span><span>     3  89.5  90.8    90.8      101. 
+#&gt; </span><span style='color: #555555;'># … with 30 more rows</span><span></div><div class='input'><span class='fu'>loocv</span><span class='op'>(</span><span class='va'>lmm</span>, <span class='va'>data</span>, <span class='va'>id</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>boundary (singular) fit: see ?isSingular</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "id"</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 40 x 5</span><span>
+#&gt;       id     x     y .actual .predicted
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     1  97.8 115.    115.       107. 
+#&gt; </span><span style='color: #555555;'> 2</span><span>     1  85.1  96.7    96.7       93.6
+#&gt; </span><span style='color: #555555;'> 3</span><span>     1  97.8 115.    115.       107. 
+#&gt; </span><span style='color: #555555;'> 4</span><span>     1  85.1  96.7    96.7       93.6
+#&gt; </span><span style='color: #555555;'> 5</span><span>     2 112.  128.    128.       121. 
+#&gt; </span><span style='color: #555555;'> 6</span><span>     2  85.2  88.3    88.3       96.9
+#&gt; </span><span style='color: #555555;'> 7</span><span>     2 112.  128.    128.       121. 
+#&gt; </span><span style='color: #555555;'> 8</span><span>     2  85.2  88.3    88.3       96.9
+#&gt; </span><span style='color: #555555;'> 9</span><span>     3  95.7  97.2    97.2      107. 
+#&gt; </span><span style='color: #555555;'>10</span><span>     3  89.5  90.8    90.8      101. 
+#&gt; </span><span style='color: #555555;'># … with 30 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
