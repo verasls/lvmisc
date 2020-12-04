@@ -43,16 +43,3 @@ subject's are kept in the training data set, with as many resamples as
 the number of subjects in the original data set. It computes the model's
 predicted value in the testing data set for each subject.
 }
-\examples{
-data <- tibble::tibble(
-  id = rep(1:10, each = 2),
-  x = rnorm(20, mean = 100, sd = 10),
-  y = x * runif(20, min = 1, max = 1.2)
-)
-
-olr <- stats::lm(y ~ x, data)
-lmm <- lme4::lmer(y ~ x + (1 | id), data)
-
-loocv(olr, data, id)
-loocv(lmm, data, id)
-}
