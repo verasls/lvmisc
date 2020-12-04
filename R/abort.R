@@ -172,7 +172,7 @@ abort_no_method_for_class <- function(fun, class, ...) {
     noun <- "class"
   }
   msg <- glue::glue(
-    "The method `{fun}`, is not yet implemented for an object \\
+    "The method `{fun}` is not yet implemented for an object \\
     of {noun} {class}."
   )
   msg <- glue::glue_collapse(c(msg, extra_msg), sep = "\n")
