@@ -100,7 +100,7 @@ abort_argument_value <- function(arg, valid_values) {
   valid_values <- glue::glue_collapse(
     glue::double_quote(valid_values), sep = ", ", last = " or "
   )
-  msg <- glue::glue("`{arg}` must be one of {valid_values}")
+  msg <- glue::glue("`{arg}` must be one of {valid_values}.")
 
   rlang::abort(
     "error_argument_value",
