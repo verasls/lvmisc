@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @seealso \code{\link[=abort_column_not_found]{abort_column_not_found()}},
-#'   \code{\link[=abort_class_not_implemented]{abort_class_not_implemented()}}
+#'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
 #'
 #' @examples
 #' \dontrun{
@@ -123,7 +123,7 @@ abort_argument_value <- function(arg, valid_values) {
 #' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
-#'   \code{\link[=abort_class_not_implemented]{abort_class_not_implemented()}}
+#'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
 #'
 #' @examples
 #' \dontrun{
@@ -146,6 +146,8 @@ abort_column_not_found <- function(data, col_name) {
 #'
 #' @param fun A character vector with the function name.
 #' @param class A character vector with the class name.
+#' @param ... Extra message to be added to the error message. Must be
+#'   character string.
 #'
 #' @export
 #'

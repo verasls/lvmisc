@@ -13,7 +13,7 @@ loocv <- function(model, data, id, keep = "all") {
 #' @rdname loocv
 #' @export
 loocv.default <- function(model, data, id, keep = "all") {
-  abort_class_not_implemented("loocv", class(model))
+  abort_no_method_for_class("loocv", class(model))
 }
 
 #' @rdname loocv
@@ -69,7 +69,7 @@ check_args_loocv <- function(model,
                              data_name) {
   if (length(class(model)) > 1) {
     classes <- class(model)[class(model) %!in% c("lm", "lmerMod")]
-    abort_class_not_implemented("loocv", classes)
+    abort_no_method_for_class("loocv", classes)
   }
   if (!is.data.frame(data)) {
     abort_argument_type(arg = "data", must = "be data.frame", not = data)
