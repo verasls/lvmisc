@@ -21,19 +21,6 @@
 #'   `".actual"` and `".predicted"` columns.
 #'
 #' @export
-#'
-#' @examples
-#' data <- tibble::tibble(
-#'   id = rep(1:10, each = 2),
-#'   x = rnorm(20, mean = 100, sd = 10),
-#'   y = x * runif(20, min = 1, max = 1.2)
-#' )
-#'
-#' olr <- stats::lm(y ~ x, data)
-#' lmm <- lme4::lmer(y ~ x + (1 | id), data)
-#'
-#' loocv(olr, data, id)
-#' loocv(lmm, data, id)
 loocv <- function(model, data, id, keep = "all") {
   UseMethod("loocv")
 }
@@ -148,7 +135,7 @@ compute_cv_values <- function(data, id, testing_data, trained_models, outcome) {
 
 arrange_values <- function(cv_values, data, id) {
   data <- data[id]
-  dplyr::full_join(data, cv_values)
+  suppressMessages(dplyr::full_join(data, cv_values))
 }
 
 get_loocv_object <- function(cv_values, id, keep) {
