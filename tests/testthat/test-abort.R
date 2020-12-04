@@ -52,3 +52,59 @@ test_that("abort_column_not_found() works", {
   expect_s3_class(err, "error_column_not_found")
   expect_equal(err$message, "Column `c` not found in `data`.")
 })
+
+test_that("abort_no_method_for_class() works", {
+  err <- rlang::catch_cnd(abort_no_method_for_class("my_fun", "my_class"))
+
+  expect_s3_class(err, "error_no_method_for_class")
+  expect_equal(
+    err$message,
+    glue::glue(
+      "The method `my_fun` is not yet implemented \\
+      for an object of class `my_class`."
+    )
+  )
+})
+
+test_that("abort_no_method_for_class() works with ... argument", {
+  err <- rlang::catch_cnd(
+    abort_no_method_for_class("my_fun", "my_class", "Extra message.")
+  )
+
+  expect_s3_class(err, "error_no_method_for_class")
+  expect_equal(
+    err$message,
+    glue::glue(
+      "The method `my_fun` is not yet implemented \\
+      for an object of class `my_class`.
+      Extra message."
+    )
+  )
+})
+
+test_that(
+  "abort_no_method_for_class() works in objects with multiple classes", {
+    err <- rlang::catch_cnd(
+      abort_no_method_for_class("my_fun", c("my_class_1", "my_class_2"))
+    )
+
+    expect_s3_class(err, "error_no_method_for_class")
+    expect_equal(
+      err$message,
+      glue::glue(
+       "The method `my_fun` is not yet implemented \\
+       for an object of classes `my_class_1` and `my_class_2`."
+      )
+    )
+  }
+)
+
+test_that("abort_no_method_for_class() error handling for ... works", {
+  err <- rlang::catch_cnd(abort_no_method_for_class("my_fun", "my_class", 1))
+
+  expect_s3_class(err, "error_argument_type")
+  expect_equal(
+    err$message,
+    "`...` must be character; not double."
+  )
+})
