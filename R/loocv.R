@@ -13,7 +13,11 @@ loocv <- function(model, data, id, keep = "all") {
 #' @rdname loocv
 #' @export
 loocv.default <- function(model, data, id, keep = "all") {
-  abort_no_method_for_class("loocv", class(model))
+  msg <- glue::glue(
+    "If you would like it to be implemented, please file an issue at\\
+    https://github.com/verasls/lvmisc/issues."
+  )
+  abort_no_method_for_class("loocv", class(model), msg)
 }
 
 #' @rdname loocv
@@ -69,7 +73,11 @@ check_args_loocv <- function(model,
                              data_name) {
   if (length(class(model)) > 1) {
     classes <- class(model)[class(model) %!in% c("lm", "lmerMod")]
-    abort_no_method_for_class("loocv", classes)
+    msg <- glue::glue(
+      "If you would like it to be implemented, please file an issue at\\
+      https://github.com/verasls/lvmisc/issues."
+    )
+    abort_no_method_for_class("loocv", classes, msg)
   }
   if (!is.data.frame(data)) {
     abort_argument_type(arg = "data", must = "be data.frame", not = data)
