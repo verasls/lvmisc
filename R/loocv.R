@@ -116,7 +116,9 @@ arrange_values <- function(cv_values, data, id) {
 }
 
 get_loocv_object <- function(cv_values, id, keep) {
-  if (keep == "used") {
+  if (keep == "all") {
+    new_loocv(cv_values)
+  } else if (keep == "used") {
     vars <- c(
       rlang::as_string(rlang::ensym(id)),
       ".actual", ".predicted"
@@ -124,8 +126,6 @@ get_loocv_object <- function(cv_values, id, keep) {
     new_loocv(cv_values[vars])
   } else if (keep == "none") {
     new_loocv(cv_values[c(".actual", ".predicted")])
-  } else if (keep == "all") {
-    new_loocv(cv_values)
   }
 }
 
