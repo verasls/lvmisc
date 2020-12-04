@@ -65,6 +65,8 @@ reference:
     - lu
     - pa
     - tb
+    - lt
+    - le
 
 - title: Create a project
   contents:
