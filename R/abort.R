@@ -153,7 +153,7 @@ abort_column_not_found <- function(data, col_name) {
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
 #'   \code{\link[=abort_column_not_found]{abort_column_not_found()}}
-abort_class_not_implemented <- function(fun, class, ...) {
+abort_no_method_for_class <- function(fun, class, ...) {
   extra_msg <- list(...)
   if (any(purrr::map(extra_msg, is.character) == FALSE)) {
     abort_argument_type("...", must = "be character", not = ...)
@@ -175,5 +175,5 @@ abort_class_not_implemented <- function(fun, class, ...) {
   )
   msg <- glue::glue_collapse(c(msg, extra_msg), sep = "\n")
 
-  rlang::abort("error_class_not_implemented", message = msg)
+  rlang::abort("error_no_method_for_class", message = msg)
 }
