@@ -1,11 +1,39 @@
-#' Perform a leave-one-out cross-validation
+#' Leave-one-out cross-validation
 #'
-#' @param model A model object.
+#' Cross-validates the model using the leave-one-out approach. In this method
+#'   each subject's data is separated into a testing data set, and all other
+#'   subject's are kept in the training data set, with as many resamples as
+#'   the number of subjects in the original data set. It computes the model's
+#'   predicted value in the testing data set for each subject.
+#'
+#' @param model An object containing a model.
 #' @param data A data frame.
 #' @param id The bare (unquoted) name of the column which identifies subjects.
-#' @param keep A character string indicating which variables to keep.
+#' @param keep A character string which controls which columns are present in
+#'   the output. Can be one of three options:
+#'   * `"all"`: The default. Retain all variables in the original data frame
+#'   plus the `".actual"` and `".predicted"` columns.
+#'   * `"used"`: Keeps only the `"id"` column of the original data frame, plus
+#'   the `".actual"` and `".predicted"` columns.
+#'   * `"none"`: Returns just the `".actual"` and `".predicted" columns.
+#'
+#' @return Returns an object of class \code{loocv}. A tibble containing the
+#'   `".actual"` and `".predicted"` columns.
 #'
 #' @export
+#'
+#' @examples
+#' data <- tibble::tibble(
+#'   id = rep(1:10, each = 2),
+#'   x = rnorm(20, mean = 100, sd = 10),
+#'   y = x * runif(20, min = 1, max = 1.2)
+#' )
+#'
+#' olr <- stats::lm(y ~ x, data)
+#' lmm <- lme4::lmer(y ~ x + (1 | id), data)
+#'
+#' loocv(olr, data, id)
+#' loocv(lmm, data, id)
 loocv <- function(model, data, id, keep = "all") {
   UseMethod("loocv")
 }

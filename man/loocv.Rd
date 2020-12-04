@@ -5,7 +5,7 @@
 \alias{loocv.default}
 \alias{loocv.lm}
 \alias{loocv.lmerMod}
-\title{Perform a leave-one-out cross-validation}
+\title{Leave-one-out cross-validation}
 \usage{
 loocv(model, data, id, keep = "all")
 
@@ -16,14 +16,43 @@ loocv(model, data, id, keep = "all")
 \method{loocv}{lmerMod}(model, data, id, keep = "all")
 }
 \arguments{
-\item{model}{A model object.}
+\item{model}{An object containing a model.}
 
 \item{data}{A data frame.}
 
 \item{id}{The bare (unquoted) name of the column which identifies subjects.}
 
-\item{keep}{A character string indicating which variables to keep.}
+\item{keep}{A character string which controls which columns are present in
+the output. Can be one of three options:
+\itemize{
+\item \code{"all"}: The default. Retain all variables in the original data frame
+plus the \code{".actual"} and \code{".predicted"} columns.
+\item \code{"used"}: Keeps only the \code{"id"} column of the original data frame, plus
+the \code{".actual"} and \code{".predicted"} columns.
+\item \code{"none"}: Returns just the \code{".actual"} and `".predicted" columns.
+}}
+}
+\value{
+Returns an object of class \code{loocv}. A tibble containing the
+\code{".actual"} and \code{".predicted"} columns.
 }
 \description{
-Perform a leave-one-out cross-validation
+Cross-validates the model using the leave-one-out approach. In this method
+each subject's data is separated into a testing data set, and all other
+subject's are kept in the training data set, with as many resamples as
+the number of subjects in the original data set. It computes the model's
+predicted value in the testing data set for each subject.
+}
+\examples{
+data <- tibble::tibble(
+  id = rep(1:10, each = 2),
+  x = rnorm(20, mean = 100, sd = 10),
+  y = x * runif(20, min = 1, max = 1.2)
+)
+
+olr <- stats::lm(y ~ x, data)
+lmm <- lme4::lmer(y ~ x + (1 | id), data)
+
+loocv(olr, data, id)
+loocv(lmm, data, id)
 }
