@@ -6,14 +6,21 @@
 #' @param ... Passed to \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 #'
 #' @export
-#'
-#' @seealso \code{\link[rlang:trace_back]{rlang::trace_back()}}.
-#'
-#' @examples
-#' f <- function() g()
-#' g <- function() h()
-#' h <- function() tb()
 tb <- function(...) rlang::trace_back(...)
+
+#' Last error
+#'
+#' \code{lt()} prints the last error and the full backtrace and \code{le()}
+#'   returns the last error with a simplified backtrace. These functions are
+#'   just wrappers to \code{\link[rlang:last_trace]{rlang::last_trace()}} and
+#'   \code{\link[rlang:last_error]{rlang::last_error()}} respectively.
+#'
+#' @export
+lt <- function() rlang::last_trace()
+
+#' @rdname lt
+#' @export
+le <- function() rlang::last_error()
 
 #' Print all rows of a data frame or tibble
 #'
@@ -34,7 +41,7 @@ pa <- function(data) {
   print(data, n = Inf)
 }
 
-#' Number elements in a vector.
+#' Number of elements in a vector.
 #'
 #' \code{lu} returns the number of non-\code{NA} unique elements and \code{lna}
 #'   returns the number of \code{NA}s.

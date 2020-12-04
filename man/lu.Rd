@@ -3,7 +3,7 @@
 \name{lu}
 \alias{lu}
 \alias{lna}
-\title{Number elements in a vector.}
+\title{Number of elements in a vector.}
 \usage{
 lu(x)
 

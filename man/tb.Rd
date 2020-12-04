@@ -13,11 +13,3 @@ tb(...)
 Captures the sequence of calls that lead to the current function. It is just
 a wrapper to \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 }
-\examples{
-f <- function() g()
-g <- function() h()
-h <- function() tb()
-}
-\seealso{
-\code{\link[rlang:trace_back]{rlang::trace_back()}}.
-}
