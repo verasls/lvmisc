@@ -90,14 +90,18 @@ get_training_data <- function(x) rsample::analysis(x)
 get_testing_data <- function(x) rsample::assessment(x)
 
 compute_cv_values <- function(testing_data, trained_models, outcome) {
-  predicted <- purrr::map2_dfr(
-    testing_data, trained_models,
-    ~ modelr::add_predictions(.x, .y, var = ".predicted")
+  predicted <- purrr::map2(
+    trained_models, testing_data,
+    ~ stats::predict(.x, newdata = .y, allow.new.levels = TRUE)
   )
+  predicted <- unname(
+    purrr::as_vector(purrr::map_dfr(predicted, tibble::as_tibble))
+  )
+  testing_data <- purrr::map_dfr(testing_data, rbind)
   tibble::add_column(
-    predicted,
-    ".actual" = predicted[[outcome]],
-    .before = ".predicted"
+    testing_data,
+    ".actual" = testing_data[[outcome]],
+    ".predicted" = predicted
   )
 }
 
