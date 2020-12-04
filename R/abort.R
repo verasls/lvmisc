@@ -153,21 +153,27 @@ abort_column_not_found <- function(data, col_name) {
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
 #'   \code{\link[=abort_column_not_found]{abort_column_not_found()}}
-abort_class_not_implemented <- function(fun, class) {
+abort_class_not_implemented <- function(fun, class, ...) {
+  extra_msg <- list(...)
+  if (any(purrr::map(extra_msg, is.character) == FALSE)) {
+    abort_argument_type("...", must = "be character", not = ...)
+  } else {
+    extra_msg <- glue::glue_collapse(extra_msg, sep = "\n")
+  }
   if (length(class) > 1) {
     class <- glue::glue_collapse(
-     glue::glue("{class}"), sep = ", ", last = " and "
+     glue::glue("`{class}`"), sep = ", ", last = " and "
     )
     noun <- "classes"
   } else {
+    class <- glue::glue("`{class}`")
     noun <- "class"
   }
   msg <- glue::glue(
     "The method `{fun}`, is not yet implemented for an object \\
-    of {noun} {class}.
-    If you would like it to be implemented, please file an issue at \\
-    https://github.com/verasls/lvmisc/issues."
+    of {noun} {class}."
   )
+  msg <- glue::glue_collapse(c(msg, extra_msg), sep = "\n")
 
   rlang::abort("error_class_not_implemented", message = msg)
 }
