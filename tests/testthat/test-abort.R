@@ -34,3 +34,13 @@ test_that("abort_argument_diff_length() works", {
   expect_equal(err$arg, list("x", "y"))
   expect_equal(err$must, "have the same length")
 })
+
+test_that("abort_argument_value() works", {
+  valid_values <- c("one", "two", "three")
+  x <- "zero"
+  err <- rlang::catch_cnd(abort_argument_value("x", valid_values))
+
+  expect_s3_class(err, "error_argument_value")
+  expect_equal(err$message, "`x` must be one of \"one\", \"two\" or \"three\".")
+  expect_equal(err$arg, "x")
+})
