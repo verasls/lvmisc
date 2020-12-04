@@ -44,3 +44,11 @@ test_that("abort_argument_value() works", {
   expect_equal(err$message, "`x` must be one of \"one\", \"two\" or \"three\".")
   expect_equal(err$arg, "x")
 })
+
+test_that("abort_column_not_found() works", {
+  data <- data.frame(a = 1, b = 2)
+  err <- rlang::catch_cnd(abort_column_not_found("data", "c"))
+
+  expect_s3_class(err, "error_column_not_found")
+  expect_equal(err$message, "Column `c` not found in `data`.")
+})
