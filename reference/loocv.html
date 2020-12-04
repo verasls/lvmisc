@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Perform a leave-one-out cross-validation — loocv • lvmisc</title>
+<title>Leave-one-out cross-validation — loocv • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,8 +52,12 @@
 
 
 
-<meta property="og:title" content="Perform a leave-one-out cross-validation — loocv" />
-<meta property="og:description" content="Perform a leave-one-out cross-validation" />
+<meta property="og:title" content="Leave-one-out cross-validation — loocv" />
+<meta property="og:description" content="Cross-validates the model using the leave-one-out approach. In this method
+each subject's data is separated into a testing data set, and all other
+subject's are kept in the training data set, with as many resamples as
+the number of subjects in the original data set. It computes the model's
+predicted value in the testing data set for each subject." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -137,13 +141,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Perform a leave-one-out cross-validation</h1>
+    <h1>Leave-one-out cross-validation</h1>
     <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/loocv.R'><code>R/loocv.R</code></a></small>
     <div class="hidden name"><code>loocv.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Perform a leave-one-out cross-validation</p>
+    <p>Cross-validates the model using the leave-one-out approach. In this method
+each subject's data is separated into a testing data set, and all other
+subject's are kept in the training data set, with as many resamples as
+the number of subjects in the original data set. It computes the model's
+predicted value in the testing data set for each subject.</p>
     </div>
 
     <pre class="usage"><span class='fu'>loocv</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>data</span>, <span class='va'>id</span>, keep <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
@@ -162,7 +170,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>A model object.</p></td>
+      <td><p>An object containing a model.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -174,10 +182,21 @@
     </tr>
     <tr>
       <th>keep</th>
-      <td><p>A character string indicating which variables to keep.</p></td>
+      <td><p>A character string which controls which columns are present in
+the output. Can be one of three options:</p><ul>
+<li><p><code>"all"</code>: The default. Retain all variables in the original data frame
+plus the <code>".actual"</code> and <code>".predicted"</code> columns.</p></li>
+<li><p><code>"used"</code>: Keeps only the <code>"id"</code> column of the original data frame, plus
+the <code>".actual"</code> and <code>".predicted"</code> columns.</p></li>
+<li><p><code>"none"</code>: Returns just the <code>".actual"</code> and `".predicted" columns.</p></li>
+</ul></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns an object of class <code>loocv</code>. A tibble containing the
+<code>".actual"</code> and <code>".predicted"</code> columns.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
