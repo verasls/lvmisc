@@ -41,9 +41,7 @@ abort_argument_type <- function(arg, must, not) {
 }
 
 #' @rdname abort_argument
-#'
 #' @export
-#'
 #' @examples
 #' \dontrun{
 #' x <- 1:10
@@ -65,11 +63,8 @@ abort_argument_length <- function(arg, must, not) {
 }
 
 #' @rdname abort_argument
-#'
 #' @param arg1,arg2 A character string with the argument name.
-#'
 #' @export
-#'
 #' @examples
 #' \dontrun{
 #' x <- 1:5
@@ -90,12 +85,9 @@ abort_argument_diff_length <- function(arg1, arg2) {
 }
 
 #' @rdname abort_argument
-#'
 #' @param arg A character string with the argument name.
 #' @param valid_values A character vectpr with the vaid values.
-#'
 #' @export
-#'
 #' @examples
 #' \dontrun{
 #' keep <- "no"
