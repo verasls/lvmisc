@@ -43,3 +43,8 @@ subject's are kept in the training data set, with as many resamples as
 the number of subjects in the original data set. It computes the model's
 predicted value in the testing data set for each subject.
 }
+\examples{
+mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+m <- stats::lm(disp ~ mpg, mtcars)
+loocv(m, mtcars, car, keep = "used")
+}

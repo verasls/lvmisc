@@ -21,6 +21,11 @@
 #'   `".actual"` and `".predicted"` columns.
 #'
 #' @export
+#'
+#' @examples
+#' mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+#' m <- stats::lm(disp ~ mpg, mtcars)
+#' loocv(m, mtcars, car, keep = "used")
 loocv <- function(model, data, id, keep = "all") {
   UseMethod("loocv")
 }
