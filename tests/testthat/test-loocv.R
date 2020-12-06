@@ -33,3 +33,11 @@ test_that("error handling worls", {
     class = "error_argument_value"
   )
 })
+
+test_that("returned object is of class loocv", {
+  mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+  m <- stats::lm(disp ~ mpg, mtcars)
+  cv <- loocv(m, mtcars, car)
+  
+  expect_s3_class(cv, "loocv")
+})
