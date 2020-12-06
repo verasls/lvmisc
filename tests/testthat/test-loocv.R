@@ -38,6 +38,18 @@ test_that("returned object is of class loocv", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m <- stats::lm(disp ~ mpg, mtcars)
   cv <- loocv(m, mtcars, car)
-  
+
   expect_s3_class(cv, "loocv")
+})
+
+test_that("`keep` argument works", {
+  mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+  m <- stats::lm(disp ~ mpg, mtcars)
+  cv1 <- loocv(m, mtcars, car, keep = "all")
+  cv2 <- loocv(m, mtcars, car, keep = "used")
+  cv3 <- loocv(m, mtcars, car, keep = "none")
+
+  expect_equal(names(cv1), c(names(mtcars), ".actual", ".predicted"))
+  expect_equal(names(cv2), c("car", ".actual", ".predicted"))
+  expect_equal(names(cv3), c(".actual", ".predicted"))
 })
