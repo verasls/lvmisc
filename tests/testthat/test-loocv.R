@@ -63,3 +63,11 @@ test_that("`keep` argument works", {
   expect_equal(names(cv2), c("car", ".actual", ".predicted"))
   expect_equal(names(cv3), c(".actual", ".predicted"))
 })
+
+test_that("loocv method for lmerMod class works", {
+  mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+  m <- lme4::lmer(disp ~ mpg + (1 | gear), mtcars)
+  cv <- loocv(m, mtcars, car, keep = "none")
+
+  expect_equal(names(cv), c(".actual", ".predicted"))
+})
