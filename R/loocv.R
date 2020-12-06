@@ -34,7 +34,7 @@ loocv <- function(model, data, id, keep = "all") {
 #' @export
 loocv.default <- function(model, data, id, keep = "all") {
   msg <- glue::glue(
-    "If you would like it to be implemented, please file an issue at\\
+    "If you would like it to be implemented, please file an issue at \\
     https://github.com/verasls/lvmisc/issues."
   )
   abort_no_method_for_class("loocv", class(model), msg)
@@ -94,7 +94,7 @@ check_args_loocv <- function(model,
   if (length(class(model)) > 1) {
     classes <- class(model)[class(model) %!in% c("lm", "lmerMod")]
     msg <- glue::glue(
-      "If you would like it to be implemented, please file an issue at\\
+      "If you would like it to be implemented, please file an issue at \\
       https://github.com/verasls/lvmisc/issues."
     )
     abort_no_method_for_class("loocv", classes, msg)
