@@ -23,3 +23,28 @@ test_that("error handling works", {
     class = "error_argument_type"
   )
 })
+
+test_that("accuracy() returns a data frame with the right columns", {
+  mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+  m1 <- stats::lm(disp ~ mpg, mtcars)
+  m2 <- lme4::lmer(disp ~ mpg + (1 | gear), mtcars)
+  cv1 <- loocv(m1, mtcars, car)
+  cv2 <- loocv(m2, mtcars, car)
+
+  expect_equal(
+    names(accuracy(m1)),
+    c("R2", "MAE", "MAPE", "RMSE")
+  )
+  expect_equal(
+    names(accuracy(m2)),
+    c("R2_marg", "R2_cond", "MAE", "MAPE", "RMSE")
+  )
+  expect_equal(
+    names(accuracy(cv1)),
+    c("R2", "MAE", "MAPE", "RMSE")
+  )
+  expect_equal(
+    names(accuracy(cv2)),
+    c("R2_marg", "R2_cond", "MAE", "MAPE", "RMSE")
+  )
+})
