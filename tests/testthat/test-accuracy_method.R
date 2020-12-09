@@ -22,6 +22,16 @@ test_that("error handling works", {
     "`na.rm` must be logical; not character.",
     class = "error_argument_type"
   )
+  expect_error(
+    accuracy("m1"),
+    glue::glue(
+      "The method `accuracy` is not yet implemented for an object \\
+      of class `character`.
+      If you would like it to be implemented, please file an issue at \\
+      https://github.com/verasls/lvmisc/issues."
+    ),
+    class = "error_no_method_for_class"
+  )
 })
 
 test_that("accuracy() returns a data frame with the right columns", {
