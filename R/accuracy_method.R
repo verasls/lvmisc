@@ -46,7 +46,7 @@ accuracy.default <- function(x, na.rm = FALSE) {
 #' @rdname accuracy
 #' @export
 accuracy.loocv <- function(x, na.rm = FALSE) {
-  model <- attributes(x)$model
+  model <- attributes(x)$loocv_model
 
   check_args_accuracy(x, na.rm)
 
@@ -96,7 +96,7 @@ accuracy.lmerMod <- function(x, na.rm = FALSE) {
 }
 
 check_args_accuracy <- function(x, na.rm) {
-  if (length(class(x)) > 1) {
+  if ("loocv" %!in% class(x) & length(class(x)) > 1) {
     classes <- class(x)[class(x) %!in% c("lm", "lmerMod")]
     msg <- glue::glue(
       "If you would like it to be implemented, please file an issue at \\
