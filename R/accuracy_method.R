@@ -17,11 +17,14 @@ accuracy.default <- function(x, na.rm = FALSE) {
 #' @rdname accuracy
 #' @export
 accuracy.loocv <- function(x, na.rm = FALSE) {
+  model <- attributes(x)$model
+
+  R2 <- summary(model)$adj.r.squared
   MAE <- mean_error_abs(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
   MAPE <- mean_error_abs_pct(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
   RMSE <- mean_error_sqr_root(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
 
-  data.frame(MAE, MAPE, RMSE)
+  data.frame(R2, MAE, MAPE, RMSE)
 }
 
 #' @rdname accuracy
