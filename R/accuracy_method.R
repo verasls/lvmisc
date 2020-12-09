@@ -39,3 +39,20 @@ accuracy.lm <- function(x, na.rm = FALSE) {
 
   data.frame(R2, MAE, MAPE, RMSE)
 }
+
+#' @rdname accuracy
+#' @export
+accuracy.lmerMod <- function(x, na.rm = FALSE) {
+  formula <- stats::formula(x)
+  outcome <- as.character(rlang::f_lhs(formula))
+  actual <- stats::model.frame(x)[[outcome]]
+  predicted <- stats::predict(x)
+
+  R2_marg <- piecewiseSEM::rsquared(x)[["Marginal"]]
+  R2_cond <- piecewiseSEM::rsquared(x)[["Conditional"]]
+  MAE <- mean_error_abs(actual, predicted, na.rm = na.rm)
+  MAPE <- mean_error_abs_pct(actual, predicted, na.rm = na.rm)
+  RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
+
+  data.frame(R2_marg, R2_cond, MAE, MAPE, RMSE)
+}

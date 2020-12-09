@@ -2,6 +2,7 @@
 
 S3method(accuracy,default)
 S3method(accuracy,lm)
+S3method(accuracy,lmerMod)
 S3method(accuracy,loocv)
 S3method(format,lvmisc_percent)
 S3method(loocv,default)
