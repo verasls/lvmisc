@@ -56,7 +56,7 @@ loocv.lm <- function(model, data, id, keep = "all") {
   cv_values <- compute_cv_values(
     data, id_col_name, splits$testing_data, trained_models, outcome
   )
-  get_loocv_object(cv_values, id_col_name, keep)
+  get_loocv_object(cv_values, model, id_col_name, keep)
 }
 
 #' @rdname loocv
@@ -82,7 +82,7 @@ loocv.lmerMod <- function(model, data, id, keep = "all") {
   cv_values <- compute_cv_values(
     data, id_col_name, splits$testing_data, trained_models, outcome
   )
-  get_loocv_object(cv_values, id_col_name, keep)
+  get_loocv_object(cv_values, model, id_col_name, keep)
 }
 
 check_args_loocv <- function(model,
@@ -143,28 +143,29 @@ arrange_values <- function(cv_values, data, id) {
   suppressMessages(dplyr::full_join(data, cv_values))
 }
 
-get_loocv_object <- function(cv_values, id, keep) {
+get_loocv_object <- function(cv_values, model, id, keep) {
   if (keep == "all") {
-    new_loocv(cv_values)
+    new_loocv(cv_values, model)
   } else if (keep == "used") {
     vars <- c(
       id,
       ".actual", ".predicted"
     )
-    new_loocv(cv_values[vars])
+    new_loocv(cv_values[vars], model)
   } else if (keep == "none") {
-    new_loocv(cv_values[c(".actual", ".predicted")])
+    new_loocv(cv_values[c(".actual", ".predicted")], model)
   }
 }
 
 #' Constructor for loocv object
 #'
 #' @param x A data.frame.
+#' @param model An object containing a model.
 #' @keywords internal
-new_loocv <- function(x) {
+new_loocv <- function(x, model) {
   stopifnot(is.data.frame(x))
   stopifnot(".actual" %in% names(x))
   stopifnot(".predicted" %in% names(x))
   n_rows <- nrow(x)
-  tibble::new_tibble(x, nrow = n_rows, class = "loocv")
+  tibble::new_tibble(x, model = model, nrow = n_rows, class = "loocv")
 }

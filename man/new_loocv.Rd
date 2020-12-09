@@ -4,10 +4,12 @@
 \alias{new_loocv}
 \title{Constructor for loocv object}
 \usage{
-new_loocv(x)
+new_loocv(x, model)
 }
 \arguments{
 \item{x}{A data.frame.}
+
+\item{model}{An object containing a model.}
 }
 \description{
 Constructor for loocv object
