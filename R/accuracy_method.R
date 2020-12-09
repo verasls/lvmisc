@@ -1,5 +1,34 @@
 #' Model accuracy
+#'
+#' Computes some common model accuracy indices, such as the R squared, mean
+#'   absolute error, mean absolute percent error and root mean square error.
+#'
+#' @param x An object of class \code{loocv} or an object containing a model.
+#' @param na.rm A logical value indicating whether or not to strip \code{NA}
+#'   values to compute the indices. Defaults to \code{FALSE}.
+#'
+#' @return The method for the \code{lm} class (or for the \code{loocv} class
+#'   of a \code{lm}) returns a data frame with the columns \code{R2} (R
+#'   squared), \code{MAE} (mean absolute error), \code{MAPE} (mean absolute
+#'   percent error) and \code{RMSE} (root mean square error). 
+#'
+#'   The method for the \code{lmerMod} (or for the \code{loocv} class of a
+#'   \code{lmerMod}) returns a data frame with the columns \code{R2_marg} and
+#'   \code{R2_cond} instead of the column \code{R2}. All the other columns are
+#'   the same as the method for \code{lm}. \code{R2_marg} is the marginal R
+#'   squared, which considers only the variance by the fixed effects of a mixed
+#'   model, and \code{R2_cond} is the conditional R squared, which considers
+#'   both fixed and random effects variance.
+#'
 #' @export
+#'
+#' @examples
+#' mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+#' m <- stats::lm(disp ~ mpg, mtcars)
+#' cv <- loocv(m, mtcars, car, keep = "used")
+#'
+#' accuracy(m)
+#' accuracy(cv)
 accuracy <- function(x, na.rm = FALSE) {
   UseMethod("accuracy")
 }
