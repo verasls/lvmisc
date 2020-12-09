@@ -167,5 +167,5 @@ new_loocv <- function(x, model) {
   stopifnot(".actual" %in% names(x))
   stopifnot(".predicted" %in% names(x))
   n_rows <- nrow(x)
-  tibble::new_tibble(x, model = model, nrow = n_rows, class = "loocv")
+  tibble::new_tibble(x, loocv_model = model, nrow = n_rows, class = "loocv")
 }
