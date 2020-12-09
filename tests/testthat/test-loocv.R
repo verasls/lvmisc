@@ -52,6 +52,14 @@ test_that("returned object is of class loocv", {
   expect_s3_class(cv, "loocv")
 })
 
+test_that("loocv class has a loocv_model attribute", {
+  mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+  m <- stats::lm(disp ~ mpg, mtcars)
+  cv <- loocv(m, mtcars, car)
+
+  expect_true("loocv_model" %in% names(attributes(cv)))
+})
+
 test_that("`keep` argument works", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m <- stats::lm(disp ~ mpg, mtcars)
