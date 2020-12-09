@@ -48,6 +48,8 @@ accuracy.default <- function(x, na.rm = FALSE) {
 accuracy.loocv <- function(x, na.rm = FALSE) {
   model <- attributes(x)$model
 
+  check_args_accuracy(x, na.rm)
+
   R2 <- get_r2(model)
   MAE <- mean_error_abs(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
   MAPE <- mean_error_abs_pct(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
@@ -59,6 +61,8 @@ accuracy.loocv <- function(x, na.rm = FALSE) {
 #' @rdname accuracy
 #' @export
 accuracy.lm <- function(x, na.rm = FALSE) {
+  check_args_accuracy(x, na.rm)
+
   formula <- stats::formula(x)
   outcome <- as.character(rlang::f_lhs(formula))
   actual <- x$model[[outcome]]
@@ -75,6 +79,8 @@ accuracy.lm <- function(x, na.rm = FALSE) {
 #' @rdname accuracy
 #' @export
 accuracy.lmerMod <- function(x, na.rm = FALSE) {
+  check_args_accuracy(x, na.rm)
+
   formula <- stats::formula(x)
   outcome <- as.character(rlang::f_lhs(formula))
   actual <- stats::model.frame(x)[[outcome]]
@@ -87,6 +93,24 @@ accuracy.lmerMod <- function(x, na.rm = FALSE) {
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
 
   data.frame(R2_marg, R2_cond, MAE, MAPE, RMSE)
+}
+
+check_args_accuracy <- function(x, na.rm) {
+  if (length(class(x)) > 1) {
+    classes <- class(x)[class(x) %!in% c("lm", "lmerMod")]
+    msg <- glue::glue(
+      "If you would like it to be implemented, please file an issue at \\
+      https://github.com/verasls/lvmisc/issues."
+    )
+    abort_no_method_for_class("accuracy", classes, msg)
+  }
+  if (!is.logical(na.rm)) {
+    abort_argument_type(
+      arg = "na.rm",
+      must = "be logical",
+      not = na.rm
+    )
+  }
 }
 
 get_r2 <- function(model) {
