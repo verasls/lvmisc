@@ -19,12 +19,12 @@ accuracy.default <- function(x, na.rm = FALSE) {
 accuracy.loocv <- function(x, na.rm = FALSE) {
   model <- attributes(x)$model
 
-  R2 <- summary(model)$adj.r.squared
+  R2 <- get_r2(model)
   MAE <- mean_error_abs(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
   MAPE <- mean_error_abs_pct(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
   RMSE <- mean_error_sqr_root(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
 
-  data.frame(R2, MAE, MAPE, RMSE)
+  cbind(R2, data.frame(MAE, MAPE, RMSE))
 }
 
 #' @rdname accuracy
@@ -58,4 +58,14 @@ accuracy.lmerMod <- function(x, na.rm = FALSE) {
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
 
   data.frame(R2_marg, R2_cond, MAE, MAPE, RMSE)
+}
+
+get_r2 <- function(model) {
+  if (class(model) == "lm") {
+    summary(model)$adj.r.squared
+  } else if (class(model) == "lmerMod") {
+    R2_marg <- piecewiseSEM::rsquared(model)[["Marginal"]]
+    R2_cond <- piecewiseSEM::rsquared(model)[["Conditional"]]
+    data.frame(R2_marg, R2_cond)
+  }
 }
