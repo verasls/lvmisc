@@ -1,4 +1,4 @@
-bland_altman_plot <- function(x) {
+bland_altman_plot <- function(x, ...) {
   data <- model_data(x)
   plot_data <- data$model_data
   bias <- data$bias
@@ -6,7 +6,7 @@ bland_altman_plot <- function(x) {
   upper_loa <- data$loa$upper
 
   ggplot2::ggplot(plot_data) +
-    ggplot2::geom_point(ggplot2::aes(x = mean, y = diff)) +
+    ggplot2::geom_point(ggplot2::aes(x = mean, y = diff, ...)) +
     ggplot2::geom_hline(yintercept = bias) +
     ggplot2::geom_hline(yintercept = lower_loa, linetype = "longdash") +
     ggplot2::geom_hline(yintercept = upper_loa, linetype = "longdash")
@@ -24,7 +24,7 @@ model_data.lvmisc_cv <- function(x) {
   loa <- loa(x[[".actual"]], x[[".predicted"]], na.rm = TRUE)
 
   list(
-    model_data = tibble::tibble(mean, diff),
+    model_data = cbind(x, mean, diff),
     bias = bias, loa = loa
   )
 }
