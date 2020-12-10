@@ -1,11 +1,11 @@
 test_that("abort_argument_type() works", {
   x <- letters
-  err <- rlang::catch_cnd(
+  err <- expect_error(
     abort_argument_type("x", must = "be numeric", not = x)
   )
 
   expect_s3_class(err, "error_argument_type")
-  expect_equal(err$message, "`x` must be numeric; not character.")
+  expect_equal(unclass(err$message), "`x` must be numeric; not character.")
   expect_equal(err$arg, "x")
   expect_equal(err$must, "be numeric")
   expect_equal(err$not, "character")
@@ -13,12 +13,12 @@ test_that("abort_argument_type() works", {
 
 test_that("abort_argument_length() works", {
   x <- 1:10
-  err <- rlang::catch_cnd(
+  err <- expect_error(
     abort_argument_length("x", must = "have length 1", not = x)
   )
 
   expect_s3_class(err, "error_argument_length")
-  expect_equal(err$message, "`x` must have length 1; not 10.")
+  expect_equal(unclass(err$message), "`x` must have length 1; not 10.")
   expect_equal(err$arg, "x")
   expect_equal(err$must, "have length 1")
   expect_equal(err$not, 10)
@@ -27,10 +27,10 @@ test_that("abort_argument_length() works", {
 test_that("abort_argument_diff_length() works", {
   x <- 1:5
   y <- 1:10
-  err <- rlang::catch_cnd(abort_argument_diff_length("x", "y"))
+  err <- expect_error(abort_argument_diff_length("x", "y"))
 
   expect_s3_class(err, "error_argument_diff_length")
-  expect_equal(err$message, "`x` and `y` must have the same length.")
+  expect_equal(unclass(err$message), "`x` and `y` must have the same length.")
   expect_equal(err$arg, list("x", "y"))
   expect_equal(err$must, "have the same length")
 })
@@ -38,23 +38,25 @@ test_that("abort_argument_diff_length() works", {
 test_that("abort_argument_value() works", {
   valid_values <- c("one", "two", "three")
   x <- "zero"
-  err <- rlang::catch_cnd(abort_argument_value("x", valid_values))
+  err <- expect_error(abort_argument_value("x", valid_values))
 
   expect_s3_class(err, "error_argument_value")
-  expect_equal(err$message, "`x` must be one of \"one\", \"two\" or \"three\".")
+  expect_equal(
+    unclass(err$message), "`x` must be one of \"one\", \"two\" or \"three\"."
+  )
   expect_equal(err$arg, "x")
 })
 
 test_that("abort_column_not_found() works", {
   data <- data.frame(a = 1, b = 2)
-  err <- rlang::catch_cnd(abort_column_not_found("data", "c"))
+  err <- expect_error(abort_column_not_found("data", "c"))
 
   expect_s3_class(err, "error_column_not_found")
-  expect_equal(err$message, "Column `c` not found in `data`.")
+  expect_equal(unclass(err$message), "Column `c` not found in `data`.")
 })
 
 test_that("abort_no_method_for_class() works", {
-  err <- rlang::catch_cnd(abort_no_method_for_class("my_fun", "my_class"))
+  err <- expect_error(abort_no_method_for_class("my_fun", "my_class"))
 
   expect_s3_class(err, "error_no_method_for_class")
   expect_equal(
@@ -67,7 +69,7 @@ test_that("abort_no_method_for_class() works", {
 })
 
 test_that("abort_no_method_for_class() works with ... argument", {
-  err <- rlang::catch_cnd(
+  err <- expect_error(
     abort_no_method_for_class("my_fun", "my_class", "Extra message.")
   )
 
@@ -84,7 +86,7 @@ test_that("abort_no_method_for_class() works with ... argument", {
 
 test_that(
   "abort_no_method_for_class() works in objects with multiple classes", {
-    err <- rlang::catch_cnd(
+    err <- expect_error(
       abort_no_method_for_class("my_fun", c("my_class_1", "my_class_2"))
     )
 
@@ -100,11 +102,11 @@ test_that(
 )
 
 test_that("abort_no_method_for_class() error handling for ... works", {
-  err <- rlang::catch_cnd(abort_no_method_for_class("my_fun", "my_class", 1))
+  err <- expect_error(abort_no_method_for_class("my_fun", "my_class", 1))
 
   expect_s3_class(err, "error_argument_type")
   expect_equal(
-    err$message,
+    unclass(err$message),
     "`...` must be character; not double."
   )
 })

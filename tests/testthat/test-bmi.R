@@ -65,7 +65,7 @@ test_that("bmi_cat() works", {
 
   out <- bmi_cat(bmi)
 
-  expect_is(out, "factor")
+  expect_s3_class(out, "factor")
   expect_equal(
     out,
     forcats::as_factor(c(

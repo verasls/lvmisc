@@ -20,7 +20,7 @@ test_that("divide_by_quantile() works", {
   x <- c(1:9, NA)
   out <- divide_by_quantile(x, 3)
 
-  expect_is(out, "factor")
+  expect_s3_class(out, "factor")
   expect_equal(
     out,
     factor(c(1, 1, 1, 2, 2, 2, 3, 3, 3, NA))
