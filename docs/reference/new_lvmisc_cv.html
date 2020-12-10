@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Leave-one-out cross-validation — loocv • lvmisc</title>
+<title>Constructor for loocv object — new_lvmisc_cv • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,12 +52,8 @@
 
 
 
-<meta property="og:title" content="Leave-one-out cross-validation — loocv" />
-<meta property="og:description" content="Cross-validates the model using the leave-one-out approach. In this method
-each subject's data is separated into a testing data set, and all other
-subject's are kept in the training data set, with as many resamples as
-the number of subjects in the original data set. It computes the model's
-predicted value in the testing data set for each subject." />
+<meta property="og:title" content="Constructor for loocv object — new_lvmisc_cv" />
+<meta property="og:description" content="Constructor for loocv object" />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -147,81 +143,31 @@ predicted value in the testing data set for each subject." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Leave-one-out cross-validation</h1>
+    <h1>Constructor for loocv object</h1>
     <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/loocv.R'><code>R/loocv.R</code></a></small>
-    <div class="hidden name"><code>loocv.Rd</code></div>
+    <div class="hidden name"><code>new_lvmisc_cv.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Cross-validates the model using the leave-one-out approach. In this method
-each subject's data is separated into a testing data set, and all other
-subject's are kept in the training data set, with as many resamples as
-the number of subjects in the original data set. It computes the model's
-predicted value in the testing data set for each subject.</p>
+    <p>Constructor for loocv object</p>
     </div>
 
-    <pre class="usage"><span class='fu'>loocv</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>data</span>, <span class='va'>id</span>, keep <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
-
-<span class='co'># S3 method for default</span>
-<span class='fu'>loocv</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>data</span>, <span class='va'>id</span>, keep <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
-
-<span class='co'># S3 method for lm</span>
-<span class='fu'>loocv</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>data</span>, <span class='va'>id</span>, keep <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span>
-
-<span class='co'># S3 method for lmerMod</span>
-<span class='fu'>loocv</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>data</span>, <span class='va'>id</span>, keep <span class='op'>=</span> <span class='st'>"all"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>new_lvmisc_cv</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>model</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>x</th>
+      <td><p>A data.frame.</p></td>
+    </tr>
+    <tr>
       <th>model</th>
       <td><p>An object containing a model.</p></td>
     </tr>
-    <tr>
-      <th>data</th>
-      <td><p>A data frame.</p></td>
-    </tr>
-    <tr>
-      <th>id</th>
-      <td><p>The bare (unquoted) name of the column which identifies subjects.</p></td>
-    </tr>
-    <tr>
-      <th>keep</th>
-      <td><p>A character string which controls which columns are present in
-the output. Can be one of three options:</p><ul>
-<li><p><code>"all"</code>: The default. Retain all variables in the original data frame
-plus the <code>".actual"</code> and <code>".predicted"</code> columns.</p></li>
-<li><p><code>"used"</code>: Keeps only the <code>"id"</code> column of the original data frame, plus
-the <code>".actual"</code> and <code>".predicted"</code> columns.</p></li>
-<li><p><code>"none"</code>: Returns just the <code>".actual"</code> and `".predicted" columns.</p></li>
-</ul></td>
-    </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns an object of class <code>lvmisc_cv</code>. A tibble containing the
-<code>".actual"</code> and <code>".predicted"</code> columns.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>mtcars</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='va'>mtcars</span>, rownames <span class='op'>=</span> <span class='st'>"car"</span><span class='op'>)</span>
-<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>disp</span> <span class='op'>~</span> <span class='va'>mpg</span>, <span class='va'>mtcars</span><span class='op'>)</span>
-<span class='fu'>loocv</span><span class='op'>(</span><span class='va'>m</span>, <span class='va'>mtcars</span>, <span class='va'>car</span>, keep <span class='op'>=</span> <span class='st'>"used"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 32 x 3</span><span>
-#&gt;    car               .actual .predicted
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Mazda RX4            160        217.
-#&gt; </span><span style='color: #555555;'> 2</span><span> Mazda RX4 Wag        160        217.
-#&gt; </span><span style='color: #555555;'> 3</span><span> Datsun 710           108        186.
-#&gt; </span><span style='color: #555555;'> 4</span><span> Hornet 4 Drive       258        206.
-#&gt; </span><span style='color: #555555;'> 5</span><span> Hornet Sportabout    360        251.
-#&gt; </span><span style='color: #555555;'> 6</span><span> Valiant              225        267.
-#&gt; </span><span style='color: #555555;'> 7</span><span> Duster 360           360        330.
-#&gt; </span><span style='color: #555555;'> 8</span><span> Merc 240D            147.       156.
-#&gt; </span><span style='color: #555555;'> 9</span><span> Merc 230             141.       185.
-#&gt; </span><span style='color: #555555;'>10</span><span> Merc 280             168.       249.
-#&gt; </span><span style='color: #555555;'># … with 22 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -44,6 +44,10 @@ reference:
     - bias
     - loa
 
+- title: Plotting
+  contents:
+    - bland_altman_plot
+
 - title: Operators
   contents:
     - '%!in%'

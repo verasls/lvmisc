@@ -159,7 +159,7 @@ absolute error, mean absolute percent error and root mean square error.</p>
 <span class='co'># S3 method for default</span>
 <span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='co'># S3 method for loocv</span>
+<span class='co'># S3 method for lvmisc_cv</span>
 <span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># S3 method for lm</span>
@@ -173,7 +173,7 @@ absolute error, mean absolute percent error and root mean square error.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An object of class <code>loocv</code> or an object containing a model.</p></td>
+      <td><p>An object of class <code>lvmisc_cv</code> or an object containing a model.</p></td>
     </tr>
     <tr>
       <th>na.rm</th>
@@ -184,11 +184,11 @@ values to compute the indices. Defaults to <code>FALSE</code>.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The method for the <code>lm</code> class (or for the <code>loocv</code> class
+    <p>The method for the <code>lm</code> class (or for the <code>lvmisc_cv</code> class
 of a <code>lm</code>) returns a data frame with the columns <code>R2</code> (R
 squared), <code>MAE</code> (mean absolute error), <code>MAPE</code> (mean absolute
 percent error) and <code>RMSE</code> (root mean square error).</p>
-<p>The method for the <code>lmerMod</code> (or for the <code>loocv</code> class of a
+<p>The method for the <code>lmerMod</code> (or for the <code>lvmisc_cv</code> class of a
 <code>lmerMod</code>) returns a data frame with the columns <code>R2_marg</code> and
 <code>R2_cond</code> instead of the column <code>R2</code>. All the other columns are
 the same as the method for <code>lm</code>. <code>R2_marg</code> is the marginal R
