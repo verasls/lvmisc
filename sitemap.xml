@@ -25,6 +25,9 @@
     <loc>https://lveras.com/lvmisc//reference/bias.html</loc>
   </url>
   <url>
+    <loc>https://lveras.com/lvmisc//reference/bland_altman_plot.html</loc>
+  </url>
+  <url>
     <loc>https://lveras.com/lvmisc//reference/bmi.html</loc>
   </url>
   <url>
@@ -94,7 +97,7 @@
     <loc>https://lveras.com/lvmisc//reference/mean_error_sqr_root.html</loc>
   </url>
   <url>
-    <loc>https://lveras.com/lvmisc//reference/new_loocv.html</loc>
+    <loc>https://lveras.com/lvmisc//reference/new_lvmisc_cv.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/notin.html</loc>
