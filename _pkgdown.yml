@@ -33,6 +33,8 @@ reference:
     - loocv
 
 - title: Accuracy indices
+  contents:
+    - accuracy
 - subtitle: Element-wise
   contents: 
     - starts_with("error")
