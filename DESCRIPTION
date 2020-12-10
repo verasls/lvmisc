@@ -24,7 +24,8 @@ Imports:
     withr,
     rsample,
     tibble,
-    piecewiseSEM
+    piecewiseSEM,
+    tidyselect
 Suggests: 
     testthat,
     forcats,
