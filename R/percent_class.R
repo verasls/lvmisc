@@ -45,7 +45,7 @@ as_percent <- function(x) {
 
 #' @export
 format.lvmisc_percent <- function(x, ...) {
-  out <- formatC(signif(vec_data(x) * 100, 3))
+  out <- vec_data(x) * 100
   out[is.na(x)] <- NA
   out[!is.na(x)] <- paste0(out[!is.na(x)], "%")
   out
