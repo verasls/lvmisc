@@ -33,7 +33,7 @@ the \code{".actual"} and \code{".predicted"} columns.
 }}
 }
 \value{
-Returns an object of class \code{loocv}. A tibble containing the
+Returns an object of class \code{lvmisc_cv}. A tibble containing the
 \code{".actual"} and \code{".predicted"} columns.
 }
 \description{

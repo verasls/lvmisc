@@ -3,7 +3,7 @@
 \name{accuracy}
 \alias{accuracy}
 \alias{accuracy.default}
-\alias{accuracy.loocv}
+\alias{accuracy.lvmisc_cv}
 \alias{accuracy.lm}
 \alias{accuracy.lmerMod}
 \title{Model accuracy}
@@ -12,25 +12,25 @@ accuracy(x, na.rm = FALSE)
 
 \method{accuracy}{default}(x, na.rm = FALSE)
 
-\method{accuracy}{loocv}(x, na.rm = FALSE)
+\method{accuracy}{lvmisc_cv}(x, na.rm = FALSE)
 
 \method{accuracy}{lm}(x, na.rm = FALSE)
 
 \method{accuracy}{lmerMod}(x, na.rm = FALSE)
 }
 \arguments{
-\item{x}{An object of class \code{loocv} or an object containing a model.}
+\item{x}{An object of class \code{lvmisc_cv} or an object containing a model.}
 
 \item{na.rm}{A logical value indicating whether or not to strip \code{NA}
 values to compute the indices. Defaults to \code{FALSE}.}
 }
 \value{
-The method for the \code{lm} class (or for the \code{loocv} class
+The method for the \code{lm} class (or for the \code{lvmisc_cv} class
 of a \code{lm}) returns a data frame with the columns \code{R2} (R
 squared), \code{MAE} (mean absolute error), \code{MAPE} (mean absolute
 percent error) and \code{RMSE} (root mean square error).
 
-The method for the \code{lmerMod} (or for the \code{loocv} class of a
+The method for the \code{lmerMod} (or for the \code{lvmisc_cv} class of a
 \code{lmerMod}) returns a data frame with the columns \code{R2_marg} and
 \code{R2_cond} instead of the column \code{R2}. All the other columns are
 the same as the method for \code{lm}. \code{R2_marg} is the marginal R

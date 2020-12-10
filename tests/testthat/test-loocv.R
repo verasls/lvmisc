@@ -44,20 +44,20 @@ test_that("error handling worls", {
   )
 })
 
-test_that("returned object is of class loocv", {
+test_that("returned object is of class lvmisc_cv", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m <- stats::lm(disp ~ mpg, mtcars)
   cv <- loocv(m, mtcars, car)
 
-  expect_s3_class(cv, "loocv")
+  expect_s3_class(cv, "lvmisc_cv")
 })
 
-test_that("loocv class has a loocv_model attribute", {
+test_that("loocv class has a lvmisc_cv_model attribute", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m <- stats::lm(disp ~ mpg, mtcars)
   cv <- loocv(m, mtcars, car)
 
-  expect_true("loocv_model" %in% names(attributes(cv)))
+  expect_true("lvmisc_cv_model" %in% names(attributes(cv)))
 })
 
 test_that("`keep` argument works", {

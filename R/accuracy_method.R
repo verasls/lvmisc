@@ -3,16 +3,16 @@
 #' Computes some common model accuracy indices, such as the R squared, mean
 #'   absolute error, mean absolute percent error and root mean square error.
 #'
-#' @param x An object of class \code{loocv} or an object containing a model.
+#' @param x An object of class \code{lvmisc_cv} or an object containing a model.
 #' @param na.rm A logical value indicating whether or not to strip \code{NA}
 #'   values to compute the indices. Defaults to \code{FALSE}.
 #'
-#' @return The method for the \code{lm} class (or for the \code{loocv} class
+#' @return The method for the \code{lm} class (or for the \code{lvmisc_cv} class
 #'   of a \code{lm}) returns a data frame with the columns \code{R2} (R
 #'   squared), \code{MAE} (mean absolute error), \code{MAPE} (mean absolute
 #'   percent error) and \code{RMSE} (root mean square error). 
 #'
-#'   The method for the \code{lmerMod} (or for the \code{loocv} class of a
+#'   The method for the \code{lmerMod} (or for the \code{lvmisc_cv} class of a
 #'   \code{lmerMod}) returns a data frame with the columns \code{R2_marg} and
 #'   \code{R2_cond} instead of the column \code{R2}. All the other columns are
 #'   the same as the method for \code{lm}. \code{R2_marg} is the marginal R
@@ -45,8 +45,8 @@ accuracy.default <- function(x, na.rm = FALSE) {
 
 #' @rdname accuracy
 #' @export
-accuracy.loocv <- function(x, na.rm = FALSE) {
-  model <- attributes(x)$loocv_model
+accuracy.lvmisc_cv <- function(x, na.rm = FALSE) {
+  model <- attributes(x)$lvmisc_cv_model
 
   check_args_accuracy(x, na.rm)
 
@@ -96,7 +96,7 @@ accuracy.lmerMod <- function(x, na.rm = FALSE) {
 }
 
 check_args_accuracy <- function(x, na.rm) {
-  if ("loocv" %!in% class(x) & length(class(x)) > 1) {
+  if ("lvmisc_cv" %!in% class(x) & length(class(x)) > 1) {
     classes <- class(x)[class(x) %!in% c("lm", "lmerMod")]
     msg <- glue::glue(
       "If you would like it to be implemented, please file an issue at \\
