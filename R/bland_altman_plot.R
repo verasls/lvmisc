@@ -16,6 +16,14 @@ model_data <- function(x) {
  UseMethod("model_data")
 }
 
+model_data.default <- function(x) {
+  msg <- glue::glue(
+    "If you would like it to be implemented, please file an issue at \\
+    https://github.com/verasls/lvmisc/issues."
+  )
+  abort_no_method_for_class("model_data", class(x), msg)
+}
+
 model_data.lvmisc_cv <- function(x) {
   mean <- (x[[".actual"]] + x[[".predicted"]]) / 2
   diff <- x[[".actual"]] - x[[".predicted"]]
@@ -63,4 +71,15 @@ model_data.lmerMod <- function(x) {
     model_data = tibble::tibble(mean, diff),
     bias = bias, loa = loa
   )
+}
+
+check_args_model_data <- function(x) {
+  if ("lvmisc_cv" %!in% class(x) & length(class(x)) > 1) {
+    classes <- class(x)[class(x) %!in% c("lm", "lmerMod")]
+    msg <- glue::glue(
+      "If you would like it to be implemented, please file an issue at \\
+      https://github.com/verasls/lvmisc/issues."
+    )
+    abort_no_method_for_class("model_data", classes, msg)
+  }
 }
