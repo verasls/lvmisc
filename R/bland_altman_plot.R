@@ -40,6 +40,8 @@ model_data.default <- function(x) {
 }
 
 model_data.lvmisc_cv <- function(x) {
+  check_args_model_data(x)
+  
   mean <- (x[[".actual"]] + x[[".predicted"]]) / 2
   diff <- x[[".actual"]] - x[[".predicted"]]
 
@@ -53,6 +55,8 @@ model_data.lvmisc_cv <- function(x) {
 }
 
 model_data.lm <- function(x) {
+  check_args_model_data(x)
+  
   formula <- stats::formula(x)
   outcome <- as.character(rlang::f_lhs(formula))
 
@@ -71,6 +75,8 @@ model_data.lm <- function(x) {
 }
 
 model_data.lmerMod <- function(x) {
+  check_args_model_data(x)
+  
   formula <- stats::formula(x)
   outcome <- as.character(rlang::f_lhs(formula))
 
