@@ -2,7 +2,7 @@ test_that("lvmisc_percent prints correctly", {
   set.seed(20200527)
   x <- c(runif(9), NA)
 
-  expect_snapshot(cat(percent(x)))
+  expect_snapshot(percent(x))
 
   x <- percent(0.5)
 
