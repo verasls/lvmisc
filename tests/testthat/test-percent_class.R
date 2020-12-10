@@ -2,7 +2,7 @@ test_that("lvmisc_percent prints correctly", {
   set.seed(20200527)
   x <- c(runif(9), NA)
 
-  expect_snapshot_output(cat(percent(x)))
+  expect_snapshot(cat(percent(x)))
 
   x <- percent(0.5)
 
@@ -22,4 +22,10 @@ test_that("vector casting works", {
   )
   expect_equal(is_percent(x), TRUE)
   expect_equal(is_percent(z), FALSE)
+})
+
+test_that("rounding works", {
+  x <- percent(0.12345)
+
+  expect_equal(round(x, 1), percent(0.123))
 })
