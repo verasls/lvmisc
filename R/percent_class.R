@@ -52,6 +52,12 @@ format.lvmisc_percent <- function(x, ...) {
 }
 
 #' @export
+round.lvmisc_percent <- function(x, digits = 0) {
+  x <- round(unclass(x), digits + 2)
+  percent(x)
+}
+
+#' @export
 vec_ptype_abbr.lvmisc_percent <- function(x, ...) {
   "prcnt"
 }
