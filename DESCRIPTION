@@ -25,7 +25,8 @@ Imports:
     rsample,
     tibble,
     piecewiseSEM,
-    tidyselect
+    tidyselect,
+    ggplot2
 Suggests: 
     testthat,
     forcats,
