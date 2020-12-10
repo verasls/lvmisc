@@ -1,3 +1,18 @@
+#' Create a Bland-Altman plot
+#'
+#' Create a Bland-Altman plot as described by
+#' \href{=https://bit.ly/3mbf8bL}{Bland & Altman (1986)}.
+#'
+#' @param x An object of class \code{lvmisc_cv} or an object containing a model.
+#' @param ... Additional arguments to be passed to \code{ggplot2::aes()}.
+#'
+#' @export
+#'
+#' @examples
+#' mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+#' m <- stats::lm(disp ~ mpg, mtcars)
+#' cv <- loocv(m, mtcars, car)
+#' bland_altman_plot(cv, colour = as.factor(am))
 bland_altman_plot <- function(x, ...) {
   data <- model_data(x)
   plot_data <- data$model_data
