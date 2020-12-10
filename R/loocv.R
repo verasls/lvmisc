@@ -112,7 +112,7 @@ check_args_loocv <- function(model,
 }
 
 split_data <- function(data, id) {
-  loocv_split <- rsample::group_vfold_cv(data, group = id)
+  loocv_split <- rsample::group_vfold_cv(data, group = tidyselect::all_of(id))
   training_data <- purrr::map(loocv_split$splits, get_training_data)
   testing_data <- purrr::map(loocv_split$splits, get_testing_data)
   list(training_data = training_data, testing_data = testing_data)
