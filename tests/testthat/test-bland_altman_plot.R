@@ -7,7 +7,7 @@ test_that("error handling works", {
   m <- stats::glm(y ~ x, df, family = poisson())
 
   expect_error(
-    bland_altman_plot(m),
+    plot_bland_altman(m),
     glue::glue(
       "The method `model_data` is not yet implemented for an object \\
       of class `glm`.
@@ -17,7 +17,7 @@ test_that("error handling works", {
     class = "error_no_method_for_class"
   )
   expect_error(
-    bland_altman_plot("m"),
+    plot_bland_altman("m"),
     glue::glue(
       "The method `model_data` is not yet implemented for an object \\
       of class `character`.
@@ -28,7 +28,7 @@ test_that("error handling works", {
   )
 })
 
-test_that("output of bland_altman_plot() is stable", {
+test_that("output of plot_bland_altman() is stable", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m1 <- stats::lm(disp ~ mpg, mtcars)
   m2 <- lme4::lmer(disp ~ mpg + (1 | gear), mtcars)
@@ -36,14 +36,14 @@ test_that("output of bland_altman_plot() is stable", {
 
   vdiffr::expect_doppelganger(
     "Bland Altman plot - cv",
-    bland_altman_plot(cv, colour = as.factor(am))
+    plot_bland_altman(cv, colour = as.factor(am))
   )
   vdiffr::expect_doppelganger(
     "Bland Altman plot - lm",
-    bland_altman_plot(m1)
+    plot_bland_altman(m1)
   )
   vdiffr::expect_doppelganger(
     "Bland Altman plot - lmerMod",
-    bland_altman_plot(m2)
+    plot_bland_altman(m2)
   )
 })

@@ -12,8 +12,8 @@
 #' mtcars <- tibble::as_tibble(mtcars, rownames = "car")
 #' m <- stats::lm(disp ~ mpg, mtcars)
 #' cv <- loocv(m, mtcars, car)
-#' bland_altman_plot(cv, colour = as.factor(am))
-bland_altman_plot <- function(x, ...) {
+#' plot_bland_altman(cv, colour = as.factor(am))
+plot_bland_altman <- function(x, ...) {
   data <- model_data(x)
   plot_data <- data$model_data
   bias <- data$bias
@@ -41,7 +41,7 @@ model_data.default <- function(x) {
 
 model_data.lvmisc_cv <- function(x) {
   check_args_model_data(x)
-  
+
   mean <- (x[[".actual"]] + x[[".predicted"]]) / 2
   diff <- x[[".actual"]] - x[[".predicted"]]
 
@@ -56,7 +56,7 @@ model_data.lvmisc_cv <- function(x) {
 
 model_data.lm <- function(x) {
   check_args_model_data(x)
-  
+
   formula <- stats::formula(x)
   outcome <- as.character(rlang::f_lhs(formula))
 
@@ -76,7 +76,7 @@ model_data.lm <- function(x) {
 
 model_data.lmerMod <- function(x) {
   check_args_model_data(x)
-  
+
   formula <- stats::formula(x)
   outcome <- as.character(rlang::f_lhs(formula))
 
