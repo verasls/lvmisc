@@ -1,36 +1,79 @@
 plot_scatter <- function(data, x, y, ...) {
+  data_name <- rlang::as_string(rlang::ensym(data))
+  x_col_name <- rlang::as_string(rlang::ensym(x))
+  y_col_name <- rlang::as_string(rlang::ensym(y))
+  check_args_plots(data, data_name, x_col_name, y_col_name)
+
   ggplot2::ggplot(data, ggplot2::aes(x = {{ x }}, y = {{ y }}, ...)) +
     ggplot2::geom_point()
 }
 
 plot_line <- function(data, x, y, ...) {
+  data_name <- rlang::as_string(rlang::ensym(data))
+  x_col_name <- rlang::as_string(rlang::ensym(x))
+  y_col_name <- rlang::as_string(rlang::ensym(y))
+  check_args_plots(data, data_name, x_col_name, y_col_name)
+
   ggplot2::ggplot(data, ggplot2::aes(x = {{ x }}, y = {{ y }}, ...)) +
     ggplot2::geom_line()
 }
 
 plot_hist <- function(data, x, bin_width = NULL, ...) {
+  data_name <- rlang::as_string(rlang::ensym(data))
+  x_col_name <- rlang::as_string(rlang::ensym(x))
+  y_col_name <- "not applicable"
+  check_args_plots(data, data_name, x_col_name, y_col_name)
+  check_args_bin_width(bin_width)
+
   p <- ggplot2::ggplot(data, ggplot2::aes(x = {{ x }}, ...))
   if (is.null(bin_width)) {
     p + ggplot2::geom_histogram()
   } else {
     type <- get_type(bin_width)
-    return(type)
     p + ggplot2::geom_histogram(binwidth = get_bin_width(type))
   }
 }
 
-plot_qq <- function(data, sample, ...) {
+plot_qq <- function(data, x, ...) {
+  data_name <- rlang::as_string(rlang::ensym(data))
+  x_col_name <- rlang::as_string(rlang::ensym(x))
+  y_col_name <- "not applicable"
+  check_args_plots(data, data_name, x_col_name, y_col_name)
+
   ggplot2::ggplot(data, ggplot2::aes(sample = {{ sample }}, ...)) +
     ggplot2::stat_qq() +
     ggplot2::stat_qq_line()
 }
 
+check_args_plots <- function(data, data_name, x_col_name, y_col_name) {
+  if (!is.data.frame(data)) {
+    abort_argument_type(arg = "data", must = "be data.frame", not = data)
+  }
+  if (x_col_name %!in% names(data)) {
+    abort_column_not_found(data = data_name, col_name = x_col_name)
+  }
+  if (y_col_name != "not applicable" & y_col_name %!in% names(data)) {
+    abort_column_not_found(data = data_name, col_name = y_col_name)
+  }
+}
+
+check_args_bin_width <- function(bin_width) {
+  valid_values1 <- c("Sturges", "scott", "FD")
+  valid_values2 <- c("sturges", "Scott", "fd")
+  valid_values <- c(valid_values1, valid_values2)
+  if (!is.null(bin_width)) {
+    if (bin_width %!in% valid_values) {
+      abort_argument_value(arg = "bin_width", valid_values1)
+    }
+  }
+}
+
 get_bin_width <- function(type) {
   fun <- switch(
     type,
-    Sturges = nclass.Sturges,
-    scott = nclass.scott,
-    FD = nclass.FD
+    Sturges = grDevices::nclass.Sturges,
+    scott = grDevices::nclass.scott,
+    FD = grDevices::nclass.FD
   )
 
   function(x) {
