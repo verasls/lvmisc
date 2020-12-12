@@ -1,3 +1,25 @@
+#' Easy plotting
+#'
+#' These functions are intended to be used to quickly generate simple
+#'   exploratory plots using the package \code{ggplot2}.
+#'
+#' @name plots
+#'
+#' @param data A data frame.
+#' @param x,y x and y aesthetics as the bare (unquoted) name of a column in
+#'   \code{data}.
+#' @param ... Additional arguments to be passed to the \code{ggplot2::aes()}
+#'   function.
+#' @param bin_width The width of the bins in a histogram. When \code{NULL}
+#'   (default), it uses the number of bins in \code{bins} (defaults to 30).
+#'   You can also use one of the character strings \code{"Sturges"},
+#'   \code{"scott"} or \code{"FD"} to use one of the methods to determine the
+#'   bin width as in \href{https://rdrr.io/r/grDevices/nclass.html}
+#'   {\code{grDevices::nclass.*()}}
+NULL
+
+#' @rdname plots
+#' @export
 plot_scatter <- function(data, x, y, ...) {
   data_name <- rlang::as_string(rlang::ensym(data))
   x_col_name <- rlang::as_string(rlang::ensym(x))
@@ -8,6 +30,8 @@ plot_scatter <- function(data, x, y, ...) {
     ggplot2::geom_point()
 }
 
+#' @rdname plots
+#' @export
 plot_line <- function(data, x, y, ...) {
   data_name <- rlang::as_string(rlang::ensym(data))
   x_col_name <- rlang::as_string(rlang::ensym(x))
@@ -18,6 +42,8 @@ plot_line <- function(data, x, y, ...) {
     ggplot2::geom_line()
 }
 
+#' @rdname plots
+#' @export
 plot_hist <- function(data, x, bin_width = NULL, ...) {
   data_name <- rlang::as_string(rlang::ensym(data))
   x_col_name <- rlang::as_string(rlang::ensym(x))
@@ -34,6 +60,8 @@ plot_hist <- function(data, x, bin_width = NULL, ...) {
   }
 }
 
+#' @rdname plots
+#' @export
 plot_qq <- function(data, x, ...) {
   data_name <- rlang::as_string(rlang::ensym(data))
   x_col_name <- rlang::as_string(rlang::ensym(x))
