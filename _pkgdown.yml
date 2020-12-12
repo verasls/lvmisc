@@ -46,7 +46,8 @@ reference:
 
 - title: Plotting
   contents:
-    - bland_altman_plot
+    - plot_bland_altman
+    - starts_with("plot_")
 
 - title: Operators
   contents:
