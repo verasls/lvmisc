@@ -1,4 +1,4 @@
-#' Easy plotting
+#' Quick plotting
 #'
 #' These functions are intended to be used to quickly generate simple
 #'   exploratory plots using the package \code{ggplot2}.

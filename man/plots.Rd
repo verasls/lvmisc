@@ -6,7 +6,7 @@
 \alias{plot_line}
 \alias{plot_hist}
 \alias{plot_qq}
-\title{Easy plotting}
+\title{Quick plotting}
 \usage{
 plot_scatter(data, x, y, ...)
 
