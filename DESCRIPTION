@@ -26,7 +26,8 @@ Imports:
     tibble,
     piecewiseSEM,
     tidyselect,
-    ggplot2
+    ggplot2,
+    grDevices
 Suggests: 
     testthat,
     forcats,
