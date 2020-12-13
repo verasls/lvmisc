@@ -7,12 +7,15 @@
 #' @param na.rm A logical value indicating whether or not to strip \code{NA}
 #'   values to compute the indices. Defaults to \code{FALSE}.
 #'
-#' @return The method for the \code{lm} class (or for the \code{lvmisc_cv} class
-#'   of a \code{lm}) returns a data frame with the columns \code{AIC} (Akaike
-#'   information criterion), \code{BIC} (Bayesian information criterion),
-#'   \code{R2} (R squared), \code{R2_adj} (adjusted R squared), \code{MAE}
-#'   (mean absolute error), \code{MAPE} (mean absolute percent error) and
-#'   \code{RMSE} (root mean square error).
+#' @return An object of class \code{lvmisc_accuracy}. See "Details" for more
+#'   information.
+#'
+#' @details The method for the \code{lm} class (or for the \code{lvmisc_cv}
+#'   class of a \code{lm}) returns a data frame with the columns \code{AIC}
+#'   (Akaike information criterion), \code{BIC} (Bayesian information
+#'   criterion), \code{R2} (R squared), \code{R2_adj} (adjusted R squared),
+#'   \code{MAE} (mean absolute error), \code{MAPE} (mean absolute percent
+#'   error) and \code{RMSE} (root mean square error).
 #'
 #'   The method for the \code{lmerMod} (or for the \code{lvmisc_cv} class of a
 #'   \code{lmerMod}) returns a data frame with the columns \code{R2_marg} and

@@ -25,12 +25,20 @@ accuracy(x, na.rm = FALSE)
 values to compute the indices. Defaults to \code{FALSE}.}
 }
 \value{
-The method for the \code{lm} class (or for the \code{lvmisc_cv} class
-of a \code{lm}) returns a data frame with the columns \code{AIC} (Akaike
-information criterion), \code{BIC} (Bayesian information criterion),
-\code{R2} (R squared), \code{R2_adj} (adjusted R squared), \code{MAE}
-(mean absolute error), \code{MAPE} (mean absolute percent error) and
-\code{RMSE} (root mean square error).
+An object of class \code{lvmisc_accuracy}. See "Details" for more
+information.
+}
+\description{
+Computes some common model accuracy indices, such as the R squared, mean
+absolute error, mean absolute percent error and root mean square error.
+}
+\details{
+The method for the \code{lm} class (or for the \code{lvmisc_cv}
+class of a \code{lm}) returns a data frame with the columns \code{AIC}
+(Akaike information criterion), \code{BIC} (Bayesian information
+criterion), \code{R2} (R squared), \code{R2_adj} (adjusted R squared),
+\code{MAE} (mean absolute error), \code{MAPE} (mean absolute percent
+error) and \code{RMSE} (root mean square error).
 
 The method for the \code{lmerMod} (or for the \code{lvmisc_cv} class of a
 \code{lmerMod}) returns a data frame with the columns \code{R2_marg} and
@@ -40,10 +48,6 @@ All the other columns are the same as the method for \code{lm}.
 by the fixed effects of a mixed model, and \code{R2_cond} is the
 conditional R squared, which considers both fixed and random effects
 variance.
-}
-\description{
-Computes some common model accuracy indices, such as the R squared, mean
-absolute error, mean absolute percent error and root mean square error.
 }
 \examples{
 mtcars <- tibble::as_tibble(mtcars, rownames = "car")
