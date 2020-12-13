@@ -26,17 +26,20 @@ values to compute the indices. Defaults to \code{FALSE}.}
 }
 \value{
 The method for the \code{lm} class (or for the \code{lvmisc_cv} class
-of a \code{lm}) returns a data frame with the columns \code{R2} (R
-squared), \code{MAE} (mean absolute error), \code{MAPE} (mean absolute
-percent error) and \code{RMSE} (root mean square error).
+of a \code{lm}) returns a data frame with the columns \code{AIC} (Akaike
+information criterion), \code{BIC} (Bayesian information criterion),
+\code{R2} (R squared), \code{R2_adj} (adjusted R squared), \code{MAE}
+(mean absolute error), \code{MAPE} (mean absolute percent error) and
+\code{RMSE} (root mean square error).
 
 The method for the \code{lmerMod} (or for the \code{lvmisc_cv} class of a
 \code{lmerMod}) returns a data frame with the columns \code{R2_marg} and
-\code{R2_cond} instead of the column \code{R2}. All the other columns are
-the same as the method for \code{lm}. \code{R2_marg} is the marginal R
-squared, which considers only the variance by the fixed effects of a mixed
-model, and \code{R2_cond} is the conditional R squared, which considers
-both fixed and random effects variance.
+\code{R2_cond} instead of the columns \code{R2} and \code{R2_adj}.
+All the other columns are the same as the method for \code{lm}.
+\code{R2_marg} is the marginal R squared, which considers only the variance
+by the fixed effects of a mixed model, and \code{R2_cond} is the
+conditional R squared, which considers both fixed and random effects
+variance.
 }
 \description{
 Computes some common model accuracy indices, such as the R squared, mean
