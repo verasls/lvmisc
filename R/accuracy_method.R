@@ -49,7 +49,9 @@ accuracy.default <- function(x, na.rm = FALSE) {
 #' @rdname accuracy
 #' @export
 accuracy.lvmisc_cv <- function(x, na.rm = FALSE) {
+  model_name <- deparse(match.call()$x)
   model <- attributes(x)$lvmisc_cv_model
+  model_class <- paste("lvmisc_cv_model", class(model), sep = "/")
 
   check_args_accuracy(x, na.rm)
 
@@ -60,12 +62,15 @@ accuracy.lvmisc_cv <- function(x, na.rm = FALSE) {
   MAPE <- mean_error_abs_pct(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
   RMSE <- mean_error_sqr_root(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
 
-  round(data.frame(AIC, BIC, R2, MAE, MAPE, RMSE), 2)
+  accuracy_data <- round(data.frame(AIC, BIC, R2, MAE, MAPE, RMSE), 2)
+  new_lvmisc_accuracy(accuracy_data, model_name, model_class)
 }
 
 #' @rdname accuracy
 #' @export
 accuracy.lm <- function(x, na.rm = FALSE) {
+  model_name <- deparse(match.call()$x)
+  model_class <- class(x)
   check_args_accuracy(x, na.rm)
 
   formula <- stats::formula(x)
@@ -81,12 +86,16 @@ accuracy.lm <- function(x, na.rm = FALSE) {
   MAPE <- mean_error_abs_pct(actual, predicted, na.rm = na.rm)
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
 
-  round(data.frame(AIC, BIC, R2, R2_adj, MAE, MAPE, RMSE), 2)
+  accuracy_data <- round(data.frame(AIC, BIC, R2, R2_adj, MAE, MAPE, RMSE), 2)
+  new_lvmisc_accuracy(accuracy_data, model_name, model_class)
 }
 
 #' @rdname accuracy
 #' @export
 accuracy.lmerMod <- function(x, na.rm = FALSE) {
+  model_name <- deparse(match.call()$x)
+  model_class <- class(x)
+  attr(model_class, "package") <- NULL
   check_args_accuracy(x, na.rm)
 
   formula <- stats::formula(x)
@@ -102,7 +111,10 @@ accuracy.lmerMod <- function(x, na.rm = FALSE) {
   MAPE <- mean_error_abs_pct(actual, predicted, na.rm = na.rm)
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
 
-  round(data.frame(AIC, BIC, R2_marg, R2_cond, MAE, MAPE, RMSE), 2)
+  accuracy_data <- round(
+    data.frame(AIC, BIC, R2_marg, R2_cond, MAE, MAPE, RMSE), 2
+  )
+  new_lvmisc_accuracy(accuracy_data, model_name, model_class)
 }
 
 check_args_accuracy <- function(x, na.rm) {
@@ -133,4 +145,22 @@ get_r2 <- function(model) {
     R2_cond <- piecewiseSEM::rsquared(model)[["Conditional"]]
     data.frame(R2_marg, R2_cond)
   }
+}
+
+#' Constructor for lvmisc_accuracy object
+#'
+#' @param accuracy_data A data frame with accuracy indices.
+#' @param model_name A character string with the name of the object to which
+#'   the model was assigned.
+#' @param model_class The class of the model.
+#' @keywords internal
+new_lvmisc_accuracy <- function(accuracy_data, model_name, model_class) {
+  stopifnot(is.data.frame(accuracy_data))
+  structure(
+    accuracy_data,
+    model_name = model_name,
+    model_class = model_class,
+    rownames = NULL,
+    class = c("lvmisc_accuracy", "data.frame")
+  )
 }
