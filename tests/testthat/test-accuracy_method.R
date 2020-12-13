@@ -38,8 +38,8 @@ test_that("accuracy() returns a data frame with the right columns", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m1 <- stats::lm(disp ~ mpg, mtcars)
   m2 <- lme4::lmer(disp ~ mpg + (1 | gear), mtcars)
-  cv1 <- loocv(m1, mtcars, car)
-  cv2 <- loocv(m2, mtcars, car)
+  cv1 <- loo_cv(m1, mtcars, car)
+  cv2 <- loo_cv(m2, mtcars, car)
 
   expect_equal(
     names(accuracy(m1)),

@@ -25,27 +25,27 @@
 #' @examples
 #' mtcars <- tibble::as_tibble(mtcars, rownames = "car")
 #' m <- stats::lm(disp ~ mpg, mtcars)
-#' loocv(m, mtcars, car, keep = "used")
-loocv <- function(model, data, id, keep = "all") {
-  UseMethod("loocv")
+#' loo_cv(m, mtcars, car, keep = "used")
+loo_cv <- function(model, data, id, keep = "all") {
+  UseMethod("loo_cv")
 }
 
-#' @rdname loocv
+#' @rdname loo_cv
 #' @export
-loocv.default <- function(model, data, id, keep = "all") {
+loo_cv.default <- function(model, data, id, keep = "all") {
   msg <- glue::glue(
     "If you would like it to be implemented, please file an issue at \\
     https://github.com/verasls/lvmisc/issues."
   )
-  abort_no_method_for_class("loocv", class(model), msg)
+  abort_no_method_for_class("loo_cv", class(model), msg)
 }
 
-#' @rdname loocv
+#' @rdname loo_cv
 #' @export
-loocv.lm <- function(model, data, id, keep = "all") {
+loo_cv.lm <- function(model, data, id, keep = "all") {
   id_col_name <- rlang::as_string(rlang::ensym(id))
   data_name <- rlang::as_string(rlang::ensym(data))
-  check_args_loocv(model, data, id, keep, id_col_name, data_name)
+  check_args_loo_cv(model, data, id, keep, id_col_name, data_name)
 
   id <- rlang::enquo(id)
   formula <- stats::formula(model)
@@ -59,13 +59,13 @@ loocv.lm <- function(model, data, id, keep = "all") {
   get_lvmisc_cv_object(cv_values, model, id_col_name, keep)
 }
 
-#' @rdname loocv
+#' @rdname loo_cv
 #' @export
-loocv.lmerMod <- function(model, data, id, keep = "all") {
+loo_cv.lmerMod <- function(model, data, id, keep = "all") {
   requireNamespace("lme4", quietly = TRUE)
   id_col_name <- rlang::as_string(rlang::ensym(id))
   data_name <- rlang::as_string(rlang::ensym(data))
-  check_args_loocv(model, data, id, keep, id_col_name, data_name)
+  check_args_loo_cv(model, data, id, keep, id_col_name, data_name)
 
   id <- rlang::enquo(id)
   formula <- stats::formula(model)
@@ -85,7 +85,7 @@ loocv.lmerMod <- function(model, data, id, keep = "all") {
   get_lvmisc_cv_object(cv_values, model, id_col_name, keep)
 }
 
-check_args_loocv <- function(model,
+check_args_loo_cv <- function(model,
                              data,
                              id,
                              keep,
@@ -97,7 +97,7 @@ check_args_loocv <- function(model,
       "If you would like it to be implemented, please file an issue at \\
       https://github.com/verasls/lvmisc/issues."
     )
-    abort_no_method_for_class("loocv", classes, msg)
+    abort_no_method_for_class("loo_cv", classes, msg)
   }
   if (!is.data.frame(data)) {
     abort_argument_type(arg = "data", must = "be data.frame", not = data)
@@ -112,9 +112,9 @@ check_args_loocv <- function(model,
 }
 
 split_data <- function(data, id) {
-  loocv_split <- rsample::group_vfold_cv(data, group = tidyselect::all_of(id))
-  training_data <- purrr::map(loocv_split$splits, get_training_data)
-  testing_data <- purrr::map(loocv_split$splits, get_testing_data)
+  loo_cv_split <- rsample::group_vfold_cv(data, group = tidyselect::all_of(id))
+  training_data <- purrr::map(loo_cv_split$splits, get_training_data)
+  testing_data <- purrr::map(loo_cv_split$splits, get_testing_data)
   list(training_data = training_data, testing_data = testing_data)
 }
 
@@ -157,7 +157,7 @@ get_lvmisc_cv_object <- function(cv_values, model, id, keep) {
   }
 }
 
-#' Constructor for loocv object
+#' Constructor for lvmisc_cv object
 #'
 #' @param x A data.frame.
 #' @param model An object containing a model.

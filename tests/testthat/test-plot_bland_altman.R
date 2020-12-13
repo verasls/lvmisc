@@ -32,7 +32,7 @@ test_that("output of plot_bland_altman() is stable", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m1 <- stats::lm(disp ~ mpg, mtcars)
   m2 <- lme4::lmer(disp ~ mpg + (1 | gear), mtcars)
-  cv <- loocv(m1, mtcars, car)
+  cv <- loo_cv(m1, mtcars, car)
 
   vdiffr::expect_doppelganger(
     "Bland Altman plot - cv",

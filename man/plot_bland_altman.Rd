@@ -18,6 +18,6 @@ Create a Bland-Altman plot as described by
 \examples{
 mtcars <- tibble::as_tibble(mtcars, rownames = "car")
 m <- stats::lm(disp ~ mpg, mtcars)
-cv <- loocv(m, mtcars, car)
+cv <- loo_cv(m, mtcars, car)
 plot_bland_altman(cv, colour = as.factor(am))
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/loocv.R
 \name{new_lvmisc_cv}
 \alias{new_lvmisc_cv}
-\title{Constructor for loocv object}
+\title{Constructor for lvmisc_cv object}
 \usage{
 new_lvmisc_cv(x, model)
 }
@@ -12,6 +12,6 @@ new_lvmisc_cv(x, model)
 \item{model}{An object containing a model.}
 }
 \description{
-Constructor for loocv object
+Constructor for lvmisc_cv object
 }
 \keyword{internal}

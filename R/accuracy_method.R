@@ -25,7 +25,7 @@
 #' @examples
 #' mtcars <- tibble::as_tibble(mtcars, rownames = "car")
 #' m <- stats::lm(disp ~ mpg, mtcars)
-#' cv <- loocv(m, mtcars, car, keep = "used")
+#' cv <- loo_cv(m, mtcars, car, keep = "used")
 #'
 #' accuracy(m)
 #' accuracy(cv)
