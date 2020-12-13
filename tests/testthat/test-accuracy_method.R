@@ -43,18 +43,18 @@ test_that("accuracy() returns a data frame with the right columns", {
 
   expect_equal(
     names(accuracy(m1)),
-    c("R2", "MAE", "MAPE", "RMSE")
+    c("AIC", "BIC", "R2", "R2_adj", "MAE", "MAPE", "RMSE")
   )
   expect_equal(
     names(accuracy(m2)),
-    c("R2_marg", "R2_cond", "MAE", "MAPE", "RMSE")
+    c("AIC", "BIC", "R2_marg", "R2_cond", "MAE", "MAPE", "RMSE")
   )
   expect_equal(
     names(accuracy(cv1)),
-    c("R2", "MAE", "MAPE", "RMSE")
+    c("AIC", "BIC", "R2", "R2_adj", "MAE", "MAPE", "RMSE")
   )
   expect_equal(
     names(accuracy(cv2)),
-    c("R2_marg", "R2_cond", "MAE", "MAPE", "RMSE")
+    c("AIC", "BIC", "R2_marg", "R2_cond", "MAE", "MAPE", "RMSE")
   )
 })

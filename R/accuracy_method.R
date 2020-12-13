@@ -50,12 +50,14 @@ accuracy.lvmisc_cv <- function(x, na.rm = FALSE) {
 
   check_args_accuracy(x, na.rm)
 
+  AIC <- stats::AIC(model)
+  BIC <- stats::BIC(model)
   R2 <- get_r2(model)
   MAE <- mean_error_abs(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
   MAPE <- mean_error_abs_pct(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
   RMSE <- mean_error_sqr_root(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
 
-  cbind(R2, data.frame(MAE, MAPE, RMSE))
+  round(data.frame(AIC, BIC, R2, MAE, MAPE, RMSE), 2)
 }
 
 #' @rdname accuracy
@@ -68,12 +70,15 @@ accuracy.lm <- function(x, na.rm = FALSE) {
   actual <- x$model[[outcome]]
   predicted <- stats::predict(x)
 
-  R2 <- summary(x)$adj.r.squared
+  AIC <- stats::AIC(x)
+  BIC <- stats::BIC(x)
+  R2 <- summary(x)$r.squared
+  R2_adj <- summary(x)$adj.r.squared
   MAE <- mean_error_abs(actual, predicted, na.rm = na.rm)
   MAPE <- mean_error_abs_pct(actual, predicted, na.rm = na.rm)
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
 
-  data.frame(R2, MAE, MAPE, RMSE)
+  round(data.frame(AIC, BIC, R2, R2_adj, MAE, MAPE, RMSE), 2)
 }
 
 #' @rdname accuracy
@@ -86,13 +91,15 @@ accuracy.lmerMod <- function(x, na.rm = FALSE) {
   actual <- stats::model.frame(x)[[outcome]]
   predicted <- stats::predict(x)
 
+  AIC <- stats::AIC(x)
+  BIC <- stats::BIC(x)
   R2_marg <- piecewiseSEM::rsquared(x)[["Marginal"]]
   R2_cond <- piecewiseSEM::rsquared(x)[["Conditional"]]
   MAE <- mean_error_abs(actual, predicted, na.rm = na.rm)
   MAPE <- mean_error_abs_pct(actual, predicted, na.rm = na.rm)
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
 
-  data.frame(R2_marg, R2_cond, MAE, MAPE, RMSE)
+  round(data.frame(AIC, BIC, R2_marg, R2_cond, MAE, MAPE, RMSE), 2)
 }
 
 check_args_accuracy <- function(x, na.rm) {
@@ -115,7 +122,9 @@ check_args_accuracy <- function(x, na.rm) {
 
 get_r2 <- function(model) {
   if (class(model) == "lm") {
-    summary(model)$adj.r.squared
+    R2 <- summary(model)$r.squared
+    R2_adj <- summary(model)$adj.r.squared
+    data.frame(R2, R2_adj)
   } else if (class(model) == "lmerMod") {
     R2_marg <- piecewiseSEM::rsquared(model)[["Marginal"]]
     R2_cond <- piecewiseSEM::rsquared(model)[["Conditional"]]
