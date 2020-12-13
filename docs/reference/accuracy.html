@@ -184,28 +184,35 @@ values to compute the indices. Defaults to <code>FALSE</code>.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The method for the <code>lm</code> class (or for the <code>lvmisc_cv</code> class
-of a <code>lm</code>) returns a data frame with the columns <code>R2</code> (R
-squared), <code>MAE</code> (mean absolute error), <code>MAPE</code> (mean absolute
-percent error) and <code>RMSE</code> (root mean square error).</p>
+    <p>An object of class <code>lvmisc_accuracy</code>. See "Details" for more
+information.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The method for the <code>lm</code> class (or for the <code>lvmisc_cv</code>
+class of a <code>lm</code>) returns a data frame with the columns <code>AIC</code>
+(Akaike information criterion), <code>BIC</code> (Bayesian information
+criterion), <code>R2</code> (R squared), <code>R2_adj</code> (adjusted R squared),
+<code>MAE</code> (mean absolute error), <code>MAPE</code> (mean absolute percent
+error) and <code>RMSE</code> (root mean square error).</p>
 <p>The method for the <code>lmerMod</code> (or for the <code>lvmisc_cv</code> class of a
 <code>lmerMod</code>) returns a data frame with the columns <code>R2_marg</code> and
-<code>R2_cond</code> instead of the column <code>R2</code>. All the other columns are
-the same as the method for <code>lm</code>. <code>R2_marg</code> is the marginal R
-squared, which considers only the variance by the fixed effects of a mixed
-model, and <code>R2_cond</code> is the conditional R squared, which considers
-both fixed and random effects variance.</p>
+<code>R2_cond</code> instead of the columns <code>R2</code> and <code>R2_adj</code>.
+All the other columns are the same as the method for <code>lm</code>.
+<code>R2_marg</code> is the marginal R squared, which considers only the variance
+by the fixed effects of a mixed model, and <code>R2_cond</code> is the
+conditional R squared, which considers both fixed and random effects
+variance.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>mtcars</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='va'>mtcars</span>, rownames <span class='op'>=</span> <span class='st'>"car"</span><span class='op'>)</span>
 <span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>disp</span> <span class='op'>~</span> <span class='va'>mpg</span>, <span class='va'>mtcars</span><span class='op'>)</span>
-<span class='va'>cv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='loocv.html'>loocv</a></span><span class='op'>(</span><span class='va'>m</span>, <span class='va'>mtcars</span>, <span class='va'>car</span>, keep <span class='op'>=</span> <span class='st'>"used"</span><span class='op'>)</span>
+<span class='va'>cv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='loo_cv.html'>loo_cv</a></span><span class='op'>(</span><span class='va'>m</span>, <span class='va'>mtcars</span>, <span class='va'>car</span>, keep <span class='op'>=</span> <span class='st'>"used"</span><span class='op'>)</span>
 
 <span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;          R2      MAE              MAPE     RMSE
-#&gt; 1 0.7089548 53.20774 31.8149856942076% 64.74001</div><div class='input'><span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>cv</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;          R2      MAE              MAPE     RMSE
-#&gt; 1 0.7089548 56.79713 34.5679119512589% 68.83868</div></pre>
+</div><div class='output co'>#&gt;      AIC    BIC   R2 R2_adj   MAE   MAPE  RMSE
+#&gt; 1 363.72 368.11 0.72   0.71 53.21 31.81% 64.74</div><div class='input'><span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>cv</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;      AIC    BIC   R2 R2_adj  MAE   MAPE  RMSE
+#&gt; 1 363.72 368.11 0.72   0.71 56.8 34.57% 68.84</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

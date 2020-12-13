@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Constructor for lvmisc_cv object — new_lvmisc_cv • lvmisc</title>
+<title>Constructor for lvmisc_accuracy object — new_lvmisc_accuracy • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,8 +52,8 @@
 
 
 
-<meta property="og:title" content="Constructor for lvmisc_cv object — new_lvmisc_cv" />
-<meta property="og:description" content="Constructor for lvmisc_cv object" />
+<meta property="og:title" content="Constructor for lvmisc_accuracy object — new_lvmisc_accuracy" />
+<meta property="og:description" content="Constructor for lvmisc_accuracy object" />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -143,27 +143,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Constructor for lvmisc_cv object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/loo_cv.R'><code>R/loo_cv.R</code></a></small>
-    <div class="hidden name"><code>new_lvmisc_cv.Rd</code></div>
+    <h1>Constructor for lvmisc_accuracy object</h1>
+    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/accuracy_method.R'><code>R/accuracy_method.R</code></a></small>
+    <div class="hidden name"><code>new_lvmisc_accuracy.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Constructor for lvmisc_cv object</p>
+    <p>Constructor for lvmisc_accuracy object</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_lvmisc_cv</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>model</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>new_lvmisc_accuracy</span><span class='op'>(</span><span class='va'>accuracy_data</span>, <span class='va'>model_name</span>, <span class='va'>model_class</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A data.frame.</p></td>
+      <th>accuracy_data</th>
+      <td><p>A data frame with accuracy indices.</p></td>
     </tr>
     <tr>
-      <th>model</th>
-      <td><p>An object containing a model.</p></td>
+      <th>model_name</th>
+      <td><p>A character string with the name of the object to which
+the model was assigned.</p></td>
+    </tr>
+    <tr>
+      <th>model_class</th>
+      <td><p>The class of the model.</p></td>
     </tr>
     </table>
 

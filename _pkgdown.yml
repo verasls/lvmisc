@@ -30,7 +30,7 @@ reference:
   contents:
     - center_variable
     - is_outlier
-    - loocv
+    - loo_cv
 
 - title: Accuracy indices
   contents:
