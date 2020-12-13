@@ -1,4 +1,4 @@
-test_that("error handling worls", {
+test_that("error handling works", {
   df <- data.frame(
     subj = 1:30,
     y = sample.int(30, replace = TRUE),
@@ -44,7 +44,7 @@ test_that("error handling worls", {
   )
 })
 
-test_that("returned object is of class lvmisc_cv", {
+test_that("loo_cv() returns an object of class lvmisc_cv", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m <- stats::lm(disp ~ mpg, mtcars)
   cv <- loo_cv(m, mtcars, car)
@@ -52,7 +52,7 @@ test_that("returned object is of class lvmisc_cv", {
   expect_s3_class(cv, "lvmisc_cv")
 })
 
-test_that("loo_cv class has a lvmisc_cv_model attribute", {
+test_that("lvmisc_cv class has a lvmisc_cv_model attribute", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m <- stats::lm(disp ~ mpg, mtcars)
   cv <- loo_cv(m, mtcars, car)
