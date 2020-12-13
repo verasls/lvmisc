@@ -34,6 +34,21 @@ test_that("error handling works", {
   )
 })
 
+test_that("accuracy() returns an object of class lvmisc_accuracy", {
+  m <- stats::lm(disp ~ mpg, mtcars)
+  out <- accuracy(m)
+
+  expect_s3_class(out, "lvmisc_accuracy")
+})
+
+test_that("lvmisc_accuracy class has the correct attributes", {
+  m <- stats::lm(disp ~ mpg, mtcars)
+  out <- accuracy(m)
+
+  expect_true("model_name" %in% names(attributes(out)))
+  expect_true("model_class" %in% names(attributes(out)))
+})
+
 test_that("accuracy() returns a data frame with the right columns", {
   mtcars <- tibble::as_tibble(mtcars, rownames = "car")
   m1 <- stats::lm(disp ~ mpg, mtcars)
