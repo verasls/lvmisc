@@ -64,7 +64,7 @@
     <loc>https://lveras.com/lvmisc//reference/loa.html</loc>
   </url>
   <url>
-    <loc>https://lveras.com/lvmisc//reference/loocv.html</loc>
+    <loc>https://lveras.com/lvmisc//reference/loo_cv.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/lt.html</loc>
@@ -92,6 +92,9 @@
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/mean_error_sqr_root.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc//reference/new_lvmisc_accuracy.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/new_lvmisc_cv.html</loc>
