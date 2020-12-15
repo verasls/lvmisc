@@ -1,4 +1,5 @@
-compare_accuracy <- function(..., quiet = FALSE) {
+compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
+  rank_by <- rlang::as_string(rlang::ensym(rank_by))
   models <- list(...)
   models_name <- as.character(match.call(expand.dots = FALSE)$`...`)
 
@@ -13,7 +14,12 @@ compare_accuracy <- function(..., quiet = FALSE) {
     warn_compare_accuracy(models, models_class)
   }
 
-  cbind(models_info, models_accuracy)
+  compare <- cbind(models_info, models_accuracy)
+  if (!is.null(rank_by)) {
+    dplyr::arrange(compare, .data[[rank_by]])
+  } else {
+    compare
+  }
 }
 
 warn_compare_accuracy <- function(models, models_class) {
