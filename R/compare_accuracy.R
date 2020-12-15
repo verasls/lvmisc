@@ -24,6 +24,13 @@ warn_compare_accuracy <- function(models, models_class) {
   if (isFALSE(same_response)) {
     rlang::warn("Not all models have the same response variable.")
   }
+
+  same_class <- all(
+    purrr::map_lgl(models_class, ~ identical(.x, models_class[[1]]))
+  )
+  if (isFALSE(same_class)) {
+    rlang::warn("Not all models are of the same class.")
+  }
 }
 
 get_model_response <- function(model, model_class) {
