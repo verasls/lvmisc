@@ -4,13 +4,10 @@
 \alias{new_lvmisc_accuracy}
 \title{Constructor for lvmisc_accuracy object}
 \usage{
-new_lvmisc_accuracy(accuracy_data, model_name, model_class)
+new_lvmisc_accuracy(accuracy_data, model_class)
 }
 \arguments{
 \item{accuracy_data}{A data frame with accuracy indices.}
-
-\item{model_name}{A character string with the name of the object to which
-the model was assigned.}
 
 \item{model_class}{The class of the model.}
 }

@@ -41,11 +41,10 @@ test_that("accuracy() returns an object of class lvmisc_accuracy", {
   expect_s3_class(out, "lvmisc_accuracy")
 })
 
-test_that("lvmisc_accuracy class has the correct attributes", {
+test_that("lvmisc_accuracy class has mode_class attribute", {
   m <- stats::lm(disp ~ mpg, mtcars)
   out <- accuracy(m)
 
-  expect_true("model_name" %in% names(attributes(out)))
   expect_true("model_class" %in% names(attributes(out)))
 })
 
