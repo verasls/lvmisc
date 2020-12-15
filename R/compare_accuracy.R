@@ -41,6 +41,6 @@ get_model_response <- function(model, model_class) {
   formula <- stats::formula(model)
   outcome <- as.character(rlang::f_lhs(formula))
 
-  model_data <- model.frame(model)
+  model_data <- stats::model.frame(model)
   model_data[[outcome]]
 }
