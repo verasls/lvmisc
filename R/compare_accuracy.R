@@ -1,4 +1,4 @@
-compare_accuracy <- function(...) {
+compare_accuracy <- function(..., quiet = FALSE) {
   models <- list(...)
   models_name <- as.character(match.call(expand.dots = FALSE)$`...`)
 
@@ -9,7 +9,9 @@ compare_accuracy <- function(...) {
   models_accuracy <- purrr::map_dfr(models_accuracy, cbind)
   models_info <- data.frame(Model = models_name, Class = models_class)
 
-  warn_compare_accuracy(models, models_class)
+  if (isFALSE(quiet)) {
+    warn_compare_accuracy(models, models_class)
+  }
 
   cbind(models_info, models_accuracy)
 }
