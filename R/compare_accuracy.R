@@ -1,5 +1,4 @@
-compare_accuracy <- function(..., rank_by = "none", quiet = FALSE) {
-  rank_by <- rlang::as_string(rlang::ensym(rank_by))
+compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
   models <- list(...)
   models_name <- as.character(match.call(expand.dots = FALSE)$`...`)
 
@@ -23,7 +22,7 @@ compare_accuracy <- function(..., rank_by = "none", quiet = FALSE) {
     Model, Class,
     tidyselect::starts_with("R2"), tidyselect::everything()
   )
-  if (rank_by != "none") {
+  if (!is.null(rank_by)) {
     dplyr::arrange(compare, .data[[rank_by]])
   } else {
     compare
