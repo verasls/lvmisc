@@ -1,4 +1,4 @@
-compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
+compare_accuracy <- function(..., rank_by = "none", quiet = FALSE) {
   rank_by <- rlang::as_string(rlang::ensym(rank_by))
   models <- list(...)
   models_name <- as.character(match.call(expand.dots = FALSE)$`...`)
@@ -15,7 +15,7 @@ compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
   }
 
   compare <- cbind(models_info, models_accuracy)
-  if (!is.null(rank_by)) {
+  if (rank_by != "none") {
     dplyr::arrange(compare, .data[[rank_by]])
   } else {
     compare
