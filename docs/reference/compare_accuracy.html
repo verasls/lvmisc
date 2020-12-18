@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Constructor for lvmisc_accuracy object — new_lvmisc_accuracy • lvmisc</title>
+<title>Compare models accuracy — compare_accuracy • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,8 +52,9 @@
 
 
 
-<meta property="og:title" content="Constructor for lvmisc_accuracy object — new_lvmisc_accuracy" />
-<meta property="og:description" content="Constructor for lvmisc_accuracy object" />
+<meta property="og:title" content="Compare models accuracy — compare_accuracy" />
+<meta property="og:description" content="Computes some common model accuracy indices of several different models at
+once, allowing fot model comparison." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -143,30 +144,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Constructor for lvmisc_accuracy object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/accuracy_method.R'><code>R/accuracy_method.R</code></a></small>
-    <div class="hidden name"><code>new_lvmisc_accuracy.Rd</code></div>
+    <h1>Compare models accuracy</h1>
+    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/compare_accuracy.R'><code>R/compare_accuracy.R</code></a></small>
+    <div class="hidden name"><code>compare_accuracy.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Constructor for lvmisc_accuracy object</p>
+    <p>Computes some common model accuracy indices of several different models at
+once, allowing fot model comparison.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>new_lvmisc_accuracy</span><span class='op'>(</span><span class='va'>accuracy_data</span>, <span class='va'>model_class</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>compare_accuracy</span><span class='op'>(</span><span class='va'>...</span>, rank_by <span class='op'>=</span> <span class='cn'>NULL</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>accuracy_data</th>
-      <td><p>A data frame with accuracy indices.</p></td>
+      <th>...</th>
+      <td><p>A list of models. The models can be of the same or of different
+classes, including <code>lvmisc_cv</code> class.</p></td>
     </tr>
     <tr>
-      <th>model_class</th>
-      <td><p>The class of the model.</p></td>
+      <th>rank_by</th>
+      <td><p>A character string with the name of an accuracy index to rank
+the models by.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>A logical indicating whether or not to show any warnings. If
+<code>FALSE</code> (the default) no warnings are shown.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A <code>data.frame</code> with a model per row and an index per column.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -35,6 +35,7 @@ reference:
 - title: Accuracy indices
   contents:
     - accuracy
+    - compare_accuracy
 - subtitle: Element-wise
   contents: 
     - starts_with("error")
