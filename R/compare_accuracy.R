@@ -1,4 +1,8 @@
 compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
+  if (!is.logical(quiet)) {
+    abort_argument_type("quiet", must = "be logical", not = quiet)
+  }
+
   models <- list(...)
   models_name <- as.character(match.call(expand.dots = FALSE)$`...`)
 
@@ -23,7 +27,11 @@ compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
     tidyselect::starts_with("R2"), tidyselect::everything()
   )
   if (!is.null(rank_by)) {
-    dplyr::arrange(compare, .data[[rank_by]])
+    if (rank_by %in% names(compare)) {
+      dplyr::arrange(compare, .data[[rank_by]])
+    } else {
+      abort_argument_value("rank_by", names(compare))
+    }
   } else {
     compare
   }
