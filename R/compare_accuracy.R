@@ -1,3 +1,20 @@
+#' Compare models accuracy
+#'
+#' Computes some common model accuracy indices of several different models at
+#'   once, allowing fot model comparison.
+#'
+#' @param ... A list of models. The models can be of the same or of different
+#'   classes, including \code{lvmisc_cv} class.
+#' @param rank_by A character string with the name of an accuracy index to rank
+#'   the models by.
+#' @param quiet A logical indicating whether or not to show any warnings. If
+#'   \code{FALSE} (the default) no warnings are shown.
+#'
+#' @return A \code{data.frame} with a model per row and an index per column.
+#'
+#' @export
+#'
+#' @importFrom rlang .data
 compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
   if (!is.logical(quiet)) {
     abort_argument_type("quiet", must = "be logical", not = quiet)
