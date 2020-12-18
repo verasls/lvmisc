@@ -15,6 +15,23 @@
 #' @export
 #'
 #' @importFrom rlang .data
+#'
+#' @examples
+#' m1 <- lm(Sepal.Length ~ Species, data = iris)
+#' m2 <- lm(Sepal.Length ~ Species + Petal.Length, data = iris)
+#' m3 <- lm(Sepal.Length ~ Species * Petal.Length, data = iris)
+#' compare_accuracy(m1, m2, m3)
+#'
+#' if (require(lme4)) {
+#'   mtcars <- tibble::as_tibble(mtcars, rownames = "cars")
+#'   m1 <- lm(Sepal.Length ~ Species, data = iris)
+#'   m2 <- lmer(
+#'     Sepal.Length ~ Sepal.Width + Petal.Length + (1 | Species), data = iris
+#'   )
+#'   m3 <- lm(disp ~ mpg * hp, mtcars)
+#'   cv3 <- loo_cv(m3, mtcars, cars)
+#'   compare_accuracy(m1, m2, cv3, rank_by = "AIC")
+#' }
 compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
   if (!is.logical(quiet)) {
     abort_argument_type("quiet", must = "be logical", not = quiet)
@@ -97,6 +114,7 @@ get_fit_method <- function(model) {
 }
 
 refit_lmerMod <- function(needs_refit, model) {
+  requireNamespace("lme4", quietly = TRUE)
   if (isTRUE(needs_refit)) {
     model_formula <- stats::formula(model)
     model_data <- stats::model.frame(model)

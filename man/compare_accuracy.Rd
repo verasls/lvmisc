@@ -23,3 +23,20 @@ A \code{data.frame} with a model per row and an index per column.
 Computes some common model accuracy indices of several different models at
 once, allowing fot model comparison.
 }
+\examples{
+m1 <- lm(Sepal.Length ~ Species, data = iris)
+m2 <- lm(Sepal.Length ~ Species + Petal.Length, data = iris)
+m3 <- lm(Sepal.Length ~ Species * Petal.Length, data = iris)
+compare_accuracy(m1, m2, m3)
+
+if (require(lme4)) {
+  mtcars <- tibble::as_tibble(mtcars, rownames = "cars")
+  m1 <- lm(Sepal.Length ~ Species, data = iris)
+  m2 <- lmer(
+    Sepal.Length ~ Sepal.Width + Petal.Length + (1 | Species), data = iris
+  )
+  m3 <- lm(disp ~ mpg * hp, mtcars)
+  cv3 <- loo_cv(m3, mtcars, cars)
+  compare_accuracy(m1, m2, cv3, rank_by = "AIC")
+}
+}
