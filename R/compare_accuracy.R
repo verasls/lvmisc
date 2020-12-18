@@ -18,6 +18,11 @@ compare_accuracy <- function(..., rank_by = "none", quiet = FALSE) {
   }
 
   compare <- cbind(models_info, models_accuracy)
+  compare <- dplyr::select(
+    compare,
+    Model, Class,
+    tidyselect::starts_with("R2"), tidyselect::everything()
+  )
   if (rank_by != "none") {
     dplyr::arrange(compare, .data[[rank_by]])
   } else {
