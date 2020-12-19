@@ -29,7 +29,7 @@ m2 <- lm(Sepal.Length ~ Species + Petal.Length, data = iris)
 m3 <- lm(Sepal.Length ~ Species * Petal.Length, data = iris)
 compare_accuracy(m1, m2, m3)
 
-if (require(lme4)) {
+if (require(lme4, quietly = TRUE)) {
   mtcars <- tibble::as_tibble(mtcars, rownames = "cars")
   m1 <- lm(Sepal.Length ~ Species, data = iris)
   m2 <- lmer(
