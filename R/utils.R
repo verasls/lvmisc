@@ -43,7 +43,8 @@ pa <- function(data) {
 
 #' Number of elements in a vector.
 #'
-#' \code{lu} returns the number of non-\code{NA} unique elements and \code{lna}
+#' \code{lunique} returns the number of non-\code{NA} unique elements and
+#' \code{lna}
 #'   returns the number of \code{NA}s.
 #'
 #' @param x A vector.
@@ -56,12 +57,12 @@ pa <- function(data) {
 #'
 #' @examples
 #' x <- sample(c(1:3, NA), 10, replace = TRUE)
-#' lu(x)
-lu <- function(x) {
+#' lunique(x)
+lunique <- function(x) {
   length(unique(x[!is.na(x)]))
 }
 
-#' @rdname lu
+#' @rdname lunique
 #' @export
 #' @examples
 #' lna(x)
