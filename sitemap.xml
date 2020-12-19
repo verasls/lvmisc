@@ -73,7 +73,7 @@
     <loc>https://lveras.com/lvmisc//reference/lt.html</loc>
   </url>
   <url>
-    <loc>https://lveras.com/lvmisc//reference/lu.html</loc>
+    <loc>https://lveras.com/lvmisc//reference/lunique.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/lvmisc-vctrs.html</loc>
@@ -119,6 +119,9 @@
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/plots.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc//reference/r2.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/repeat_baseline_values.html</loc>
