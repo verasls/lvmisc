@@ -8,18 +8,18 @@
 \alias{accuracy.lmerMod}
 \title{Model accuracy}
 \usage{
-accuracy(x, na.rm = FALSE)
+accuracy(model, na.rm = FALSE)
 
-\method{accuracy}{default}(x, na.rm = FALSE)
+\method{accuracy}{default}(model, na.rm = FALSE)
 
-\method{accuracy}{lvmisc_cv}(x, na.rm = FALSE)
+\method{accuracy}{lvmisc_cv}(model, na.rm = FALSE)
 
-\method{accuracy}{lm}(x, na.rm = FALSE)
+\method{accuracy}{lm}(model, na.rm = FALSE)
 
-\method{accuracy}{lmerMod}(x, na.rm = FALSE)
+\method{accuracy}{lmerMod}(model, na.rm = FALSE)
 }
 \arguments{
-\item{x}{An object of class \code{lvmisc_cv} or an object containing a model.}
+\item{model}{An object of class \code{lvmisc_cv} or an object containing a model.}
 
 \item{na.rm}{A logical value indicating whether or not to strip \code{NA}
 values to compute the indices. Defaults to \code{FALSE}.}

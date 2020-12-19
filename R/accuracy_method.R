@@ -3,7 +3,7 @@
 #' Computes some common model accuracy indices, such as the R squared, mean
 #'   absolute error, mean absolute percent error and root mean square error.
 #'
-#' @param x An object of class \code{lvmisc_cv} or an object containing a model.
+#' @param model An object of class \code{lvmisc_cv} or an object containing a model.
 #' @param na.rm A logical value indicating whether or not to strip \code{NA}
 #'   values to compute the indices. Defaults to \code{FALSE}.
 #'
@@ -35,34 +35,40 @@
 #'
 #' accuracy(m)
 #' accuracy(cv)
-accuracy <- function(x, na.rm = FALSE) {
+accuracy <- function(model, na.rm = FALSE) {
   UseMethod("accuracy")
 }
 
 #' @rdname accuracy
 #' @export
-accuracy.default <- function(x, na.rm = FALSE) {
+accuracy.default <- function(model, na.rm = FALSE) {
   msg <- glue::glue(
     "If you would like it to be implemented, please file an issue at \\
     https://github.com/verasls/lvmisc/issues."
   )
-  abort_no_method_for_class("accuracy", class(x), msg)
+  abort_no_method_for_class("accuracy", class(model), msg)
 }
 
 #' @rdname accuracy
 #' @export
-accuracy.lvmisc_cv <- function(x, na.rm = FALSE) {
-  model <- attributes(x)$lvmisc_cv_model
-  model_class <- paste("lvmisc_cv_model", class(model), sep = "/")
+accuracy.lvmisc_cv <- function(model, na.rm = FALSE) {
+  model_attr <- attributes(model)$lvmisc_cv_model
+  model_class <- paste("lvmisc_cv_model", class(model_attr), sep = "/")
 
-  check_args_accuracy(x, na.rm)
+  check_args_accuracy(model, na.rm)
 
-  AIC <- stats::AIC(model)
-  BIC <- stats::BIC(model)
-  R2 <- get_r2(model)
-  MAE <- mean_error_abs(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
-  MAPE <- mean_error_abs_pct(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
-  RMSE <- mean_error_sqr_root(x[[".actual"]], x[[".predicted"]], na.rm = na.rm)
+  AIC <- stats::AIC(model_attr)
+  BIC <- stats::BIC(model_attr)
+  R2 <- get_r2(model_attr)
+  MAE <- mean_error_abs(
+    model[[".actual"]], model[[".predicted"]], na.rm = na.rm
+  )
+  MAPE <- mean_error_abs_pct(
+    model[[".actual"]], model[[".predicted"]], na.rm = na.rm
+  )
+  RMSE <- mean_error_sqr_root(
+    model[[".actual"]], model[[".predicted"]], na.rm = na.rm
+  )
 
   accuracy_data <- round(data.frame(AIC, BIC, R2, MAE, MAPE, RMSE), 2)
   new_lvmisc_accuracy(accuracy_data, model_class)
@@ -70,19 +76,19 @@ accuracy.lvmisc_cv <- function(x, na.rm = FALSE) {
 
 #' @rdname accuracy
 #' @export
-accuracy.lm <- function(x, na.rm = FALSE) {
-  model_class <- class(x)
-  check_args_accuracy(x, na.rm)
+accuracy.lm <- function(model, na.rm = FALSE) {
+  model_class <- class(model)
+  check_args_accuracy(model, na.rm)
 
-  formula <- stats::formula(x)
+  formula <- stats::formula(model)
   outcome <- as.character(rlang::f_lhs(formula))
-  actual <- x$model[[outcome]]
-  predicted <- stats::predict(x)
+  actual <- model$model[[outcome]]
+  predicted <- stats::predict(model)
 
-  AIC <- stats::AIC(x)
-  BIC <- stats::BIC(x)
-  R2 <- summary(x)$r.squared
-  R2_adj <- summary(x)$adj.r.squared
+  AIC <- stats::AIC(model)
+  BIC <- stats::BIC(model)
+  R2 <- summary(model)$r.squared
+  R2_adj <- summary(model)$adj.r.squared
   MAE <- mean_error_abs(actual, predicted, na.rm = na.rm)
   MAPE <- mean_error_abs_pct(actual, predicted, na.rm = na.rm)
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
@@ -93,20 +99,20 @@ accuracy.lm <- function(x, na.rm = FALSE) {
 
 #' @rdname accuracy
 #' @export
-accuracy.lmerMod <- function(x, na.rm = FALSE) {
-  model_class <- class(x)
+accuracy.lmerMod <- function(model, na.rm = FALSE) {
+  model_class <- class(model)
   attr(model_class, "package") <- NULL
-  check_args_accuracy(x, na.rm)
+  check_args_accuracy(model, na.rm)
 
-  formula <- stats::formula(x)
+  formula <- stats::formula(model)
   outcome <- as.character(rlang::f_lhs(formula))
-  actual <- stats::model.frame(x)[[outcome]]
-  predicted <- stats::predict(x)
+  actual <- stats::model.frame(model)[[outcome]]
+  predicted <- stats::predict(model)
 
-  AIC <- stats::AIC(x)
-  BIC <- stats::BIC(x)
-  R2_marg <- r2(x)[["R2_marg"]]
-  R2_cond <- r2(x)[["R2_cond"]]
+  AIC <- stats::AIC(model)
+  BIC <- stats::BIC(model)
+  R2_marg <- r2(model)[["R2_marg"]]
+  R2_cond <- r2(model)[["R2_cond"]]
   MAE <- mean_error_abs(actual, predicted, na.rm = na.rm)
   MAPE <- mean_error_abs_pct(actual, predicted, na.rm = na.rm)
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
@@ -117,9 +123,9 @@ accuracy.lmerMod <- function(x, na.rm = FALSE) {
   new_lvmisc_accuracy(accuracy_data, model_class)
 }
 
-check_args_accuracy <- function(x, na.rm) {
-  if ("lvmisc_cv" %!in% class(x) & length(class(x)) > 1) {
-    classes <- class(x)[class(x) %!in% c("lm", "lmerMod")]
+check_args_accuracy <- function(model, na.rm) {
+  if ("lvmisc_cv" %!in% class(model) & length(class(model)) > 1) {
+    classes <- class(model)[class(model) %!in% c("lm", "lmerMod")]
     msg <- glue::glue(
       "If you would like it to be implemented, please file an issue at \\
       https://github.com/verasls/lvmisc/issues."
