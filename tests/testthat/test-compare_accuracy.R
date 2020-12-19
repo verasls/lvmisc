@@ -106,3 +106,11 @@ test_that("compare_accuracy() throws the correct warnigns", {
     "Some models were refit using maximum likelihood."
   )
 })
+
+test_that("rank_by argument works", {
+  m1 <- lm(Sepal.Length ~ Species, data = iris)
+  m2 <- lm(Sepal.Length ~ Species + Petal.Length, data = iris)
+  out <- compare_accuracy(m1, m2, rank_by = "AIC")
+
+  expect_true(out$AIC[1] < out$AIC[2])
+})
