@@ -70,7 +70,7 @@ reference:
   desc: >
     Functions shortcuts designed to easy interactive use
   contents:
-    - lu
+    - lunique
     - pa
     - tb
     - lt

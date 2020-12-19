@@ -12,9 +12,9 @@ test_that("pa() works", {
   })
 })
 
-test_that("lu and lna works", {
+test_that("lunique() and lna() works", {
   x <- c(1, 1, 2, 3, 3, 3, 4, 4, NA, NA)
 
-  expect_equal(lu(x), 4)
+  expect_equal(lunique(x), 4)
   expect_equal(lna(x), 2)
 })
