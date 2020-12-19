@@ -105,8 +105,8 @@ accuracy.lmerMod <- function(x, na.rm = FALSE) {
 
   AIC <- stats::AIC(x)
   BIC <- stats::BIC(x)
-  R2_marg <- piecewiseSEM::rsquared(x)[["Marginal"]]
-  R2_cond <- piecewiseSEM::rsquared(x)[["Conditional"]]
+  R2_marg <- r2(x)[["R2_marg"]]
+  R2_cond <- r2(x)[["R2_cond"]]
   MAE <- mean_error_abs(actual, predicted, na.rm = na.rm)
   MAPE <- mean_error_abs_pct(actual, predicted, na.rm = na.rm)
   RMSE <- mean_error_sqr_root(actual, predicted, na.rm = na.rm)
@@ -141,8 +141,8 @@ get_r2 <- function(model) {
     R2_adj <- summary(model)$adj.r.squared
     data.frame(R2, R2_adj)
   } else if (class(model) == "lmerMod") {
-    R2_marg <- piecewiseSEM::rsquared(model)[["Marginal"]]
-    R2_cond <- piecewiseSEM::rsquared(model)[["Conditional"]]
+    R2_marg <- r2(model)[["R2_marg"]]
+    R2_cond <- r2(model)[["R2_cond"]]
     data.frame(R2_marg, R2_cond)
   }
 }
