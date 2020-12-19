@@ -80,3 +80,29 @@ test_that("compare_accuracy() works for models of different classes", {
     c("lm", "lmerMod", "lvmisc_cv_model/lm")
   )
 })
+
+test_that("compare_accuracy() throws the correct warnigns", {
+  mtcars <- tibble::as_tibble(mtcars, rownames = "cars")
+  m1 <- lm(Sepal.Length ~ Species, data = iris)
+  m2 <- lme4::lmer(
+    Sepal.Length ~ Sepal.Width + Petal.Length + (1 | Species), data = iris
+  )
+  m3 <- lme4::lmer(
+    Sepal.Length ~ Sepal.Width * Petal.Length + (1 | Species), data = iris
+  )
+  m4 <- lm(disp ~ mpg * hp, mtcars)
+  cv4 <- loo_cv(m4, mtcars, cars)
+
+  expect_warning(
+    compare_accuracy(m1, m4),
+    "Not all models have the same response variable."
+  )
+  expect_warning(
+    compare_accuracy(m4, cv4),
+    "Not all models are of the same class."
+  )
+  expect_warning(
+    compare_accuracy(m2, m3),
+    "Some models were refit using maximum likelihood."
+  )
+})
