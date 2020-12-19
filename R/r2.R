@@ -99,6 +99,6 @@ check_args_r2 <- function(model) {
       "If you would like it to be implemented, please file an issue at \\
       https://github.com/verasls/lvmisc/issues."
     )
-    abort_no_method_for_class("accuracy", classes, msg)
+    abort_no_method_for_class("r2", classes, msg)
   }
 }
