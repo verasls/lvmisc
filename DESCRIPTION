@@ -24,7 +24,6 @@ Imports:
     withr,
     rsample,
     tibble,
-    piecewiseSEM,
     tidyselect,
     ggplot2,
     grDevices
