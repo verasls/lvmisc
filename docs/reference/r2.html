@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Model accuracy — accuracy • lvmisc</title>
+<title>Compute R squared — r2 • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,9 +52,8 @@
 
 
 
-<meta property="og:title" content="Model accuracy — accuracy" />
-<meta property="og:description" content="Computes some common model accuracy indices, such as the R squared, mean
-absolute error, mean absolute percent error and root mean square error." />
+<meta property="og:title" content="Compute R squared — r2" />
+<meta property="og:description" content="Returns the R squared values according to the model class." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -144,76 +143,95 @@ absolute error, mean absolute percent error and root mean square error." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Model accuracy</h1>
-    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/accuracy_method.R'><code>R/accuracy_method.R</code></a></small>
-    <div class="hidden name"><code>accuracy.Rd</code></div>
+    <h1>Compute R squared</h1>
+    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/r2.R'><code>R/r2.R</code></a></small>
+    <div class="hidden name"><code>r2.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Computes some common model accuracy indices, such as the R squared, mean
-absolute error, mean absolute percent error and root mean square error.</p>
+    <p>Returns the R squared values according to the model class.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>model</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>r2</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>model</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='co'># S3 method for lvmisc_cv</span>
-<span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>model</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'>r2</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 
 <span class='co'># S3 method for lm</span>
-<span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>model</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'>r2</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
 
 <span class='co'># S3 method for lmerMod</span>
-<span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>model</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+<span class='fu'>r2</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>An object of class <code>lvmisc_cv</code> or an object containing
-a model.</p></td>
-    </tr>
-    <tr>
-      <th>na.rm</th>
-      <td><p>A logical value indicating whether or not to strip <code>NA</code>
-values to compute the indices. Defaults to <code>FALSE</code>.</p></td>
+      <td><p>An object containing a model.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>lvmisc_accuracy</code>. See "Details" for more
-information.</p>
+    <p>If the model is a linear model, it returns the R squared and
+adjusted R squared. If the model is a linear mixed model it return the
+marginal and conditional R squared as described by Nakagawa and
+Schielzeth (2013). See the formulas for the computations in "Details".</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The method for the <code>lm</code> class (or for the <code>lvmisc_cv</code>
-class of a <code>lm</code>) returns a data frame with the columns <code>AIC</code>
-(Akaike information criterion), <code>BIC</code> (Bayesian information
-criterion), <code>R2</code> (R squared), <code>R2_adj</code> (adjusted R squared),
-<code>MAE</code> (mean absolute error), <code>MAPE</code> (mean absolute percent
-error) and <code>RMSE</code> (root mean square error).</p>
-<p>The method for the <code>lmerMod</code> (or for the <code>lvmisc_cv</code> class of a
-<code>lmerMod</code>) returns a data frame with the columns <code>R2_marg</code> and
-<code>R2_cond</code> instead of the columns <code>R2</code> and <code>R2_adj</code>.
-All the other columns are the same as the method for <code>lm</code>.
-<code>R2_marg</code> is the marginal R squared, which considers only the variance
-by the fixed effects of a mixed model, and <code>R2_cond</code> is the
-conditional R squared, which considers both fixed and random effects
-variance.</p>
+    <p>R squared computations.</p>
+    <h2 class="hasAnchor" id="r-squared"><a class="anchor" href="#r-squared"></a>R squared</h2>
+
+    
+
+<p>$$R^2 = \frac{var(\hat{y})}{var(\epsilon)}$$
+Where \(var(\hat{y})\) is the variance explained by the model and
+\(var(\epsilon)\) is the residual variance.</p>
+    <h2 class="hasAnchor" id="adjusted-r-squared"><a class="anchor" href="#adjusted-r-squared"></a>Adjusted R squared</h2>
+
+    
+
+<p>$$R_{adj}^{2} = 1 - (1 - R^2)\frac{n - 1}{n - p - 1}$$
+Where \(n\) is the number of data points and \(p\) is the number of
+predictors in the model.</p>
+    <h2 class="hasAnchor" id="marginal-r-squared"><a class="anchor" href="#marginal-r-squared"></a>Marginal R squared</h2>
+
+    
+
+<p>$$R_{marg}^{2} = \frac{var(f)}{var(f) + var(r) + var(\epsilon)}$$
+Where \(var(f)\) is the variance of the fixed effects, \(var(r)\) is
+the variance of the random effects and \(var(\epsilon)\) is the
+residual variance.</p>
+    <h2 class="hasAnchor" id="conditional-r-squared"><a class="anchor" href="#conditional-r-squared"></a>Conditional R squared</h2>
+
+    
+
+<p>$$R_{cond}^{2} = \frac{var(f) + var(r)}{var(f) + var(r) + var(\epsilon)}$$</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    
+<ul>
+<li><p>Nakagawa, S., &amp; Schielzeth, H. (2013). A general and simple method
+for obtaining R2 from generalized linear mixed-effects models. Methods
+in Ecology and Evolution, 4(2), 133–142.
+doi: <a href='https://doi.org/10.1111/j.2041-210x.2012.00261.x'>10.1111/j.2041-210x.2012.00261.x</a>
+.</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>mtcars</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/as_tibble.html'>as_tibble</a></span><span class='op'>(</span><span class='va'>mtcars</span>, rownames <span class='op'>=</span> <span class='st'>"car"</span><span class='op'>)</span>
-<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'>stats</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>disp</span> <span class='op'>~</span> <span class='va'>mpg</span>, <span class='va'>mtcars</span><span class='op'>)</span>
-<span class='va'>cv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='loo_cv.html'>loo_cv</a></span><span class='op'>(</span><span class='va'>m</span>, <span class='va'>mtcars</span>, <span class='va'>car</span>, keep <span class='op'>=</span> <span class='st'>"used"</span><span class='op'>)</span>
-
-<span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      AIC    BIC   R2 R2_adj   MAE   MAPE  RMSE
-#&gt; 1 363.72 368.11 0.72   0.71 53.21 31.81% 64.74</div><div class='input'><span class='fu'>accuracy</span><span class='op'>(</span><span class='va'>cv</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;      AIC    BIC   R2 R2_adj  MAE   MAPE  RMSE
-#&gt; 1 363.72 368.11 0.72   0.71 56.8 34.57% 68.84</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>m1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Sepal.Length</span> <span class='op'>~</span> <span class='va'>Species</span>, data <span class='op'>=</span> <span class='va'>iris</span><span class='op'>)</span>
+<span class='fu'>r2</span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;          R2    R2_adj
+#&gt; 1 0.6187057 0.6135181</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/lme4/lme4/'>lme4</a></span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>m2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span>
+    <span class='va'>Sepal.Length</span> <span class='op'>~</span> <span class='va'>Sepal.Width</span> <span class='op'>+</span> <span class='va'>Petal.Length</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>Species</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>iris</span>
+  <span class='op'>)</span>
+  <span class='fu'>r2</span><span class='op'>(</span><span class='va'>m2</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt;     R2_marg   R2_cond
+#&gt; 1 0.7437646 0.9541472</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
