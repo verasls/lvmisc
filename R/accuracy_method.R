@@ -3,7 +3,8 @@
 #' Computes some common model accuracy indices, such as the R squared, mean
 #'   absolute error, mean absolute percent error and root mean square error.
 #'
-#' @param model An object of class \code{lvmisc_cv} or an object containing a model.
+#' @param model An object of class \code{lvmisc_cv} or an object containing
+#'   a model.
 #' @param na.rm A logical value indicating whether or not to strip \code{NA}
 #'   values to compute the indices. Defaults to \code{FALSE}.
 #'
