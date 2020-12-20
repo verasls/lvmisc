@@ -1,5 +1,5 @@
 vif <- function(model) {
-  var_cov <- stats::vcov(model)
+  var_cov <- as.matrix(stats::vcov(model))
   model_assign <- attributes(stats::model.matrix(model))[["assign"]]
 
   if (has_intercept(model)) {
