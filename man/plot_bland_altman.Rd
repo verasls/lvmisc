@@ -12,8 +12,7 @@ plot_bland_altman(x, ...)
 \item{...}{Additional arguments to be passed to \code{ggplot2::aes()}.}
 }
 \description{
-Create a Bland-Altman plot as described by
-\href{=https://bit.ly/3mbf8bL}{Bland & Altman (1986)}.
+Create a Bland-Altman plot as described by Bland & Altman (1986).
 }
 \examples{
 mtcars <- tibble::as_tibble(mtcars, rownames = "car")

@@ -1,7 +1,6 @@
 #' Create a Bland-Altman plot
 #'
-#' Create a Bland-Altman plot as described by
-#' \href{=https://bit.ly/3mbf8bL}{Bland & Altman (1986)}.
+#' Create a Bland-Altman plot as described by Bland & Altman (1986).
 #'
 #' @param x An object of class \code{lvmisc_cv} or an object containing a model.
 #' @param ... Additional arguments to be passed to \code{ggplot2::aes()}.
