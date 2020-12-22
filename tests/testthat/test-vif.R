@@ -31,3 +31,16 @@ test_that("error handling works", {
     "Not enough terms in `model` to check for multicollinearity."
   )
 })
+
+test_that("model without intercept gets a warning", {
+  m1 <- lm(disp ~ mpg + hp - 1, mtcars)
+  m2 <- lme4::lmer(disp ~ mpg + hp - 1 + (1 | cyl), mtcars)
+  expect_warning(
+    vif(m1),
+    "`model` has no intercept; VIFs may not be sensible."
+  )
+  expect_warning(
+    vif(m2),
+    "`model` has no intercept; VIFs may not be sensible."
+  )
+})
