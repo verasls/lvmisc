@@ -40,15 +40,18 @@ compute_vif <- function(model) {
   }
 
   r <- stats::cov2cor(var_cov)
-  r_det <- det(r)
+  det_r <- det(r)
 
   vif <- purrr::map_dbl(
     seq_along(model_terms),
-    ~ compute_term_vif(.x, model_assign, r, r_det)
+    ~ compute_term_vif(.x, model_assign, r, det_r)
   )
-  names(vif) <- model_terms
 
-  vif
+  data.frame(
+    Term = model_terms,
+    VIF = vif,
+    Classification = purrr::map_chr(vif, classify_vif)
+  )
 }
 
 check_args_vif <- function(model, model_terms) {
@@ -80,7 +83,17 @@ has_intercept.lmerMod <- function(model) {
   names(lme4::fixef(model))[1] == "(Intercept)"
 }
 
-compute_term_vif <- function(term, model_assign, r, r_det) {
+compute_term_vif <- function(term, model_assign, r, det_r) {
   subs <- which(model_assign == term)
-  det(as.matrix(r[subs, subs])) * det(as.matrix(r[- subs, - subs]))  / r_det
+  det(as.matrix(r[subs, subs])) * det(as.matrix(r[- subs, - subs]))  / det_r
+}
+
+classify_vif <- function(vif) {
+  if (vif < 5) {
+    "Low"
+  } else if (vif >= 5 & vif < 10) {
+    "Moderate"
+  } else if (vif >= 10) {
+    "High"
+  }
 }
