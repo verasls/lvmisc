@@ -118,6 +118,9 @@
     <loc>https://lveras.com/lvmisc//reference/plot_bland_altman.html</loc>
   </url>
   <url>
+    <loc>https://lveras.com/lvmisc//reference/plot_model.html</loc>
+  </url>
+  <url>
     <loc>https://lveras.com/lvmisc//reference/plots.html</loc>
   </url>
   <url>
@@ -128,6 +131,9 @@
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//reference/tb.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc//reference/vif.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc//articles/accuracy_indices.html</loc>
