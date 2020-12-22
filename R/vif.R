@@ -9,10 +9,12 @@
 #' @return It returns a \code{data.frame} with three columns: the name of the
 #'   model term, the VIF value and its classification (see "Details").
 #'
-#' @details As a rule of thumb for the interpretation of the VIF value, a VIF <
-#'   5 indicates a low correlation of a given model term with the others, a VIF
-#'   \geq 5 and < 10 indicates a moderate correlation and a VIF \geq 10 
-#'   indicates a high correlation.
+#' @details
+#' ## VIF interpretation
+#'   As a rule of thumb for the interpretation of the VIF value, a VIF
+#'   less than 5 indicates a low correlation of a given model term with the
+#'   others, a VIF between 5 and 10 indicates a moderate correlation and a
+#'   VIF greater than 10 indicates a high correlation.
 #'
 #' @references
 #'   \itemize{
