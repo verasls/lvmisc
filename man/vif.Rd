@@ -5,7 +5,7 @@
 \alias{vif.default}
 \alias{vif.lm}
 \alias{vif.lmerMod}
-\title{Compute variance inflation factor}
+\title{Variance inflation factor}
 \usage{
 vif(model)
 
@@ -15,6 +15,28 @@ vif(model)
 
 \method{vif}{lmerMod}(model)
 }
+\arguments{
+\item{model}{An object containing a model.}
+}
+\value{
+It returns a \code{data.frame} with three columns: the name of the
+model term, the VIF value and its classification (see "Details").
+}
 \description{
-Compute variance inflation factor
+Computes the variance inflation facotr (VIF). The VIF is a measure of how
+much the variance of a regression coefficient is increased due to
+collinearity.
+}
+\details{
+As a rule of thumb for the interpretation of the VIF value, a VIF <
+5 indicates a low correlation of a given model term with the others, a VIF
+\geq 5 and < 10 indicates a moderate correlation and a VIF \geq 10
+indicates a high correlation.
+}
+\references{
+\itemize{
+\item James, G., Witten, D., Hastie, T., & Tibshirani, R. (eds.). (2013).
+An introduction to statistical learning: with applications in R. New York:
+Springer.
+}
 }
