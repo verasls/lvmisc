@@ -1,16 +1,21 @@
-#' Plot multicollinearity
+#' Plot model diagnostics
 #'
-#' Plots a bar chart of the variance inflation factor (VIF) for each of the
-#'   model terms.
+#' \code{plot_model_multicollinearity} plots a bar chart of the variance
+#'   inflation factor (VIF) for each of the model terms.
+#'
+#' @name plot_model
 #'
 #' @param model An object containing a model.
 #'
-#' @export
 #' @importFrom rlang .data
 #'
 #' @examples
 #' m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
 #' plot_model_multicollinearity(m)
+NULL
+
+#' @rdname plot_model
+#' @export
 plot_model_multicollinearity <- function(model) {
   plot_data <- vif(model)
   plot_data$Classification <- factor(
