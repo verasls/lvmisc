@@ -93,7 +93,7 @@ check_args_vif <- function(model, model_terms) {
   }
   if (length(model_terms) < 2) {
     rlang::abort(
-      "Not enought terms in `model` to check for multicollinearity."
+      "Not enough terms in `model` to check for multicollinearity."
     )
   }
 }
