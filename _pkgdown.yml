@@ -31,6 +31,7 @@ reference:
     - center_variable
     - is_outlier
     - r2
+    - vif
     - loo_cv
 
 - title: Accuracy indices
@@ -49,6 +50,7 @@ reference:
 - title: Plotting
   contents:
     - plot_bland_altman
+    - starts_with("plot_model_")
     - starts_with("plot_")
 
 - title: Operators
