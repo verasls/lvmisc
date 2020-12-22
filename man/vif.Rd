@@ -36,6 +36,10 @@ others, a VIF between 5 and 10 indicates a moderate correlation and a
 VIF greater than 10 indicates a high correlation.
 }
 }
+\examples{
+m <- lm(disp ~ mpg + cyl + mpg:cyl, mtcars)
+vif(m)
+}
 \references{
 \itemize{
 \item James, G., Witten, D., Hastie, T., & Tibshirani, R. (eds.). (2013).

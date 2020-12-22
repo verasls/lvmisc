@@ -24,6 +24,10 @@
 #'   }
 #'
 #' @export
+#'
+#' @examples
+#' m <- lm(disp ~ mpg + cyl + mpg:cyl, mtcars)
+#' vif(m)
 vif <- function(model) {
   UseMethod("vif")
 }
