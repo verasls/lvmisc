@@ -44,3 +44,18 @@ test_that("model without intercept gets a warning", {
     "`model` has no intercept; VIFs may not be sensible."
   )
 })
+
+test_that("vif() produces the right output", {
+  m <- lm(disp ~ mpg + cyl + hp + I(hp^2), mtcars)
+  out <- vif(m)
+
+  expect_equal(names(out), c("Term", "VIF", "Classification"))
+  expect_equal(
+    out[["Term"]],
+    c("mpg", "cyl", "hp", "I(hp^2)")
+  )
+  expect_equal(
+    out[["Classification"]],
+    c("Low", "Moderate", "High", "High")
+  )
+})
