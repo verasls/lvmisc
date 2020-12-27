@@ -36,3 +36,18 @@ plot_model_multicollinearity <- function(model) {
       y = "Variance Inflation Factor (VIF)"
     )
 }
+
+#' @rdname plot_model
+#' @export
+plot_model_residuals <- function(model) {
+  plot_data <- data.frame(sd_resid = stats::rstandard(model))
+  ggplot2::ggplot(plot_data, ggplot2::aes(sample = .data$sd_resid)) +
+    ggplot2::stat_qq() +
+    ggplot2::stat_qq_line(colour = "#2980b9", size = 1) +
+    ggplot2::theme_light() +
+    ggplot2::labs(
+      title = "Normality of residuals",
+      x = "Teoretical quantiles",
+      y = "Standardized residuals"
+    )
+}
