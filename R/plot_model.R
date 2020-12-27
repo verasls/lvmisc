@@ -1,17 +1,22 @@
 #' Plot model diagnostics
 #'
-#' \code{plot_model_multicollinearity} plots a bar chart of the variance
-#'   inflation factor (VIF) for each of the model terms.
+#' Plotting functions for some common model diagnostics.
 #'
 #' @name plot_model
 #'
 #' @param model An object containing a model.
+#'
+#' @details \code{plot_model_multicollinearity} plots a bar chart of the
+#'   variance inflation factor (VIF) for each of the model terms.
+#'   \code{plot_model_residuals} plots a QQ plot of the model standardized
+#'   residuals.
 #'
 #' @importFrom rlang .data
 #'
 #' @examples
 #' m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
 #' plot_model_multicollinearity(m)
+#' plot_model_residuals(m)
 NULL
 
 #' @rdname plot_model
