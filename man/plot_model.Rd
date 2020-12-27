@@ -3,9 +3,12 @@
 \name{plot_model}
 \alias{plot_model}
 \alias{plot_model_multicollinearity}
+\alias{plot_model_residuals}
 \title{Plot model diagnostics}
 \usage{
 plot_model_multicollinearity(model)
+
+plot_model_residuals(model)
 }
 \arguments{
 \item{model}{An object containing a model.}
