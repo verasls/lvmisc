@@ -45,8 +45,8 @@ plot_model_multicollinearity <- function(model) {
 #' @rdname plot_model
 #' @export
 plot_model_residuals <- function(model) {
-  plot_data <- data.frame(sd_resid = stats::rstandard(model))
-  ggplot2::ggplot(plot_data, ggplot2::aes(sample = .data$sd_resid)) +
+  plot_data <- get_standardized_residuals(model)
+  ggplot2::ggplot(plot_data, ggplot2::aes(sample = .data$std_res)) +
     ggplot2::stat_qq() +
     ggplot2::stat_qq_line(colour = "#2980b9", size = 1) +
     ggplot2::theme_light() +
@@ -55,4 +55,10 @@ plot_model_residuals <- function(model) {
       x = "Teoretical quantiles",
       y = "Standardized residuals"
     )
+}
+
+get_standardized_residuals <- function(model) {
+  std_res <- stats::residuals(model) /
+    (summary(model)[["sigma"]] * sqrt(1 - stats::hatvalues(model)))
+  data.frame(std_res)
 }
