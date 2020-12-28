@@ -6,10 +6,11 @@
 #'
 #' @param model An object containing a model.
 #'
-#' @details \code{plot_model_multicollinearity} plots a bar chart of the
+#' @details \code{plot_model_multicollinearity()} plots a bar chart of the
 #'   variance inflation factor (VIF) for each of the model terms.
-#'   \code{plot_model_residuals} plots a QQ plot of the model standardized
-#'   residuals.
+#'   \code{plot_model_residuals()} plots a QQ plot of the model standardized
+#'   residuals. \code{plot_model_homoscedasticity()} plots the model residuals
+#'   versus the fitted values.
 #'
 #' @importFrom rlang .data
 #'
@@ -17,6 +18,7 @@
 #' m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
 #' plot_model_multicollinearity(m)
 #' plot_model_residuals(m)
+#' plot_model_homoscedasticity(m)
 NULL
 
 #' @rdname plot_model
@@ -46,6 +48,7 @@ plot_model_multicollinearity <- function(model) {
 #' @export
 plot_model_residuals <- function(model) {
   plot_data <- get_standardized_residuals(model)
+
   ggplot2::ggplot(plot_data, ggplot2::aes(sample = .data$std_res)) +
     ggplot2::stat_qq() +
     ggplot2::stat_qq_line(colour = "#2980b9", size = 1) +
@@ -54,6 +57,31 @@ plot_model_residuals <- function(model) {
       title = "Normality of residuals",
       x = "Teoretical quantiles",
       y = "Standardized residuals"
+    )
+}
+
+#' @rdname plot_model
+#' @export
+plot_model_homoscedasticity <- function(model) {
+  plot_data <- data.frame(
+    residual = stats::residuals(model),
+    fitted = stats::fitted(model)
+  )
+
+  ggplot2::ggplot(
+    plot_data,
+    ggplot2::aes(x = .data$fitted, y = .data$residual)
+  ) +
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(
+      method = "loess", formula = "y ~ x", se = FALSE,
+      colour = "#2980b9", size = 1
+    ) +
+    ggplot2::theme_light() +
+    ggplot2::labs(
+      title = "Residual vs. fitted",
+      x = "Fitted values",
+      y = "Residuals"
     )
 }
 

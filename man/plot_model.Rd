@@ -4,11 +4,14 @@
 \alias{plot_model}
 \alias{plot_model_multicollinearity}
 \alias{plot_model_residuals}
+\alias{plot_model_homoscedasticity}
 \title{Plot model diagnostics}
 \usage{
 plot_model_multicollinearity(model)
 
 plot_model_residuals(model)
+
+plot_model_homoscedasticity(model)
 }
 \arguments{
 \item{model}{An object containing a model.}
@@ -17,13 +20,15 @@ plot_model_residuals(model)
 Plotting functions for some common model diagnostics.
 }
 \details{
-\code{plot_model_multicollinearity} plots a bar chart of the
+\code{plot_model_multicollinearity()} plots a bar chart of the
 variance inflation factor (VIF) for each of the model terms.
-\code{plot_model_residuals} plots a QQ plot of the model standardized
-residuals.
+\code{plot_model_residuals()} plots a QQ plot of the model standardized
+residuals. \code{plot_model_homoscedasticity()} plots the model residuals
+versus the fitted values.
 }
 \examples{
 m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
 plot_model_multicollinearity(m)
 plot_model_residuals(m)
+plot_model_homoscedasticity(m)
 }
