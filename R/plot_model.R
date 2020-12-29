@@ -10,7 +10,9 @@
 #'   variance inflation factor (VIF) for each of the model terms.
 #'   \code{plot_model_qq()} plots a QQ plot of the model standardized
 #'   residuals. \code{plot_model_residual_fitted()} plots the model residuals
-#'   versus the fitted values.
+#'   versus the fitted values. \code{plot_model_scale_location()} plots the
+#'   square root of absolute value of the model residuals versus the fitted
+#'   values.
 #'
 #' @importFrom rlang .data
 #'
@@ -19,6 +21,7 @@
 #' plot_model_multicollinearity(m)
 #' plot_model_qq(m)
 #' plot_model_residual_fitted(m)
+#' plot_model_scale_location(m)
 NULL
 
 #' @rdname plot_model
@@ -82,6 +85,32 @@ plot_model_residual_fitted <- function(model) {
       title = "Residual vs. fitted",
       x = "Fitted values",
       y = "Residuals"
+    )
+}
+
+#' @rdname plot_model
+#' @export
+plot_model_scale_location <- function(model) {
+  residual <- unname(purrr::as_vector(get_standardized_residuals(model)))
+  plot_data <- data.frame(
+    sqrt_residual = sqrt(abs(residual)),
+    fitted = stats::fitted(model)
+  )
+
+  ggplot2::ggplot(
+    plot_data,
+    ggplot2::aes(x = .data$fitted, y = .data$sqrt_residual)
+  ) +
+    ggplot2::geom_point() +
+    ggplot2::geom_smooth(
+      method = "loess", formula = "y ~ x", se = FALSE,
+      colour = "#2980b9", size = 1
+    ) +
+    ggplot2::theme_light() +
+    ggplot2::labs(
+      title = "Scale-location",
+      x = "Fitted values",
+      y = expression(sqrt("|Standardized residuals|"))
     )
 }
 
