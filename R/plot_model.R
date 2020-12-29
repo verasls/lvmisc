@@ -8,8 +8,8 @@
 #'
 #' @details \code{plot_model_multicollinearity()} plots a bar chart of the
 #'   variance inflation factor (VIF) for each of the model terms.
-#'   \code{plot_model_residuals()} plots a QQ plot of the model standardized
-#'   residuals. \code{plot_model_homoscedasticity()} plots the model residuals
+#'   \code{plot_model_qq()} plots a QQ plot of the model standardized
+#'   residuals. \code{plot_model_residual_fitted()} plots the model residuals
 #'   versus the fitted values.
 #'
 #' @importFrom rlang .data
@@ -17,8 +17,8 @@
 #' @examples
 #' m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
 #' plot_model_multicollinearity(m)
-#' plot_model_residuals(m)
-#' plot_model_homoscedasticity(m)
+#' plot_model_qq(m)
+#' plot_model_residual_fitted(m)
 NULL
 
 #' @rdname plot_model
@@ -46,7 +46,7 @@ plot_model_multicollinearity <- function(model) {
 
 #' @rdname plot_model
 #' @export
-plot_model_residuals <- function(model) {
+plot_model_qq <- function(model) {
   plot_data <- get_standardized_residuals(model)
 
   ggplot2::ggplot(plot_data, ggplot2::aes(sample = .data$std_res)) +
@@ -62,7 +62,7 @@ plot_model_residuals <- function(model) {
 
 #' @rdname plot_model
 #' @export
-plot_model_homoscedasticity <- function(model) {
+plot_model_residual_fitted <- function(model) {
   plot_data <- data.frame(
     residual = stats::residuals(model),
     fitted = stats::fitted(model)
