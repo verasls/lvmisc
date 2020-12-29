@@ -12,7 +12,8 @@
 #'   residuals. \code{plot_model_residual_fitted()} plots the model residuals
 #'   versus the fitted values. \code{plot_model_scale_location()} plots the
 #'   square root of absolute value of the model residuals versus the fitted
-#'   values.
+#'   values. \code{plot_model_cooks_distance()} plots a bat chart of each
+#'   observation Cook's distance value.
 #'
 #' @importFrom rlang .data
 #'
@@ -22,6 +23,7 @@
 #' plot_model_qq(m)
 #' plot_model_residual_fitted(m)
 #' plot_model_scale_location(m)
+#' plot_model_cooks_distance(m)
 NULL
 
 #' @rdname plot_model
@@ -111,6 +113,27 @@ plot_model_scale_location <- function(model) {
       title = "Scale-location",
       x = "Fitted values",
       y = expression(sqrt("|Standardized residuals|"))
+    )
+}
+
+#' @rdname plot_model
+#' @export
+plot_model_cooks_distance <- function(model) {
+  cooks_dist <- stats::cooks.distance(model)
+  plot_data <- data.frame(
+    obs = seq_along(cooks_dist),
+    cooks_dist
+  )
+
+  ggplot2::ggplot(
+    plot_data,
+    ggplot2::aes(x = .data$obs, y = .data$cooks_dist)
+  ) +
+    ggplot2::geom_bar(stat = "identity", position = "identity") +
+    ggplot2::theme_light() +
+    ggplot2::labs(
+      title = "Cook's distance",
+      x = "Observation number"
     )
 }
 
