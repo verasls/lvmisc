@@ -2,22 +2,22 @@
 % Please edit documentation in R/plot_model.R
 \name{plot_model}
 \alias{plot_model}
-\alias{plot_model_multicollinearity}
-\alias{plot_model_qq}
 \alias{plot_model_residual_fitted}
 \alias{plot_model_scale_location}
+\alias{plot_model_qq}
 \alias{plot_model_cooks_distance}
+\alias{plot_model_multicollinearity}
 \title{Plot model diagnostics}
 \usage{
-plot_model_multicollinearity(model)
-
-plot_model_qq(model)
-
 plot_model_residual_fitted(model)
 
 plot_model_scale_location(model)
 
+plot_model_qq(model)
+
 plot_model_cooks_distance(model)
+
+plot_model_multicollinearity(model)
 }
 \arguments{
 \item{model}{An object containing a model.}
@@ -26,20 +26,20 @@ plot_model_cooks_distance(model)
 Plotting functions for some common model diagnostics.
 }
 \details{
-\code{plot_model_multicollinearity()} plots a bar chart of the
-variance inflation factor (VIF) for each of the model terms.
-\code{plot_model_qq()} plots a QQ plot of the model standardized
-residuals. \code{plot_model_residual_fitted()} plots the model residuals
+\code{plot_model_residual_fitted()} plots the model residuals
 versus the fitted values. \code{plot_model_scale_location()} plots the
 square root of absolute value of the model residuals versus the fitted
-values. \code{plot_model_cooks_distance()} plots a bat chart of each
-observation Cook's distance value.
+values. \code{plot_model_qq()} plots a QQ plot of the model standardized
+residuals. \code{plot_model_cooks_distance()} plots a bat chart of each
+observation Cook's distance value\code{plot_model_multicollinearity()}
+plots a bar chart of the variance inflation factor (VIF) for each of the
+model terms.
 }
 \examples{
 m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
-plot_model_multicollinearity(m)
-plot_model_qq(m)
 plot_model_residual_fitted(m)
 plot_model_scale_location(m)
+plot_model_qq(m)
 plot_model_cooks_distance(m)
+plot_model_multicollinearity(m)
 }
