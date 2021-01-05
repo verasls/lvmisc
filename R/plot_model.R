@@ -11,9 +11,10 @@
 #'   square root of absolute value of the model residuals versus the fitted
 #'   values. \code{plot_model_qq()} plots a QQ plot of the model standardized
 #'   residuals. \code{plot_model_cooks_distance()} plots a bat chart of each
-#'   observation Cook's distance value\code{plot_model_multicollinearity()}
+#'   observation Cook's distance value. \code{plot_model_multicollinearity()}
 #'   plots a bar chart of the variance inflation factor (VIF) for each of the
-#'   model terms.
+#'   model terms. \code{plot_model()} returns a plot grid with all the
+#'   applicable plot diagnostics to a given model.
 #'
 #' @importFrom rlang .data
 #'
