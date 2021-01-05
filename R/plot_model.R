@@ -110,7 +110,8 @@ plot_model_cooks_distance <- function(model) {
     ggplot2::theme_light() +
     ggplot2::labs(
       title = "Cook's distance",
-      x = "Observation number"
+      x = "Observation number",
+      y = "Cook's distance"
     )
 }
 
