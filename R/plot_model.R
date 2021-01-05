@@ -43,6 +43,7 @@ plot_model_residual_fitted <- function(model) {
       method = "loess", formula = "y ~ x", se = FALSE,
       colour = "#2980b9", size = 1
     ) +
+    ggplot2::geom_hline(yintercept = 0, linetype = "longdash") +
     ggplot2::theme_light() +
     ggplot2::labs(
       title = "Residual vs. fitted",
