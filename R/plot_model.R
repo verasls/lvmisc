@@ -19,12 +19,30 @@
 #'
 #' @examples
 #' m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
+#' plot_model(m)
 #' plot_model_residual_fitted(m)
 #' plot_model_scale_location(m)
 #' plot_model_qq(m)
 #' plot_model_cooks_distance(m)
 #' plot_model_multicollinearity(m)
 NULL
+
+#' @rdname plot_model
+#' @export
+plot_model <- function(model) {
+  p1 <- plot_model_residual_fitted(model)
+  p2 <- plot_model_scale_location(model)
+  p3 <- plot_model_qq(model)
+  p4 <- plot_model_cooks_distance(model)
+
+  n_terms <- length(labels(stats::terms(model)))
+  if (n_terms < 2) {
+    cowplot::plot_grid(p1, p2, p3, p4, ncol = 2)
+  } else {
+    p5 <- plot_model_multicollinearity(model)
+    cowplot::plot_grid(p1, p2, p3, p4, p5, ncol = 2)
+  }
+}
 
 #' @rdname plot_model
 #' @export

@@ -9,6 +9,8 @@
 \alias{plot_model_multicollinearity}
 \title{Plot model diagnostics}
 \usage{
+plot_model(model)
+
 plot_model_residual_fitted(model)
 
 plot_model_scale_location(model)
@@ -37,6 +39,7 @@ model terms.
 }
 \examples{
 m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
+plot_model(m)
 plot_model_residual_fitted(m)
 plot_model_scale_location(m)
 plot_model_qq(m)
