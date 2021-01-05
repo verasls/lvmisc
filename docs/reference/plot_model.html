@@ -53,8 +53,7 @@
 
 
 <meta property="og:title" content="Plot model diagnostics — plot_model" />
-<meta property="og:description" content="plot_model_multicollinearity plots a bar chart of the variance
-inflation factor (VIF) for each of the model terms." />
+<meta property="og:description" content="Plotting functions for some common model diagnostics." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -145,16 +144,25 @@ inflation factor (VIF) for each of the model terms." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot model diagnostics</h1>
-    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/plot_model_multicollinearity.R'><code>R/plot_model_multicollinearity.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/plot_model.R'><code>R/plot_model.R</code></a></small>
     <div class="hidden name"><code>plot_model.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>plot_model_multicollinearity</code> plots a bar chart of the variance
-inflation factor (VIF) for each of the model terms.</p>
+    <p>Plotting functions for some common model diagnostics.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_model_multicollinearity</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>plot_model</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+
+<span class='fu'>plot_model_residual_fitted</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+
+<span class='fu'>plot_model_scale_location</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+
+<span class='fu'>plot_model_qq</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+
+<span class='fu'>plot_model_cooks_distance</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+
+<span class='fu'>plot_model_multicollinearity</span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,11 +173,27 @@ inflation factor (VIF) for each of the model terms.</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>plot_model_residual_fitted()</code> plots the model residuals
+versus the fitted values. <code>plot_model_scale_location()</code> plots the
+square root of absolute value of the model residuals versus the fitted
+values. <code>plot_model_qq()</code> plots a QQ plot of the model standardized
+residuals. <code>plot_model_cooks_distance()</code> plots a bat chart of each
+observation Cook's distance value. <code>plot_model_multicollinearity()</code>
+plots a bar chart of the variance inflation factor (VIF) for each of the
+model terms. <code>plot_model()</code> returns a plot grid with all the
+applicable plot diagnostics to a given model.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>disp</span> <span class='op'>~</span> <span class='va'>mpg</span> <span class='op'>+</span> <span class='va'>hp</span> <span class='op'>+</span> <span class='va'>cyl</span> <span class='op'>+</span> <span class='va'>mpg</span><span class='op'>:</span><span class='va'>cyl</span>, <span class='va'>mtcars</span><span class='op'>)</span>
-<span class='fu'>plot_model_multicollinearity</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
-</div><div class='img'><img src='plot_model-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'>plot_model</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_model-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot_model_residual_fitted</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_model-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot_model_scale_location</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_model-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot_model_qq</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_model-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot_model_cooks_distance</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_model-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>plot_model_multicollinearity</span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
+</div><div class='img'><img src='plot_model-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
