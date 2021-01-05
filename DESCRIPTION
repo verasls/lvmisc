@@ -26,7 +26,8 @@ Imports:
     tibble,
     tidyselect,
     ggplot2,
-    grDevices
+    grDevices,
+    cowplot
 Suggests: 
     testthat,
     forcats,
