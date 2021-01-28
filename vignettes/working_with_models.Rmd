@@ -10,8 +10,26 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
-{lvmisc} has a set of tools to work with model objects. Currently, the supported model classes are `lm` from the {stats} package and `lmerMod` from the {lme4} [package](https://CRAN.R-project.org/package=lme4). Before starting, let's load the package:
+{lvmisc} has a set of tools to work with model objects. Currently, the supported model classes are `lm` from the {stats} package and `lmerMod` from the {lme4} [package](https://CRAN.R-project.org/package=lme4). If you would like to have methods implemented to other model classes, please file an issue at https://github.com/verasls/lvmisc/issues.
 
-```{r setup}
+The functions to work with models can be divided into three categories:
+
+1. Model diagnostics
+1. Model cross-validation
+1. Model accuracy
+
+Before starting, let's load the required packages:
+
+```{r setup, message = FALSE}
 library(lvmisc)
+library(lme4)
+```
+
+# Model diagnostics
+
+{lvmisc} has a plotting method for some common model diagnostic plots. To explore it, let's first create some example models:
+
+```{r diagnostic_models}
+m1 <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
+m2 <- lmer(disp ~ mpg + (1 | cyl), mtcars)
 ```
