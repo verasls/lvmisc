@@ -79,3 +79,5 @@ workflow.R
 # End of https://www.gitignore.io/api/macos,r
 n
 inst/doc
+doc
+Meta

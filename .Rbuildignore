@@ -10,3 +10,5 @@
 ^workflow\.R$
 ^\.lintr$
 ^codecov\.yml$
+^doc$
+^Meta$
