@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-lvmisc contains a group of useful functions to compute basic indices of accuracy. These functions can be divided in those which compute element-wise values and those which compute average values:
+{lvmisc} contains a group of useful functions to compute basic indices of accuracy. These functions can be divided in those which compute element-wise values and those which compute average values:
 
 * **Element-wise:**
     * `error()`
