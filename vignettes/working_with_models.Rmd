@@ -10,7 +10,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
-{lvmisc} has a set of tools to work with model objects. Currently, the supported model classes are `lm` from the {stats} package and `lmerMod` from the {lme4} [package](https://cran.r-project.org/web/packages/lme4/index.html). Before starting, let's load the package:
+{lvmisc} has a set of tools to work with model objects. Currently, the supported model classes are `lm` from the {stats} package and `lmerMod` from the {lme4} [package](https://CRAN.R-project.org/package=lme4). Before starting, let's load the package:
 
 ```{r setup}
 library(lvmisc)

@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-0562-5803"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-URL: https://lveras.com/lvmisc
+URL: https://lveras.com/lvmisc/
 BugReports: https://github.com/verasls/lvmisc/issues
 Imports:
     dplyr (>= 1.0.0),
