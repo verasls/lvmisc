@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>lvmisc • lvmisc</title>
+<title>Working with models • lvmisc</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="lvmisc">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="Working with models">
 <meta property="og:description" content="lvmisc">
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -97,25 +97,60 @@
 
       
 
-      </header><script src="lvmisc_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><script src="working_with_models_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>lvmisc</h1>
+      <h1 data-toc-skip>Working with models</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/verasls/lvmisc/blob/master/vignettes/lvmisc.Rmd"><code>vignettes/lvmisc.Rmd</code></a></small>
-      <div class="hidden name"><code>lvmisc.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/verasls/lvmisc/blob/master/vignettes/working_with_models.Rmd"><code>vignettes/working_with_models.Rmd</code></a></small>
+      <div class="hidden name"><code>working_with_models.Rmd</code></div>
 
     </div>
 
     
     
-<p>Soon</p>
+<p>{lvmisc} has a set of tools to work with model objects. Currently, the supported model classes are <code>lm</code> from the {stats} package and <code>lmerMod</code> from the {lme4} <a href="https://CRAN.R-project.org/package=lme4">package</a>. If you would like to have methods implemented to other model classes, please file an issue at <a href="https://github.com/verasls/lvmisc/issues" class="uri">https://github.com/verasls/lvmisc/issues</a>.</p>
+<p>The functions to work with models can be divided into three categories:</p>
+<ol style="list-style-type: decimal">
+<li>Model diagnostics</li>
+<li>Model cross-validation</li>
+<li>Model accuracy</li>
+</ol>
+<p>Before starting, let’s load the required packages:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lveras.com/lvmisc/">lvmisc</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/">lme4</a></span><span class="op">)</span></code></pre></div>
+<div id="model-diagnostics" class="section level1">
+<h1 class="hasAnchor">
+<a href="#model-diagnostics" class="anchor"></a>Model diagnostics</h1>
+<p>{lvmisc} has a plotting method for some common model diagnostic plots. To explore it, let’s first create some example models:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
+<p>The main function here is <code><a href="../reference/plot_model.html">plot_model()</a></code> and its only argument is a model object:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></code></pre></div>
+<p><img src="working_with_models_files/figure-html/diagnostic_plots-1.png" width="672" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></code></pre></div>
+<p><img src="working_with_models_files/figure-html/diagnostic_plots-2.png" width="672" style="display: block; margin: auto;"></p>
+<p>The default plots shown are, respectively:</p>
+<ul>
+<li>A scatterplot of the residual vs. fitted values, with a smoothing line, which is useful to show if the residuals have a non-linear pattern. In this plot, the points should be randomly distributed around the smoothing line, and the smoothing line should be approximately horizontal and around the 0 line. This plot can also be generated by the <code><a href="../reference/plot_model.html">plot_model_residual_fitted()</a></code> function.</li>
+<li>A scatterplot of the square root of the absolute value of the model residuals vs. the fitted values, with a smoothing line. In this plot, again you should look for a horizontal smoothing line with the points randomly distributed around it, if it’s the case, you can assume the homogeneity of variance of the residuals. The <code><a href="../reference/plot_model.html">plot_model_scale_location()</a></code> function also generates this plot.</li>
+<li>A Q-Q plot of the standardized residuals, showing if the residuals are normally distributed. Normallity is assumed if the residuals are well aligned with the straight blue line. The function <code><a href="../reference/plot_model.html">plot_model_qq()</a></code> also builds this plot.</li>
+<li>A bar plot with the Cook’s distance per observation. This is a useful plot to check for influential observations. A given observation is often considered to be influential in the model if its Cook’s distance is higher than 1. The function <code><a href="../reference/plot_model.html">plot_model_cooks_distance()</a></code> can be used to show this plot.</li>
+<li>A bar plot with the variance inflation factor (VIF) per model term, which only shows if the model has 2 terms or more (you can see that in our example this plot is not built for <code>m2</code>). The VIF can be used to check the model for multicollinearity: the bar is green for a low multicollinearity, orange for moderate and red for high. The <code><a href="../reference/plot_model.html">plot_model_multicollinearity()</a></code> function can generate this plot.</li>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
