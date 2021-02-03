@@ -29,7 +29,7 @@ library(lvmisc)
 library(lme4)
 ```
 
-# Model diagnostics
+## Model diagnostics
 
 {lvmisc} has a plotting method for some common model diagnostic plots. To explore it, let's first create some example models:
 
@@ -52,7 +52,7 @@ By default it prints a grid of five (or four) diagnostic plots. The default plot
 - A bar plot with the Cook's distance per observation. This is a useful plot to check for influential observations. A given observation is often considered to be influential in the model if its Cook's distance is higher than 1. The function `plot_model_cooks_distance()` can be used to show this plot.
 - A bar plot with the variance inflation factor (VIF) per model term, which only shows if the model has 2 terms or more (you can see that in our example this plot is not built for `m2`). The VIF can be used to check the model for multicollinearity: the bar is green for a low multicollinearity, orange for moderate and red for high. The `plot_model_multicollinearity()` function can generate this plot.
 
-# Model cross-validation
+## Model cross-validation
 
 The cross-validation of a model is a way to assess how the results of a statistical model will generalize to an independent data set, but without the burden of collecting more data. At the moment, the only cross-valitation method available is the leave-one-out. Also, the only model classes supported are `lm` and `lmerMod`, but more cross-validation methods and classes will be implemented in the future.
 
@@ -72,7 +72,7 @@ To use the `loo_cv()` function you need to specify the model you will cross-vali
 
 The output of the cross-validation function is an object of class `lvmisc_cv`. It is simply a `tibble` with at least two columns: one containing the dependent variable actual values (`.actual`) as in the original dataset, and the other with the values predicted by the cross-validation procedure (`.predicted`). These two columns contain the data necessary to evaluate the model performance, as we will see in the next section.
 
-# Model accuracy
+## Model accuracy
 
 {lvmisc} also has an easy method to compute the most common model accuracy indices (`accuracy()` function) and to compare the accuracy indices of different models (`compare_accuracy()` function). Similarly to the other {lvmisc} functions described in this vignette, it has methods for the `lm` and `lmerMod` classes and also for the `lvmisc_cv` class.
 
