@@ -33,7 +33,7 @@ library(lme4)
 
 {lvmisc} has a plotting method for some common model diagnostic plots. To explore it, let's first create some example models:
 
-```{r diagnostic_models}
+```{r example_models}
 m1 <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
 m2 <- lmer(disp ~ mpg + (1 | cyl), mtcars)
 ```
@@ -60,7 +60,7 @@ EXPLAIN BRIEFLY HOW THE LOOCV WORKS
 
 We will now build a linear model to demonstrate the cross-validation with the `loo_cv()` function.
 
-```{r}
+```{r loo_cv}
 library(tibble)
 # Put the rownames into a column to treat eat row as a "subject" (car) in
 # the leave-one-out cross-validation
@@ -71,3 +71,36 @@ loo_cv(model = m, data = mtcars, id = car, keep = "used")
 To use the `loo_cv()` function you need to specify the model you will cross-validate, the original dataset used to build it and the name of the column which identifies the subjects. You will also notice the use of the `keep` argument: it controls the columns to be shown in the output object (more details in the `loo_cv()` documentation).
 
 The output of the cross-validation function is an object of class `lvmisc_cv`. It is simply a `tibble` with at least two columns: one containing the dependent variable actual values (`.actual`) as in the original dataset, and the other with the values predicted by the cross-validation procedure (`.predicted`). These two columns contain the data necessary to evaluate the model performance, as we will see in the next section.
+
+# Model accuracy
+
+{lvmisc} also has an easy method to compute the most common model accuracy indices (`accuracy()` function) and to compare the accuracy indices of different models (`compare_accuracy()` function). Similarly to the other {lvmisc} functions described in this vignette, it has methods for the `lm` and `lmerMod` classes and also for the `lvmisc_cv` class.
+
+To explore the `accuracy()` function, let's use the same models built in the first example of this vignette.
+
+```{r example_models_2}
+m1 <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
+m2 <- lmer(disp ~ mpg + (1 | cyl), mtcars)
+# Let's also cross-validate both models
+cv_m1 <- loo_cv(m1, mtcars, "car", keep = "used")
+cv_m2 <- loo_cv(m2, mtcars, "car", keep = "used")
+```
+
+And then use the `accuracy()` function in each of the models to compute their accuracy indices.
+
+```{r accuracy_indices}
+accuracy(m1)
+accuracy(m2)
+accuracy(cv_m1)
+accuracy(cv_m2)
+```
+As can be seen, the `accuracy()` function returns the following accuracy indices: Akaike information criterion (AIC), Bayesian information criterion (BIC), R^2^ values appropriate to the model assessed, mean absolute error (MAE), mean absolute percent error (MAPE) and root mean square error (RMSE).
+
+Examining the accuracy results above we can see that the AIC, BIC and R^2^ values do not change between the cross-validated model and the original model (*e.g.* `m1` vs. `cv_m1` and `m2` vs. `cv_m2`), and that the MAE, MAPE and RMSE values are worse for the cross-validated model, which is expected, as it is used to test an "out-of-sample" performance.
+
+Furthermore, we can also compare the accuracy indices of different models using the `compare_accuracy()` function.
+
+```{r compare_accuracy}
+compare_accuracy(m1, cv_m1, m2, cv_m2)
+```
+The benefits of using this function instead of manually comparing models with several `accuracy()` calls are that `compare_accuracy()` output shows the models info (object name and class) and it throws warnings to aid the comparison.
