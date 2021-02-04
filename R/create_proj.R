@@ -32,6 +32,7 @@ create_proj <- function(path,
   check_args_create_proj(
     path, sub_dirs, use_git, use_gitignore, use_readme
   )
+  abort_package_not_installed(c("withr", "git2r", "usethis"))
 
   if (!grepl("/$", path)) {
     path <- paste0(path, "/")
