@@ -123,7 +123,8 @@ abort_argument_value <- function(arg, valid_values) {
 #' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
-#'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
+#'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}},
+#'   \code{\link[=abort_package_not_installed]{abort_package_not_installed()}}
 #'
 #' @examples
 #' \dontrun{
@@ -154,7 +155,8 @@ abort_column_not_found <- function(data, col_name) {
 #' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
-#'   \code{\link[=abort_column_not_found]{abort_column_not_found()}}
+#'   \code{\link[=abort_column_not_found]{abort_column_not_found()}},
+#'   \code{\link[=abort_package_not_installed]{abort_package_not_installed()}}
 abort_no_method_for_class <- function(fun, class, ...) {
   extra_msg <- list(...)
   if (any(purrr::map(extra_msg, is.character) == FALSE)) {
@@ -178,4 +180,44 @@ abort_no_method_for_class <- function(fun, class, ...) {
   msg <- glue::glue_collapse(c(msg, extra_msg), sep = "\n")
 
   rlang::abort("error_no_method_for_class", message = msg)
+}
+
+#' Abort if required package is not installed
+#'
+#' Returns a custom error condition created with
+#'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
+#'   error message and metadata.
+#'
+#' @param package A character string with the required package name.
+#'
+#' @export
+#'
+#' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
+#'   \code{\link[=abort_argument_length]{abort_argument_length()}},
+#'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
+#'   \code{\link[=abort_column_not_found]{abort_column_not_found()}},
+#'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
+abort_package_not_installed <- function(package) {
+  pkg <- check_package(package)
+  pkg_name <- glue::glue_collapse(
+    glue::double_quote(pkg), ", ", last = " and "
+  )
+
+  noun <- ifelse(length(pkg) > 1, "Packages", "Package")
+  verb <- ifelse(length(pkg) > 1, "are", "is")
+  pronoun <- ifelse(length(pkg) > 1, "them", "it")
+
+  msg <- glue::glue(
+    "{noun} {pkg_name} {verb} needed for this function to work. \\
+    Please install {pronoun}."
+  )
+
+  rlang::abort("error_package_not_installed", message = msg)
+}
+
+check_package <- function(x) {
+  installed <- purrr::map_lgl(x, requireNamespace, quietly = TRUE)
+  if (!all(installed)) {
+    x[which(installed == FALSE)]
+  }
 }
