@@ -199,25 +199,35 @@ abort_no_method_for_class <- function(fun, class, ...) {
 #'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
 abort_package_not_installed <- function(package) {
   pkg <- check_package(package)
-  pkg_name <- glue::glue_collapse(
-    glue::double_quote(pkg), ", ", last = " and "
-  )
+  if (!isTRUE(pkg)) {
+    pkg_name <- glue::glue_collapse(
+      glue::double_quote(pkg), ", ", last = " and "
+    )
 
-  noun <- ifelse(length(pkg) > 1, "Packages", "Package")
-  verb <- ifelse(length(pkg) > 1, "are", "is")
-  pronoun <- ifelse(length(pkg) > 1, "them", "it")
+    noun <- ifelse(length(pkg) > 1, "Packages", "Package")
+    verb <- ifelse(length(pkg) > 1, "are", "is")
+    pronoun <- ifelse(length(pkg) > 1, "them", "it")
 
-  msg <- glue::glue(
-    "{noun} {pkg_name} {verb} needed for this function to work. \\
-    Please install {pronoun}."
-  )
+    msg <- glue::glue(
+      "{noun} {pkg_name} {verb} needed for this function to work. \\
+      Please install {pronoun}."
+    )
 
-  rlang::abort("error_package_not_installed", message = msg)
+    rlang::abort("error_package_not_installed", message = msg)
+  }
 }
 
+#' Checks whether a package is installed
+#'
+#' @param x A character string with the package name
+#' @return If all packages in \code{x} are installed, returns \code{TRUE},
+#'   if not, returns the name of the non-installed package(s).
+#' @keywords internal
 check_package <- function(x) {
   installed <- purrr::map_lgl(x, requireNamespace, quietly = TRUE)
   if (!all(installed)) {
     x[which(installed == FALSE)]
+  } else {
+    TRUE
   }
 }
