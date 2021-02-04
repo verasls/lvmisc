@@ -48,6 +48,7 @@ create_proj <- function(path,
     "Creating project top-level directory {usethis::ui_path(path)}"
   )
   withr::local_dir(path)
+  path <- getwd()
 
   if (!is.null(sub_dirs)) {
     if (sub_dirs == "default") {
@@ -101,7 +102,7 @@ clean_sub_dir <- function(sub_dir) {
 }
 
 write_gitignore <- function(path, option) {
-  gitignore_file <- paste0(path, ".gitignore")
+  gitignore_file <- paste0(path, "/.gitignore")
 
   if (option == "default") {
     sys_ignore <- get_sys_ignore()
