@@ -110,3 +110,30 @@ test_that("abort_no_method_for_class() error handling for ... works", {
     "`...` must be character; not double."
   )
 })
+
+test_that("abort_package_not_installed() works", {
+  err1 <- expect_error(abort_package_not_installed("a"))
+  err2 <- expect_error(abort_package_not_installed(c("a", "b")))
+
+  expect_s3_class(err1, "error_package_not_installed")
+  expect_s3_class(err2, "error_package_not_installed")
+  expect_equal(
+    unclass(err1$message),
+    "Package \"a\" is needed for this function to work. Please install it."
+  )
+  expect_equal(
+    err2$message,
+    glue::glue(
+      "Packages \"a\" and \"b\" are needed for this function to work. \\
+      Please install them."
+    )
+  )
+})
+
+test_that(
+  "abort_package_not_installed() does nothing if all required packages are
+  already installed", {
+    out <- abort_package_not_installed("testthat")
+    expect_true(out)
+  }
+)
