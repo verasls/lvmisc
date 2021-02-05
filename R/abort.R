@@ -214,6 +214,8 @@ abort_package_not_installed <- function(package) {
     )
 
     rlang::abort("error_package_not_installed", message = msg)
+  } else {
+    invisible(TRUE)
   }
 }
 
