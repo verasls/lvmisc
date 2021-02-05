@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Abort method if class is not implemented — abort_no_method_for_class • lvmisc</title>
+<title>Abort if required package is not installed — abort_package_not_installed • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,7 +52,7 @@
 
 
 
-<meta property="og:title" content="Abort method if class is not implemented — abort_no_method_for_class" />
+<meta property="og:title" content="Abort if required package is not installed — abort_package_not_installed" />
 <meta property="og:description" content="Returns a custom error condition created with
 rlang::abort() with a - hopefully - more useful
 error message and metadata." />
@@ -144,9 +144,9 @@ error message and metadata." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Abort method if class is not implemented</h1>
+    <h1>Abort if required package is not installed</h1>
     <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/abort.R'><code>R/abort.R</code></a></small>
-    <div class="hidden name"><code>abort_no_method_for_class.Rd</code></div>
+    <div class="hidden name"><code>abort_package_not_installed.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -155,23 +155,14 @@ error message and metadata." />
 error message and metadata.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>abort_no_method_for_class</span><span class='op'>(</span><span class='va'>fun</span>, <span class='va'>class</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>abort_package_not_installed</span><span class='op'>(</span><span class='va'>package</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>fun</th>
-      <td><p>A character vector with the function name.</p></td>
-    </tr>
-    <tr>
-      <th>class</th>
-      <td><p>A character vector with the class name.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Extra message to be added to the error message. Must be
-character string.</p></td>
+      <th>package</th>
+      <td><p>A character string with the required package name.</p></td>
     </tr>
     </table>
 
@@ -181,7 +172,7 @@ character string.</p></td>
 <code><a href='abort_argument.html'>abort_argument_length()</a></code>,
 <code><a href='abort_argument.html'>abort_argument_diff_length()</a></code>,
 <code><a href='abort_column_not_found.html'>abort_column_not_found()</a></code>,
-<code><a href='abort_package_not_installed.html'>abort_package_not_installed()</a></code></p></div>
+<code><a href='abort_no_method_for_class.html'>abort_no_method_for_class()</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
