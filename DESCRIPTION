@@ -12,32 +12,32 @@ License: MIT + file LICENSE
 URL: https://lveras.com/lvmisc/
 BugReports: https://github.com/verasls/lvmisc/issues
 Imports:
+    cowplot,
     dplyr (>= 1.0.0),
+    ggplot2,
     glue,
-    rlang (>= 0.4.6),
-    vctrs (>= 0.3.0),
+    grDevices,
     methods,
-    stats,
     purrr,
-    usethis,
-    git2r,
-    withr,
+    rlang (>= 0.4.6),
     rsample,
+    stats,
     tibble,
     tidyselect,
-    ggplot2,
-    grDevices,
-    cowplot
+    vctrs (>= 0.3.0)
 Suggests: 
-    testthat,
-    forcats,
-    devtools,
-    knitr,
-    rmarkdown,
     covr,
+    devtools,
+    forcats,
     fs,
+    git2r,
+    knitr,
     lme4,
-    vdiffr
+    rmarkdown,
+    testthat,
+    usethis,
+    vdiffr,
+    withr
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
