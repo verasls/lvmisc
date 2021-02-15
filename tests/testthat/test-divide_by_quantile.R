@@ -6,7 +6,7 @@ test_that("error handling works", {
   )
   expect_error(
     divide_by_quantile(1:10, 4.5),
-    "`n` must be interger; not double.",
+    "`n` must be integer; not double.",
     class = "error_argument_type"
   )
   expect_error(
