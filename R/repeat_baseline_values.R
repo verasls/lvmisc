@@ -25,6 +25,7 @@
 #' )
 #'
 #' df$baseline_score <- repeat_baseline_values(df, score, id, time, 1)
+#' df
 repeat_baseline_values <- function(data,
                                    var,
                                    id,

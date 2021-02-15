@@ -22,6 +22,12 @@ A vector of the class \code{lvmisc_percent}.
 \description{
 Computes the Bland-Altman limits of agreement between the input vectors.
 }
+\examples{
+actual <- runif(10)
+predicted <- runif(10)
+
+loa(actual, predicted)
+}
 \seealso{
 \code{\link[=mean_error]{mean_error()}},
 \code{\link[=bias]{bias()}}

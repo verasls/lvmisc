@@ -22,6 +22,12 @@ A vector of the class \code{lvmisc_percent}.
 \description{
 Computes the average percent error between the input vectors.
 }
+\examples{
+actual <- runif(10)
+predicted <- runif(10)
+
+mean_error_pct(actual, predicted)
+}
 \seealso{
 \code{\link[=mean_error]{mean_error()}},
 \code{\link[=mean_error_abs]{mean_error_abs()}},

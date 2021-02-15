@@ -27,4 +27,5 @@ df <- data.frame(
 )
 
 df$body_mass_centered <- center_variable(df$body_mass, df$group)
+df
 }

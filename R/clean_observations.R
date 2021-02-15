@@ -21,7 +21,7 @@
 #' data <- data.frame(
 #'   id = rep(1:5, each = 4),
 #'   time = rep(1:4, 5),
-#'   score = sample(c(1:5, rep(NA, 5)), 20, replace = TRUE)
+#'   score = sample(c(1:5, rep(NA, 2)), 20, replace = TRUE)
 #' )
 #'
 #' clean_observations(data, id, score, 1)

@@ -19,6 +19,12 @@ stripped before the computation proceeds. Defaults to \code{FALSE}.}
 \description{
 Computes the bias (mean error) between the input vectors.
 }
+\examples{
+actual <- runif(10)
+predicted <- runif(10)
+
+bias(actual, predicted)
+}
 \seealso{
 \code{\link[=mean_error]{mean_error()}},
 \code{\link[=loa]{loa()}}

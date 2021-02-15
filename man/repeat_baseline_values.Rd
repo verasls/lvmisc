@@ -36,4 +36,5 @@ df <- data.frame(
 )
 
 df$baseline_score <- repeat_baseline_values(df, score, id, time, 1)
+df
 }

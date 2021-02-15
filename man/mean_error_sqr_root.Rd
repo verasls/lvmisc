@@ -19,6 +19,12 @@ stripped before the computation proceeds. Defaults to \code{FALSE}.}
 \description{
 Computes the root mean square error between the input vectors.
 }
+\examples{
+actual <- runif(10)
+predicted <- runif(10)
+
+mean_error_sqr_root(actual, predicted)
+}
 \seealso{
 \code{\link[=mean_error]{mean_error()}},
 \code{\link[=mean_error_abs]{mean_error_abs()}},

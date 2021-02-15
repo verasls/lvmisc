@@ -25,6 +25,12 @@ NULL
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' mean_error(actual, predicted)
 mean_error <- function(actual, predicted, na.rm = FALSE) {
   if (!is.numeric(actual)) {
     abort_argument_type(
@@ -71,6 +77,12 @@ mean_error <- function(actual, predicted, na.rm = FALSE) {
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' mean_error_pct(actual, predicted)
 mean_error_pct <- function(actual, predicted, na.rm = FALSE) {
   if (!is.numeric(actual)) {
     abort_argument_type(
@@ -115,6 +127,12 @@ mean_error_pct <- function(actual, predicted, na.rm = FALSE) {
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' mean_error_abs(actual, predicted)
 mean_error_abs <- function(actual, predicted, na.rm = FALSE) {
   if (!is.numeric(actual)) {
     abort_argument_type(
@@ -161,6 +179,12 @@ mean_error_abs <- function(actual, predicted, na.rm = FALSE) {
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' mean_error_abs_pct(actual, predicted)
 mean_error_abs_pct <- function(actual, predicted, na.rm = FALSE) {
   if (!is.numeric(actual)) {
     abort_argument_type(
@@ -205,6 +229,12 @@ mean_error_abs_pct <- function(actual, predicted, na.rm = FALSE) {
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr_root]{mean_error_sqr_root()}}
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' mean_error_sqr(actual, predicted)
 mean_error_sqr <- function(actual, predicted, na.rm = FALSE) {
   if (!is.numeric(actual)) {
     abort_argument_type(
@@ -249,6 +279,12 @@ mean_error_sqr <- function(actual, predicted, na.rm = FALSE) {
 #'   \code{\link[=mean_error_pct]{mean_error_pct()}},
 #'   \code{\link[=mean_error_abs_pct]{mean_error_abs_pct()}},
 #'   \code{\link[=mean_error_sqr]{mean_error_sqr()}}
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' mean_error_sqr_root(actual, predicted)
 mean_error_sqr_root <- function(actual, predicted, na.rm = FALSE) {
   if (!is.numeric(actual)) {
     abort_argument_type(
@@ -290,6 +326,12 @@ mean_error_sqr_root <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=loa]{loa()}}
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' bias(actual, predicted)
 bias <- function(actual, predicted, na.rm = FALSE) {
   if (!is.numeric(actual)) {
     abort_argument_type(
@@ -333,6 +375,12 @@ bias <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @seealso \code{\link[=mean_error]{mean_error()}},
 #'   \code{\link[=bias]{bias()}}
+#'
+#' @examples
+#' actual <- runif(10)
+#' predicted <- runif(10)
+#'
+#' loa(actual, predicted)
 loa <- function(actual, predicted, na.rm = FALSE) {
   if (!is.numeric(actual)) {
     abort_argument_type(
