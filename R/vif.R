@@ -1,6 +1,6 @@
 #' Variance inflation factor
 #'
-#' Computes the variance inflation facotr (VIF). The VIF is a measure of how
+#' Computes the variance inflation factor (VIF). The VIF is a measure of how
 #'   much the variance of a regression coefficient is increased due to
 #'   collinearity.
 #'

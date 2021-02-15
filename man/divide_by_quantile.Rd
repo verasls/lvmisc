@@ -9,7 +9,7 @@ divide_by_quantile(data, n, na.rm = TRUE)
 \arguments{
 \item{data}{A numeric vector.}
 
-\item{n}{An interger specifying the number of levels in the factor to be
+\item{n}{An integer specifying the number of levels in the factor to be
 created.}
 
 \item{na.rm}{A logical vector indicating whether the \code{NA} values should

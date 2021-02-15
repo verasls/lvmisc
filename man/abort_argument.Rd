@@ -30,7 +30,7 @@ error message.}
 
 \item{arg1, arg2}{A character string with the argument name.}
 
-\item{valid_values}{A character vectpr with the vaid values.}
+\item{valid_values}{A character vector with the valid values.}
 }
 \description{
 Returns a custom error condition created with

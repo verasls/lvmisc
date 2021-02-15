@@ -21,7 +21,7 @@ A \code{data.frame} with a model per row and an index per column.
 }
 \description{
 Computes some common model accuracy indices of several different models at
-once, allowing fot model comparison.
+once, allowing model comparison.
 }
 \examples{
 m1 <- lm(Sepal.Length ~ Species, data = iris)

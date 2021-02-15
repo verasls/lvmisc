@@ -86,7 +86,7 @@ abort_argument_diff_length <- function(arg1, arg2) {
 
 #' @rdname abort_argument
 #' @param arg A character string with the argument name.
-#' @param valid_values A character vectpr with the vaid values.
+#' @param valid_values A character vector with the valid values.
 #' @export
 #' @examples
 #' \dontrun{

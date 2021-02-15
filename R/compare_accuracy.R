@@ -1,7 +1,7 @@
 #' Compare models accuracy
 #'
 #' Computes some common model accuracy indices of several different models at
-#'   once, allowing fot model comparison.
+#'   once, allowing model comparison.
 #'
 #' @param ... A list of models. The models can be of the same or of different
 #'   classes, including \code{lvmisc_cv} class.

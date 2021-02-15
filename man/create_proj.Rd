@@ -20,7 +20,7 @@ creates 'code/', 'data/', 'docs/', 'figures/' and 'tables/'
 sub-directories. Otherwise, it creates the sub-directories specified
 in the character vector.}
 
-\item{use_git}{A logical value indicating whether or not to initialise a git
+\item{use_git}{A logical value indicating whether or not to initialize a git
 repository. Defaults to \code{TRUE}.}
 
 \item{use_gitignore}{A character vector. If \code{use_gitignore = "default"},
@@ -39,6 +39,6 @@ vector. If you do not want to create a .gitignore file, set
 Path to the newly created project, invisibly.
 }
 \description{
-Creates a project structure, including sub-directories, and initialisation
+Creates a project structure, including sub-directories, and initialization
 of a git repository.
 }

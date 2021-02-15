@@ -7,7 +7,7 @@
 #' @param id The bare (unquoted) name of the column that identifies each
 #'   subject.
 #' @param var The bare (unquoted) name of the column to be cleaned.
-#' @param max_na An interger indicating the maximum number of \code{NA}s per
+#' @param max_na An integer indicating the maximum number of \code{NA}s per
 #'   subject.
 #'
 #' @export

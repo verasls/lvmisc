@@ -48,13 +48,13 @@ By default it prints a grid of five (or four) diagnostic plots. Each individual 
 
 - A scatterplot of the residual vs. fitted values, with a smoothing line, which is useful to show if the residuals have a non-linear pattern. In this plot, the points should be randomly distributed around the smoothing line, and the smoothing line should be approximately horizontal and around the 0 line. `plot_model_residual_fitted()` generates this plot.
 - A scatterplot of the square root of the absolute value of the model residuals vs. the fitted values, with a smoothing line. In this plot, again you should look for a horizontal smoothing line with the points randomly distributed around it, if it's the case, you can assume the homogeneity of variance of the residuals. `plot_model_scale_location()` generates this plot.
-- A Q-Q plot of the standardized residuals, showing if the residuals are normally distributed. Normallity is assumed if the residuals are well aligned with the straight blue line. `plot_model_qq()` generates this plot.
+- A Q-Q plot of the standardized residuals, showing if the residuals are normally distributed. Normality is assumed if the residuals are well aligned with the straight blue line. `plot_model_qq()` generates this plot.
 - A bar plot with the Cook's distance per observation. This is a useful plot to check for influential observations. A given observation is often considered to be influential in the model if its Cook's distance is higher than 1. `plot_model_cooks_distance()` generates this plot.
 - A bar plot with the variance inflation factor (VIF) per model term, which only shows if the model has 2 terms or more (you can see that in our example this plot is not built for `m2`). The VIF can be used to check the model for multicollinearity: the bar is green for a low multicollinearity, orange for moderate and red for high. `plot_model_multicollinearity()` generates this plot.
 
 ## Model cross-validation
 
-The cross-validation of a model is a way to assess how the results of a statistical model will generalize to an independent data set, but without the burden of collecting more data. At the moment, the only cross-valitation method available in the {lvmisc} package is the leave-one-out. Also, the only model classes supported are `lm` and `lmerMod`, but more cross-validation methods and classes will be implemented in the future.
+The cross-validation of a model is a way to assess how the results of a statistical model will generalize to an independent data set, but without the burden of collecting more data. At the moment, the only cross-validation method available in the {lvmisc} package is the leave-one-out. Also, the only model classes supported are `lm` and `lmerMod`, but more cross-validation methods and classes will be implemented in the future.
 
 The leave-one-out cross validation method works by each subject's data into a testing dataset (one participant at a time) with the remaining data being the training dataset. New models with exactly the same specifications as the original model are developed using the training dataset and then used to predict the outcome in the testing dataset. This process is repeated once for every subject in the original data.
 
@@ -103,4 +103,4 @@ Furthermore, we can also compare the accuracy indices of different models using 
 ```{r compare_accuracy}
 compare_accuracy(m1, cv_m1, m2, cv_m2)
 ```
-Somoe of the benefits of using this function instead of manually comparing models with several `accuracy()` calls are that `compare_accuracy()` output shows the models info (object name and class) and it throws warnings to aid the comparison.
+Some of the benefits of using this function instead of manually comparing models with several `accuracy()` calls are that `compare_accuracy()` output shows the models info (object name and class) and it throws warnings to aid the comparison.

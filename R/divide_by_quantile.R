@@ -3,7 +3,7 @@
 #' Creates a factor based on equally spaced quantiles of a variable.
 #'
 #' @param data A numeric vector.
-#' @param n An interger specifying the number of levels in the factor to be
+#' @param n An integer specifying the number of levels in the factor to be
 #'   created.
 #' @param na.rm A logical vector indicating whether the \code{NA} values should
 #'   be removed before the quantiles are computed.
@@ -20,7 +20,7 @@ divide_by_quantile <- function(data, n, na.rm = TRUE) {
     abort_argument_type(arg = "data", must = "be numeric", not = data)
   }
   if (n %% 1 != 0) {
-    abort_argument_type(arg = "n", must = "be interger", not = n)
+    abort_argument_type(arg = "n", must = "be integer", not = n)
   }
   if (!is.logical(na.rm)) {
     abort_argument_type(arg = "na.rm", must = "be logical", not = na.rm)
