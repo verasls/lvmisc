@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lvmisc</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -148,10 +148,9 @@
 <p>The leave-one-out cross validation method works by each subject’s data into a testing dataset (one participant at a time) with the remaining data being the training dataset. New models with exactly the same specifications as the original model are developed using the training dataset and then used to predict the outcome in the testing dataset. This process is repeated once for every subject in the original data.</p>
 <p>We will now build a linear model to demonstrate the cross-validation with the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
-<span class="co"># Put the rownames into a column to treat eat row as a "subject" (car) in</span>
+<code class="sourceCode R"><span class="co"># Put the rownames into a column to treat eat row as a "subject" (car) in</span>
 <span class="co"># the leave-one-out cross-validation</span>
-<span class="va">mtcars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">mtcars</span>, rownames <span class="op">=</span> <span class="st">"car"</span><span class="op">)</span>
+<span class="va">mtcars</span><span class="op">$</span><span class="va">car</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
 <span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">)</span>
 <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">m</span>, data <span class="op">=</span> <span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">car</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 32 x 3</span>
