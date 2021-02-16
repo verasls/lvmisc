@@ -9,7 +9,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  fig.width = 7,
+  fig.height = 7,
+  fig.align = "center"
 )
 ```
 
@@ -20,15 +23,13 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/verasls/lvmisc/branch/master/graph/badge.svg)](https://codecov.io/gh/verasls/lvmisc?branch=master)
 <!-- badges: end -->
 
-`lvmisc` is a package with miscellaneous R functions.
-
+`lvmisc` is a package with miscellaneous R functions, including basic data computation/manipulation, easy plotting and tools for working with statistical models objects. You can learn more about the methods for working with models in `vignette("working_with_models")`.
 
 ## Installation
 
 You can install the released version of lvmisc from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-# Currently not available
 install.packages("lvmisc")
 ```
 
@@ -38,6 +39,34 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("verasls/lvmisc")
 ```
-## Example
 
-Soon
+## Getting started
+
+Some of what you can do with lvmisc.
+
+```{r example, message = FALSE}
+library(lvmisc)
+library(dplyr)
+
+# Compute body mass index (BMI) and categorize it
+starwars %>%
+  select(name, birth_year, mass, height) %>%
+  mutate(
+    BMI = bmi(mass, height / 100),
+    BMI_category = bmi_cat(BMI)
+  )
+
+# Divide numerical variables in quantiles
+divide_by_quantile(mtcars$wt, 4)
+
+# Center and scale variables by group
+center_variable(iris$Petal.Width, by = iris$Species, scale = TRUE)
+
+# Quick and easy plotting with {ggplot}
+plot_scatter(mtcars, disp, mpg, color = factor(cyl))
+
+# Work with statistical model objects
+m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
+accuracy(m)
+plot_model(m)
+```
