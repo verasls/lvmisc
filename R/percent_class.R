@@ -83,4 +83,5 @@ vec_cast.double.lvmisc_percent <- function(x, to, ...) vec_data(x)
 
 
 # For compatibility with the S4 system
-methods::setOldClass(c("lvmisc_percent", "vctrs_vctr"))
+#' @importFrom methods setOldClass
+setOldClass(c("lvmisc_percent", "vctrs_vctr"))
