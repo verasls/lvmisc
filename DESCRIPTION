@@ -7,7 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "lucasdsveras@gmail.com",
            comment = c(ORCID = "0000-0003-0562-5803"))
-Description: What the package does (one paragraph).
+Description: Package with miscellaneous R functions,
+    including basic data computation/manipulation, easy plotting
+    and tools for working with statistical models objects.
 License: MIT + file LICENSE
 URL: https://lveras.com/lvmisc/
 BugReports: https://github.com/verasls/lvmisc/issues
