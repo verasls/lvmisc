@@ -10,7 +10,7 @@ test_that("center_variable() error handling works", {
     class = "error_argument_type"
   )
   expect_error(
-    center_variable(nmr, chr),
+    center_variable(nmr, by = chr),
     "`by` must be factor; not character.",
     class = "error_argument_type"
   )
@@ -33,7 +33,7 @@ test_that("center_variable() by group means works", {
     var = c(1:5, 11:15),
     group = as.factor(rep(c("A", "B"), each = 5))
   )
-  out <- center_variable(df$var, df$group)
+  out <- center_variable(df$var, by = df$group)
 
   expect_equal(out, rep(c(- 2, - 1, 0, 1, 2), 2))
 })
