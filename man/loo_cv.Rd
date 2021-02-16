@@ -44,7 +44,7 @@ the number of subjects in the original data set. It computes the model's
 predicted value in the testing data set for each subject.
 }
 \examples{
-mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+mtcars$car <- row.names(mtcars)
 m <- stats::lm(disp ~ mpg, mtcars)
 loo_cv(m, mtcars, car, keep = "used")
 }

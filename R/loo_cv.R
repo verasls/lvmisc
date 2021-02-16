@@ -23,7 +23,7 @@
 #' @export
 #'
 #' @examples
-#' mtcars <- tibble::as_tibble(mtcars, rownames = "car")
+#' mtcars$car <- row.names(mtcars)
 #' m <- stats::lm(disp ~ mpg, mtcars)
 #' loo_cv(m, mtcars, car, keep = "used")
 loo_cv <- function(model, data, id, keep = "all") {

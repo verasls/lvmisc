@@ -61,10 +61,9 @@ The leave-one-out cross validation method works by each subject's data into a te
 We will now build a linear model to demonstrate the cross-validation with the `loo_cv()` function.
 
 ```{r loo_cv}
-library(tibble)
 # Put the rownames into a column to treat eat row as a "subject" (car) in
 # the leave-one-out cross-validation
-mtcars <- as_tibble(mtcars, rownames = "car")
+mtcars$car <- row.names(mtcars)
 m <- lm(disp ~ mpg, mtcars)
 loo_cv(model = m, data = mtcars, id = car, keep = "used")
 ```
