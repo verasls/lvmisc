@@ -22,6 +22,9 @@ test_that("error handling works", {
 })
 
 test_that("output of plot_scatter() is stable", {
+  skip_on_ci()
+  skip_on_cran()
+
   vdiffr::expect_doppelganger(
     "Scatterplot",
     plot_scatter(mtcars, disp, mpg, color = factor(cyl))
@@ -29,6 +32,9 @@ test_that("output of plot_scatter() is stable", {
 })
 
 test_that("output of plot_line() is stable", {
+  skip_on_ci()
+  skip_on_cran()
+
   vdiffr::expect_doppelganger(
     "Line plot",
     plot_line(Orange, age, circumference, colour = Tree)
@@ -36,6 +42,9 @@ test_that("output of plot_line() is stable", {
 })
 
 test_that("output of plot_hist() is stable", {
+  skip_on_ci()
+  skip_on_cran()
+
   vdiffr::expect_doppelganger(
     "Histogram - NULL",
     plot_hist(iris, Petal.Width)
@@ -55,6 +64,9 @@ test_that("output of plot_hist() is stable", {
 })
 
 test_that("output of plot_qq() is stable", {
+  skip_on_ci()
+  skip_on_cran()
+
   vdiffr::expect_doppelganger(
     "QQ plot",
     plot_qq(mtcars, mpg)

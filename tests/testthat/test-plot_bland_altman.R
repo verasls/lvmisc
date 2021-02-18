@@ -34,6 +34,9 @@ test_that("output of plot_bland_altman() is stable", {
   m2 <- lme4::lmer(disp ~ mpg + (1 | gear), mtcars)
   cv <- loo_cv(m1, mtcars, car)
 
+  skip_on_ci()
+  skip_on_cran()
+
   vdiffr::expect_doppelganger(
     "Bland Altman plot - cv",
     plot_bland_altman(cv, colour = as.factor(am))
