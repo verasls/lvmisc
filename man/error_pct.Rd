@@ -14,7 +14,8 @@ this vector must be a prediction for the corresponding element in
 \code{actual}.}
 }
 \value{
-A vector of the class \code{lvmisc_percent}.
+A vector of the class \code{lvmisc_percent} with the element-wise
+percent error values.
 }
 \description{
 Computes the element-wise percent error between the input vectors.

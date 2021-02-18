@@ -10,6 +10,9 @@
 this vector must be a prediction for the corresponding element in
 \code{actual}.}
 }
+\value{
+Returns a double vector with the element-wise accuracy index values.
+}
 \description{
 Params for the accuracy indices functions
 }

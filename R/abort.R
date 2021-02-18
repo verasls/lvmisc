@@ -1,6 +1,6 @@
 #' Abort based on issues with function argument
 #'
-#' Returns a custom error condition created with
+#' Create a custom error condition created with
 #'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 #'   error message and metadata.
 #'
@@ -15,17 +15,44 @@
 #'   length (\code{abort_argument_length()}) and displays the result in the
 #'   error message.
 #'
+#' @return Each function returns a classed error condition.
+#'   \code{abort_argument_type()} returns a \code{error_argument_type} class,
+#'   \code{abort_argument_length()} returns a \code{error_argument_length}
+#'   class, \code{abort_argument_diff_length()} returns a
+#'   \code{error_argument_diff_length} class and \code{abort_argument_value()}
+#'   returns a \code{error_argument_value} class.
+#'
 #' @export
 #'
 #' @seealso \code{\link[=abort_column_not_found]{abort_column_not_found()}},
 #'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
 #'
 #' @examples
-#' \dontrun{
+#' # These examples are guarded to avoid throwing errors
+#' if (FALSE) {
+#'
 #' x <- letters
 #' if (!is.numeric(x)) {
 #'   abort_argument_type("x", must = "be numeric", not = x)
 #' }
+#'
+#' x <- 1:10
+#' if (length(x) > 1) {
+#'   abort_argument_length("x", must = "have length 1", not = x)
+#' }
+#'
+#' x <- 1:5
+#' y <- 1:10
+#' if (length(x) != length(y)) {
+#'   abort_argument_diff_length("x", "y")
+#' }
+#'
+#' keep <- "no"
+#' valid_values <- c("all", "used", "none")
+#' if (keep %!in% valid_values) {
+#'   abort_argument_value("keep", valid_values)
+#' }
+#'
 #' }
 abort_argument_type <- function(arg, must, not) {
   not <- typeof(not)
@@ -42,13 +69,6 @@ abort_argument_type <- function(arg, must, not) {
 
 #' @rdname abort_argument
 #' @export
-#' @examples
-#' \dontrun{
-#' x <- 1:10
-#' if (length(x) > 1) {
-#'   abort_argument_length("x", must = "have length 1", not = x)
-#' }
-#' }
 abort_argument_length <- function(arg, must, not) {
   not <- length(not)
   msg <- glue::glue("`{arg}` must {must}; not {not}.")
@@ -65,14 +85,6 @@ abort_argument_length <- function(arg, must, not) {
 #' @rdname abort_argument
 #' @param arg1,arg2 A character string with the argument name.
 #' @export
-#' @examples
-#' \dontrun{
-#' x <- 1:5
-#' y <- 1:10
-#' if (length(x) != length(y)) {
-#'   abort_argument_diff_length("x", "y")
-#' }
-#' }
 abort_argument_diff_length <- function(arg1, arg2) {
   msg <- glue::glue("`{arg1}` and `{arg2}` must have the same length.")
 
@@ -88,14 +100,6 @@ abort_argument_diff_length <- function(arg1, arg2) {
 #' @param arg A character string with the argument name.
 #' @param valid_values A character vector with the valid values.
 #' @export
-#' @examples
-#' \dontrun{
-#' keep <- "no"
-#' valid_values <- c("all", "used", "none")
-#' if (keep %!in% valid_values) {
-#'   abort_argument_value("keep", valid_values)
-#' }
-#' }
 abort_argument_value <- function(arg, valid_values) {
   valid_values <- glue::glue_collapse(
     glue::double_quote(valid_values), sep = ", ", last = " or "
@@ -111,12 +115,14 @@ abort_argument_value <- function(arg, valid_values) {
 
 #' Abort based on column not being found in a data frame
 #'
-#' Returns a custom error condition created with
+#' Creates a custom error condition created with
 #'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 #'   error message and metadata.
 #'
 #' @param data A data frame.
 #' @param col_name A character vector with the column name.
+#'
+#' @return Returns an error condition of class{error_column_not_found}.
 #'
 #' @export
 #'
@@ -127,11 +133,14 @@ abort_argument_value <- function(arg, valid_values) {
 #'   \code{\link[=abort_package_not_installed]{abort_package_not_installed()}}
 #'
 #' @examples
-#' \dontrun{
+#' # These examples are guarded to avoid throwing errors
+#' if (FALSE) {
+#'
 #' data <- data.frame(x = 1:10)
 #' if ("y" %!in% names(data)) {
 #'   abort_column_not_found(data, "y")
 #' }
+#'
 #' }
 abort_column_not_found <- function(data, col_name) {
   msg <- glue::glue("Column `{col_name}` not found in `{data}`.")
@@ -141,7 +150,7 @@ abort_column_not_found <- function(data, col_name) {
 
 #' Abort method if class is not implemented
 #'
-#' Returns a custom error condition created with
+#' Creates a custom error condition created with
 #'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 #'   error message and metadata.
 #'
@@ -149,6 +158,8 @@ abort_column_not_found <- function(data, col_name) {
 #' @param class A character vector with the class name.
 #' @param ... Extra message to be added to the error message. Must be
 #'   character string.
+#'
+#' @return Returns an error condition of class{error_no_method_for_class}.
 #'
 #' @export
 #'
@@ -184,11 +195,13 @@ abort_no_method_for_class <- function(fun, class, ...) {
 
 #' Abort if required package is not installed
 #'
-#' Returns a custom error condition created with
+#' Creates a custom error condition created with
 #'   \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 #'   error message and metadata.
 #'
 #' @param package A character string with the required package name.
+#'
+#' @return Returns an error condition of class{error_package_not_installed}.
 #'
 #' @export
 #'

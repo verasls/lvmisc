@@ -16,6 +16,9 @@ this vector must be a prediction for the corresponding element in
 \item{na.rm}{A logical value indicating whether \code{NA} values should be
 stripped before the computation proceeds. Defaults to \code{FALSE}.}
 }
+\value{
+A double scalar with the bias value.
+}
 \description{
 Computes the bias (mean error) between the input vectors.
 }

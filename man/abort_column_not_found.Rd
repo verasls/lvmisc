@@ -11,17 +11,23 @@ abort_column_not_found(data, col_name)
 
 \item{col_name}{A character vector with the column name.}
 }
+\value{
+Returns an error condition of class{error_column_not_found}.
+}
 \description{
-Returns a custom error condition created with
+Creates a custom error condition created with
 \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 error message and metadata.
 }
 \examples{
-\dontrun{
+# These examples are guarded to avoid throwing errors
+if (FALSE) {
+
 data <- data.frame(x = 1:10)
 if ("y" \%!in\% names(data)) {
   abort_column_not_found(data, "y")
 }
+
 }
 }
 \seealso{

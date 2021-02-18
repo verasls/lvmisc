@@ -1,11 +1,13 @@
 #' Compute body mass index (BMI)
 #'
-#' \code{bmi} returns the element-wise BMI in kilograms per meter squared.
+#' \code{bmi} calculates the BMI in kilograms per meter squared.
 #'
 #' @param mass,height A numerical vector with body mass and height data. `mass`
 #'   unit must be kilograms and `height` unit must be meters. If the `height`
 #'   unit is centimeters, it is converted to meters before BMI computation and
 #'   a warning is shown.
+#'
+#' @return Returns a double vector with the element-wise body mass index (BMI).
 #'
 #' @export
 #'

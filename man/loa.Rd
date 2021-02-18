@@ -17,7 +17,8 @@ this vector must be a prediction for the corresponding element in
 stripped before the computation proceeds. Defaults to \code{FALSE}.}
 }
 \value{
-A vector of the class \code{lvmisc_percent}.
+A named list with the lower and upper limits of agreement values,
+respectively.
 }
 \description{
 Computes the Bland-Altman limits of agreement between the input vectors.

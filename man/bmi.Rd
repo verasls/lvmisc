@@ -12,8 +12,11 @@ unit must be kilograms and \code{height} unit must be meters. If the \code{heigh
 unit is centimeters, it is converted to meters before BMI computation and
 a warning is shown.}
 }
+\value{
+Returns a double vector with the element-wise body mass index (BMI).
+}
 \description{
-\code{bmi} returns the element-wise BMI in kilograms per meter squared.
+\code{bmi} calculates the BMI in kilograms per meter squared.
 }
 \examples{
 mass <- sample(50:100, 20)

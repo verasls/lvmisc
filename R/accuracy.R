@@ -7,6 +7,8 @@
 #'   this vector must be a prediction for the corresponding element in
 #'   \code{actual}.
 #'
+#' @return Returns a double vector with the element-wise accuracy index values.
+#'
 #' @keywords internal
 NULL
 
@@ -58,7 +60,8 @@ error <- function(actual, predicted) {
 #'
 #' @inheritParams accuracy_params
 #'
-#' @return A vector of the class `lvmisc_percent`.
+#' @return A vector of the class \code{lvmisc_percent} with the element-wise
+#'   percent error values.
 #'
 #' @export
 #'
@@ -144,7 +147,8 @@ error_abs <- function(actual, predicted) {
 #'
 #' @inheritParams accuracy_params
 #'
-#' @return A vector of the class `lvmisc_percent`.
+#' @return A vector of the class \code{lvmisc_percent} with the element-wise
+#'   absolute percent error values.
 #'
 #' @export
 #'

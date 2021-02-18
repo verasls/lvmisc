@@ -9,6 +9,8 @@
 #' @param na.rm A logical value indicating whether \code{NA} values should be
 #'   stripped before the computation proceeds. Defaults to \code{FALSE}.
 #'
+#' @return Returns a double scalar with the accuracy index value.
+#'
 #' @keywords internal
 NULL
 
@@ -322,6 +324,8 @@ mean_error_sqr_root <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @inheritParams accuracy_means_params
 #'
+#' @return A double scalar with the bias value.
+#'
 #' @export
 #'
 #' @seealso \code{\link[=mean_error]{mean_error()}},
@@ -369,7 +373,8 @@ bias <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @inheritParams accuracy_means_params
 #'
-#' @return A vector of the class `lvmisc_percent`.
+#' @return A named list with the lower and upper limits of agreement values,
+#'   respectively.
 #'
 #' @export
 #'

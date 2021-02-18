@@ -14,8 +14,11 @@ abort_no_method_for_class(fun, class, ...)
 \item{...}{Extra message to be added to the error message. Must be
 character string.}
 }
+\value{
+Returns an error condition of class{error_no_method_for_class}.
+}
 \description{
-Returns a custom error condition created with
+Creates a custom error condition created with
 \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 error message and metadata.
 }

@@ -9,8 +9,11 @@ abort_package_not_installed(package)
 \arguments{
 \item{package}{A character string with the required package name.}
 }
+\value{
+Returns an error condition of class{error_package_not_installed}.
+}
 \description{
-Returns a custom error condition created with
+Creates a custom error condition created with
 \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 error message and metadata.
 }

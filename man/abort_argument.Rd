@@ -32,37 +32,45 @@ error message.}
 
 \item{valid_values}{A character vector with the valid values.}
 }
+\value{
+Each function returns a classed error condition.
+\code{abort_argument_type()} returns a \code{error_argument_type} class,
+\code{abort_argument_length()} returns a \code{error_argument_length}
+class, \code{abort_argument_diff_length()} returns a
+\code{error_argument_diff_length} class and \code{abort_argument_value()}
+returns a \code{error_argument_value} class.
+}
 \description{
-Returns a custom error condition created with
+Create a custom error condition created with
 \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 error message and metadata.
 }
 \examples{
-\dontrun{
+# These examples are guarded to avoid throwing errors
+if (FALSE) {
+
 x <- letters
 if (!is.numeric(x)) {
   abort_argument_type("x", must = "be numeric", not = x)
 }
-}
-\dontrun{
+
 x <- 1:10
 if (length(x) > 1) {
   abort_argument_length("x", must = "have length 1", not = x)
 }
-}
-\dontrun{
+
 x <- 1:5
 y <- 1:10
 if (length(x) != length(y)) {
   abort_argument_diff_length("x", "y")
 }
-}
-\dontrun{
+
 keep <- "no"
 valid_values <- c("all", "used", "none")
 if (keep \%!in\% valid_values) {
   abort_argument_value("keep", valid_values)
 }
+
 }
 }
 \seealso{
