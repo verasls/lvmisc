@@ -1,5 +1,5 @@
 Package: lvmisc
-Title: A Collection of Miscellaneous R Functions
+Title: Veras Miscellaneous
 Version: 0.1.0
 Authors@R: 
     person(given = "Lucas",
@@ -7,9 +7,13 @@ Authors@R:
            role = c("aut", "cre"),
            email = "lucasdsveras@gmail.com",
            comment = c(ORCID = "0000-0003-0562-5803"))
-Description: Package with miscellaneous R functions,
-    including basic data computation/manipulation, easy plotting
-    and tools for working with statistical models objects.
+Description: This package contains a collection of useful
+    functions for basic data computation and manipulation,
+    wrapper functions for generating ggplot2 graphics,
+    including statistical model diagnostic plots, methods
+    for computing statistical models quality measures (such
+    as AIC, BIC, r squared, root mean squared error) and
+    general utilities.
 License: MIT + file LICENSE
 URL: https://lveras.com/lvmisc/
 BugReports: https://github.com/verasls/lvmisc/issues
