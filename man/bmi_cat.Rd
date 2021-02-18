@@ -10,6 +10,11 @@ bmi_cat(bmi)
 \item{bmi}{A numeric vector with BMI data. \code{BMI} unit must be meters per
 square meter.}
 }
+\value{
+A vector of class \code{factor} with 6 levels: "Underweight",
+"Normal weight", "Overweight", "Obesity class I", "Obesity class II"
+and "Obesity class III".
+}
 \description{
 \code{bmi_cat} returns the element-wise BMI category as factor with 6 levels:
 \itemize{

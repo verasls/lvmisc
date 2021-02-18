@@ -60,6 +60,10 @@ bmi <- function(mass, height) {
 #' @param bmi A numeric vector with BMI data. `BMI` unit must be meters per
 #'   square meter.
 #'
+#' @return A vector of class \code{factor} with 6 levels: "Underweight",
+#'   "Normal weight", "Overweight", "Obesity class I", "Obesity class II"
+#'   and "Obesity class III".
+#'
 #' @export
 #'
 #' @seealso \code{\link[=bmi]{bmi()}}
