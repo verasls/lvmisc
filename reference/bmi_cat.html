@@ -80,9 +80,15 @@ Obesity class III (BMI \(\ge\) 40)
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -96,16 +102,13 @@ Obesity class III (BMI \(\ge\) 40)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lvmisc</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/lvmisc.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -179,6 +182,11 @@ square meter.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A vector of class <code>factor</code> with 6 levels: "Underweight",
+"Normal weight", "Overweight", "Obesity class I", "Obesity class II"
+and "Obesity class III".</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='bmi.html'>bmi()</a></code></p></div>
@@ -189,11 +197,11 @@ square meter.</p></td>
 <span class='va'>bmi</span> <span class='op'>&lt;-</span> <span class='fu'><a href='bmi.html'>bmi</a></span><span class='op'>(</span><span class='va'>mass</span>, <span class='va'>height</span><span class='op'>)</span>
 
 <span class='fu'>bmi_cat</span><span class='op'>(</span><span class='va'>bmi</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] Underweight       Obesity class I   Obesity class II  Underweight      
-#&gt;  [5] Underweight       Obesity class II  Obesity class III Obesity class II 
-#&gt;  [9] Overweight        Overweight        Obesity class I   Normal weight    
-#&gt; [13] Normal weight     Normal weight     Normal weight     Underweight      
-#&gt; [17] Underweight       Obesity class I   Underweight       Normal weight    
+</div><div class='output co'>#&gt;  [1] Underweight       Normal weight     Normal weight     Underweight      
+#&gt;  [5] Normal weight     Underweight       Obesity class II  Normal weight    
+#&gt;  [9] Normal weight     Obesity class I   Normal weight     Obesity class III
+#&gt; [13] Overweight        Obesity class III Obesity class II  Obesity class I  
+#&gt; [17] Overweight        Underweight       Obesity class I   Underweight      
 #&gt; 6 Levels: Underweight Normal weight Overweight ... Obesity class III</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -235,6 +243,8 @@ square meter.</p></td>
 </script>
 
 
+
+  
 
   </body>
 </html>

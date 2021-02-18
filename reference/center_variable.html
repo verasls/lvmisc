@@ -74,9 +74,15 @@ group means when by is a factor variable." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -90,16 +96,13 @@ group means when by is a factor variable." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lvmisc</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/lvmisc.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -155,7 +158,7 @@ be performed by the grand mean when <code>by = NULL</code> (the default), or by
 group means when <code>by</code> is a factor variable.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>center_variable</span><span class='op'>(</span><span class='va'>variable</span>, by <span class='op'>=</span> <span class='cn'>NULL</span>, scale <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>center_variable</span><span class='op'>(</span><span class='va'>variable</span>, scale <span class='op'>=</span> <span class='cn'>FALSE</span>, by <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,13 +168,13 @@ group means when <code>by</code> is a factor variable.</p>
       <td><p>A numeric vector.</p></td>
     </tr>
     <tr>
-      <th>by</th>
-      <td><p>A vector with the <code>factor</code> class.</p></td>
-    </tr>
-    <tr>
       <th>scale</th>
       <td><p>A logical vector. If <code>scale = TRUE</code>, the centered values
 of <code>variable</code> are divided by their standard deviation.</p></td>
+    </tr>
+    <tr>
+      <th>by</th>
+      <td><p>A vector with the <code>factor</code> class.</p></td>
     </tr>
     </table>
 
@@ -183,8 +186,29 @@ of <code>variable</code> are divided by their standard deviation.</p></td>
   body_mass <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>20</span>, mean <span class='op'>=</span> <span class='fl'>65</span>, sd <span class='op'>=</span> <span class='fl'>12</span><span class='op'>)</span>
 <span class='op'>)</span>
 
-<span class='va'>df</span><span class='op'>$</span><span class='va'>body_mass_centered</span> <span class='op'>&lt;-</span> <span class='fu'>center_variable</span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>body_mass</span>, <span class='va'>df</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
-</div></pre>
+<span class='va'>df</span><span class='op'>$</span><span class='va'>body_mass_centered</span> <span class='op'>&lt;-</span> <span class='fu'>center_variable</span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>body_mass</span>, by <span class='op'>=</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>group</span><span class='op'>)</span>
+<span class='va'>df</span>
+</div><div class='output co'>#&gt;    id group body_mass body_mass_centered
+#&gt; 1   1     B  73.58482          7.9011490
+#&gt; 2   2     B  51.93189        -13.7517821
+#&gt; 3   3     B  69.81828          4.1346143
+#&gt; 4   4     A  69.85134          4.4779158
+#&gt; 5   5     B  89.51611         23.8324393
+#&gt; 6   6     B  78.66696         12.9832899
+#&gt; 7   7     A  55.67533         -9.6980863
+#&gt; 8   8     A  61.63453         -3.7388853
+#&gt; 9   9     A  68.56865          3.1952274
+#&gt; 10 10     A  62.17225         -3.2011733
+#&gt; 11 11     A  65.53202          0.1585967
+#&gt; 12 12     B  39.56360        -26.1200650
+#&gt; 13 13     B  61.05810         -4.6255702
+#&gt; 14 14     B  70.54463          4.8609601
+#&gt; 15 15     B  73.32349          7.6398246
+#&gt; 16 16     A  56.49687         -8.8765528
+#&gt; 17 17     A  62.49324         -2.8801821
+#&gt; 18 18     B  69.22735          3.5436825
+#&gt; 19 19     A  85.93656         20.5631399
+#&gt; 20 20     B  45.28513        -20.3985425</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -225,6 +249,8 @@ of <code>variable</code> are divided by their standard deviation.</p></td>
 </script>
 
 
+
+  
 
   </body>
 </html>

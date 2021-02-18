@@ -53,7 +53,7 @@
 
 
 <meta property="og:title" content="Abort based on column not being found in a data frame — abort_column_not_found" />
-<meta property="og:description" content="Returns a custom error condition created with
+<meta property="og:description" content="Creates a custom error condition created with
 rlang::abort() with a - hopefully - more useful
 error message and metadata." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
@@ -74,9 +74,15 @@ error message and metadata." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -90,16 +96,13 @@ error message and metadata." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lvmisc</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../articles/lvmisc.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -150,7 +153,7 @@ error message and metadata." />
     </div>
 
     <div class="ref-description">
-    <p>Returns a custom error condition created with
+    <p>Creates a custom error condition created with
 <code><a href='https://rlang.r-lib.org/reference/abort.html'>rlang::abort()</a></code> with a - hopefully - more useful
 error message and metadata.</p>
     </div>
@@ -170,6 +173,9 @@ error message and metadata.</p>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns an error condition of classerror_column_not_found.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='abort_argument.html'>abort_argument_type()</a></code>,
@@ -179,11 +185,14 @@ error message and metadata.</p>
 <code><a href='abort_package_not_installed.html'>abort_package_not_installed()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+    <pre class="examples"><div class='input'><span class='co'># These examples are guarded to avoid throwing errors</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+
 <span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='st'>"y"</span> <span class='op'>%!in%</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='fu'>abort_column_not_found</span><span class='op'>(</span><span class='va'>data</span>, <span class='st'>"y"</span><span class='op'>)</span>
 <span class='op'>}</span>
+
 <span class='op'>}</span>
 </div></pre>
   </div>
@@ -226,6 +235,8 @@ error message and metadata.</p>
 </script>
 
 
+
+  
 
   </body>
 </html>

@@ -28,6 +28,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -40,15 +42,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lvmisc</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/lvmisc.html">Get started</a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -70,7 +69,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/verasls/lvmisc/">
+  <a href="https://github.com/verasls/lvmisc/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -97,14 +96,14 @@
       <h1 data-toc-skip>Working with models</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/verasls/lvmisc/blob/master/vignettes/working_with_models.Rmd"><code>vignettes/working_with_models.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/verasls/lvmisc/blob/master/vignettes/working_with_models.Rmd" class="external-link"><code>vignettes/working_with_models.Rmd</code></a></small>
       <div class="hidden name"><code>working_with_models.Rmd</code></div>
 
     </div>
 
     
     
-<p>{lvmisc} has a set of tools to work with statistical model objects. Generally, the functions behind these tools are S3 generic and the methods currently implemented are for the classes <code>lm</code> from the {stats} package and <code>lmerMod</code> from the {lme4} <a href="https://CRAN.R-project.org/package=lme4">package</a>. If you would like to have methods implemented to other model classes, please file an issue at <a href="https://github.com/verasls/lvmisc/issues" class="uri">https://github.com/verasls/lvmisc/issues</a>.</p>
+<p>{lvmisc} has a set of tools to work with statistical model objects. Generally, the functions behind these tools are S3 generic and the methods currently implemented are for the classes <code>lm</code> from the {stats} package and <code>lmerMod</code> from the {lme4} <a href="https://CRAN.R-project.org/package=lme4" class="external-link">package</a>. If you would like to have methods implemented to other model classes, please file an issue at <a href="https://github.com/verasls/lvmisc/issues" class="external-link">https://github.com/verasls/lvmisc/issues</a>.</p>
 <p>The functions to work with models can be divided into three categories:</p>
 <ol style="list-style-type: decimal">
 <li>Model diagnostics</li>
@@ -113,15 +112,15 @@
 </ol>
 <p>Before starting, let’s load the required packages:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lveras.com/lvmisc/">lvmisc</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/">lme4</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lveras.com/lvmisc/">lvmisc</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span></code></pre></div>
 <div id="model-diagnostics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#model-diagnostics" class="anchor"></a>Model diagnostics</h2>
 <p>{lvmisc} has a plotting function for some common model diagnostic plots. To explore it, let’s first create some example models:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span>
-<span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
 <p>The main function to generate the diagnostic plots is <code><a href="../reference/plot_model.html">plot_model()</a></code> and its only argument is the model object:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></code></pre></div>
@@ -133,7 +132,7 @@
 <ul>
 <li>A scatterplot of the residual vs. fitted values, with a smoothing line, which is useful to show if the residuals have a non-linear pattern. In this plot, the points should be randomly distributed around the smoothing line, and the smoothing line should be approximately horizontal and around the 0 line. <code><a href="../reference/plot_model.html">plot_model_residual_fitted()</a></code> generates this plot.</li>
 <li>A scatterplot of the square root of the absolute value of the model residuals vs. the fitted values, with a smoothing line. In this plot, again you should look for a horizontal smoothing line with the points randomly distributed around it, if it’s the case, you can assume the homogeneity of variance of the residuals. <code><a href="../reference/plot_model.html">plot_model_scale_location()</a></code> generates this plot.</li>
-<li>A Q-Q plot of the standardized residuals, showing if the residuals are normally distributed. Normallity is assumed if the residuals are well aligned with the straight blue line. <code><a href="../reference/plot_model.html">plot_model_qq()</a></code> generates this plot.</li>
+<li>A Q-Q plot of the standardized residuals, showing if the residuals are normally distributed. Normality is assumed if the residuals are well aligned with the straight blue line. <code><a href="../reference/plot_model.html">plot_model_qq()</a></code> generates this plot.</li>
 <li>A bar plot with the Cook’s distance per observation. This is a useful plot to check for influential observations. A given observation is often considered to be influential in the model if its Cook’s distance is higher than 1. <code><a href="../reference/plot_model.html">plot_model_cooks_distance()</a></code> generates this plot.</li>
 <li>A bar plot with the variance inflation factor (VIF) per model term, which only shows if the model has 2 terms or more (you can see that in our example this plot is not built for <code>m2</code>). The VIF can be used to check the model for multicollinearity: the bar is green for a low multicollinearity, orange for moderate and red for high. <code><a href="../reference/plot_model.html">plot_model_multicollinearity()</a></code> generates this plot.</li>
 </ul>
@@ -141,15 +140,14 @@
 <div id="model-cross-validation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#model-cross-validation" class="anchor"></a>Model cross-validation</h2>
-<p>The cross-validation of a model is a way to assess how the results of a statistical model will generalize to an independent data set, but without the burden of collecting more data. At the moment, the only cross-valitation method available in the {lvmisc} package is the leave-one-out. Also, the only model classes supported are <code>lm</code> and <code>lmerMod</code>, but more cross-validation methods and classes will be implemented in the future.</p>
+<p>The cross-validation of a model is a way to assess how the results of a statistical model will generalize to an independent data set, but without the burden of collecting more data. At the moment, the only cross-validation method available in the {lvmisc} package is the leave-one-out. Also, the only model classes supported are <code>lm</code> and <code>lmerMod</code>, but more cross-validation methods and classes will be implemented in the future.</p>
 <p>The leave-one-out cross validation method works by each subject’s data into a testing dataset (one participant at a time) with the remaining data being the training dataset. New models with exactly the same specifications as the original model are developed using the training dataset and then used to predict the outcome in the testing dataset. This process is repeated once for every subject in the original data.</p>
 <p>We will now build a linear model to demonstrate the cross-validation with the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
-<span class="co"># Put the rownames into a column to treat eat row as a "subject" (car) in</span>
+<code class="sourceCode R"><span class="co"># Put the rownames into a column to treat eat row as a "subject" (car) in</span>
 <span class="co"># the leave-one-out cross-validation</span>
-<span class="va">mtcars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">mtcars</span>, rownames <span class="op">=</span> <span class="st">"car"</span><span class="op">)</span>
-<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">mtcars</span><span class="op">$</span><span class="va">car</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
+<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">)</span>
 <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">m</span>, data <span class="op">=</span> <span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">car</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 32 x 3</span>
 <span class="co">#&gt;    car               .actual .predicted</span>
@@ -174,8 +172,8 @@
 <p>{lvmisc} also has an easy method to compute the most common model accuracy indices (<code><a href="../reference/accuracy.html">accuracy()</a></code> function) and to compare the accuracy indices of different models (<code><a href="../reference/compare_accuracy.html">compare_accuracy()</a></code> function). Similarly to the other {lvmisc} functions described in this vignette, it has methods for the <code>lm</code> and <code>lmerMod</code> classes and also for the <code>lvmisc_cv</code> class.</p>
 <p>To explore the <code><a href="../reference/accuracy.html">accuracy()</a></code> function, let’s use the same models built in the first example of this vignette.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span>
-<span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span>
 <span class="co"># Let's also cross-validate both models</span>
 <span class="va">cv_m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">mtcars</span>, <span class="st">"car"</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span>
 <span class="va">cv_m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span><span class="va">m2</span>, <span class="va">mtcars</span>, <span class="st">"car"</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span></code></pre></div>
@@ -210,7 +208,7 @@
 <span class="co">#&gt; 2 18.59% 52.58</span>
 <span class="co">#&gt; 3 16.77% 44.47</span>
 <span class="co">#&gt; 4 19.06% 50.28</span></code></pre></div>
-<p>Somoe of the benefits of using this function instead of manually comparing models with several <code><a href="../reference/accuracy.html">accuracy()</a></code> calls are that <code><a href="../reference/compare_accuracy.html">compare_accuracy()</a></code> output shows the models info (object name and class) and it throws warnings to aid the comparison.</p>
+<p>Some of the benefits of using this function instead of manually comparing models with several <code><a href="../reference/accuracy.html">accuracy()</a></code> calls are that <code><a href="../reference/compare_accuracy.html">compare_accuracy()</a></code> output shows the models info (object name and class) and it throws warnings to aid the comparison.</p>
 </div>
   </div>
 
@@ -225,11 +223,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://lveras.com">Lucas Veras</a>.</p>
+  <p>Developed by <a href="https://lveras.com" class="external-link">Lucas Veras</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
