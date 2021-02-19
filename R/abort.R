@@ -26,34 +26,6 @@
 #'
 #' @seealso \code{\link[=abort_column_not_found]{abort_column_not_found()}},
 #'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
-#'
-#' @examples
-#' # These examples are guarded to avoid throwing errors
-#' if (FALSE) {
-#'
-#' x <- letters
-#' if (!is.numeric(x)) {
-#'   abort_argument_type("x", must = "be numeric", not = x)
-#' }
-#'
-#' x <- 1:10
-#' if (length(x) > 1) {
-#'   abort_argument_length("x", must = "have length 1", not = x)
-#' }
-#'
-#' x <- 1:5
-#' y <- 1:10
-#' if (length(x) != length(y)) {
-#'   abort_argument_diff_length("x", "y")
-#' }
-#'
-#' keep <- "no"
-#' valid_values <- c("all", "used", "none")
-#' if (keep %!in% valid_values) {
-#'   abort_argument_value("keep", valid_values)
-#' }
-#'
-#' }
 abort_argument_type <- function(arg, must, not) {
   not <- typeof(not)
   msg <- glue::glue("`{arg}` must {must}; not {not}.")
@@ -131,17 +103,6 @@ abort_argument_value <- function(arg, valid_values) {
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
 #'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}},
 #'   \code{\link[=abort_package_not_installed]{abort_package_not_installed()}}
-#'
-#' @examples
-#' # These examples are guarded to avoid throwing errors
-#' if (FALSE) {
-#'
-#' data <- data.frame(x = 1:10)
-#' if ("y" %!in% names(data)) {
-#'   abort_column_not_found(data, "y")
-#' }
-#'
-#' }
 abort_column_not_found <- function(data, col_name) {
   msg <- glue::glue("Column `{col_name}` not found in `{data}`.")
 

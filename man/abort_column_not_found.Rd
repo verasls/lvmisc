@@ -19,17 +19,6 @@ Creates a custom error condition created with
 \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 error message and metadata.
 }
-\examples{
-# These examples are guarded to avoid throwing errors
-if (FALSE) {
-
-data <- data.frame(x = 1:10)
-if ("y" \%!in\% names(data)) {
-  abort_column_not_found(data, "y")
-}
-
-}
-}
 \seealso{
 \code{\link[=abort_argument_type]{abort_argument_type()}},
 \code{\link[=abort_argument_length]{abort_argument_length()}},

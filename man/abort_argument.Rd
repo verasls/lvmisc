@@ -45,34 +45,6 @@ Create a custom error condition created with
 \code{\link[rlang:abort]{rlang::abort()}} with a - hopefully - more useful
 error message and metadata.
 }
-\examples{
-# These examples are guarded to avoid throwing errors
-if (FALSE) {
-
-x <- letters
-if (!is.numeric(x)) {
-  abort_argument_type("x", must = "be numeric", not = x)
-}
-
-x <- 1:10
-if (length(x) > 1) {
-  abort_argument_length("x", must = "have length 1", not = x)
-}
-
-x <- 1:5
-y <- 1:10
-if (length(x) != length(y)) {
-  abort_argument_diff_length("x", "y")
-}
-
-keep <- "no"
-valid_values <- c("all", "used", "none")
-if (keep \%!in\% valid_values) {
-  abort_argument_value("keep", valid_values)
-}
-
-}
-}
 \seealso{
 \code{\link[=abort_column_not_found]{abort_column_not_found()}},
 \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}}
