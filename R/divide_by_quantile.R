@@ -8,6 +8,9 @@
 #' @param na.rm A logical vector indicating whether the \code{NA} values should
 #'   be removed before the quantiles are computed.
 #'
+#' @return A vector of class \code{factor} indicating in which quantile the
+#'   element in \code{data} belongs.
+#'
 #' @export
 #'
 #' @seealso \code{\link[stats:quantile]{stats::quantile()}}.

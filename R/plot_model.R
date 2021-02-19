@@ -6,6 +6,8 @@
 #'
 #' @param model An object containing a model.
 #'
+#' @return A \code{ggplot} object.
+#'
 #' @details \code{plot_model_residual_fitted()} plots the model residuals
 #'   versus the fitted values. \code{plot_model_scale_location()} plots the
 #'   square root of absolute value of the model residuals versus the fitted

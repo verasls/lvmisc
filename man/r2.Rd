@@ -19,10 +19,11 @@ r2(model)
 \item{model}{An object containing a model.}
 }
 \value{
-If the model is a linear model, it returns the R squared and
-adjusted R squared. If the model is a linear mixed model it return the
-marginal and conditional R squared as described by Nakagawa and
-Schielzeth (2013). See the formulas for the computations in "Details".
+If the model is a linear model, it returns a \code{data.frame}
+with the R squared and adjusted R squared values. If the model is a
+linear mixed model it return a \code{data.frame} with the marginal and
+conditional R squared values as described by Nakagawa and Schielzeth
+(2013). See the formulas for the computations in "Details".
 }
 \description{
 Returns the R squared values according to the model class.

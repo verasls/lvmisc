@@ -12,6 +12,9 @@ is_outlier(x, na.rm = FALSE)
 \item{na.rm}{A logical value indicating whether \code{NA} values should be
 stripped before the computation proceeds. Defaults to \code{FALSE}.}
 }
+\value{
+A logical vector.
+}
 \description{
 \code{is_outlier} returns a logical vector indicating whether a value is an
 outlier based on the rule of 1.5 times the interquartile range above the

@@ -31,6 +31,9 @@ You can also use one of the character strings \code{"Sturges"},
 \code{"scott"} or \code{"FD"} to use one of the methods to determine the
 bin width as in \href{https://rdrr.io/r/grDevices/nclass.html}{\code{grDevices::nclass.*()}}}
 }
+\value{
+A \code{ggplot} object.
+}
 \description{
 These functions are intended to be used to quickly generate simple
 exploratory plots using the package \code{ggplot2}.

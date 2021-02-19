@@ -9,6 +9,8 @@
 #'   of \code{variable} are divided by their standard deviation.
 #' @param by A vector with the \code{factor} class.
 #'
+#' @return A numeric vector.
+#'
 #' @export
 #'
 #' @examples
@@ -47,6 +49,8 @@ center_variable <- function(variable, scale = FALSE, by = NULL) {
 #' @param x A numerical vector
 #' @param na.rm A logical value indicating whether \code{NA} values should be
 #'   stripped before the computation proceeds. Defaults to \code{FALSE}.
+#'
+#' @return A logical vector.
 #'
 #' @export
 #'

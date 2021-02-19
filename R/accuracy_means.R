@@ -9,8 +9,6 @@
 #' @param na.rm A logical value indicating whether \code{NA} values should be
 #'   stripped before the computation proceeds. Defaults to \code{FALSE}.
 #'
-#' @return Returns a double scalar with the accuracy index value.
-#'
 #' @keywords internal
 NULL
 
@@ -19,6 +17,8 @@ NULL
 #' Computes the average error between the input vectors.
 #'
 #' @inheritParams accuracy_means_params
+#'
+#' @return Returns a double scalar with the mean error value.
 #'
 #' @export
 #'
@@ -69,6 +69,8 @@ mean_error <- function(actual, predicted, na.rm = FALSE) {
 #' Computes the average percent error between the input vectors.
 #'
 #' @inheritParams accuracy_means_params
+#'
+#' @return Returns a double scalar with the mean percent error value.
 #'
 #' @return A vector of the class `lvmisc_percent`.
 #'
@@ -122,6 +124,8 @@ mean_error_pct <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @inheritParams accuracy_means_params
 #'
+#' @return Returns a double scalar with the mean absolute error value.
+#'
 #' @export
 #'
 #' @seealso \code{\link[=mean_error]{mean_error()}},
@@ -171,6 +175,8 @@ mean_error_abs <- function(actual, predicted, na.rm = FALSE) {
 #' Computes the average absolute percent error between the input vectors.
 #'
 #' @inheritParams accuracy_means_params
+#'
+#' @return Returns a double scalar with the mean absolute percent error value.
 #'
 #' @return A vector of the class `lvmisc_percent`.
 #'
@@ -224,6 +230,8 @@ mean_error_abs_pct <- function(actual, predicted, na.rm = FALSE) {
 #'
 #' @inheritParams accuracy_means_params
 #'
+#' @return Returns a double scalar with the mean square error value.
+#'
 #' @export
 #'
 #' @seealso \code{\link[=mean_error]{mean_error()}},
@@ -273,6 +281,8 @@ mean_error_sqr <- function(actual, predicted, na.rm = FALSE) {
 #' Computes the root mean square error between the input vectors.
 #'
 #' @inheritParams accuracy_means_params
+#'
+#' @return Returns a double scalar with the root mean square error value.
 #'
 #' @export
 #'

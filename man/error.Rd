@@ -13,6 +13,9 @@ error(actual, predicted)
 this vector must be a prediction for the corresponding element in
 \code{actual}.}
 }
+\value{
+Returns a double vector with the element-wise error values.
+}
 \description{
 Computes the element-wise error between the input vectors.
 }

@@ -16,6 +16,9 @@ this vector must be a prediction for the corresponding element in
 \item{na.rm}{A logical value indicating whether \code{NA} values should be
 stripped before the computation proceeds. Defaults to \code{FALSE}.}
 }
+\value{
+Returns a double scalar with the root mean square error value.
+}
 \description{
 Computes the root mean square error between the input vectors.
 }

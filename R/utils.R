@@ -5,6 +5,8 @@
 #'
 #' @param ... Passed to \code{\link[rlang:trace_back]{rlang::trace_back()}}.
 #'
+#' @return An object of class \code{rlang_trace}.
+#'
 #' @export
 tb <- function(...) rlang::trace_back(...)
 
@@ -15,10 +17,13 @@ tb <- function(...) rlang::trace_back(...)
 #'   just wrappers to \code{\link[rlang:last_trace]{rlang::last_trace()}} and
 #'   \code{\link[rlang:last_error]{rlang::last_error()}} respectively.
 #'
+#' @return An object of class \code{rlang_trace}.
+#'
 #' @export
 lt <- function() rlang::last_trace()
 
 #' @rdname lt
+#' @return An object of class \code{rlang_error}.
 #' @export
 le <- function() rlang::last_error()
 
@@ -28,6 +33,8 @@ le <- function() rlang::last_error()
 #'   whole tibble, as it prints by default only the first 20 rows.
 #'
 #' @param data A data frame or tibble.
+#'
+#' @return Prints \code{data} and returns it invisibly.
 #'
 #' @export
 #'
@@ -48,6 +55,8 @@ pa <- function(data) {
 #'   returns the number of \code{NA}s.
 #'
 #' @param x A vector.
+#'
+#' @return A non-negative integer.
 #'
 #' @export
 #'

@@ -13,6 +13,9 @@ error_sqr(actual, predicted)
 this vector must be a prediction for the corresponding element in
 \code{actual}.}
 }
+\value{
+Returns a double vector with the element-wise squared error values.
+}
 \description{
 Computes the element-wise squared errors between the input vectors.
 }

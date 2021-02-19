@@ -16,6 +16,8 @@
 #'   \code{"scott"} or \code{"FD"} to use one of the methods to determine the
 #'   bin width as in \href{https://rdrr.io/r/grDevices/nclass.html}{\code{grDevices::nclass.*()}}
 #'
+#' @return A \code{ggplot} object.
+#'
 #' @examples
 #' plot_scatter(mtcars, disp, mpg, color = factor(cyl))
 #' plot_line(Orange, age, circumference, colour = Tree)

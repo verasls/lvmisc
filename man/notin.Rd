@@ -12,9 +12,11 @@ x \%!in\% table
 
 \item{table}{Vector with the values to be matched against.}
 }
+\value{
+A logical vector indicating which values are not in \code{table}.
+}
 \description{
-\code{\%!in\%} returns a logical vector indicating which values are not in
-\code{table}.
+Value matching
 }
 \examples{
 x <- 8:12

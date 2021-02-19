@@ -23,6 +23,9 @@ subject.}
 in the \code{var} will correspond to \code{NA} values in return vector.
 Defaults to \code{TRUE}.}
 }
+\value{
+A vector of the same lenght and class of \code{var}.
+}
 \description{
 Returns a vector with the length equal to the number of rows in the
 \code{data} with the baseline value of the \code{var} repeated for every

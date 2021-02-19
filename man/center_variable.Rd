@@ -14,6 +14,9 @@ of \code{variable} are divided by their standard deviation.}
 
 \item{by}{A vector with the \code{factor} class.}
 }
+\value{
+A numeric vector.
+}
 \description{
 Center a variable by subtracting the mean from each element. Centering can
 be performed by the grand mean when \code{by = NULL} (the default), or by

@@ -9,6 +9,9 @@ pa(data)
 \arguments{
 \item{data}{A data frame or tibble.}
 }
+\value{
+Prints \code{data} and returns it invisibly.
+}
 \description{
 Shortcut to print all rows of a data frame or tibble. Useful to inspect the
 whole tibble, as it prints by default only the first 20 rows.

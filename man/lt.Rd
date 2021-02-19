@@ -9,6 +9,11 @@ lt()
 
 le()
 }
+\value{
+An object of class \code{rlang_trace}.
+
+An object of class \code{rlang_error}.
+}
 \description{
 \code{lt()} prints the last error and the full backtrace and \code{le()}
 returns the last error with a simplified backtrace. These functions are

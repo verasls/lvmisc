@@ -5,6 +5,8 @@
 #' @param x An object of class \code{lvmisc_cv} or an object containing a model.
 #' @param ... Additional arguments to be passed to \code{ggplot2::aes()}.
 #'
+#' @return A \code{ggplot} object.
+#'
 #' @references \itemize{
 #'   \item Bland, J.M. & Altman, D.G. (1986). Statistical methods for assessing
 #'   agreement between two methods of clinical measurement. 

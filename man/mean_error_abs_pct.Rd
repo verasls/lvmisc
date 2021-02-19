@@ -17,6 +17,8 @@ this vector must be a prediction for the corresponding element in
 stripped before the computation proceeds. Defaults to \code{FALSE}.}
 }
 \value{
+Returns a double scalar with the mean absolute percent error value.
+
 A vector of the class \code{lvmisc_percent}.
 }
 \description{

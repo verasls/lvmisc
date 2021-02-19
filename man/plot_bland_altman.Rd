@@ -11,6 +11,9 @@ plot_bland_altman(x, ...)
 
 \item{...}{Additional arguments to be passed to \code{ggplot2::aes()}.}
 }
+\value{
+A \code{ggplot} object.
+}
 \description{
 Create a Bland-Altman plot as described by Bland & Altman (1986).
 }

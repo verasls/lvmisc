@@ -17,6 +17,10 @@ subject.}
 \item{max_na}{An integer indicating the maximum number of \code{NA}s per
 subject.}
 }
+\value{
+The original \code{data} with the \code{var} observations matching
+the \code{max_na} criterion replaced by \code{NA}.
+}
 \description{
 Replace valid observations by \code{NA}s when a given subject has more then
 \code{max_na} missing values.

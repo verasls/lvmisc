@@ -24,6 +24,9 @@ plot_model_multicollinearity(model)
 \arguments{
 \item{model}{An object containing a model.}
 }
+\value{
+A \code{ggplot} object.
+}
 \description{
 Plotting functions for some common model diagnostics.
 }

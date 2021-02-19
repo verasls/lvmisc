@@ -12,6 +12,9 @@ lna(x)
 \arguments{
 \item{x}{A vector.}
 }
+\value{
+A non-negative integer.
+}
 \description{
 \code{lunique} returns the number of non-\code{NA} unique elements and
 \code{lna}

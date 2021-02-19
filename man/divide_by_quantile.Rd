@@ -15,6 +15,10 @@ created.}
 \item{na.rm}{A logical vector indicating whether the \code{NA} values should
 be removed before the quantiles are computed.}
 }
+\value{
+A vector of class \code{factor} indicating in which quantile the
+element in \code{data} belongs.
+}
 \description{
 Creates a factor based on equally spaced quantiles of a variable.
 }

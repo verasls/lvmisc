@@ -15,6 +15,8 @@
 #'   in the \code{var} will correspond to \code{NA} values in return vector.
 #'   Defaults to \code{TRUE}.
 #'
+#' @return A vector of the same lenght and class of \code{var}.
+#'
 #' @export
 #'
 #' @examples

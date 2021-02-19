@@ -10,6 +10,9 @@
 #' @param max_na An integer indicating the maximum number of \code{NA}s per
 #'   subject.
 #'
+#' @return The original \code{data} with the \code{var} observations matching
+#'   the \code{max_na} criterion replaced by \code{NA}.
+#'
 #' @export
 #'
 #' @importFrom rlang .data

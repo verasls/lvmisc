@@ -7,8 +7,6 @@
 #'   this vector must be a prediction for the corresponding element in
 #'   \code{actual}.
 #'
-#' @return Returns a double vector with the element-wise accuracy index values.
-#'
 #' @keywords internal
 NULL
 
@@ -17,6 +15,8 @@ NULL
 #' Computes the element-wise error between the input vectors.
 #'
 #' @inheritParams accuracy_params
+#'
+#' @return Returns a double vector with the element-wise error values.
 #'
 #' @export
 #'
@@ -59,6 +59,8 @@ error <- function(actual, predicted) {
 #' Computes the element-wise percent error between the input vectors.
 #'
 #' @inheritParams accuracy_params
+#'
+#' @return Returns a double vector with the element-wise percent error values.
 #'
 #' @return A vector of the class \code{lvmisc_percent} with the element-wise
 #'   percent error values.
@@ -105,6 +107,8 @@ error_pct <- function(actual, predicted) {
 #'
 #' @inheritParams accuracy_params
 #'
+#' @return Returns a double vector with the element-wise absolute error values.
+#'
 #' @export
 #'
 #' @seealso \code{\link[=error]{error()}},
@@ -146,6 +150,9 @@ error_abs <- function(actual, predicted) {
 #' Computes the element-wise absolute percent errors between the input vectors.
 #'
 #' @inheritParams accuracy_params
+#'
+#' @return Returns a double vector with the element-wise absolute percent
+#'   error values.
 #'
 #' @return A vector of the class \code{lvmisc_percent} with the element-wise
 #'   absolute percent error values.
@@ -191,6 +198,8 @@ error_abs_pct <- function(actual, predicted) {
 #' Computes the element-wise squared errors between the input vectors.
 #'
 #' @inheritParams accuracy_params
+#'
+#' @return Returns a double vector with the element-wise squared error values.
 #'
 #' @export
 #'
