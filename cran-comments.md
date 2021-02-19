@@ -2,11 +2,9 @@
 
 This is a resubmission. In this version I have:
 
-* Updated the package Title and Description.
-* Added \value to .Rd files explaining the return object class and
-structure. This was done to all functions in the abort.R, accuracy.R,
-accuracy_means.R and bmi.R files.
-* Removed \dontrun{} from all the examples in the abort.R file.
+* Put the ggplot2 package name in single quotes in the Description.
+* Added \value to all .Rd files it was missing.
+* Removed if (FALSE) {} from the examples.
 
 ## Test environments
 
