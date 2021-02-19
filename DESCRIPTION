@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-0562-5803"))
 Description: Contains a collection of useful
     functions for basic data computation and manipulation,
-    wrapper functions for generating ggplot2 graphics,
+    wrapper functions for generating 'ggplot2' graphics,
     including statistical model diagnostic plots, methods
     for computing statistical models quality measures (such
     as AIC, BIC, r squared, root mean squared error) and
