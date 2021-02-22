@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R build status](https://github.com/verasls/lvmisc/workflows/R-CMD-check/badge.svg)](https://github.com/verasls/lvmisc/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/lvmisc)](https://CRAN.R-project.org/package=lvmisc)
 [![Codecov test coverage](https://codecov.io/gh/verasls/lvmisc/branch/master/graph/badge.svg)](https://codecov.io/gh/verasls/lvmisc?branch=master)
 <!-- badges: end -->
 
