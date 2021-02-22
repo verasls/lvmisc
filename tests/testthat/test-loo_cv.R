@@ -79,3 +79,16 @@ test_that("loo_cv method for lmerMod class works", {
 
   expect_equal(names(cv), c(".actual", ".predicted"))
 })
+
+test_that("lvmisc_cv object has the same number of rows than data", {
+  df <- data.frame(
+    subj = rep(1:10, each = 3),
+    trial = rep(1:3, 10),
+    y = rnorm(30),
+    x = rnorm(30)
+  )
+  m <- lm(y ~ x, df)
+  cv <- loo_cv(m, df, subj)
+
+  expect_equal(nrow(df), nrow(cv))
+})

@@ -135,12 +135,7 @@ compute_cv_values <- function(data, id, testing_data, trained_models, outcome) {
     ".actual" = testing_data[[outcome]],
     ".predicted" = predicted
   )
-  arrange_values(cv_values, data, id)
-}
-
-arrange_values <- function(cv_values, data, id) {
-  data <- data[id]
-  suppressMessages(dplyr::full_join(data, cv_values))
+  dplyr::arrange(cv_values, id)
 }
 
 get_lvmisc_cv_object <- function(cv_values, model, id, keep) {
