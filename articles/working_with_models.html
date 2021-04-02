@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lvmisc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -65,6 +65,9 @@
       <a href="../articles/working_with_models.html">Working with models</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -103,7 +106,7 @@
 
     
     
-<p>{lvmisc} has a set of tools to work with statistical model objects. Generally, the functions behind these tools are S3 generic and the methods currently implemented are for the classes <code>lm</code> from the {stats} package and <code>lmerMod</code> from the {lme4} <a href="https://CRAN.R-project.org/package=lme4" class="external-link">package</a>. If you would like to have methods implemented to other model classes, please file an issue at <a href="https://github.com/verasls/lvmisc/issues" class="external-link">https://github.com/verasls/lvmisc/issues</a>.</p>
+<p>{lvmisc} has a set of tools to work with statistical model objects. Generally, the functions behind these tools are S3 generic and the methods currently implemented are for the classes <code>lm</code> from the {stats} package and <code>lmerMod</code> from the {lme4} <a href="https://CRAN.R-project.org/package=lme4" class="external-link">package</a>. If you would like to have methods implemented to other model classes, please file an issue at <a href="https://github.com/verasls/lvmisc/issues" class="external-link uri">https://github.com/verasls/lvmisc/issues</a>.</p>
 <p>The functions to work with models can be divided into three categories:</p>
 <ol style="list-style-type: decimal">
 <li>Model diagnostics</li>
@@ -150,18 +153,18 @@
 <span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">)</span>
 <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">m</span>, data <span class="op">=</span> <span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">car</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 32 x 3</span>
-<span class="co">#&gt;    car               .actual .predicted</span>
-<span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Mazda RX4            160        217.</span>
-<span class="co">#&gt;  2 Mazda RX4 Wag        160        217.</span>
-<span class="co">#&gt;  3 Datsun 710           108        186.</span>
-<span class="co">#&gt;  4 Hornet 4 Drive       258        206.</span>
-<span class="co">#&gt;  5 Hornet Sportabout    360        251.</span>
-<span class="co">#&gt;  6 Valiant              225        267.</span>
-<span class="co">#&gt;  7 Duster 360           360        330.</span>
-<span class="co">#&gt;  8 Merc 240D            147.       156.</span>
-<span class="co">#&gt;  9 Merc 230             141.       185.</span>
-<span class="co">#&gt; 10 Merc 280             168.       249.</span>
+<span class="co">#&gt;    car                .actual .predicted</span>
+<span class="co">#&gt;    &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Toyota Corona        120.       209. </span>
+<span class="co">#&gt;  2 Pontiac Firebird     400        241. </span>
+<span class="co">#&gt;  3 Fiat X1-9             79        107. </span>
+<span class="co">#&gt;  4 Dodge Challenger     318        310. </span>
+<span class="co">#&gt;  5 Hornet Sportabout    360        251. </span>
+<span class="co">#&gt;  6 Cadillac Fleetwood   472        390. </span>
+<span class="co">#&gt;  7 Mazda RX4 Wag        160        217. </span>
+<span class="co">#&gt;  8 Chrysler Imperial    440        318. </span>
+<span class="co">#&gt;  9 Merc 280C            168.       274. </span>
+<span class="co">#&gt; 10 Toyota Corolla        71.1      -30.3</span>
 <span class="co">#&gt; # … with 22 more rows</span></code></pre></div>
 <p>To use the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> function you need to specify the model you will cross-validate, the original dataset used to build it and the name of the column which identifies the subjects. You will also notice the use of the <code>keep</code> argument: it controls the columns to be shown in the output object (more details in the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> documentation).</p>
 <p>The output of the cross-validation function is an object of class <code>lvmisc_cv</code>. It is simply a <code>tibble</code> with at least two columns: one containing the dependent variable actual values (<code>.actual</code>) as in the original dataset, and the other with the values predicted by the cross-validation procedure (<code>.predicted</code>). These two columns contain the data necessary to evaluate the model performance, as we will see in the next section.</p>
@@ -223,11 +226,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://lveras.com" class="external-link">Lucas Veras</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://lveras.com" class="external-link external-link">Lucas Veras</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>

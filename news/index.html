@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Abort based on column not being found in a data frame — abort_column_not_found • lvmisc</title>
+<title>Changelog • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,10 +52,7 @@
 
 
 
-<meta property="og:title" content="Abort based on column not being found in a data frame — abort_column_not_found" />
-<meta property="og:description" content="Creates a custom error condition created with
-rlang::abort() with a - hopefully - more useful
-error message and metadata." />
+<meta property="og:title" content="Changelog" />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -84,7 +81,7 @@ error message and metadata." />
   <body data-spy="scroll" data-target="#toc">
     
 
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -151,50 +148,29 @@ error message and metadata." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Abort based on column not being found in a data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/abort.R'><code>R/abort.R</code></a></small>
-    <div class="hidden name"><code>abort_column_not_found.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/verasls/lvmisc/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Creates a custom error condition created with
-<code><a href='https://rlang.r-lib.org/reference/abort.html'>rlang::abort()</a></code> with a - hopefully - more useful
-error message and metadata.</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>abort_column_not_found</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>col_name</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>data</th>
-      <td><p>A data frame.</p></td>
-    </tr>
-    <tr>
-      <th>col_name</th>
-      <td><p>A character vector with the column name.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Returns an error condition of classerror_column_not_found.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='abort_argument.html'>abort_argument_type()</a></code>,
-<code><a href='abort_argument.html'>abort_argument_class()</a></code>,
-<code><a href='abort_argument.html'>abort_argument_length()</a></code>,
-<code><a href='abort_argument.html'>abort_argument_diff_length()</a></code>,
-<code><a href='abort_no_method_for_class.html'>abort_no_method_for_class()</a></code>,
-<code><a href='abort_package_not_installed.html'>abort_package_not_installed()</a></code></p></div>
-
+    <div id="lvmisc-011" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.1">
+<a href="#lvmisc-011" class="anchor"></a>lvmisc 0.1.1<small> Unreleased </small>
+</h1>
+<ul>
+<li>
+<code><a href="../reference/loo_cv.html">loo_cv()</a></code> now returns an object with the right number of rows (<a href='https://github.com/verasls/lvmisc/issues/2'>#2</a>).</li>
+<li>New functions: <code><a href="../reference/abort_argument.html">abort_argument_class()</a></code> and <code><a href="../reference/cl.html">cl()</a></code>.</li>
+<li>Improve argument checking in the <code><a href="../reference/clean_observations.html">clean_observations()</a></code> function.</li>
+</ul>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
