@@ -1,10 +1,6 @@
 ## Release summary
 
-This is a resubmission. In this version I have:
-
-* Put the ggplot2 package name in single quotes in the Description.
-* Added \value to all .Rd files it was missing.
-* Removed if (FALSE) {} from the examples.
+This is a minor release.
 
 ## Test environments
 
@@ -16,6 +12,4 @@ This is a resubmission. In this version I have:
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new submission.
+0 errors | 0 warnings | 0 notes
