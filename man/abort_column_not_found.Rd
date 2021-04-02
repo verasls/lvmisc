@@ -21,6 +21,7 @@ error message and metadata.
 }
 \seealso{
 \code{\link[=abort_argument_type]{abort_argument_type()}},
+\code{\link[=abort_argument_class]{abort_argument_class()}},
 \code{\link[=abort_argument_length]{abort_argument_length()}},
 \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
 \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}},

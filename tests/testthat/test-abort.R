@@ -11,6 +11,21 @@ test_that("abort_argument_type() works", {
   expect_equal(err$not, "character")
 })
 
+test_that("abort_argument_class() works", {
+  x <- letters
+  err <- expect_error(
+    abort_argument_class("x", must = "be of class data.frame", not = x)
+  )
+
+  expect_s3_class(err, "error_argument_class")
+  expect_equal(
+    unclass(err$message), "`x` must be of class data.frame; not character."
+  )
+  expect_equal(err$arg, "x")
+  expect_equal(err$must, "be of class data.frame")
+  expect_equal(unclass(err$not), "character")
+})
+
 test_that("abort_argument_length() works", {
   x <- 1:10
   err <- expect_error(

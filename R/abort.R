@@ -41,6 +41,22 @@ abort_argument_type <- function(arg, must, not) {
 
 #' @rdname abort_argument
 #' @export
+abort_argument_class <- function(arg, must, not) {
+  not <- class(not)
+  not <- glue::glue_collapse(not, ", ", last = " and ")
+  msg <- glue::glue("`{arg}` must {must}; not {not}.")
+
+  rlang::abort(
+    "error_argument_class",
+    message = msg,
+    arg = arg,
+    must = must,
+    not = not
+  )
+}
+
+#' @rdname abort_argument
+#' @export
 abort_argument_length <- function(arg, must, not) {
   not <- length(not)
   msg <- glue::glue("`{arg}` must {must}; not {not}.")
@@ -99,6 +115,7 @@ abort_argument_value <- function(arg, valid_values) {
 #' @export
 #'
 #' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
+#'   \code{\link[=abort_argument_class]{abort_argument_class()}},
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
 #'   \code{\link[=abort_no_method_for_class]{abort_no_method_for_class()}},
@@ -125,6 +142,7 @@ abort_column_not_found <- function(data, col_name) {
 #' @export
 #'
 #' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
+#'   \code{\link[=abort_argument_class]{abort_argument_class()}},
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
 #'   \code{\link[=abort_column_not_found]{abort_column_not_found()}},
@@ -167,6 +185,7 @@ abort_no_method_for_class <- function(fun, class, ...) {
 #' @export
 #'
 #' @seealso \code{\link[=abort_argument_type]{abort_argument_type()}},
+#'   \code{\link[=abort_argument_class]{abort_argument_class()}},
 #'   \code{\link[=abort_argument_length]{abort_argument_length()}},
 #'   \code{\link[=abort_argument_diff_length]{abort_argument_diff_length()}},
 #'   \code{\link[=abort_column_not_found]{abort_column_not_found()}},

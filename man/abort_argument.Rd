@@ -3,12 +3,15 @@
 \name{abort_argument}
 \alias{abort_argument}
 \alias{abort_argument_type}
+\alias{abort_argument_class}
 \alias{abort_argument_length}
 \alias{abort_argument_diff_length}
 \alias{abort_argument_value}
 \title{Abort based on issues with function argument}
 \usage{
 abort_argument_type(arg, must, not)
+
+abort_argument_class(arg, must, not)
 
 abort_argument_length(arg, must, not)
 
