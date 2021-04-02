@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Limits of agreement — loa • lvmisc</title>
+<title>Clear the console — cl • lvmisc</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -52,8 +52,8 @@
 
 
 
-<meta property="og:title" content="Limits of agreement — loa" />
-<meta property="og:description" content="Computes the Bland-Altman limits of agreement between the input vectors." />
+<meta property="og:title" content="Clear the console — cl" />
+<meta property="og:description" content="Clear the console by printing 50 times the new line character (&quot;\n&quot;)." />
 <meta property="og:image" content="https://lveras.com/lvmisc/logo.png" />
 
 
@@ -146,57 +146,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Limits of agreement</h1>
-    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/accuracy_means.R'><code>R/accuracy_means.R</code></a></small>
-    <div class="hidden name"><code>loa.Rd</code></div>
+    <h1>Clear the console</h1>
+    <small class="dont-index">Source: <a href='https://github.com/verasls/lvmisc/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>cl.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Computes the Bland-Altman limits of agreement between the input vectors.</p>
+    <p>Clear the console by printing 50 times the new line character (<code>"\n"</code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>loa</span><span class='op'>(</span><span class='va'>actual</span>, <span class='va'>predicted</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>cl</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>actual</th>
-      <td><p>A numeric vector with the actual values.</p></td>
-    </tr>
-    <tr>
-      <th>predicted</th>
-      <td><p>A numeric vector with the predicted values. Each element in
-this vector must be a prediction for the corresponding element in
-<code>actual</code>.</p></td>
-    </tr>
-    <tr>
-      <th>na.rm</th>
-      <td><p>A logical value indicating whether <code>NA</code> values should be
-stripped before the computation proceeds. Defaults to <code>FALSE</code>.</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named list with the lower and upper limits of agreement values,
-respectively.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <p>Prints to console. Called by its side-effects.</p>
 
-    <div class='dont-index'><p><code><a href='mean_error.html'>mean_error()</a></code>,
-<code><a href='bias.html'>bias()</a></code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>actual</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-<span class='va'>predicted</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>
-
-<span class='fu'>loa</span><span class='op'>(</span><span class='va'>actual</span>, <span class='va'>predicted</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $lower
-#&gt; [1] -0.9505924
-#&gt; 
-#&gt; $upper
-#&gt; [1] 0.629018
-#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

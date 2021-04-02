@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lvmisc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -70,6 +70,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -94,7 +97,7 @@
 
       
 
-      </header><script src="working_with_models_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><script src="working_with_models_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Working with models</h1>
@@ -154,18 +157,18 @@
 <span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">)</span>
 <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">m</span>, data <span class="op">=</span> <span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">car</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 32 x 3</span>
-<span class="co">#&gt;    car               .actual .predicted</span>
-<span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Mazda RX4            160        217.</span>
-<span class="co">#&gt;  2 Mazda RX4 Wag        160        217.</span>
-<span class="co">#&gt;  3 Datsun 710           108        186.</span>
-<span class="co">#&gt;  4 Hornet 4 Drive       258        206.</span>
-<span class="co">#&gt;  5 Hornet Sportabout    360        251.</span>
-<span class="co">#&gt;  6 Valiant              225        267.</span>
-<span class="co">#&gt;  7 Duster 360           360        330.</span>
-<span class="co">#&gt;  8 Merc 240D            147.       156.</span>
-<span class="co">#&gt;  9 Merc 230             141.       185.</span>
-<span class="co">#&gt; 10 Merc 280             168.       249.</span>
+<span class="co">#&gt;    car              .actual .predicted</span>
+<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Dodge Challenger   318        310. </span>
+<span class="co">#&gt;  2 Ferrari Dino       145        241. </span>
+<span class="co">#&gt;  3 Toyota Corolla      71.1      -30.3</span>
+<span class="co">#&gt;  4 AMC Javelin        304        317. </span>
+<span class="co">#&gt;  5 Duster 360         360        330. </span>
+<span class="co">#&gt;  6 Merc 450SLC        276.       318. </span>
+<span class="co">#&gt;  7 Camaro Z28         350        349. </span>
+<span class="co">#&gt;  8 Merc 450SE         276.       296. </span>
+<span class="co">#&gt;  9 Pontiac Firebird   400        241. </span>
+<span class="co">#&gt; 10 Merc 280C          168.       274. </span>
 <span class="co">#&gt; # … with 22 more rows</span></code></pre></div>
 <p>To use the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> function you need to specify the model you will cross-validate, the original dataset used to build it and the name of the column which identifies the subjects. You will also notice the use of the <code>keep</code> argument: it controls the columns to be shown in the output object (more details in the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> documentation).</p>
 <p>The output of the cross-validation function is an object of class <code>lvmisc_cv</code>. It is simply a <code>tibble</code> with at least two columns: one containing the dependent variable actual values (<code>.actual</code>) as in the original dataset, and the other with the values predicted by the cross-validation procedure (<code>.predicted</code>). These two columns contain the data necessary to evaluate the model performance, as we will see in the next section.</p>
