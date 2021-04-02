@@ -33,6 +33,9 @@ clean_observations <- function(data, id, var, max_na) {
   var_col_name <- rlang::as_string(rlang::ensym(var))
   data_name <- rlang::as_string(rlang::ensym(data))
 
+  if (!is.data.frame(data)) {
+    abort_argument_class(arg = data, must = "be a data.frame", not = data)
+  }
   if (id_col_name %!in% names(data)) {
     abort_column_not_found(data = data_name, col_name = id_col_name)
   }

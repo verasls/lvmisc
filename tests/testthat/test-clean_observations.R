@@ -2,6 +2,9 @@ test_that("error handling works", {
   data <- data.frame(x = 1:10, y = 1:10)
 
   expect_error(
+    clean_observations("data", x, y, 1)
+  )
+  expect_error(
     clean_observations(data, id, x, 1),
     "Column `id` not found in `data`.",
     class = "error_column_not_found"
