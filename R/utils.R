@@ -78,3 +78,14 @@ lunique <- function(x) {
 lna <- function(x) {
   sum(is.na(x))
 }
+
+#' Clear the console
+#'
+#' Clear the console by printing 50 times the new line character (\code{"\n"}).
+#'
+#' @return Prints to console. Called by its side-effects.
+#'
+#' @export
+cl <- function() {
+  cat(rep("\n", 50))
+}
