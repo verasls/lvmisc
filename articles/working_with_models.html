@@ -155,16 +155,16 @@
 <span class="co">#&gt; # A tibble: 32 x 3</span>
 <span class="co">#&gt;    car                .actual .predicted</span>
 <span class="co">#&gt;    &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Toyota Corona        120.       209. </span>
-<span class="co">#&gt;  2 Pontiac Firebird     400        241. </span>
-<span class="co">#&gt;  3 Fiat X1-9             79        107. </span>
-<span class="co">#&gt;  4 Dodge Challenger     318        310. </span>
-<span class="co">#&gt;  5 Hornet Sportabout    360        251. </span>
-<span class="co">#&gt;  6 Cadillac Fleetwood   472        390. </span>
-<span class="co">#&gt;  7 Mazda RX4 Wag        160        217. </span>
-<span class="co">#&gt;  8 Chrysler Imperial    440        318. </span>
-<span class="co">#&gt;  9 Merc 280C            168.       274. </span>
-<span class="co">#&gt; 10 Toyota Corolla        71.1      -30.3</span>
+<span class="co">#&gt;  1 Cadillac Fleetwood   472       390.  </span>
+<span class="co">#&gt;  2 Fiat 128              78.7       3.75</span>
+<span class="co">#&gt;  3 Porsche 914-2        120.      128.  </span>
+<span class="co">#&gt;  4 Hornet 4 Drive       258       206.  </span>
+<span class="co">#&gt;  5 Valiant              225       267.  </span>
+<span class="co">#&gt;  6 Ford Pantera L       351       303.  </span>
+<span class="co">#&gt;  7 Merc 230             141.      185.  </span>
+<span class="co">#&gt;  8 Dodge Challenger     318       310.  </span>
+<span class="co">#&gt;  9 Mazda RX4            160       217.  </span>
+<span class="co">#&gt; 10 Datsun 710           108       186.  </span>
 <span class="co">#&gt; # … with 22 more rows</span></code></pre></div>
 <p>To use the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> function you need to specify the model you will cross-validate, the original dataset used to build it and the name of the column which identifies the subjects. You will also notice the use of the <code>keep</code> argument: it controls the columns to be shown in the output object (more details in the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> documentation).</p>
 <p>The output of the cross-validation function is an object of class <code>lvmisc_cv</code>. It is simply a <code>tibble</code> with at least two columns: one containing the dependent variable actual values (<code>.actual</code>) as in the original dataset, and the other with the values predicted by the cross-validation procedure (<code>.predicted</code>). These two columns contain the data necessary to evaluate the model performance, as we will see in the next section.</p>
