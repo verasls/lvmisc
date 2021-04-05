@@ -51,11 +51,11 @@ test_that("vif() produces the right output", {
 
   expect_equal(names(out), c("Term", "VIF", "Classification"))
   expect_equal(
-    out[["Term"]],
+    as.character(out[["Term"]]),
     c("mpg", "cyl", "hp", "I(hp^2)")
   )
   expect_equal(
-    out[["Classification"]],
+    as.character(out[["Classification"]]),
     c("Low", "Moderate", "High", "High")
   )
 })

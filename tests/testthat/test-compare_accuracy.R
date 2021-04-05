@@ -26,7 +26,7 @@ test_that("compare_accuracy() works for models of class lm", {
     "Model", "Class", "R2", "R2_adj", "AIC", "BIC", "MAE", "MAPE", "RMSE"
   )
   expect_equal(names(out), col_names)
-  expect_equal(out[["Class"]], c("lm", "lm"))
+  expect_equal(as.character(out[["Class"]]), c("lm", "lm"))
 })
 
 test_that("compare_accuracy() works for models of class lmerMod", {
@@ -42,7 +42,7 @@ test_that("compare_accuracy() works for models of class lmerMod", {
     "Model", "Class", "R2_marg", "R2_cond", "AIC", "BIC", "MAE", "MAPE", "RMSE"
   )
   expect_equal(names(out), col_names)
-  expect_equal(out[["Class"]], c("lmerMod", "lmerMod"))
+  expect_equal(as.character(out[["Class"]]), c("lmerMod", "lmerMod"))
 })
 
 test_that("compare_accuracy() works for models of class lvmisc_cv", {
@@ -57,7 +57,9 @@ test_that("compare_accuracy() works for models of class lvmisc_cv", {
     "Model", "Class", "R2", "R2_adj", "AIC", "BIC", "MAE", "MAPE", "RMSE"
   )
   expect_equal(names(out), col_names)
-  expect_equal(out[["Class"]], c("lvmisc_cv_model/lm", "lvmisc_cv_model/lm"))
+  expect_equal(
+    as.character(out[["Class"]]), c("lvmisc_cv_model/lm", "lvmisc_cv_model/lm")
+  )
 })
 
 test_that("compare_accuracy() works for models of different classes", {
@@ -76,7 +78,7 @@ test_that("compare_accuracy() works for models of different classes", {
   )
   expect_equal(names(out), col_names)
   expect_equal(
-    out[["Class"]],
+    as.character(out[["Class"]]),
     c("lm", "lmerMod", "lvmisc_cv_model/lm")
   )
 })
