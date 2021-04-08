@@ -43,7 +43,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lvmisc</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -154,18 +154,18 @@
 <span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">)</span>
 <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">m</span>, data <span class="op">=</span> <span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">car</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 32 x 3</span>
-<span class="co">#&gt;    car                .actual .predicted</span>
-<span class="co">#&gt;    &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Lotus Europa          95.1       44.7</span>
-<span class="co">#&gt;  2 Chrysler Imperial    440        318. </span>
-<span class="co">#&gt;  3 Merc 450SLC          276.       318. </span>
-<span class="co">#&gt;  4 Toyota Corolla        71.1      -30.3</span>
-<span class="co">#&gt;  5 Pontiac Firebird     400        241. </span>
-<span class="co">#&gt;  6 Dodge Challenger     318        310. </span>
-<span class="co">#&gt;  7 Cadillac Fleetwood   472        390. </span>
-<span class="co">#&gt;  8 Fiat X1-9             79        107. </span>
-<span class="co">#&gt;  9 AMC Javelin          304        317. </span>
-<span class="co">#&gt; 10 Datsun 710           108        186. </span>
+<span class="co">#&gt;    car               .actual .predicted</span>
+<span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Camaro Z28          350        349. </span>
+<span class="co">#&gt;  2 Mazda RX4           160        217. </span>
+<span class="co">#&gt;  3 Lotus Europa         95.1       44.7</span>
+<span class="co">#&gt;  4 Datsun 710          108        186. </span>
+<span class="co">#&gt;  5 Duster 360          360        330. </span>
+<span class="co">#&gt;  6 Merc 280            168.       249. </span>
+<span class="co">#&gt;  7 Merc 230            141.       185. </span>
+<span class="co">#&gt;  8 Hornet Sportabout   360        251. </span>
+<span class="co">#&gt;  9 Hornet 4 Drive      258        206. </span>
+<span class="co">#&gt; 10 Merc 450SLC         276.       318. </span>
 <span class="co">#&gt; # … with 22 more rows</span></code></pre></div>
 <p>To use the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> function you need to specify the model you will cross-validate, the original dataset used to build it and the name of the column which identifies the subjects. You will also notice the use of the <code>keep</code> argument: it controls the columns to be shown in the output object (more details in the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> documentation).</p>
 <p>The output of the cross-validation function is an object of class <code>lvmisc_cv</code>. It is simply a <code>tibble</code> with at least two columns: one containing the dependent variable actual values (<code>.actual</code>) as in the original dataset, and the other with the values predicted by the cross-validation procedure (<code>.predicted</code>). These two columns contain the data necessary to evaluate the model performance, as we will see in the next section.</p>
@@ -233,7 +233,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
