@@ -143,11 +143,11 @@ check_args_accuracy <- function(model, na.rm) {
 }
 
 get_r2 <- function(model) {
-  if (class(model) == "lm") {
+  if (inherits(model, "lm")) {
     R2 <- summary(model)$r.squared
     R2_adj <- summary(model)$adj.r.squared
     data.frame(R2, R2_adj)
-  } else if (class(model) == "lmerMod") {
+  } else if (inherits(model, "lmerMod")) {
     R2_marg <- r2(model)[["R2_marg"]]
     R2_cond <- r2(model)[["R2_cond"]]
     data.frame(R2_marg, R2_cond)
