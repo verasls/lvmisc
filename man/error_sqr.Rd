@@ -26,8 +26,6 @@ predicted <- runif(10)
 error_sqr(actual, predicted)
 }
 \seealso{
-
-
 \code{\link[=error]{error()}},
 \code{\link[=error_pct]{error_pct()}},
 \code{\link[=error_abs]{error_abs()}},

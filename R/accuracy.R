@@ -203,7 +203,6 @@ error_abs_pct <- function(actual, predicted) {
 #'
 #' @export
 #'
-#' @seealso
 #' @seealso \code{\link[=error]{error()}},
 #'   \code{\link[=error_pct]{error_pct()}},
 #'   \code{\link[=error_abs]{error_abs()}},
