@@ -53,7 +53,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -100,7 +100,7 @@
       <h1 data-toc-skip>Working with models</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/verasls/lvmisc/blob/master/vignettes/working_with_models.Rmd" class="external-link"><code>vignettes/working_with_models.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/verasls/lvmisc/blob/HEAD/vignettes/working_with_models.Rmd" class="external-link"><code>vignettes/working_with_models.Rmd</code></a></small>
       <div class="hidden name"><code>working_with_models.Rmd</code></div>
 
     </div>
@@ -116,21 +116,21 @@
 </ol>
 <p>Before starting, let’s load the required packages:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lveras.com/lvmisc/">lvmisc</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span></code></pre></div>
-<div id="model-diagnostics" class="section level2">
-<h2 class="hasAnchor">
-<a href="#model-diagnostics" class="anchor"></a>Model diagnostics</h2>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lveras.com/lvmisc/">lvmisc</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lme4/lme4/" class="external-link">lme4</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="model-diagnostics">Model diagnostics<a class="anchor" aria-label="anchor" href="#model-diagnostics"></a>
+</h2>
 <p>{lvmisc} has a plotting function for some common model diagnostic plots. To explore it, let’s first create some example models:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span>
-<span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
 <p>The main function to generate the diagnostic plots is <code><a href="../reference/plot_model.html">plot_model()</a></code> and its only argument is the model object:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="working_with_models_files/figure-html/diagnostic_plots-1.png" width="672" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_model.html">plot_model</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="working_with_models_files/figure-html/diagnostic_plots-2.png" width="672" style="display: block; margin: auto;"></p>
 <p>By default it prints a grid of five (or four) diagnostic plots. Each individual plot can also be generated by using another function. The default plots shown are, respectively:</p>
 <ul>
@@ -141,77 +141,77 @@
 <li>A bar plot with the variance inflation factor (VIF) per model term, which only shows if the model has 2 terms or more (you can see that in our example this plot is not built for <code>m2</code>). The VIF can be used to check the model for multicollinearity: the bar is green for a low multicollinearity, orange for moderate and red for high. <code><a href="../reference/plot_model.html">plot_model_multicollinearity()</a></code> generates this plot.</li>
 </ul>
 </div>
-<div id="model-cross-validation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#model-cross-validation" class="anchor"></a>Model cross-validation</h2>
+<div class="section level2">
+<h2 id="model-cross-validation">Model cross-validation<a class="anchor" aria-label="anchor" href="#model-cross-validation"></a>
+</h2>
 <p>The cross-validation of a model is a way to assess how the results of a statistical model will generalize to an independent data set, but without the burden of collecting more data. At the moment, the only cross-validation method available in the {lvmisc} package is the leave-one-out. Also, the only model classes supported are <code>lm</code> and <code>lmerMod</code>, but more cross-validation methods and classes will be implemented in the future.</p>
 <p>The leave-one-out cross validation method works by each subject’s data into a testing dataset (one participant at a time) with the remaining data being the training dataset. New models with exactly the same specifications as the original model are developed using the training dataset and then used to predict the outcome in the testing dataset. This process is repeated once for every subject in the original data.</p>
 <p>We will now build a linear model to demonstrate the cross-validation with the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Put the rownames into a column to treat eat row as a "subject" (car) in</span>
-<span class="co"># the leave-one-out cross-validation</span>
-<span class="va">mtcars</span><span class="op">$</span><span class="va">car</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
-<span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">)</span>
-<span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">m</span>, data <span class="op">=</span> <span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">car</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 32 x 3</span>
-<span class="co">#&gt;    car               .actual .predicted</span>
-<span class="co">#&gt;    &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Camaro Z28          350        349. </span>
-<span class="co">#&gt;  2 Mazda RX4           160        217. </span>
-<span class="co">#&gt;  3 Lotus Europa         95.1       44.7</span>
-<span class="co">#&gt;  4 Datsun 710          108        186. </span>
-<span class="co">#&gt;  5 Duster 360          360        330. </span>
-<span class="co">#&gt;  6 Merc 280            168.       249. </span>
-<span class="co">#&gt;  7 Merc 230            141.       185. </span>
-<span class="co">#&gt;  8 Hornet Sportabout   360        251. </span>
-<span class="co">#&gt;  9 Hornet 4 Drive      258        206. </span>
-<span class="co">#&gt; 10 Merc 450SLC         276.       318. </span>
-<span class="co">#&gt; # … with 22 more rows</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Put the rownames into a column to treat eat row as a "subject" (car) in</span></span>
+<span><span class="co"># the leave-one-out cross-validation</span></span>
+<span><span class="va">mtcars</span><span class="op">$</span><span class="va">car</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span>model <span class="op">=</span> <span class="va">m</span>, data <span class="op">=</span> <span class="va">mtcars</span>, id <span class="op">=</span> <span class="va">car</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 32 × 3</span></span></span>
+<span><span class="co">#&gt;    car                .actual .predicted</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Datsun 710           108        186. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Merc 450SLC          276.       318. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Camaro Z28           350        349. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Merc 240D            147.       156. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Hornet Sportabout    360        251. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Honda Civic           75.7       47.5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Merc 230             141.       185. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Valiant              225        267. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Cadillac Fleetwood   472        390. </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Maserati Bora        301        321. </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 22 more rows</span></span></span></code></pre></div>
 <p>To use the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> function you need to specify the model you will cross-validate, the original dataset used to build it and the name of the column which identifies the subjects. You will also notice the use of the <code>keep</code> argument: it controls the columns to be shown in the output object (more details in the <code><a href="../reference/loo_cv.html">loo_cv()</a></code> documentation).</p>
 <p>The output of the cross-validation function is an object of class <code>lvmisc_cv</code>. It is simply a <code>tibble</code> with at least two columns: one containing the dependent variable actual values (<code>.actual</code>) as in the original dataset, and the other with the values predicted by the cross-validation procedure (<code>.predicted</code>). These two columns contain the data necessary to evaluate the model performance, as we will see in the next section.</p>
 </div>
-<div id="model-accuracy" class="section level2">
-<h2 class="hasAnchor">
-<a href="#model-accuracy" class="anchor"></a>Model accuracy</h2>
+<div class="section level2">
+<h2 id="model-accuracy">Model accuracy<a class="anchor" aria-label="anchor" href="#model-accuracy"></a>
+</h2>
 <p>{lvmisc} also has an easy method to compute the most common model accuracy indices (<code><a href="../reference/accuracy.html">accuracy()</a></code> function) and to compare the accuracy indices of different models (<code><a href="../reference/compare_accuracy.html">compare_accuracy()</a></code> function). Similarly to the other {lvmisc} functions described in this vignette, it has methods for the <code>lm</code> and <code>lmerMod</code> classes and also for the <code>lvmisc_cv</code> class.</p>
 <p>To explore the <code><a href="../reference/accuracy.html">accuracy()</a></code> function, let’s use the same models built in the first example of this vignette.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span>
-<span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span>
-<span class="co"># Let's also cross-validate both models</span>
-<span class="va">cv_m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">mtcars</span>, <span class="st">"car"</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span>
-<span class="va">cv_m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span><span class="va">m2</span>, <span class="va">mtcars</span>, <span class="st">"car"</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="va">hp</span> <span class="op">+</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">mpg</span><span class="op">:</span><span class="va">cyl</span>, <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html" class="external-link">lmer</a></span><span class="op">(</span><span class="va">disp</span> <span class="op">~</span> <span class="va">mpg</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">cyl</span><span class="op">)</span>, <span class="va">mtcars</span><span class="op">)</span></span>
+<span><span class="co"># Let's also cross-validate both models</span></span>
+<span><span class="va">cv_m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">mtcars</span>, <span class="st">"car"</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span></span>
+<span><span class="va">cv_m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/loo_cv.html">loo_cv</a></span><span class="op">(</span><span class="va">m2</span>, <span class="va">mtcars</span>, <span class="st">"car"</span>, keep <span class="op">=</span> <span class="st">"used"</span><span class="op">)</span></span></code></pre></div>
 <p>And then use the <code><a href="../reference/accuracy.html">accuracy()</a></code> function in each of the models to compute their accuracy indices.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>
-<span class="co">#&gt;      AIC    BIC   R2 R2_adj  MAE   MAPE  RMSE</span>
-<span class="co">#&gt; 1 344.64 353.43 0.87   0.85 34.9 15.73% 43.75</span>
-<span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span>
-<span class="co">#&gt;      AIC    BIC R2_marg R2_cond   MAE   MAPE  RMSE</span>
-<span class="co">#&gt; 1 340.76 346.62    0.19    0.81 35.75 16.43% 44.31</span>
-<span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">cv_m1</span><span class="op">)</span>
-<span class="co">#&gt;      AIC    BIC   R2 R2_adj   MAE   MAPE  RMSE</span>
-<span class="co">#&gt; 1 344.64 353.43 0.87   0.85 41.82 18.59% 52.58</span>
-<span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">cv_m2</span><span class="op">)</span>
-<span class="co">#&gt;      AIC    BIC R2_marg R2_cond   MAE   MAPE  RMSE</span>
-<span class="co">#&gt; 1 340.76 346.62    0.19    0.81 40.77 19.06% 50.28</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      AIC    BIC   R2 R2_adj  MAE   MAPE  RMSE</span></span>
+<span><span class="co">#&gt; 1 344.64 353.43 0.87   0.85 34.9 15.73% 43.75</span></span>
+<span><span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">m2</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      AIC    BIC R2_marg R2_cond   MAE   MAPE  RMSE</span></span>
+<span><span class="co">#&gt; 1 340.76 346.62    0.19    0.81 35.75 16.43% 44.31</span></span>
+<span><span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">cv_m1</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      AIC    BIC   R2 R2_adj   MAE   MAPE  RMSE</span></span>
+<span><span class="co">#&gt; 1 344.64 353.43 0.87   0.85 41.82 18.59% 52.58</span></span>
+<span><span class="fu"><a href="../reference/accuracy.html">accuracy</a></span><span class="op">(</span><span class="va">cv_m2</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      AIC    BIC R2_marg R2_cond   MAE   MAPE  RMSE</span></span>
+<span><span class="co">#&gt; 1 340.76 346.62    0.19    0.81 40.77 19.06% 50.28</span></span></code></pre></div>
 <p>As can be seen, the <code><a href="../reference/accuracy.html">accuracy()</a></code> function returns the following accuracy indices: Akaike information criterion (AIC), Bayesian information criterion (BIC), R<sup>2</sup> values appropriate to the model assessed, mean absolute error (MAE), mean absolute percent error (MAPE) and root mean square error (RMSE).</p>
 <p>Examining the accuracy results above we can see that the AIC, BIC and R<sup>2</sup> values do not change between the cross-validated model and the original model (<em>e.g.</em> <code>m1</code> vs. <code>cv_m1</code> and <code>m2</code> vs. <code>cv_m2</code>). This happens because the AIC, BIC and R<sup>2</sup> for an object of class <code>lvmisc_cv</code> are computed based on the original model. It can also be observed that the MAE, MAPE and RMSE values are worse for the cross-validated model, which is expected, as it is used to test an “out-of-sample” performance.</p>
 <p>Furthermore, we can also compare the accuracy indices of different models using the <code><a href="../reference/compare_accuracy.html">compare_accuracy()</a></code> function.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/compare_accuracy.html">compare_accuracy</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">cv_m1</span>, <span class="va">m2</span>, <span class="va">cv_m2</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Not all models are of the same class.</span>
-<span class="co">#&gt; Warning: Some models were refit using maximum likelihood.</span>
-<span class="co">#&gt;   Model                   Class   R2 R2_adj R2_marg R2_cond    AIC    BIC   MAE</span>
-<span class="co">#&gt; 1    m1                      lm 0.87   0.85      NA      NA 344.64 353.43 34.90</span>
-<span class="co">#&gt; 2 cv_m1      lvmisc_cv_model/lm 0.87   0.85      NA      NA 344.64 353.43 41.82</span>
-<span class="co">#&gt; 3    m2                 lmerMod   NA     NA    0.28    0.76 353.90 359.77 36.03</span>
-<span class="co">#&gt; 4 cv_m2 lvmisc_cv_model/lmerMod   NA     NA    0.19    0.81 340.76 346.62 40.77</span>
-<span class="co">#&gt;     MAPE  RMSE</span>
-<span class="co">#&gt; 1 15.73% 43.75</span>
-<span class="co">#&gt; 2 18.59% 52.58</span>
-<span class="co">#&gt; 3 16.77% 44.47</span>
-<span class="co">#&gt; 4 19.06% 50.28</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_accuracy.html">compare_accuracy</a></span><span class="op">(</span><span class="va">m1</span>, <span class="va">cv_m1</span>, <span class="va">m2</span>, <span class="va">cv_m2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Not all models are of the same class.</span></span>
+<span><span class="co">#&gt; Warning: Some models were refit using maximum likelihood.</span></span>
+<span><span class="co">#&gt;   Model                   Class   R2 R2_adj R2_marg R2_cond    AIC    BIC   MAE</span></span>
+<span><span class="co">#&gt; 1    m1                      lm 0.87   0.85      NA      NA 344.64 353.43 34.90</span></span>
+<span><span class="co">#&gt; 2 cv_m1      lvmisc_cv_model/lm 0.87   0.85      NA      NA 344.64 353.43 41.82</span></span>
+<span><span class="co">#&gt; 3    m2                 lmerMod   NA     NA    0.28    0.76 353.90 359.77 36.03</span></span>
+<span><span class="co">#&gt; 4 cv_m2 lvmisc_cv_model/lmerMod   NA     NA    0.19    0.81 340.76 346.62 40.77</span></span>
+<span><span class="co">#&gt;     MAPE  RMSE</span></span>
+<span><span class="co">#&gt; 1 15.73% 43.75</span></span>
+<span><span class="co">#&gt; 2 18.59% 52.58</span></span>
+<span><span class="co">#&gt; 3 16.77% 44.47</span></span>
+<span><span class="co">#&gt; 4 19.06% 50.28</span></span></code></pre></div>
 <p>Some of the benefits of using this function instead of manually comparing models with several <code><a href="../reference/accuracy.html">accuracy()</a></code> calls are that <code><a href="../reference/compare_accuracy.html">compare_accuracy()</a></code> output shows the models info (object name and class) and it throws warnings to aid the comparison.</p>
 </div>
   </div>
@@ -228,12 +228,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by <a href="https://lveras.com" class="external-link external-link">Lucas Veras</a>.</p>
+<p>Developed by <a href="https://lveras.com" class="external-link">Lucas Veras</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer>

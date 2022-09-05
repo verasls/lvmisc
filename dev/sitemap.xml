@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lveras.com/lvmisc/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc/articles/accuracy_indices.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc/articles/working_with_models.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc/authors.html</loc>
+  </url>
+  <url>
     <loc>https://lveras.com/lvmisc/index.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc/news/index.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc/reference/abort_argument.html</loc>
@@ -68,6 +89,9 @@
   </url>
   <url>
     <loc>https://lveras.com/lvmisc/reference/error_sqr.html</loc>
+  </url>
+  <url>
+    <loc>https://lveras.com/lvmisc/reference/index.html</loc>
   </url>
   <url>
     <loc>https://lveras.com/lvmisc/reference/is_outlier.html</loc>
@@ -143,11 +167,5 @@
   </url>
   <url>
     <loc>https://lveras.com/lvmisc/reference/vif.html</loc>
-  </url>
-  <url>
-    <loc>https://lveras.com/lvmisc/articles/accuracy_indices.html</loc>
-  </url>
-  <url>
-    <loc>https://lveras.com/lvmisc/articles/working_with_models.html</loc>
   </url>
 </urlset>

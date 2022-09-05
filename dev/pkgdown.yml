@@ -1,10 +1,10 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1.9001
-pkgdown_sha: c6bd498aa2e0ae2e15e267891aaa69c6c15ab79f
+pkgdown: 2.0.6.9000
+pkgdown_sha: 956f076f661eb2de9413f64ea24a580cf444466d
 articles:
   accuracy_indices: accuracy_indices.html
   working_with_models: working_with_models.html
-last_built: 2021-04-08T11:23Z
+last_built: 2022-09-05T15:42Z
 urls:
   reference: https://lveras.com/lvmisc/reference
   article: https://lveras.com/lvmisc/articles
