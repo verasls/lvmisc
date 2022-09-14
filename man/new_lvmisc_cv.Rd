@@ -4,12 +4,12 @@
 \alias{new_lvmisc_cv}
 \title{Constructor for lvmisc_cv object}
 \usage{
-new_lvmisc_cv(x, model)
+new_lvmisc_cv(x, model, trained_models)
 }
 \arguments{
 \item{x}{A data.frame.}
 
-\item{model}{An object containing a model.}
+\item{model}{A list of all trained models.}
 }
 \description{
 Constructor for lvmisc_cv object
