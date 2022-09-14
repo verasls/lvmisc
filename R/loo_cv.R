@@ -101,6 +101,16 @@ loo_cv.lmerMod <- function(model, data, id, keep = "all") {
   get_lvmisc_cv_object(cv_values, model, trained_models, id_col_name, keep)
 }
 
+#' Extract information from the trained models from a cross-validation
+#'
+#' @param cv An object of class \code{lvmisc_cv}.
+#'
+#' @return \code{get_cv_fixed_eff()} returns a tibble with the estimated
+#'   value for each coefficient of each trained model and its associated
+#'   standard error. \code{get_cv_r2()} returns a tibble with the R squared
+#'   for each of the trained models.
+#'
+#' @export
 get_cv_fixed_eff <- function(cv) {
   trained_models <- attributes(cv)$trained_models
   i <- seq_along(trained_models)
@@ -115,6 +125,8 @@ get_cv_fixed_eff <- function(cv) {
   purrr::map_dfr(i, ~ format_fixed_eff(trained_models, .x))
 }
 
+#' @rdname get_cv_fixed_eff
+#' @export
 get_cv_r2 <- function(cv) {
   trained_models <- attributes(cv)$trained_models
   i <- seq_along(trained_models)
