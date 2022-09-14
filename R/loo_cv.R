@@ -115,6 +115,12 @@ get_cv_fixed_eff <- function(cv) {
   purrr::map_dfr(i, ~ format_fixed_eff(trained_models, .x))
 }
 
+get_cv_r2 <- function(cv) {
+  trained_models <- attributes(cv)$trained_models
+  i <- seq_along(trained_models)
+  purrr::map_dfr(i, ~ format_r2(trained_models, .x))
+}
+
 check_args_loo_cv <- function(model,
                              data,
                              id,
@@ -190,6 +196,13 @@ format_fixed_eff <- function(trained_models, i) {
   }
   fixed_eff <- dplyr::mutate(fixed_eff, model_num = as.factor(.data$model_num))
   fixed_eff
+}
+
+format_r2 <- function(trained_models, i) {
+  r2_df <- tibble::as_tibble(r2(trained_models[[i]]))
+  r2_df <- tibble::add_column(r2_df, model_num = i, .before = 1)
+  r2_df <- dplyr::mutate(r2_df, model_num = as.factor(.data$model_num))
+  r2_df
 }
 
 get_lvmisc_cv_object <- function(cv_values, model, trained_models, id, keep) {
