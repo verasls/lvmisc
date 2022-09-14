@@ -56,7 +56,7 @@ loo_cv.lm <- function(model, data, id, keep = "all") {
   cv_values <- compute_cv_values(
     data, id_col_name, splits$testing_data, trained_models, outcome
   )
-  get_lvmisc_cv_object(cv_values, model, id_col_name, keep)
+  get_lvmisc_cv_object(cv_values, model, trained_models, id_col_name, keep)
 }
 
 #' @rdname loo_cv
@@ -82,7 +82,7 @@ loo_cv.lmerMod <- function(model, data, id, keep = "all") {
   cv_values <- compute_cv_values(
     data, id_col_name, splits$testing_data, trained_models, outcome
   )
-  get_lvmisc_cv_object(cv_values, model, id_col_name, keep)
+  get_lvmisc_cv_object(cv_values, model, trained_models, id_col_name, keep)
 }
 
 check_args_loo_cv <- function(model,
@@ -138,17 +138,17 @@ compute_cv_values <- function(data, id, testing_data, trained_models, outcome) {
   dplyr::arrange(cv_values, id)
 }
 
-get_lvmisc_cv_object <- function(cv_values, model, id, keep) {
+get_lvmisc_cv_object <- function(cv_values, model, trained_models, id, keep) {
   if (keep == "all") {
-    new_lvmisc_cv(cv_values, model)
+    new_lvmisc_cv(cv_values, model, trained_models)
   } else if (keep == "used") {
     vars <- c(
       id,
       ".actual", ".predicted"
     )
-    new_lvmisc_cv(cv_values[vars], model)
+    new_lvmisc_cv(cv_values[vars], model, trained_models)
   } else if (keep == "none") {
-    new_lvmisc_cv(cv_values[c(".actual", ".predicted")], model)
+    new_lvmisc_cv(cv_values[c(".actual", ".predicted")], model, trained_models)
   }
 }
 
@@ -156,13 +156,16 @@ get_lvmisc_cv_object <- function(cv_values, model, id, keep) {
 #'
 #' @param x A data.frame.
 #' @param model An object containing a model.
+#' @param model A list of all trained models.
 #' @keywords internal
-new_lvmisc_cv <- function(x, model) {
+new_lvmisc_cv <- function(x, model, trained_models) {
   stopifnot(is.data.frame(x))
   stopifnot(".actual" %in% names(x))
   stopifnot(".predicted" %in% names(x))
   n_rows <- nrow(x)
   tibble::new_tibble(
-    x, lvmisc_cv_model = model, nrow = n_rows, class = "lvmisc_cv"
+    x,
+    lvmisc_cv_model = model, trained_models = trained_models,
+    nrow = n_rows, class = "lvmisc_cv"
   )
 }
