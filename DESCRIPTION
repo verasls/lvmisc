@@ -39,6 +39,7 @@ Suggests:
     git2r,
     knitr,
     lme4,
+    lmerTest,
     rmarkdown,
     testthat,
     usethis,
