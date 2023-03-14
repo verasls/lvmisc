@@ -151,12 +151,17 @@ abort_no_method_for_class <- function(fun, class, ...) {
   extra_msg <- list(...)
   if (any(purrr::map(extra_msg, is.character) == FALSE)) {
     abort_argument_type("...", must = "be character", not = ...)
-  } else {
-    extra_msg <- glue::glue_collapse(extra_msg, sep = "\n")
   }
+
+  if (length(extra_msg) > 0) {
+    extra_msg <- glue::glue_collapse(extra_msg, sep = "\n")
+  } else {
+    extra_msg <- character()
+  }
+
   if (length(class) > 1) {
     class <- glue::glue_collapse(
-     glue::glue("`{class}`"), sep = ", ", last = " and "
+      glue::glue("`{class}`"), sep = ", ", last = " and "
     )
     noun <- "classes"
   } else {
