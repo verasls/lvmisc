@@ -62,7 +62,7 @@ plot_model_residual_fitted <- function(model) {
     ggplot2::geom_point() +
     ggplot2::geom_smooth(
       method = "loess", formula = "y ~ x", se = FALSE,
-      colour = "#2980b9", size = 1
+      colour = "#2980b9", linewidth = 1
     ) +
     ggplot2::geom_hline(yintercept = 0, linetype = "longdash") +
     ggplot2::theme_light() +
@@ -89,7 +89,7 @@ plot_model_scale_location <- function(model) {
     ggplot2::geom_point() +
     ggplot2::geom_smooth(
       method = "loess", formula = "y ~ x", se = FALSE,
-      colour = "#2980b9", size = 1
+      colour = "#2980b9", linewidth = 1
     ) +
     ggplot2::theme_light() +
     ggplot2::labs(
@@ -106,7 +106,7 @@ plot_model_qq <- function(model) {
 
   ggplot2::ggplot(plot_data, ggplot2::aes(sample = .data$std_res)) +
     ggplot2::stat_qq() +
-    ggplot2::stat_qq_line(colour = "#2980b9", size = 1) +
+    ggplot2::stat_qq_line(colour = "#2980b9", linewidth = 1) +
     ggplot2::theme_light() +
     ggplot2::labs(
       title = "Normality of residuals",
