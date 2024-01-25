@@ -57,7 +57,7 @@ compare_accuracy <- function(..., rank_by = NULL, quiet = FALSE) {
   compare <- cbind(models_info, models_accuracy)
   compare <- dplyr::select(
     compare,
-    .data$Model, .data$Class,
+    "Model", "Class",
     tidyselect::starts_with("R2"), tidyselect::everything()
   )
   if (!is.null(rank_by)) {
