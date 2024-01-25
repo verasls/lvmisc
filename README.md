@@ -10,7 +10,7 @@ status](https://github.com/verasls/lvmisc/workflows/R-CMD-check/badge.svg)](http
 [![CRAN
 status](https://www.r-pkg.org/badges/version/lvmisc)](https://CRAN.R-project.org/package=lvmisc)
 [![Codecov test
-coverage](https://codecov.io/gh/verasls/lvmisc/branch/master/graph/badge.svg)](https://codecov.io/gh/verasls/lvmisc?branch=master)
+coverage](https://codecov.io/gh/verasls/lvmisc/branch/master/graph/badge.svg)](https://app.codecov.io/gh/verasls/lvmisc?branch=master)
 <!-- badges: end -->
 
 `lvmisc` is a package with miscellaneous R functions, including basic
@@ -49,7 +49,7 @@ starwars %>%
     BMI = bmi(mass, height / 100),
     BMI_category = bmi_cat(BMI)
   )
-#> # A tibble: 87 x 6
+#> # A tibble: 87 × 6
 #>    name               birth_year  mass height   BMI BMI_category    
 #>    <chr>                   <dbl> <dbl>  <int> <dbl> <fct>           
 #>  1 Luke Skywalker           19      77    172  26.0 Overweight      
@@ -94,6 +94,7 @@ plot_scatter(mtcars, disp, mpg, color = factor(cyl))
 <img src="man/figures/README-example-1.png" width="100%" style="display: block; margin: auto;" />
 
 ``` r
+
 # Work with statistical model objects
 m <- lm(disp ~ mpg + hp + cyl + mpg:cyl, mtcars)
 accuracy(m)
